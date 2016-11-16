@@ -8,21 +8,17 @@ import org.junit.Test;
  *
  * @author ice1000
  */
-public final class BinaryIndexedTreeImpl2Test {
+public final class IntervalUpdatePointQueryTest {
 
 	@BeforeClass
 	public static void loadJniLibrary() {
 		System.loadLibrary("jni");
 	}
 
-	/**
-	 * data from:
-	 * http://www.codevs.cn/problem/1081/
-	 */
 	@Test(timeout = 10)
 	public void test() {
-		BinaryIndexedTreeImpl2 tree = new BinaryIndexedTreeImpl2(10);
-//		TODO
+		IntervalUpdatePointQuery tree = new IntervalUpdatePointQuery(10);
+
 	}
 
 }

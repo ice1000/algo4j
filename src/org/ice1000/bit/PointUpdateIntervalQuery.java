@@ -6,9 +6,9 @@ package org.ice1000.bit;
  *
  * @author ice1000
  */
-public final class BinaryIndexedTreeImpl extends BinaryIndexedTree {
+public final class PointUpdateIntervalQuery extends BinaryIndexedTree {
 
-	public BinaryIndexedTreeImpl(int length) {
+	public PointUpdateIntervalQuery(int length) {
 		super(length);
 	}
 

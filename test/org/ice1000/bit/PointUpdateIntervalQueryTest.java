@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author ice1000
  */
-public final class BinaryIndexedTreeImplTest {
+public final class PointUpdateIntervalQueryTest {
 
 	@BeforeClass
 	public static void loadJniLibrary() {
@@ -23,7 +23,7 @@ public final class BinaryIndexedTreeImplTest {
 	 */
 	@Test(timeout = 10)
 	public void test() {
-		BinaryIndexedTreeImpl tree = new BinaryIndexedTreeImpl(10);
+		PointUpdateIntervalQuery tree = new PointUpdateIntervalQuery(10);
 		tree.add(1, 4);
 		tree.add(2, 5);
 		tree.add(3, 6);
