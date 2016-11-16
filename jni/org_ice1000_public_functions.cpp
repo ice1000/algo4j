@@ -39,15 +39,15 @@ jlong ice1000_bit::lowbit(jlong x) {
 	return __lowbit(x);
 }
 
-jdouble ice1000_math::sqrt(jdouble x) {
-	jdouble xhalf = 0.5 * x;
+jdouble ice1000_math::sqrt(float x) {
+	float xhalf = 0.5f * x;
 	int i = *(int *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
-	x = *(jdouble *) &i;
-	x *= (1.5 - xhalf * x * x);
-	x *= (1.5 - xhalf * x * x);
-	x *= (1.5 - xhalf * x * x);
-	return (1 / x);
+	x = *(float *) &i;
+	x *= (1.5f - xhalf * x * x);
+	x *= (1.5f - xhalf * x * x);
+	x *= (1.5f - xhalf * x * x);
+	return (jdouble) (1 / x);
 }
 
 jlong ice1000_math::gcd(jlong n, jlong m) {

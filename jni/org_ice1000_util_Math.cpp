@@ -29,5 +29,5 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
-	return sqrt(a);
+	return sqrt((float) a);
 }

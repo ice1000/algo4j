@@ -62,4 +62,8 @@ public class Math {
 	public static double tan(double a) {
 		return java.lang.Math.tan(a);
 	}
+
+	public static double abs(double a) {
+		return java.lang.Math.abs(a);
+	}
 }

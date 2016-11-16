@@ -16,6 +16,7 @@ extern "C" {
 #undef org_ice1000_util_Math_PI
 #define org_ice1000_util_Math_PI 3.141592653589793
 
+/// 0x5F3759DF thank you Carmack
 #undef org_ice1000_util_Math_MAGIC_NUMBER
 #define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
 

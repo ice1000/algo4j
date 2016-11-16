@@ -35,7 +35,7 @@ namespace ice1000_bit {
 }
 
 namespace ice1000_math {
-	jdouble sqrt(jdouble);
+	jdouble sqrt(float);
 	jlong gcd(jlong, jlong);
 }
 

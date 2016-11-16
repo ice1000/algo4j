@@ -1,10 +1,12 @@
 package org.ice1000.util;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by ice1000 on 2016/11/16.
@@ -12,6 +14,17 @@ import static org.junit.Assert.assertEquals;
  * @author ice1000
  */
 public class MathTest {
+
+	@BeforeClass
+	public static void loadJniLibrary() {
+		System.loadLibrary("jni");
+	}
+
+	@Test
+	public void basic() {
+		assertEquals(4, 2 + 2);
+	}
+
 	@Test
 	public void gcd() {
 		assertEquals(Math.gcd(12, 15), 3);
@@ -26,11 +39,12 @@ public class MathTest {
 	@SuppressWarnings("deprecation")
 	public void sqrt() {
 		Random random = new Random(System.currentTimeMillis());
+//		System.out.println(Math.sqrt(100));
 		int timesOfTesting = 1000;
-		while (timesOfTesting --> 0) {
+		System.out.println(timesOfTesting + " test cases");
+		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();
-			assertEquals(Math.sqrt(temp), java.lang.Math.sqrt(temp));
+			assertTrue(Math.abs(Math.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5);
 		}
 	}
-
 }
