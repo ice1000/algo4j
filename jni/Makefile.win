@@ -1,0 +1,33 @@
+# Project: jni
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o
+LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3 -mwindows
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = jni.dll
+CXXFLAGS = $(CXXINCS) -Og -std=gnu++11 -Wall -g3 -mwindows -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -Og -std=gnu++11 -Wall -g3 -mwindows -DBUILDING_DLL=1
+RM       = rm.exe -f
+DEF      = libjni.def
+STATIC   = libjni.a
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN) $(DEF) $(STATIC)
+
+$(BIN): $(LINKOBJ)
+	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+
+org_ice1000_bit_BinaryIndexedTree.o: org_ice1000_bit_BinaryIndexedTree.cpp
+	$(CPP) -c org_ice1000_bit_BinaryIndexedTree.cpp -o org_ice1000_bit_BinaryIndexedTree.o $(CXXFLAGS)
+
+org_ice1000_public_functions.o: org_ice1000_public_functions.cpp
+	$(CPP) -c org_ice1000_public_functions.cpp -o org_ice1000_public_functions.o $(CXXFLAGS)
