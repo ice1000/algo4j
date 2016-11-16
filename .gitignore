@@ -1,1 +1,12 @@
 /*.iml
+.idea/
+jni.dll
+jni/.idea/
+jni/jni.dll
+jni/jni.dev
+jni/jni.layout
+jni/libjni.a
+jni/libjni.def
+jni/org_ice1000_bit_BinaryIndexedTree.o
+jni/org_ice1000_public_functions.o
+out/

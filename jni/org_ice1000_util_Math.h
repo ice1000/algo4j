@@ -45,4 +45,5 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
+
 #endif /// _Included_org_ice1000_util_Math

@@ -38,10 +38,19 @@ inline jlong ice1000_bit::lowbit(jlong x) {
 	return __lowbit(x);
 }
 
-inline jdouble ice1000_math::sqrt(jdouble) {
-	
+inline jdouble ice1000_math::sqrt(jdouble x) {
+	jdouble xhalf = 0.5 * x;
+	int i = *(int *) &x;
+	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
+	x = *(jdouble *) &i;
+	x *= (1.5 - xhalf * x * x);
+	x *= (1.5 - xhalf * x * x);
+	x *= (1.5 - xhalf * x * x);
+	return (1 / x);
 }
 
-inline jlong gcd(jlong, jlong) {
-	
+inline jlong ice1000_math::gcd(jlong n, jlong m) {
+	jlong c;
+	for (; m > 0; c = n % m, n = m, m = c);
+	return n;
 }
