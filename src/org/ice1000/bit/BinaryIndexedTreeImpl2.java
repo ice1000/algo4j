@@ -5,7 +5,7 @@ package org.ice1000.bit;
  *
  * @author ice1000
  */
-public class BinaryIndexedTreeImpl2 extends BinaryIndexedTree {
+public final class BinaryIndexedTreeImpl2 extends BinaryIndexedTree {
 
 	public BinaryIndexedTreeImpl2(int length) {
 		super(length);

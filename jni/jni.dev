@@ -16,8 +16,8 @@ IsCpp=1
 Icon=
 ExeOutput=
 ObjectOutput=
-LogOutput=
-LogOutputEnabled=0
+LogOutput=./log
+LogOutputEnabled=1
 OverrideOutput=1
 OverrideOutputName=jni.dll
 HostApplication=
@@ -28,7 +28,7 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=000000e0g0100000001010000
+CompilerSettings=000000b0g0100000000011000
 UnitCount=6
 
 [VersionInfo]

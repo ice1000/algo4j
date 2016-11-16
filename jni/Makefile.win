@@ -1,17 +1,17 @@
 # Project: jni
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe -D__DEBUG__
-CC       = gcc.exe -D__DEBUG__
+CPP      = g++.exe
+CC       = gcc.exe
 WINDRES  = windres.exe
 OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
 LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3 -mwindows
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -s
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
-CXXFLAGS = $(CXXINCS) -Og -std=gnu++11 -Wall -g3 -mwindows -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -Og -std=gnu++11 -Wall -g3 -mwindows -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -O3 -std=gnu++11 -Wall -mwindows -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -O3 -std=gnu++11 -Wall -mwindows -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = libjni.def
 STATIC   = libjni.a

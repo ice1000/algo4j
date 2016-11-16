@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
  *
  * @author ice1000
  */
-public class MathTest {
+public final class MathTest {
 
 	@BeforeClass
 	public static void loadJniLibrary() {
@@ -39,7 +39,8 @@ public class MathTest {
 	@SuppressWarnings("deprecation")
 	public void sqrt() {
 		Random random = new Random(System.currentTimeMillis());
-//		System.out.println(Math.sqrt(100));
+		System.out.println(Math.sqrt(100));
+		System.out.println(java.lang.Math.sqrt(100));
 		int timesOfTesting = 1000;
 		System.out.println(timesOfTesting + " test cases");
 		while (timesOfTesting-- > 0) {

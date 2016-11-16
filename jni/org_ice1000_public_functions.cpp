@@ -40,13 +40,12 @@ jlong ice1000_bit::lowbit(jlong x) {
 }
 
 jdouble ice1000_math::sqrt(float x) {
-	float xhalf = 0.5f * x;
+	float xhalf = 0.5F * x;
 	int i = *(int *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
 	x = *(float *) &i;
-	x *= (1.5f - xhalf * x * x);
-	x *= (1.5f - xhalf * x * x);
-	x *= (1.5f - xhalf * x * x);
+	x *= (1.5F - xhalf * x * x);
+	x *= (1.5F - xhalf * x * x);
 	return (jdouble) (1 / x);
 }
 
