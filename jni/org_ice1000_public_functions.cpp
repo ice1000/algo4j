@@ -41,7 +41,7 @@ jlong ice1000_bit::lowbit(jlong x) {
 	return __lowbit(x);
 }
 
-jdouble ice1000_math::sqrt(float x) {
+jdouble ice1000_math::sqrt_carmack(float x) {
 	float x_half = 0.5F * x;
 	int i = *(int *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
@@ -51,10 +51,38 @@ jdouble ice1000_math::sqrt(float x) {
 	return (jdouble) (1 / x);
 }
 
+jdouble ice1000_math::sqrt_strict(jdouble x) {
+	return sqrt(x);
+}
+
 jlong ice1000_math::gcd(jlong n, jlong m) {
 	jlong c;
 	for (; m > 0; c = n % m, n = m, m = c);
 	return n;
+}
+
+jdouble ice1000_math::sin_ice(jdouble x) {
+	return sin(x);
+}
+
+jdouble ice1000_math::cos_ice(jdouble x) {
+	return cos(x);
+}
+
+jdouble ice1000_math::tan_ice(jdouble x) {
+	return tan(x);
+}
+
+jdouble ice1000_math::cot_ice(jdouble x) {
+	return 1 / tan(x);
+}
+
+jdouble ice1000_math::csc_ice(jdouble x) {
+	return 1 / sin(x);
+}
+
+jdouble ice1000_math::sec_ice(jdouble x) {
+	return 1 / cos(x);
 }
 
 #pragma clang diagnostic pop

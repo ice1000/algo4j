@@ -38,7 +38,21 @@ namespace ice1000_bit {
 }
 
 namespace ice1000_math {
-	jdouble sqrt(float);
+	jdouble sin_ice(jdouble);
+
+	jdouble cos_ice(jdouble);
+
+	jdouble tan_ice(jdouble);
+
+	jdouble cot_ice(jdouble);
+
+	jdouble csc_ice(jdouble);
+
+	jdouble sec_ice(jdouble);
+
+	jdouble sqrt_carmack(float);
+
+	jdouble sqrt_strict(jdouble);
 
 	jlong gcd(jlong, jlong);
 }
