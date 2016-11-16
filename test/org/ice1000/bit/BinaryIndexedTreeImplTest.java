@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author ice1000
  */
-public class BinaryIndexedTreeImplTest {
+public final class BinaryIndexedTreeImplTest {
 
 	@BeforeClass
 	public static void loadJniLibrary() {
