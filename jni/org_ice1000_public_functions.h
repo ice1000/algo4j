@@ -3,9 +3,7 @@
 ///
 
 #include <jni.h>
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#include <algorithm>
 
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
@@ -47,4 +45,3 @@ namespace ice1000_math {
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
-#pragma clang diagnostic pop

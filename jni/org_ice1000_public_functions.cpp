@@ -4,9 +4,10 @@
 
 // 我不做大哥好多年 我不爱冰冷的床沿
 
+#include "org_ice1000_util_Math.h"
 #include "org_ice1000_public_functions.h"
 
-inline void ice1000_bit::add(
+void ice1000_bit::add(
 		JNIEnv *env,
 		jlongArray _data,
 		jint len,
@@ -20,7 +21,7 @@ inline void ice1000_bit::add(
 	env->ReleaseLongArrayElements(_data, data, 0);
 }
 
-inline jlong ice1000_bit::sum(
+jlong ice1000_bit::sum(
 		JNIEnv *env,
 		jlongArray _data,
 		jint idx) {
@@ -34,11 +35,11 @@ inline jlong ice1000_bit::sum(
 	return ret;
 }
 
-inline jlong ice1000_bit::lowbit(jlong x) {
+jlong ice1000_bit::lowbit(jlong x) {
 	return __lowbit(x);
 }
 
-inline jdouble ice1000_math::sqrt(jdouble x) {
+jdouble ice1000_math::sqrt(jdouble x) {
 	jdouble xhalf = 0.5 * x;
 	int i = *(int *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
@@ -49,7 +50,7 @@ inline jdouble ice1000_math::sqrt(jdouble x) {
 	return (1 / x);
 }
 
-inline jlong ice1000_math::gcd(jlong n, jlong m) {
+jlong ice1000_math::gcd(jlong n, jlong m) {
 	jlong c;
 	for (; m > 0; c = n % m, n = m, m = c);
 	return n;

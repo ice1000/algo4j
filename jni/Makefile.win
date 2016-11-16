@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o
-LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o
+OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
+LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
 LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3 -mwindows
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -31,3 +31,6 @@ org_ice1000_bit_BinaryIndexedTree.o: org_ice1000_bit_BinaryIndexedTree.cpp
 
 org_ice1000_public_functions.o: org_ice1000_public_functions.cpp
 	$(CPP) -c org_ice1000_public_functions.cpp -o org_ice1000_public_functions.o $(CXXFLAGS)
+
+org_ice1000_util_Math.o: org_ice1000_util_Math.cpp
+	$(CPP) -c org_ice1000_util_Math.cpp -o org_ice1000_util_Math.o $(CXXFLAGS)
