@@ -35,13 +35,39 @@ public final class MathTest {
 		assertEquals(Math.gcd(1, 1), 1);
 	}
 
-	@Test
-	@SuppressWarnings("deprecation")
-	public void sqrt() {
+	/**
+	 * 2.5e-4ms per calc
+	 */
+	@Test(timeout = 100)
+	public void sqrtTime() {
+		Random random = new Random(System.currentTimeMillis());
+		int timesOfTesting = 1000000;
+		System.out.println(timesOfTesting + " test cases");
+		while (timesOfTesting-- > 0) {
+			Math.sqrt(random.nextDouble() * 10000);
+		}
+	}
+
+	/**
+	 * 2.5e-4ms per calc
+	 */
+	@SuppressWarnings("ResultOfMethodCallIgnored")
+	@Test(timeout = 100)
+	public void sqrtStdTime() {
+		Random random = new Random(System.currentTimeMillis());
+		int timesOfTesting = 1000000;
+		System.out.println(timesOfTesting + " test cases");
+		while (timesOfTesting-- > 0) {
+			java.lang.Math.sqrt(random.nextDouble() * 10000);
+		}
+	}
+
+	@Test(timeout = 10)
+	public void sqrtCorrectness() {
 		Random random = new Random(System.currentTimeMillis());
 		System.out.println(Math.sqrt(100));
 		System.out.println(java.lang.Math.sqrt(100));
-		int timesOfTesting = 1000;
+		int timesOfTesting = 5000;
 		System.out.println(timesOfTesting + " test cases");
 		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();

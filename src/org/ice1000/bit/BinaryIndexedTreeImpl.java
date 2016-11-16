@@ -1,6 +1,7 @@
 package org.ice1000.bit;
 
 /**
+ * indexed [1, length]
  * Created by ice1000 on 2016/11/15.
  *
  * @author ice1000
@@ -42,7 +43,7 @@ public final class BinaryIndexedTreeImpl extends BinaryIndexedTree {
 	 * @see #sum(int)
 	 */
 	public long sum(int left, int right) {
-		return sum(right) - sum(left);
+		return sum(right) - sum(left - 1);
 	}
 
 }
