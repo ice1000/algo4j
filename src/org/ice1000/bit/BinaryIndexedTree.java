@@ -9,17 +9,20 @@ package org.ice1000.bit;
 @SuppressWarnings("WeakerAccess")
 public abstract class BinaryIndexedTree {
 	private long[] data;
+	protected int length;
 
 	protected BinaryIndexedTree(int length) {
+		this.length = length;
 		data = new long[length];
 	}
 
 	protected void add(int index, long value) {
-		add(data, data.length, index, value);
+		if (index < 1 || index > length) throw new ArrayIndexOutOfBoundsException();
+		add(data, length, index, value);
 	}
 
 	protected long sum(int index) {
-		return sum(data, data.length, index);
+		return sum(data, length, index);
 	}
 
 	private native void add(long[] data, int length, int index, long value);

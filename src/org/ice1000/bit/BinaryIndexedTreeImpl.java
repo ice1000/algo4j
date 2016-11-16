@@ -27,7 +27,7 @@ public final class BinaryIndexedTreeImpl extends BinaryIndexedTree {
 	 * bit standard sum function, O(n) = log(n)
 	 *
 	 * @param index bound
-	 * @return summary value, from 0 to index
+	 * @return summary value, from 1 to index
 	 */
 	@Override
 	public long sum(int index) {
