@@ -5,6 +5,9 @@
 #include "org_ice1000_public_functions.h"
 #include "org_ice1000_bit_BinaryIndexedTree.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 using namespace ice1000_bit;
 
 /**
@@ -27,3 +30,5 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
 	return sum(env, _data, idx);
 }
 
+
+#pragma clang diagnostic pop

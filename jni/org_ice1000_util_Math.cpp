@@ -3,7 +3,10 @@
 ///
 
 #include "org_ice1000_util_Math.h"
-#include "org_ice1000_public_functions.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using namespace ice1000_math;
 
@@ -31,3 +34,5 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
 		jdouble a) {
 	return sqrt((float) a);
 }
+
+#pragma clang diagnostic pop

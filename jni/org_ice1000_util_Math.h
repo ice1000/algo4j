@@ -3,6 +3,9 @@
 #include "org_ice1000_public_functions.h"
 /** Header for class org_ice1000_util_Math */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef _Included_org_ice1000_util_Math
 #define _Included_org_ice1000_util_Math
 
@@ -26,10 +29,10 @@ extern "C" {
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_gcd(
-	JNIEnv *,
-	jclass,
-	jlong,
-	jlong
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong
 );
 
 /**
@@ -38,9 +41,9 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_gcd(
  * Signature: (D)D
  */
 JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
-	JNIEnv *,
-	jclass,
-	jdouble
+		JNIEnv *,
+		jclass,
+		jdouble
 );
 
 #ifdef __cplusplus
@@ -48,3 +51,5 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
 #endif /// __cplusplus
 
 #endif /// _Included_org_ice1000_util_Math
+
+#pragma clang diagnostic pop

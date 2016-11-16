@@ -7,6 +7,9 @@
 #include "org_ice1000_public_functions.h"
 /** Header for class org_ice1000_bit_BinaryIndexedTree */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef _Included_org_ice1000_bit_BinaryIndexedTree
 #define _Included_org_ice1000_bit_BinaryIndexedTree
 
@@ -46,3 +49,5 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
 #endif /// __cplusplus
 #endif /// _Included_org_ice1000_bit_BinaryIndexedTree
 
+
+#pragma clang diagnostic pop

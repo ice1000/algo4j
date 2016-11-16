@@ -5,6 +5,9 @@
 #include <jni.h>
 #include <algorithm>
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
@@ -36,6 +39,7 @@ namespace ice1000_bit {
 
 namespace ice1000_math {
 	jdouble sqrt(float);
+
 	jlong gcd(jlong, jlong);
 }
 
@@ -45,3 +49,5 @@ namespace ice1000_math {
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
+
+#pragma clang diagnostic pop
