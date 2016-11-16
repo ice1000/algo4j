@@ -26,45 +26,51 @@ public final class Math {
 	public static native long gcd(long a, long b);
 
 	/**
+	 * This runs very fast, O(1)
 	 * Returns the square root of a, replaced {@code java.lang.StrictMath.sqrt(double)}
-	 * This is not so strict, for instance sqrt(100) will be 10.000036239624023
+	 * This is not so strict, for instance sqrt(100) will be 10.000036239624023.
 	 *
 	 * @return square root of a
 	 */
 	public static native double sqrt(double a);
 
+	public static native double sqrtStrict(double a);
+
 	/**
-	 * delegate to {@code java.lang.Math.sin(double)}
+	 * same as {@code java.lang.Math.sin(double)}
 	 *
 	 * @return sin(a)
-	 * @see java.lang.Math
-	 * @see java.lang.StrictMath
 	 */
-	public static double sin(double a) {
-		return java.lang.Math.sin(a);
-	}
+	public static native double sin(double a);
 
 	/**
-	 * delegate to {@code java.lang.Math.cos(double)}
+	 * same as {@code java.lang.Math.cos(double)}
 	 *
 	 * @return cos(a)
-	 * @see java.lang.Math
-	 * @see java.lang.StrictMath
 	 */
-	public static double cos(double a) {
-		return java.lang.Math.cos(a);
-	}
+	public static native double cos(double a);
 
 	/**
-	 * delegate to {@code java.lang.Math.tan(double)}
+	 * same as {@code java.lang.Math.tan(double)}
 	 *
 	 * @return tan(a)
-	 * @see java.lang.Math
-	 * @see java.lang.StrictMath
 	 */
-	public static double tan(double a) {
-		return java.lang.Math.tan(a);
-	}
+	public static native double tan(double a);
+
+	/**
+	 * @return cot(a)
+	 */
+	public static native double cot(double a);
+
+	/**
+	 * @return csc(a)
+	 */
+	public static native double csc(double a);
+
+	/**
+	 * @return sec(a)
+	 */
+	public static native double sec(double a);
 
 	/**
 	 * delegate to {@code java.lang.Math.abs(double)}

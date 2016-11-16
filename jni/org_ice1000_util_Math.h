@@ -47,6 +47,84 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
 		jdouble
 );
 
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    sqrtStrict
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrtStrict(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    sin
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sin(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    cos
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_cos(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    tan
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_tan(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    cot
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_cot(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    csc
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_csc(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    sec
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sec(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
