@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=000000b0g0100000000011000
-UnitCount=8
+UnitCount=9
 
 [VersionInfo]
 Major=1
@@ -122,6 +122,16 @@ BuildCmd=
 
 [Unit8]
 FileName=org_ice1000_bit_ReversePairSum.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=org_ice1000_graph_FrontStarGraph.h
 CompileCpp=1
 Folder=
 Compile=1

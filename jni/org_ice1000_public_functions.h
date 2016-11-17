@@ -7,6 +7,7 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
@@ -57,11 +58,79 @@ namespace ice1000_math {
 }
 
 namespace ice1000_util {
+  
+// 日了狗了 实在不行我就硬编码类型进去 md
+
+/// 杩欏揩鎺掓瘮std::sort(begin, end)涓嶇煡閬撻珮鍒板摢閲屽幓浜?
+/// 鎴戝拰瀹冭皥绗戦鐢?
 	template<typename T>
-	void quick_sort(T *array, const long length);
+	void __quick_sort_core(
+			T *array,
+			const int left,
+			const int right) {
+		if (left >= right) return;
+		auto i = left;
+		auto j = right;
+		auto standard = array[left];
+		T temp;
+		while (i < j) {
+			while (i < j and standard < array[j]) --j;
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCSimplifyInspection"
+			while (i < j and !(standard < array[i])) ++i;
+#pragma clang diagnostic pop
+			if (i < j) {
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+		}
+		array[i] = standard;
+		__quick_sort_core(array, left, i - 1);
+		__quick_sort_core(array, i + 1, right);
+	}
+
+/// 杩欏揩鎺掓瘮std::sort(begin, end, cmp)涓嶇煡閬撻珮鍒板摢閲屽幓浜?
+/// 鎴戝拰瀹冭皥绗戦鐢?
+	template<typename T>
+	void __quick_sort_core_with_cmp(
+			T *array,
+			const int left,
+			const int right,
+			bool (*compare)(const T &, const T &)) {
+		if (left >= right) return;
+		auto i = left;
+		auto j = right;
+		auto standard = array[left];
+		T temp;
+		while (i < j) {
+			while (i < j and compare(standard, array[i])) --j;
+			while (i < j and !compare(standard, array[i])) ++i;
+			if (i < j) {
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+		}
+		array[i] = standard;
+		__quick_sort_core_with_cmp(array, left, i - 1, compare);
+		__quick_sort_core_with_cmp(array, i + 1, right, compare);
+	}
 
 	template<typename T>
-	void quick_sort_with_cmp(T *array, const long length, bool (*)(const T &, const T &));
+	void quick_sort(
+			T *array,
+			const size_t length) {
+		__quick_sort_core(array, 0, length - 1);
+	}
+
+	template<typename T>
+	void quick_sort_with_cmp(
+			T *array,
+			const size_t length,
+			bool (*compare)(const T &, const T &)) {
+		__quick_sort_core_with_cmp(array, 0, (int) (length - 1), compare);
+	}
 
 	template<typename T1, typename T2>
 	struct Ice1000Pair {
@@ -77,6 +146,12 @@ namespace ice1000_util {
 		}
 	};
 }
+
+//namespace ice1000_util {
+//  void _a_b_c_d_e_f_g_h_i_j_k_l_m_n_() {
+//    quick_sort(new Ice1000Pair[233], 233);
+//  }
+//}
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
