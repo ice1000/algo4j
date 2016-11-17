@@ -4,7 +4,9 @@
 
 #include "org_ice1000_bit_ReversePairSum.h"
 
-using namespace ice1000_bit;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 		JNIEnv *env,
@@ -14,10 +16,10 @@ JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 	auto data = env->GetLongArrayElements(_data, 0);
 	auto pair = new ice1000_util::Ice1000Pair<jlong, int>[len]();
 	for (auto i = 0; i < len; ++i) {
-	  pair[i].first = data[i];
-	  pair[i].second = i;
-  }
-  ice1000_util::quick_sort(pair, len);
+		pair[i].first = data[i];
+		pair[i].second = i;
+	}
+	ice1000_util::quick_sort(pair, len);
 	env->ReleaseLongArrayElements(_data, data, 0);
 }
 
@@ -28,3 +30,5 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_ReversePairSum_query(
 		jint len) {
 	return 0;
 }
+
+#pragma clang diagnostic pop

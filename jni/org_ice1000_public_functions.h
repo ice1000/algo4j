@@ -5,6 +5,8 @@
 #include <jni.h>
 #include <math.h>
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
@@ -20,17 +22,17 @@ namespace ice1000_bit {
 	jlong lowbit(const jlong);
 
 	void add(
-	  JNIEnv *,
-	  jlongArray,
-	  jint,
-	  jint,
-	  jlong
+			JNIEnv *,
+			jlongArray,
+			jint,
+			jint,
+			jlong
 	);
 
 	jlong sum(
-	  JNIEnv *,
-	  jlongArray,
-	  jint
+			JNIEnv *,
+			jlongArray,
+			jint
 	);
 }
 
@@ -59,7 +61,7 @@ namespace ice1000_util {
 	void quick_sort(T *array, const long length);
 
 	template<typename T>
-	void quick_sort_with_cmp(T *array, const long length, bool (*) (const T &, const T &));
+	void quick_sort_with_cmp(T *array, const long length, bool (*)(const T &, const T &));
 
 	template<typename T1, typename T2>
 	struct Ice1000Pair {
@@ -67,6 +69,7 @@ namespace ice1000_util {
 		T2 second;
 
 		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+
 		Ice1000Pair() { }
 
 		const bool operator<(const Ice1000Pair &o) const {
@@ -77,4 +80,4 @@ namespace ice1000_util {
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
-
+#pragma clang diagnostic pop

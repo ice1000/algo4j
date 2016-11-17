@@ -5,6 +5,7 @@
 #include "org_ice1000_bit_BinaryIndexedTree.h"
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using namespace ice1000_bit;

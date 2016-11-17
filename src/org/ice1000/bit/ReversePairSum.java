@@ -15,7 +15,11 @@ public final class ReversePairSum extends BinaryIndexedTree {
 	@SuppressWarnings("WeakerAccess")
 	public static final int FLAG_AFTER = 0x02;
 
+	@SuppressWarnings("WeakerAccess")
+	public static final int FLAG_QUERIED = 0x03;
+
 	private int flag = FLAG_BEFORE;
+	private long result;
 
 	public ReversePairSum(int length) {
 		super(length);
@@ -42,9 +46,10 @@ public final class ReversePairSum extends BinaryIndexedTree {
 
 	public long query() {
 		if (flag == FLAG_BEFORE) discretization();
-		if (flag != FLAG_AFTER) throw new BinaryIndexedTreeException("flag is mistaken!");
-//		TODO
-		return 0;
+		if (flag == FLAG_QUERIED) return result;
+		result = query(data, length);
+		flag = FLAG_QUERIED;
+		return result;
 	}
 
 	@SuppressWarnings("WeakerAccess")
@@ -54,5 +59,6 @@ public final class ReversePairSum extends BinaryIndexedTree {
 	}
 
 	private native void discretization(long[] data, int length);
+
 	private native long query(long[] data, int length);
 }
