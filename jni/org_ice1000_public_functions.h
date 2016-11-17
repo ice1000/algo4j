@@ -53,6 +53,10 @@ namespace ice1000_math {
 	jdouble sqrt_strict(const jdouble);
 
 	jlong gcd(jlong, jlong);
+
+	jlong fast_plus(jlong, jlong, jlong);
+
+	jlong fast_power(jlong, jlong, jlong);
 }
 
 namespace ice1000_util {

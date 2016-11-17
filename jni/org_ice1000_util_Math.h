@@ -125,6 +125,33 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sec(
 );
 
 
+/*
+ * Class:     org_ice1000_util_Math
+ * Method:    fastPlus
+ * Signature: (JJJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPlus(
+    JNIEnv *,
+    jclass,
+    jlong,
+    jlong,
+    jlong
+);
+
+/*
+ * Class:     org_ice1000_util_Math
+ * Method:    fastPower
+ * Signature: (JJJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
+    JNIEnv *,
+    jclass,
+    jlong,
+    jlong,
+    jlong
+);
+
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

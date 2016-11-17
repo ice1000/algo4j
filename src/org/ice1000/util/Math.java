@@ -72,6 +72,10 @@ public final class Math {
 	 */
 	public static native double sec(double a);
 
+	public static native long fastPlus(long a, long b, long mod);
+
+	public static native long fastPower(long a, long b, long mod);
+
 	/**
 	 * delegate to {@code java.lang.Math.abs(double)}
 	 *

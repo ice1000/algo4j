@@ -26,6 +26,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 	}
 	for (auto i = 0; i < len; ++i) printf("%lli ", after[i]);
 //	env->SetObjectArrayElement()
+//  auto _after = env->NewLongArray((jsize)len);
 	env->SetLongArrayRegion(_data, 0, len, after);
 	env->ReleaseLongArrayElements(_data, data, NULL);
 	delete option;

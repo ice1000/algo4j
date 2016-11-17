@@ -94,4 +94,14 @@ public final class MathTest {
 		}
 		System.out.println("test passed");
 	}
+
+	/**
+	 * fast power test
+	 */
+	@Test(timeout = 100)
+	public void fastPlusPowerTest() {
+		assertEquals(24, Math.fastPower(2, 10, 1000));
+		assertEquals(12, Math.fastPower(2, 9, 100));
+		assertEquals(4, Math.fastPower(2, 10, 10));
+	}
 }

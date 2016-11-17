@@ -75,5 +75,23 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sec(
 	return sec_ice(a);
 }
 
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPlus(
+    JNIEnv *env,
+    jclass jc,
+    jlong a,
+    jlong b,
+    jlong m) {
+  return ice1000_math::fast_plus(a, b, m);
+}
+
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
+    JNIEnv *env,
+    jclass jc,
+    jlong a,
+    jlong b,
+    jlong m) {
+  return ice1000_math::fast_power(a, b, m);
+}
+
 
 #pragma clang diagnostic pop
