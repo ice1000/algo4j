@@ -13,7 +13,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif /// __cplusplus
 
 /**
  * Class:     org_ice1000_graph_FrontStarGraph
@@ -50,5 +50,5 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 
 #ifdef __cplusplus
 }
-#endif
-#endif
+#endif /// __cplusplus
+#endif /// org_ice1000_graph_FrontStarGraph

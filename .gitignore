@@ -9,7 +9,11 @@ jni/.idea/
 jni.dll
 jni/libjni.a
 jni/libjni.def
-*.o
+jni/org_ice1000_bit_BinaryIndexedTree.o
+jni/org_ice1000_graph_FrontStarGraph.o
+jni/org_ice1000_bit_ReversePairSum.o
+jni/org_ice1000_public_functions.o
+jni/org_ice1000_util_Math.o
 out/
 
 # Unneccessary files #
