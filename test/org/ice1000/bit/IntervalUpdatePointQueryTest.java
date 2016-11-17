@@ -25,6 +25,9 @@ public final class IntervalUpdatePointQueryTest {
 		IntervalUpdatePointQuery tree = new IntervalUpdatePointQuery(30);
 		tree.update(10, 20, 5);
 		tree.update(15, 25, 15);
+		assertEquals(20, tree.query(15));
+		assertEquals(20, tree.query(17));
+		assertEquals(20, tree.query(20));
 		assertEquals(20, tree.query(17));
 
 		tree.update(1, 15, 1);

@@ -24,7 +24,6 @@ public final class FrontStarGraph {
 		target = new long[edgeCount];
 		value = new long[edgeCount];
 		head = new long[nodeCount];
-		init(next, head, target, value, edgeCount, nodeCount);
 	}
 
 	public void addEdge(int from, int to, int val) {
@@ -47,13 +46,8 @@ public final class FrontStarGraph {
 		return kruskal(next, head, target, value, edgeCount, nodeCount);
 	}
 
-	private native long[] spfa(int source, long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
-
-	private native long kruskal(long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
-
 	/**
-	 * initialize arrays
-	 *
+	 * @param source    start node id
 	 * @param next      memset(next, -1, sizeof(next))
 	 * @param head      memset(next, -1, sizeof(next))
 	 * @param target    memset(next, -1, sizeof(next))
@@ -61,5 +55,15 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
-	private native void init(long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
+	private native long[] spfa(int source, long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
+
+	/**
+	 * @param next      memset(next, -1, sizeof(next))
+	 * @param head      memset(next, -1, sizeof(next))
+	 * @param target    memset(next, -1, sizeof(next))
+	 * @param value     memset(next, -1, sizeof(next))
+	 * @param edgeCount edges
+	 * @param nodeCount nodes
+	 */
+	private native long kruskal(long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
 }

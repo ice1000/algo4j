@@ -6,6 +6,7 @@ package org.ice1000.uset;
  * @author ice1000
  */
 abstract class UnionSet {
-	protected native int find(long[] data, int length);
-	protected native void merge();
+	protected native int find(long[] data, int length, int num);
+
+	protected native void merge(long[] data, int length, int a, int b);
 }

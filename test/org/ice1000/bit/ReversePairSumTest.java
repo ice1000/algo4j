@@ -3,7 +3,8 @@ package org.ice1000.bit;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -21,9 +22,14 @@ public class ReversePairSumTest {
 	public void test() {
 		ReversePairSum sum = new ReversePairSum(6);
 		sum.setAll(new long[]{33, 1, 100, 20, 43, 43});
+		System.out.println("1");
 		sum.discretization();
-		assertArrayEquals(new long[]{2, 0, 4, 1, 3, 3}, sum.data);
-		assertEquals(4, sum.query());
+		System.out.println("2");
+		long[] longs = new long[]{3, 1, 5, 2, 4, 4};
+		System.out.println(Arrays.toString(sum.data));
+//		assertArrayEquals(longs, sum.data);
+		for (int i = 0; i < sum.length - 1; i++) assertEquals(longs[i], sum.data[i + 1]);
+		assertEquals(5, sum.query());
 	}
 
 	public static void main(String[] args) {
