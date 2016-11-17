@@ -4,6 +4,7 @@
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef _Included_org_ice1000_bit_ReversePairSum
 #define _Included_org_ice1000_bit_ReversePairSum
 
@@ -47,3 +48,4 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_ReversePairSum_query(
 #endif /// _Included_org_ice1000_bit_ReversePairSum
 
 #pragma clang diagnostic pop
+

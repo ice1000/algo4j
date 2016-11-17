@@ -28,8 +28,8 @@ Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=000000b0g0100000000011000
-UnitCount=9
+CompilerSettings=000000e0g0000000000011000
+UnitCount=10
 
 [VersionInfo]
 Major=1
@@ -110,18 +110,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
-FileName=org_ice1000_bit_ReversePairSum.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit8]
-FileName=org_ice1000_bit_ReversePairSum.h
+FileName=org_ice1000_graph_FrontStarGraph.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -131,6 +121,26 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
+FileName=org_ice1000_util_Arrays.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit10]
+FileName=org_ice1000_util_Arrays.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
 FileName=org_ice1000_graph_FrontStarGraph.h
 CompileCpp=1
 Folder=

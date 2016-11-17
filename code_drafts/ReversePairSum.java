@@ -1,6 +1,7 @@
 package org.ice1000.bit;
 
 import org.ice1000.error.BinaryIndexedTreeException;
+import org.ice1000.util.Arrays;
 
 /**
  * Created by ice1000 on 2016/11/17.
@@ -56,10 +57,8 @@ public final class ReversePairSum extends BinaryIndexedTree {
 
 	public void discretization() {
 		flag = FLAG_AFTER;
-		discretization(data, length);
+		Arrays.discretization(data, length);
 	}
-
-	private native void discretization(long[] data, int length);
 
 	private native long query(long[] data, int length);
 }

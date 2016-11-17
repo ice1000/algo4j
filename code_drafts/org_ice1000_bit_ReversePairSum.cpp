@@ -15,12 +15,12 @@ JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 		jint len) {
 	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(_data, option);
-	auto pair = new ice1000_util::Ice1000Pair<jlong, int>[len + 2]();
+	auto pair = new ice1000_util::Ice1000Pair<jlong, int>[len]();
 	auto after = new jlong[len + 1];
-	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i]);
+	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
 //	std::sort(pair, pair + len);
 	ice1000_util::quick_sort(pair, len);
-	for (auto i = j = 0; i <= len; ++i, ++j) {
+	for (auto i = 0, j = 0; i < len; ++i, ++j) {
 		after[pair[i].second] = j;
 		if (pair[i].first == pair[i + 1].first) --j;
 	}
