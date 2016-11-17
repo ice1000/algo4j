@@ -96,12 +96,20 @@ public final class MathTest {
 	}
 
 	/**
-	 * fast power test
+	 * fast power and fast plus test
+	 * <p>
+	 * data:
+	 * 2 ^ 10 => 1024, 1024 % 1000 => 24
+	 * 2 ^ 9 => 512, 512 % 100 => 12
+	 * 2 ^ 10 => 1024, 1024 % 10 => 4
+	 * 233 * 233 => 54289, 54289 % 1000 => 289
 	 */
 	@Test(timeout = 100)
 	public void fastPlusPowerTest() {
 		assertEquals(24, Math.fastPower(2, 10, 1000));
 		assertEquals(12, Math.fastPower(2, 9, 100));
 		assertEquals(4, Math.fastPower(2, 10, 10));
+
+		assertEquals(289, Math.fastPlus(233, 233, 1000));
 	}
 }

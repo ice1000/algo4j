@@ -14,6 +14,9 @@ public final class FrontStarGraph {
 	private int edgeCount;
 	private int addingEdgeIndex = 0;
 
+	public static final int INFINITY = 0x7f7f7f7f;
+	public static final int INFINITY_FILLING = 0x7f;
+
 	public FrontStarGraph(int nodeCount, int edgeCount) {
 		this.nodeCount = nodeCount;
 		this.edgeCount = edgeCount;

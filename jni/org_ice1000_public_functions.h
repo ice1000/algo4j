@@ -4,6 +4,7 @@
 
 #include <jni.h>
 #include <math.h>
+#include <string.h>
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -14,6 +15,10 @@
 /// 0x5F3759DF thank you Carmack
 #undef org_ice1000_util_Math_MAGIC_NUMBER
 #define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
+
+#ifndef __ice_memset
+#define __ice_memset(x, y) (memset(x, y, sizeof(x)))
+#endif /// __ice_memset
 
 #ifndef __lowbit
 #define __lowbit(x) ((x) & (-(x)))
@@ -68,8 +73,8 @@ namespace ice1000_util {
 	template<typename T>
 	void __quick_sort_core(
 			T *array,
-			const int left,
-			const int right) {
+			const jsize left,
+			const jsize right) {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
@@ -77,15 +82,9 @@ namespace ice1000_util {
 		T temp;
 		while (i < j) {
 			while (i < j and standard < array[j]) --j;
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCSimplifyInspection"
+			array[i] = array[j];
 			while (i < j and !(standard < array[i])) ++i;
-#pragma clang diagnostic pop
-			if (i < j) {
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
+			array[j] = array[i];
 		}
 		array[i] = standard;
 		__quick_sort_core(array, left, i - 1);
@@ -97,8 +96,8 @@ namespace ice1000_util {
 	template<typename T>
 	void __quick_sort_core_with_cmp(
 			T *array,
-			const int left,
-			const int right,
+			const jsize left,
+			const jsize right,
 			bool (*compare)(const T &, const T &)) {
 		if (left >= right) return;
 		auto i = left;
@@ -107,12 +106,9 @@ namespace ice1000_util {
 		T temp;
 		while (i < j) {
 			while (i < j and compare(standard, array[i])) --j;
+			array[i] = array[j];
 			while (i < j and !compare(standard, array[i])) ++i;
-			if (i < j) {
-				temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
+			array[j] = array[i];
 		}
 		array[i] = standard;
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
@@ -122,14 +118,14 @@ namespace ice1000_util {
 	template<typename T>
 	void quick_sort(
 			T *array,
-			const size_t length) {
+			const jsize length) {
 		__quick_sort_core(array, 0, length - 1);
 	}
 
 	template<typename T>
 	void quick_sort_with_cmp(
 			T *array,
-			const size_t length,
+			const jsize length,
 			bool (*compare)(const T &, const T &)) {
 		__quick_sort_core_with_cmp(array, 0, (int) (length - 1), compare);
 	}
