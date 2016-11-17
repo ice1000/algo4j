@@ -139,10 +139,10 @@ namespace ice1000_util {
 
 		Ice1000Pair() { }
 
-    void setValue(const T1 &f, const T2 &s) {
-      first = f;
-      second = s;
-    }
+		void setValue(const T1 &f, const T2 &s) {
+			first = f;
+			second = s;
+		}
 
 		const bool operator<(const Ice1000Pair &o) const {
 			return first == o.first ? second < o.second : first < o.first;

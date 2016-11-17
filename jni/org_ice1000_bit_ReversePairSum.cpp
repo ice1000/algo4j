@@ -17,11 +17,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 	auto data = env->GetLongArrayElements(_data, option);
 	auto pair = new ice1000_util::Ice1000Pair<jlong, int>[len + 2]();
 	auto after = new jlong[len + 1];
-	for (jlong i = 0; i < len; ++i) pair[i].setValue(data[i], i + 1);
+	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i]);
 //	std::sort(pair, pair + len);
 	ice1000_util::quick_sort(pair, len);
-	for (jlong i = 0, j = 1; i <= len; ++i, ++j) {
-		after[pair[i].second - 1] = j;
+	for (auto i = j = 0; i <= len; ++i, ++j) {
+		after[pair[i].second] = j;
 		if (pair[i].first == pair[i + 1].first) --j;
 	}
 //	for (auto i = 0; i < len; ++i) printf("%lli ", after[i]);
