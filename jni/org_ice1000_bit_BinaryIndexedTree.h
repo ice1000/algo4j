@@ -47,6 +47,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
+
 #endif /// _Included_org_ice1000_bit_BinaryIndexedTree
 
 

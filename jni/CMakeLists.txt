@@ -8,11 +8,13 @@ set(BUILD_USE_64BITS on)
 set(SOURCE_FILES
 		org_ice1000_bit_BinaryIndexedTree.cpp
 		org_ice1000_util_Math.cpp
+		org_ice1000_bit_ReversePairSum.cpp
 		org_ice1000_public_functions.cpp)
 
 set(SOURCE_HEADERS
 		org_ice1000_bit_BinaryIndexedTree.h
 		org_ice1000_util_Math.h
+		org_ice1000_bit_ReversePairSum.h
 		org_ice1000_public_functions.h)
 
 # add_executable(jni ${SOURCE_FILES})

@@ -4,17 +4,14 @@
 
 // 我不做大哥好多年 我不爱冰冷的床沿
 
-#include "org_ice1000_util_Math.h"
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#include "org_ice1000_public_functions.h"
 
 void ice1000_bit::add(
-  JNIEnv *env,
-  jlongArray _data,
-  jint len,
-  jint idx,
-  jlong value) {
+		JNIEnv *env,
+		jlongArray _data,
+		jint len,
+		jint idx,
+		jlong value) {
 	jlong *data = env->GetLongArrayElements(_data, 0);
 	while (idx < len) {
 		data[idx] += value;
@@ -24,11 +21,11 @@ void ice1000_bit::add(
 }
 
 jlong ice1000_bit::sum(
-  JNIEnv *env,
-  jlongArray _data,
-  jint idx) {
+		JNIEnv *env,
+		jlongArray _data,
+		jint idx) {
 	jlong ret = 0;
-	jlong *data = env->GetLongArrayElements(_data, 0);
+	auto data = env->GetLongArrayElements(_data, 0);
 	while (idx > 0) {
 		ret += data[idx];
 		idx -= __lowbit(idx);
@@ -42,8 +39,8 @@ jlong ice1000_bit::lowbit(const jlong x) {
 }
 
 jdouble ice1000_math::sqrt_carmack(float x) {
-	float x_half = 0.5F * x;
-	int i = *(int *) &x;
+	auto x_half = 0.5F * x;
+	auto i = *(int *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
 	x = *(float *) &i;
 	x *= (1.5F - x_half * x * x);
@@ -88,14 +85,14 @@ jdouble ice1000_math::sec_ice(const jdouble x) {
 /// 这快排比std::sort(begin, end)不知道高到哪里去了
 /// 我和它谈笑风生
 template<typename T>
-quick_sort_core(
-  T *array,
-  const int left,
-  const int right) {
+void quick_sort_core(
+		T *array,
+		const int left,
+		const int right) {
 	if (left >= right) return;
-	int i = left;
-	int j = right;
-	T standard = array[left];
+	auto i = left;
+	auto j = right;
+	auto standard = array[left];
 	T temp;
 	while (i < j) {
 		while(i < j and standard < array[j]) --j;
@@ -114,15 +111,15 @@ quick_sort_core(
 /// 这快排比std::sort(begin, end, cmp)不知道高到哪里去了
 /// 我和它谈笑风生
 template<typename T>
-quick_sort_core_with_cmp(
-  T *array,
-  const int left,
-  const int right,
-  bool (*compare) (const T &, const T &)) {
+void quick_sort_core_with_cmp(
+		T *array,
+		const int left,
+		const int right,
+		bool (*compare) (const T &, const T &)) {
 	if (left >= right) return;
-	int i = left;
-	int j = right;
-	T standard = array[left];
+	auto i = left;
+	auto j = right;
+	auto standard = array[left];
 	T temp;
 	while (i < j) {
 		while(i < j and compare(standard, array[i])) --j;
@@ -139,18 +136,18 @@ quick_sort_core_with_cmp(
 }
 
 template<typename T>
-void ice1000_util::quick_sort(T *array, const int length) {
+void ice1000_util::quick_sort(
+		T *array,
+		const long length) {
 	quick_sort_core(array, 0, length);
 }
 
 template<typename T>
-void ice1000_util::quick_sort(
-  T *array,
-  const int length,
-  bool (*compare) (const T &, const T &)) {
+void ice1000_util::quick_sort_with_cmp(
+		T *array,
+		const long length,
+		bool (*compare) (const T &, const T &)) {
 	quick_sort_core_with_cmp(array, 0, length, compare);
 }
 
 
-
-#pragma clang diagnostic pop

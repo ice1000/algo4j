@@ -3,12 +3,14 @@
 ///
 
 #include <jni.h>
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#include <math.h>
 
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
+
+/// 0x5F3759DF thank you Carmack
+#undef org_ice1000_util_Math_MAGIC_NUMBER
+#define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
 
 #ifndef __lowbit
 #define __lowbit(x) ((x) & (-(x)))
@@ -54,17 +56,18 @@ namespace ice1000_math {
 
 namespace ice1000_util {
 	template<typename T>
-	void quick_sort(T *, const int);
+	void quick_sort(T *array, const long length);
 
 	template<typename T>
-	void quick_sort(T *, const int, bool (*) (const T &, const T &));
+	void quick_sort_with_cmp(T *array, const long length, bool (*) (const T &, const T &));
 
-	template<typename T>
+	template<typename T1, typename T2>
 	struct Ice1000Pair {
-		T first;
-		T second;
+		T1 first;
+		T2 second;
 
-		Ice1000Pair(const T &f, const T &s) : first(f), second(s) { }
+		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+		Ice1000Pair() { }
 
 		const bool operator<(const Ice1000Pair &o) const {
 			return first == o.first ? second < o.second : first < o.first;
@@ -75,4 +78,3 @@ namespace ice1000_util {
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
 
-#pragma clang diagnostic pop
