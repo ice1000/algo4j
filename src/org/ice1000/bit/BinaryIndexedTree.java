@@ -7,8 +7,8 @@ package org.ice1000.bit;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public abstract class BinaryIndexedTree {
-	private long[] data;
+abstract class BinaryIndexedTree {
+	protected long[] data;
 	protected int length;
 
 	protected BinaryIndexedTree(int length) {

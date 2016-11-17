@@ -2,7 +2,6 @@
 /// Created by ice1000
 ///
 
-#include "org_ice1000_public_functions.h"
 #include "org_ice1000_bit_BinaryIndexedTree.h"
 
 #pragma clang diagnostic push

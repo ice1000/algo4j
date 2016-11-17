@@ -10,11 +10,11 @@
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 void ice1000_bit::add(
-		JNIEnv *env,
-		jlongArray _data,
-		jint len,
-		jint idx,
-		jlong value) {
+  JNIEnv *env,
+  jlongArray _data,
+  jint len,
+  jint idx,
+  jlong value) {
 	jlong *data = env->GetLongArrayElements(_data, 0);
 	while (idx < len) {
 		data[idx] += value;
@@ -24,9 +24,9 @@ void ice1000_bit::add(
 }
 
 jlong ice1000_bit::sum(
-		JNIEnv *env,
-		jlongArray _data,
-		jint idx) {
+  JNIEnv *env,
+  jlongArray _data,
+  jint idx) {
 	jlong ret = 0;
 	jlong *data = env->GetLongArrayElements(_data, 0);
 	while (idx > 0) {
@@ -37,7 +37,7 @@ jlong ice1000_bit::sum(
 	return ret;
 }
 
-jlong ice1000_bit::lowbit(jlong x) {
+jlong ice1000_bit::lowbit(const jlong x) {
 	return __lowbit(x);
 }
 
@@ -51,7 +51,7 @@ jdouble ice1000_math::sqrt_carmack(float x) {
 	return (jdouble) (1 / x);
 }
 
-jdouble ice1000_math::sqrt_strict(jdouble x) {
+jdouble ice1000_math::sqrt_strict(const jdouble x) {
 	return sqrt(x);
 }
 
@@ -61,28 +61,96 @@ jlong ice1000_math::gcd(jlong n, jlong m) {
 	return n;
 }
 
-jdouble ice1000_math::sin_ice(jdouble x) {
+jdouble ice1000_math::sin_ice(const jdouble x) {
 	return sin(x);
 }
 
-jdouble ice1000_math::cos_ice(jdouble x) {
+jdouble ice1000_math::cos_ice(const jdouble x) {
 	return cos(x);
 }
 
-jdouble ice1000_math::tan_ice(jdouble x) {
+jdouble ice1000_math::tan_ice(const jdouble x) {
 	return tan(x);
 }
 
-jdouble ice1000_math::cot_ice(jdouble x) {
+jdouble ice1000_math::cot_ice(const jdouble x) {
 	return 1 / tan(x);
 }
 
-jdouble ice1000_math::csc_ice(jdouble x) {
+jdouble ice1000_math::csc_ice(const jdouble x) {
 	return 1 / sin(x);
 }
 
-jdouble ice1000_math::sec_ice(jdouble x) {
+jdouble ice1000_math::sec_ice(const jdouble x) {
 	return 1 / cos(x);
 }
+
+/// 这快排比std::sort(begin, end)不知道高到哪里去了
+/// 我和它谈笑风生
+template<typename T>
+quick_sort_core(
+  T *array,
+  const int left,
+  const int right) {
+	if (left >= right) return;
+	int i = left;
+	int j = right;
+	T standard = array[left];
+	T temp;
+	while (i < j) {
+		while(i < j and standard < array[j]) --j;
+		while(i < j and !(standard < array[i])) ++i;
+		if (i < j) {
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+	}
+	standard = array[i];
+	quick_sort_core(array, left, i - 1);
+	quick_sort_core(array, i + 1, right);
+}
+
+/// 这快排比std::sort(begin, end, cmp)不知道高到哪里去了
+/// 我和它谈笑风生
+template<typename T>
+quick_sort_core_with_cmp(
+  T *array,
+  const int left,
+  const int right,
+  bool (*compare) (const T &, const T &)) {
+	if (left >= right) return;
+	int i = left;
+	int j = right;
+	T standard = array[left];
+	T temp;
+	while (i < j) {
+		while(i < j and compare(standard, array[i])) --j;
+		while(i < j and !compare(standard, array[i])) ++i;
+		if (i < j) {
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+    }
+	}
+	temp = array[i];
+	quick_sort_core(array, left, i - 1);
+	quick_sort_core(array, i + 1, right);
+}
+
+template<typename T>
+void ice1000_util::quick_sort(T *array, const int length) {
+	quick_sort_core(array, 0, length);
+}
+
+template<typename T>
+void ice1000_util::quick_sort(
+  T *array,
+  const int length,
+  bool (*compare) (const T &, const T &)) {
+	quick_sort_core_with_cmp(array, 0, length, compare);
+}
+
+
 
 #pragma clang diagnostic pop

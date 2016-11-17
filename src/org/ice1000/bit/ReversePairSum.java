@@ -1,12 +1,58 @@
 package org.ice1000.bit;
 
+import org.ice1000.error.BinaryIndexedTreeException;
+
 /**
  * Created by ice1000 on 2016/11/17.
  *
  * @author ice1000
  */
-public class ReversePairSum extends BinaryIndexedTree {
+public final class ReversePairSum extends BinaryIndexedTree {
+
+	@SuppressWarnings("WeakerAccess")
+	public static final int FLAG_BEFORE = 0x01;
+
+	@SuppressWarnings("WeakerAccess")
+	public static final int FLAG_AFTER = 0x02;
+
+	private int flag = FLAG_BEFORE;
+
 	public ReversePairSum(int length) {
 		super(length);
 	}
+
+	/**
+	 * set value of this array
+	 *
+	 * @param index position
+	 * @param value value
+	 * @throws BinaryIndexedTreeException when flag is wrong
+	 */
+	public void set(int index, int value) {
+		if (flag != FLAG_BEFORE) throw new BinaryIndexedTreeException("do not set value after discretization!");
+		data[index] = value;
+	}
+
+	public void set(long[] data, int offset, int len) {
+		System.arraycopy(data, 0, this.data, offset, len);
+//		for (int i = 0; i < len; i++) {
+//			this.data[offset + 1] = data[i];
+//		}
+	}
+
+	public long query() {
+		if (flag == FLAG_BEFORE) discretization();
+		if (flag != FLAG_AFTER) throw new BinaryIndexedTreeException("flag is mistaken!");
+//		TODO
+		return 0;
+	}
+
+	@SuppressWarnings("WeakerAccess")
+	public void discretization() {
+		flag = FLAG_AFTER;
+		discretization(data, length);
+	}
+
+	private native void discretization(long[] data, int length);
+	private native long query(long[] data, int length);
 }

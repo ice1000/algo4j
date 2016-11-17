@@ -3,7 +3,6 @@
 ///
 
 #include <jni.h>
-#include <algorithm>
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -11,55 +10,67 @@
 #ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 #define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif /// __cplusplus
-
 #ifndef __lowbit
 #define __lowbit(x) ((x) & (-(x)))
-#endif
+#endif /// __lowbit
 
 namespace ice1000_bit {
-	jlong lowbit(jlong);
+	jlong lowbit(const jlong);
 
 	void add(
-			JNIEnv *,
-			jlongArray,
-			jint,
-			jint,
-			jlong
+	  JNIEnv *,
+	  jlongArray,
+	  jint,
+	  jint,
+	  jlong
 	);
 
 	jlong sum(
-			JNIEnv *,
-			jlongArray,
-			jint
+	  JNIEnv *,
+	  jlongArray,
+	  jint
 	);
 }
 
 namespace ice1000_math {
-	jdouble sin_ice(jdouble);
+	jdouble sin_ice(const jdouble);
 
-	jdouble cos_ice(jdouble);
+	jdouble cos_ice(const jdouble);
 
-	jdouble tan_ice(jdouble);
+	jdouble tan_ice(const jdouble);
 
-	jdouble cot_ice(jdouble);
+	jdouble cot_ice(const jdouble);
 
-	jdouble csc_ice(jdouble);
+	jdouble csc_ice(const jdouble);
 
-	jdouble sec_ice(jdouble);
+	jdouble sec_ice(const jdouble);
 
 	jdouble sqrt_carmack(float);
 
-	jdouble sqrt_strict(jdouble);
+	jdouble sqrt_strict(const jdouble);
 
 	jlong gcd(jlong, jlong);
 }
 
-#ifdef __cplusplus
+namespace ice1000_util {
+	template<typename T>
+	void quick_sort(T *, const int);
+
+	template<typename T>
+	void quick_sort(T *, const int, bool (*) (const T &, const T &));
+
+	template<typename T>
+	struct Ice1000Pair {
+		T first;
+		T second;
+
+		Ice1000Pair(const T &f, const T &s) : first(f), second(s) { }
+
+		const bool operator<(const Ice1000Pair &o) const {
+			return first == o.first ? second < o.second : first < o.first;
+		}
+	};
 }
-#endif /// __cplusplus
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 

@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
-LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o
+OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o org_ice1000_bit_ReversePairSum.o
+LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o org_ice1000_bit_ReversePairSum.o
 LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -s
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -34,3 +34,6 @@ org_ice1000_public_functions.o: org_ice1000_public_functions.cpp
 
 org_ice1000_util_Math.o: org_ice1000_util_Math.cpp
 	$(CPP) -c org_ice1000_util_Math.cpp -o org_ice1000_util_Math.o $(CXXFLAGS)
+
+org_ice1000_bit_ReversePairSum.o: org_ice1000_bit_ReversePairSum.cpp
+	$(CPP) -c org_ice1000_bit_ReversePairSum.cpp -o org_ice1000_bit_ReversePairSum.o $(CXXFLAGS)

@@ -33,6 +33,7 @@ public final class MathTest {
 		assertEquals(Math.gcd(100, 1000), 100);
 		assertEquals(Math.gcd(1000, 100), 100);
 		assertEquals(Math.gcd(1, 1), 1);
+		System.out.println("test passed");
 	}
 
 	/**
@@ -46,6 +47,7 @@ public final class MathTest {
 		while (timesOfTesting-- > 0) {
 			Math.sqrt(random.nextDouble() * 10000);
 		}
+		System.out.println("test passed");
 	}
 
 	/**
@@ -60,18 +62,36 @@ public final class MathTest {
 		while (timesOfTesting-- > 0) {
 			java.lang.Math.sqrt(random.nextDouble() * 10000);
 		}
+		System.out.println("test passed");
 	}
 
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	public void sqrtCorrectness() {
 		Random random = new Random(System.currentTimeMillis());
-		System.out.println(Math.sqrt(100));
-		System.out.println(java.lang.Math.sqrt(100));
+		int testNumber = 100;
+		System.out.println(Math.sqrt(testNumber));
+		System.out.println(Math.sqrtStrict(testNumber));
+		System.out.println(java.lang.Math.sqrt(testNumber));
 		int timesOfTesting = 5000;
 		System.out.println(timesOfTesting + " test cases");
 		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();
 			assertTrue(Math.abs(Math.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5);
 		}
+		System.out.println("test passed");
+	}
+
+	@Test(timeout = 50)
+	public void triangleTest() {
+		Random random = new Random(System.currentTimeMillis());
+		int timesOfTesting = 5000;
+		System.out.println(timesOfTesting + " test cases");
+		while (timesOfTesting-- > 0) {
+			double temp = random.nextDouble();
+			assertTrue(Math.abs(Math.sin(temp) - java.lang.Math.sin(temp)) < 1e-10);
+			assertTrue(Math.abs(Math.cos(temp) - java.lang.Math.cos(temp)) < 1e-10);
+			assertTrue(Math.abs(Math.tan(temp) - java.lang.Math.tan(temp)) < 1e-10);
+		}
+		System.out.println("test passed");
 	}
 }

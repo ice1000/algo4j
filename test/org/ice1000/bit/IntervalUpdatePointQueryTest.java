@@ -18,7 +18,6 @@ public final class IntervalUpdatePointQueryTest {
 	@Test(timeout = 10)
 	public void test() {
 		IntervalUpdatePointQuery tree = new IntervalUpdatePointQuery(10);
-
 	}
 
 }
