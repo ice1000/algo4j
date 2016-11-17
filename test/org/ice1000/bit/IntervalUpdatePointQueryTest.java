@@ -3,6 +3,8 @@ package org.ice1000.bit;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by ice1000 on 2016/11/16.
  *
@@ -15,9 +17,18 @@ public final class IntervalUpdatePointQueryTest {
 		System.loadLibrary("jni");
 	}
 
-	@Test(timeout = 10)
+	/**
+	 * test
+	 */
+	@Test(timeout = 100)
 	public void test() {
-		IntervalUpdatePointQuery tree = new IntervalUpdatePointQuery(10);
+		IntervalUpdatePointQuery tree = new IntervalUpdatePointQuery(30);
+		tree.update(10, 20, 5);
+		tree.update(15, 25, 15);
+		assertEquals(20, tree.query(17));
+
+		tree.update(1, 15, 1);
+		assertEquals(6, tree.query(12));
 	}
 
 }

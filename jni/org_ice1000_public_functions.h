@@ -23,16 +23,14 @@ namespace ice1000_bit {
 	jlong lowbit(const jlong);
 
 	void add(
-			JNIEnv *,
-			jlongArray,
+			jlong *,
 			jint,
 			jint,
 			jlong
 	);
 
 	jlong sum(
-			JNIEnv *,
-			jlongArray,
+			jlong *,
 			jint
 	);
 }
@@ -140,6 +138,11 @@ namespace ice1000_util {
 		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
 
 		Ice1000Pair() { }
+
+    void setValue(const T1 &f, const T2 &s) {
+      first = f;
+      second = s;
+    }
 
 		const bool operator<(const Ice1000Pair &o) const {
 			return first == o.first ? second < o.second : first < o.first;

@@ -11,30 +11,24 @@
 
 
 void ice1000_bit::add(
-		JNIEnv *env,
-		jlongArray _data,
+		jlong *data,
 		jint len,
 		jint idx,
 		jlong value) {
-	jlong *data = env->GetLongArrayElements(_data, 0);
 	while (idx < len) {
 		data[idx] += value;
 		idx += __lowbit(idx);
 	}
-	env->ReleaseLongArrayElements(_data, data, 0);
 }
 
 jlong ice1000_bit::sum(
-		JNIEnv *env,
-		jlongArray _data,
+		jlong *data,
 		jint idx) {
 	jlong ret = 0;
-	auto data = env->GetLongArrayElements(_data, 0);
 	while (idx > 0) {
 		ret += data[idx];
 		idx -= __lowbit(idx);
 	}
-	env->ReleaseLongArrayElements(_data, data, 0);
 //	delete data;
 	return ret;
 }

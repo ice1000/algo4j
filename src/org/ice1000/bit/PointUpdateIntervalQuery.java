@@ -6,6 +6,7 @@ package org.ice1000.bit;
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public final class PointUpdateIntervalQuery extends BinaryIndexedTree {
 
 	public PointUpdateIntervalQuery(int length) {

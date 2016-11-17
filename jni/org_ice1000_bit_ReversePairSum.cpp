@@ -3,6 +3,7 @@
 ///
 
 #include "org_ice1000_bit_ReversePairSum.h"
+#include <stdio.h>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -15,22 +16,21 @@ JNIEXPORT void JNICALL Java_org_ice1000_bit_ReversePairSum_discretization(
 		jint len) {
 	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(_data, option);
-	delete option;
 	auto pair = new ice1000_util::Ice1000Pair<jlong, int>[len]();
 	auto after = new jlong[len];
-	for (auto i = 0; i < len; ++i) {
-		pair[i].first = data[i];
-		pair[i].second = i;
-	}
+	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
 	ice1000_util::quick_sort(pair, len);
 	for (auto i = 0, j = 0; i < len; ++i) {
 		after[pair[i].second] = j;
 		if (j < len && pair[i].first == pair[i + 1].first) --j;
 	}
-//	delete pair;
+	for (auto i = 0; i < len; ++i) printf("%lli ", after[i]);
+//	env->SetObjectArrayElement()
 	env->SetLongArrayRegion(_data, 0, len, after);
 	env->ReleaseLongArrayElements(_data, data, NULL);
-//	delete data;
+	delete option;
+	delete pair;
+	delete after;
 }
 
 JNIEXPORT jlong JNICALL Java_org_ice1000_bit_ReversePairSum_query(
@@ -39,10 +39,14 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_bit_ReversePairSum_query(
 		jlongArray _data,
 		jint len) {
 	jlong ret = 0;
+	auto option = new jboolean(false);
+	auto data = env->GetLongArrayElements(_data, option);
 	for (auto i = 0; i < len; ++i) {
-		ice1000_bit::add(env, _data, len, i, 1);
-		ret += 1 + i - ice1000_bit::sum(env, _data, i);
+		ice1000_bit::add(data, len, i, 1);
+		ret += 1 + i - ice1000_bit::sum(data, i);
 	}
+	env->ReleaseLongArrayElements(_data, data, NULL);
+	delete option;
 	return ret;
 }
 

@@ -7,15 +7,13 @@ import org.ice1000.error.BinaryIndexedTreeException;
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public final class ReversePairSum extends BinaryIndexedTree {
 
-	@SuppressWarnings("WeakerAccess")
 	public static final int FLAG_BEFORE = 0x01;
 
-	@SuppressWarnings("WeakerAccess")
 	public static final int FLAG_AFTER = 0x02;
 
-	@SuppressWarnings("WeakerAccess")
 	public static final int FLAG_QUERIED = 0x03;
 
 	private int flag = FLAG_BEFORE;
@@ -37,11 +35,15 @@ public final class ReversePairSum extends BinaryIndexedTree {
 		data[index] = value;
 	}
 
-	public void set(long[] data, int offset, int len) {
+	public void setAll(long[] data, int offset, int len) {
 		System.arraycopy(data, 0, this.data, offset, len);
 //		for (int i = 0; i < len; i++) {
 //			this.data[offset + 1] = data[i];
 //		}
+	}
+
+	public void setAll(long[] data) {
+		setAll(data, 0, data.length);
 	}
 
 	public long query() {
@@ -52,7 +54,6 @@ public final class ReversePairSum extends BinaryIndexedTree {
 		return result;
 	}
 
-	@SuppressWarnings("WeakerAccess")
 	public void discretization() {
 		flag = FLAG_AFTER;
 		discretization(data, length);
