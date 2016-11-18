@@ -67,6 +67,7 @@ public final class MathTest {
 	}
 
 	@Test(timeout = 100)
+	@SuppressWarnings("deprecation")
 	public void sqrtCorrectness() {
 		Random random = new Random(System.currentTimeMillis());
 		int testNumber = 100;
@@ -167,5 +168,11 @@ public final class MathTest {
 			assertEquals(Math.max(aFloat, aFloat2), java.lang.Math.max(aFloat, aFloat2), 1e-15);
 
 		}
+	}
+
+	@Test(timeout = 10)
+	public void logTest() {
+		int timeOfTest = 1000;
+		System.out.println(timeOfTest);
 	}
 }
