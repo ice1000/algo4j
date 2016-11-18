@@ -8,8 +8,8 @@ package org.ice1000.bit;
  */
 @SuppressWarnings("WeakerAccess")
 abstract class BinaryIndexedTree {
-	protected long[] data;
-	protected final int length;
+	private long[] data;
+	public final int length;
 
 	protected BinaryIndexedTree(int length) {
 		this.length = length;

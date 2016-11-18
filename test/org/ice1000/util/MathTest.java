@@ -112,4 +112,19 @@ public final class MathTest {
 
 		assertEquals(289, Math.fastPlus(233, 233, 1000));
 	}
+
+	/**
+	 * abstract value
+	 */
+	@Test(timeout = 10)
+	public void absTest() {
+		assertEquals(233, Math.abs(-233));
+		assertEquals(233, Math.abs(233));
+		assertEquals(233L, Math.abs(-233L));
+		assertEquals(233L, Math.abs(233L));
+		assertEquals(233F, Math.abs(-233F), 0);
+		assertEquals(233F, Math.abs(233F), 0);
+		assertEquals(233.0, Math.abs(-233.0), 0);
+		assertEquals(233.0, Math.abs(233.0), 0);
+	}
 }

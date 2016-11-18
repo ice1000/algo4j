@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=000000c0g0000000000011000
-UnitCount=10
+UnitCount=12
 
 [VersionInfo]
 Major=1
@@ -142,6 +142,26 @@ BuildCmd=
 
 [Unit9]
 FileName=org_ice1000_util_ArrayUtils.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=org_ice1000_graph_UnionSet.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit12]
+FileName=org_ice1000_graph_UnionSet.h
 CompileCpp=1
 Folder=
 Compile=1
