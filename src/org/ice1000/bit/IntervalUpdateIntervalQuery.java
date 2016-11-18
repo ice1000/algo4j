@@ -19,6 +19,16 @@ public final class IntervalUpdateIntervalQuery {
 		bit2 = new PointUpdateIntervalQuery(this.length);
 	}
 
+	public IntervalUpdateIntervalQuery(int length, long... originValues) {
+		this(length);
+		long lastValue = 0;
+		for (int i = 0; i < originValues.length; ++i) {
+			bit1.add(i + 1, originValues[i] - lastValue);
+			bit2.add(i + 1, i * (originValues[i] - lastValue));
+			lastValue = originValues[i];
+		}
+	}
+
 	/**
 	 * O(n) = log(n)
 	 * update all values in [begin, end]

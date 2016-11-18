@@ -19,6 +19,7 @@ public final class IntervalUpdatePointQueryTest {
 
 	/**
 	 * test
+	 * data: I make it myself
 	 */
 	@Test(timeout = 100)
 	public void test() {
