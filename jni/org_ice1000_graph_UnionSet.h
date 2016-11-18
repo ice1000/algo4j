@@ -7,7 +7,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-/*
+
+/**
  * Class:     org_ice1000_graph_UnionSet
  * Method:    find
  * Signature: ([JII)I
@@ -15,7 +16,7 @@ extern "C" {
 JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find
   (JNIEnv *, jobject, jlongArray, jint, jint);
 
-/*
+/**
  * Class:     org_ice1000_graph_UnionSet
  * Method:    merge
  * Signature: ([JIII)V

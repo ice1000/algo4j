@@ -122,7 +122,6 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sec(
 		jdouble
 );
 
-
 /**
  * Class:     org_ice1000_util_Math
  * Method:    fastPlus
@@ -191,6 +190,102 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_abs__J(
 		JNIEnv *,
 		jclass,
 		jlong
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    max
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__JJ(
+		JNIEnv *,
+		jclass,
+		jlong,
+    jlong
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:		max
+ * Signature: (II)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__II(
+		JNIEnv *,
+		jclass,
+    jint,
+    jint
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    max
+ * Signature: (FF)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_max__FF(
+		JNIEnv *,
+		jclass,
+		jfloat,
+		jfloat
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    max
+ * Signature: (DD)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_max__DD(
+		JNIEnv *,
+		jclass,
+		jdouble,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    min
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_org_ice1000_util_Math_min__II(
+		JNIEnv *,
+		jclass,
+		jint,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    min
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_min__JJ(
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    min
+ * Signature: (FF)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_min__FF(
+		JNIEnv *,
+		jclass,
+		jfloat,
+		jfloat
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    min
+ * Signature: (DD)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_min__DD(
+		JNIEnv *,
+		jclass,
+		jdouble,
+		jdouble
 );
 
 #ifdef __cplusplus

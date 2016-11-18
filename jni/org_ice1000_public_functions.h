@@ -65,11 +65,9 @@ namespace ice1000_math {
 }
 
 namespace ice1000_util {
-  
+
 // 日了狗了 实在不行我就硬编码类型进去 md
 
-/// 杩欏揩鎺掓瘮std::sort(begin, end)涓嶇煡閬撻珮鍒板摢閲屽幓浜?
-/// 鎴戝拰瀹冭皥绗戦鐢?
 	template<typename T>
 	void __quick_sort_core(
 			T *array,
@@ -91,8 +89,7 @@ namespace ice1000_util {
 		__quick_sort_core(array, i + 1, right);
 	}
 
-/// 杩欏揩鎺掓瘮std::sort(begin, end, cmp)涓嶇煡閬撻珮鍒板摢閲屽幓浜?
-/// 鎴戝拰瀹冭皥绗戦鐢?
+
 	template<typename T>
 	void __quick_sort_core_with_cmp(
 			T *array,
@@ -150,11 +147,11 @@ namespace ice1000_util {
 	};
 }
 
-//namespace ice1000_util {
-//  void _a_b_c_d_e_f_g_h_i_j_k_l_m_n_() {
-//    quick_sort(new Ice1000Pair[233], 233);
-//  }
-//}
+// namespace ice1000_util {
+	// void _a_b_c_d_e_f_g_h_i_j_k_l_m_n_() {
+		// quick_sort(new Ice1000Pair[233], 233);
+	// }
+// }
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 

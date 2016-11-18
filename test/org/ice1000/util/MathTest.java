@@ -104,7 +104,7 @@ public final class MathTest {
 	 * 2 ^ 10 => 1024, 1024 % 10 => 4
 	 * 233 * 233 => 54289, 54289 % 1000 => 289
 	 */
-	@Test(timeout = 100)
+	@Test(timeout = 5)
 	public void fastPlusPowerTest() {
 		assertEquals(24, Math.fastPower(2, 10, 1000));
 		assertEquals(12, Math.fastPower(2, 9, 100));
@@ -116,7 +116,7 @@ public final class MathTest {
 	/**
 	 * abstract value
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 1)
 	public void absTest() {
 		assertEquals(233, Math.abs(-233));
 		assertEquals(233, Math.abs(233));

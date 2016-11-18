@@ -93,93 +93,86 @@ public final class Math {
 	public static native long fastPower(long a, long b, long mod);
 
 	/**
-	 * delegate to {@code java.lang.Math.abs(double)}
+	 * same as {@code java.lang.Math.abs(double)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native double abs(double a);
 
 	/**
-	 * delegate to {@code java.lang.Math.abs(double)}
+	 * same as {@code java.lang.Math.abs(float)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native float abs(float a);
 
 	/**
-	 * delegate to {@code java.lang.Math.abs(double)}
+	 * same as {@code java.lang.Math.abs(int)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native int abs(int a);
 
 	/**
-	 * delegate to {@code java.lang.Math.abs(double)}
+	 * same as {@code java.lang.Math.abs(long)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native long abs(long a);
 
 	/**
-	 * delegate to {@code java.lang.Math.max(double)}
+	 * same as {@code java.lang.Math.max(long)}
+	 *
+	 * @return the larger one of {@code a} and {@code b}.
+	 */
+	public static native long max(long a, long b);
+
+	/**
+	 * same as {@code java.lang.Math.max(int)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
-	public static long max(long a, long b) {
-		return java.lang.Math.max(a, b);
-	}
+	public static native long max(int a, int b);
 
 	/**
-	 * delegate to {@code java.lang.Math.max(double)}
+	 * same as {@code java.lang.Math.max(float)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
-	public static float max(float a, float b) {
-		return java.lang.Math.max(a, b);
-	}
+	public static native float max(float a, float b);
 
 	/**
-	 * delegate to {@code java.lang.Math.max(double)}
+	 * same as {@code java.lang.Math.max(double)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
-	public static double max(double a, double b) {
-		return java.lang.Math.max(a, b);
-	}
+	public static native double max(double a, double b);
 
 	/**
-	 * delegate to {@code java.lang.Math.min(double)}
+	 * same as {@code java.lang.Math.min(int)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
-	public static int min(int a, int b) {
-		return java.lang.Math.min(a, b);
-	}
+	public static native int min(int a, int b);
 
 	/**
-	 * delegate to {@code java.lang.Math.min(double)}
+	 * same as {@code java.lang.Math.min(long)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
-	public static long min(long a, long b) {
-		return java.lang.Math.min(a, b);
-	}
+	public static native long min(long a, long b);
 
 	/**
-	 * delegate to {@code java.lang.Math.min(double)}
+	 * same as {@code java.lang.Math.min(float)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
-	public static float min(float a, float b) {
-		return java.lang.Math.min(a, b);
-	}
+	public static native float min(float a, float b);
 
 	/**
-	 * delegate to {@code java.lang.Math.min(double)}
+	 * same as {@code java.lang.Math.min(double)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
-	public static double min(double a, double b) {
-		return java.lang.Math.min(a, b);
-	}
+	public static native double min(double a, double b);
 }
