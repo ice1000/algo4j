@@ -149,6 +149,49 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
 		jlong
 );
 
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    abs
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_abs__D(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    abs
+ * Signature: (F)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_abs__F(
+		JNIEnv *,
+		jclass,
+		jfloat
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    abs
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_org_ice1000_util_Math_abs__I(
+		JNIEnv *,
+		jclass,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    abs
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_abs__J(
+		JNIEnv *,
+		jclass,
+		jlong
+);
 
 #ifdef __cplusplus
 }

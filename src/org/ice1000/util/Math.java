@@ -72,8 +72,24 @@ public final class Math {
 	 */
 	public static native double sec(double a);
 
+	/**
+	 * A fast algorithm to calculate (a * b) % m. O(log(b))
+	 *
+	 * @param a   param1
+	 * @param b   param2
+	 * @param mod mod
+	 * @return a * b % m
+	 */
 	public static native long fastPlus(long a, long b, long mod);
 
+	/**
+	 * A fast algorithm to calculate (a ^ b) % m. O(2 * log(a) * log(b))
+	 *
+	 * @param a   base
+	 * @param b   power
+	 * @param mod mod
+	 * @return a ^ b % m
+	 */
 	public static native long fastPower(long a, long b, long mod);
 
 	/**
@@ -81,36 +97,28 @@ public final class Math {
 	 *
 	 * @return abstract value of a
 	 */
-	public static double abs(double a) {
-		return java.lang.Math.abs(a);
-	}
+	public static native double abs(double a);
 
 	/**
 	 * delegate to {@code java.lang.Math.abs(double)}
 	 *
 	 * @return abstract value of a
 	 */
-	public static float abs(float a) {
-		return java.lang.Math.abs(a);
-	}
+	public static native float abs(float a);
 
 	/**
 	 * delegate to {@code java.lang.Math.abs(double)}
 	 *
 	 * @return abstract value of a
 	 */
-	public static int abs(int a) {
-		return java.lang.Math.abs(a);
-	}
+	public static native int abs(int a);
 
 	/**
 	 * delegate to {@code java.lang.Math.abs(double)}
 	 *
 	 * @return abstract value of a
 	 */
-	public static long abs(long a) {
-		return java.lang.Math.abs(a);
-	}
+	public static native long abs(long a);
 
 	/**
 	 * delegate to {@code java.lang.Math.max(double)}
