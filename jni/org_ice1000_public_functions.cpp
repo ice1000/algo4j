@@ -82,23 +82,23 @@ jdouble ice1000_math::sec_ice(const jdouble x) {
 }
 
 jlong ice1000_math::fast_plus(jlong a, jlong b, jlong m) {
-  jlong ret = 0;
-  while (b) {
-    if (b & 1) ret = (ret + a) % m;
-    b >>= 1;
-    a = (a << 1) % m;
-  }
-  return ret;
+	jlong ret = 0;
+	while (b) {
+		if (b & 1) ret = (ret + a) % m;
+		b >>= 1;
+		a = (a << 1) % m;
+	}
+	return ret;
 }
 
 jlong ice1000_math::fast_power(jlong a, jlong b, jlong m) {
-  jlong ret = 1;
-  while (b) {
-    if (b & 1) ret = ice1000_math::fast_plus(ret, a, m);
-    b >>= 1;
-    a = ice1000_math::fast_plus(a, a, m);
-  }
-  return ret;
+	jlong ret = 1;
+	while (b) {
+		if (b & 1) ret = ice1000_math::fast_plus(ret, a, m);
+		b >>= 1;
+		a = ice1000_math::fast_plus(a, a, m);
+	}
+	return ret;
 }
 
 #pragma clang diagnostic pop

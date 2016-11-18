@@ -1,10 +1,15 @@
 package org.ice1000.graph;
 
+import org.ice1000.error.FrontStarGraphException;
+
+import java.util.Arrays;
+
 /**
  * Created by ice1000 on 2016/11/17.
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public final class FrontStarGraph {
 	private long[] next;
 	private long[] head;
@@ -18,21 +23,38 @@ public final class FrontStarGraph {
 	public static final int INFINITY_FILLING = 0x7f;
 
 	public FrontStarGraph(int nodeCount, int edgeCount) {
+		++nodeCount;
+		++edgeCount;
 		this.nodeCount = nodeCount;
 		this.edgeCount = edgeCount;
-		next = new long[edgeCount];
-		target = new long[edgeCount];
 		value = new long[edgeCount];
+		target = new long[edgeCount];
+		next = new long[edgeCount];
 		head = new long[nodeCount];
+		Arrays.fill(next, -1);
+		Arrays.fill(head, -1);
 	}
 
 	public void addEdge(int from, int to, int val) {
+		if (from < 1 || to < 1 || from > nodeCount || to > nodeCount || from == to)
+			throw new FrontStarGraphException("node number is invalid!");
 		target[addingEdgeIndex] = to;
 		value[addingEdgeIndex] = val;
 		next[addingEdgeIndex] = head[from];
 		head[from] = addingEdgeIndex++;
 	}
 
+	public void addEdge(int p1, int p2, int p1p2, int p2p1) {
+		addEdge(p1, p2, p1p2);
+		addEdge(p2, p1, p2p1);
+	}
+
+	/**
+	 * Shortest path faster algorithm
+	 *
+	 * @param source the begin position
+	 * @return the shortest path to each position
+	 */
 	public long[] spfa(int source) {
 		return spfa(source, next, head, target, value, edgeCount, nodeCount);
 	}
@@ -47,6 +69,8 @@ public final class FrontStarGraph {
 	}
 
 	/**
+	 * Shortest path faster algorithm
+	 *
 	 * @param source    start node id
 	 * @param next      memset(next, -1, sizeof(next))
 	 * @param head      memset(next, -1, sizeof(next))
