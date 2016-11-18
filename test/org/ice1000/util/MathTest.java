@@ -172,7 +172,14 @@ public final class MathTest {
 
 	@Test(timeout = 10)
 	public void logTest() {
-		int timeOfTest = 1000;
-		System.out.println(timeOfTest);
+		int timeOfTest = 5000;
+		Random random = new Random(System.currentTimeMillis());
+		System.out.println(timeOfTest + " test cases");
+		while (timeOfTest-- > 0) {
+			double temp = random.nextDouble();
+			assertEquals(Math.ln(temp), java.lang.Math.log(temp), 1e-15);
+			assertEquals(Math.lg(temp), java.lang.Math.log10(temp), 1e-15);
+		}
+		System.out.println("test passed");
 	}
 }
