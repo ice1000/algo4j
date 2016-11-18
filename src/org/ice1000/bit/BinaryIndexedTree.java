@@ -17,7 +17,6 @@ abstract class BinaryIndexedTree {
 	}
 
 	protected void add(int index, long value) {
-		if (index < 1 || index > length) throw new ArrayIndexOutOfBoundsException();
 		add(data, length, index, value);
 	}
 

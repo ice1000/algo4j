@@ -19,6 +19,7 @@ public final class Math {
 	private static final int MAGIC_NUMBER = 0x5F3759DF;
 
 	/**
+	 * O(a) = log(a)
 	 * returns the greatest common divisor of {@code a} and {@code b}
 	 *
 	 * @return greatest common divisor of a and b
@@ -26,14 +27,24 @@ public final class Math {
 	public static native long gcd(long a, long b);
 
 	/**
-	 * This runs very fast, O(1)
+	 * O(1)
+	 * This is the sqrt written by Carmack
+	 * Slower than sqrtStrict
 	 * Returns the square root of a, replaced {@code java.lang.StrictMath.sqrt(double)}
 	 * This is not so strict, for instance sqrt(100) will be 10.000036239624023.
 	 *
 	 * @return square root of a
 	 */
+	@Deprecated
 	public static native double sqrt(double a);
 
+	/**
+	 * O(1)
+	 * using CPU command directly to calculate sqrt
+	 * Accurate and fast
+	 *
+	 * @return square root of a
+	 */
 	public static native double sqrtStrict(double a);
 
 	/**
@@ -175,4 +186,20 @@ public final class Math {
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	public static native double min(double a, double b);
+
+	/**
+	 * same as {@code java.lang.Math.log(double)}
+	 *
+	 * @param a a param
+	 * @return ln(a), base is e
+	 */
+	public static native double ln(double a);
+
+	/**
+	 * same as {@code java.lang.Math.log10(double)}
+	 *
+	 * @param a a param
+	 * @return lg(a), base is 10
+	 */
+	public static native double lg(double a);
 }

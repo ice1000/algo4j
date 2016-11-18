@@ -62,6 +62,10 @@ namespace ice1000_math {
 	jlong fast_plus(jlong, jlong, jlong);
 
 	jlong fast_power(jlong, jlong, jlong);
+
+	jdouble ln_ice(const jdouble);
+
+	jdouble lg_ice(const jdouble);
 }
 
 namespace ice1000_util {

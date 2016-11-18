@@ -14,7 +14,8 @@ public final class PointUpdateIntervalQuery extends BinaryIndexedTree {
 	}
 
 	/**
-	 * bit standard add function, O(n) = log(n)
+	 * O(n) = log(n)
+	 * bit standard add function
 	 *
 	 * @param index position to add value
 	 * @param value value to add
@@ -25,7 +26,8 @@ public final class PointUpdateIntervalQuery extends BinaryIndexedTree {
 	}
 
 	/**
-	 * bit standard sum function, O(n) = log(n)
+	 * O(n) = log(n)
+	 * bit standard sum function
 	 *
 	 * @param index bound
 	 * @return summary value, from 1 to index
@@ -36,6 +38,7 @@ public final class PointUpdateIntervalQuery extends BinaryIndexedTree {
 	}
 
 	/**
+	 * O(n) = 2 * log(n)
 	 * returns sum(right) - sum(left). Mention that it's (left, right]
 	 *
 	 * @param left  left bound of (left, right]

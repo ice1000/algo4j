@@ -81,6 +81,14 @@ jdouble ice1000_math::sec_ice(const jdouble x) {
 	return 1 / cos(x);
 }
 
+jdouble ice1000_math::ln_ice(const jdouble x) {
+  return log(x);
+}
+
+jdouble ice1000_math::lg_ice(const jdouble x) {
+  return log10(x);
+}
+
 jlong ice1000_math::fast_plus(jlong a, jlong b, jlong m) {
 	jlong ret = 0;
 	while (b) {

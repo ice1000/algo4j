@@ -80,7 +80,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPlus(
 		jlong a,
 		jlong b,
 		jlong m) {
-	return ice1000_math::fast_plus(a, b, m);
+	return fast_plus(a, b, m);
 }
 
 JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
@@ -89,7 +89,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
 		jlong a,
 		jlong b,
 		jlong m) {
-	return ice1000_math::fast_power(a, b, m);
+	return fast_power(a, b, m);
 }
 
 #ifdef __abs__ice__
@@ -207,5 +207,19 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_min__DD(
 }
 
 #undef __min__ice__
+
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_ln(
+		JNIEnv *env,
+		jclass jc,
+		jdouble a) {
+  return ln_ice(a);
+}
+
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_lg(
+		JNIEnv *env,
+		jclass jc,
+		jdouble a) {
+  return lg_ice(a);
+}
 
 #pragma clang diagnostic pop

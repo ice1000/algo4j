@@ -5,7 +5,7 @@ package org.ice1000.util;
  *
  * @author ice1000
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public final class ArrayUtils {
 	private ArrayUtils() {
 	}

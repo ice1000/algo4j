@@ -288,6 +288,29 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_min__DD(
 		jdouble
 );
 
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    ln
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_ln(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
+/**
+ * Class:     org_ice1000_util_Math
+ * Method:    lg
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_lg(
+		JNIEnv *,
+		jclass,
+		jdouble
+);
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
