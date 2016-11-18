@@ -120,18 +120,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
-FileName=org_ice1000_util_Arrays.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit10]
-FileName=org_ice1000_util_Arrays.h
+FileName=org_ice1000_util_ArrayUtils.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -142,6 +132,16 @@ BuildCmd=
 
 [Unit7]
 FileName=org_ice1000_graph_FrontStarGraph.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=org_ice1000_util_ArrayUtils.cpp
 CompileCpp=1
 Folder=
 Compile=1

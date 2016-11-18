@@ -44,6 +44,13 @@ public final class FrontStarGraph {
 		head[from] = addingEdgeIndex++;
 	}
 
+	/**
+	 * add two edges
+	 * @param p1 position1
+	 * @param p2 position2
+	 * @param p1p2 distance from position1 to position2
+	 * @param p2p1 distance from position2 to position1
+	 */
 	public void addEdge(int p1, int p2, int p1p2, int p2p1) {
 		addEdge(p1, p2, p1p2);
 		addEdge(p2, p1, p2p1);

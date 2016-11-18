@@ -23,10 +23,11 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 	auto head = env->GetLongArrayElements(_head, option);
 	auto target = env->GetLongArrayElements(_target, option);
 	auto value = env->GetLongArrayElements(_value, option);
-	__ice_memset(dis, org_ice1000_graph_FrontStarGraph_INFINITY_FILLING);
-	__ice_memset(vis, 0);
-	__ice_memset(inq, false);
+	memset(dis, org_ice1000_graph_FrontStarGraph_INFINITY_FILLING, sizeof(dis[0]) * node_count);
+	memset(vis, 0, sizeof(vis[0]) * node_count);
+	memset(inq, false, sizeof(inq[0]) * node_count);
 	dis[source] = 0;
+	dis[0] = -1;
 	inq[source] = true;
 	queue[end++] = source;
 	while (begin < end and !looped) {
@@ -38,7 +39,7 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 					inq[target[j]] = true;
 					queue[end++ % edge_count] = target[j];
 					if (++vis[target[j]] >= node_count) {
-						__ice_memset(dis, -1);
+					  memset(dis, -1, sizeof(dis[0]) * node_count);
 						looped = true;
 						break;
 					}
