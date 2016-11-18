@@ -88,9 +88,13 @@ public final class MathTest {
 		System.out.println(timesOfTesting + " test cases");
 		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();
-			assertTrue(Math.abs(Math.sin(temp) - java.lang.Math.sin(temp)) < 1e-10);
-			assertTrue(Math.abs(Math.cos(temp) - java.lang.Math.cos(temp)) < 1e-10);
-			assertTrue(Math.abs(Math.tan(temp) - java.lang.Math.tan(temp)) < 1e-10);
+			assertEquals(Math.sin(temp), java.lang.Math.sin(temp), 1e-15);
+			assertEquals(Math.cos(temp), java.lang.Math.cos(temp), 1e-15);
+			assertEquals(Math.tan(temp), java.lang.Math.tan(temp), 1e-15);
+			assertEquals(Math.tan(temp), java.lang.Math.tan(temp), 1e-15);
+			assertEquals(Math.tan(temp) * Math.cot(temp), 1, 1e-15);
+			assertEquals(Math.cos(temp) * Math.sec(temp), 1, 1e-15);
+			assertEquals(Math.sin(temp) * Math.csc(temp), 1, 1e-15);
 		}
 		System.out.println("test passed");
 	}
@@ -111,20 +115,56 @@ public final class MathTest {
 		assertEquals(4, Math.fastPower(2, 10, 10));
 
 		assertEquals(289, Math.fastPlus(233, 233, 1000));
+		System.out.println("test passed");
 	}
 
 	/**
 	 * abstract value
 	 */
-	@Test(timeout = 1)
+	@Test(timeout = 10)
 	public void absTest() {
-		assertEquals(233, Math.abs(-233));
-		assertEquals(233, Math.abs(233));
-		assertEquals(233L, Math.abs(-233L));
-		assertEquals(233L, Math.abs(233L));
-		assertEquals(233F, Math.abs(-233F), 0);
-		assertEquals(233F, Math.abs(233F), 0);
-		assertEquals(233.0, Math.abs(-233.0), 0);
-		assertEquals(233.0, Math.abs(233.0), 0);
+		int timeOfTest = 4000;
+		System.out.println(timeOfTest + " test cases");
+		Random random = new Random(System.currentTimeMillis());
+		while (timeOfTest-- > 0) {
+			int anInt = random.nextInt();
+			double aDouble = random.nextDouble();
+			long aLong = random.nextLong();
+			float aFloat = random.nextFloat();
+			assertEquals(Math.abs(anInt), Math.abs(anInt));
+			assertEquals(Math.abs(aLong), Math.abs(aLong));
+			assertEquals(Math.abs(aDouble), Math.abs(aDouble), 1e-15);
+			assertEquals(Math.abs(aFloat), Math.abs(aFloat), 1e-15);
+		}
+		System.out.println("test passed");
+	}
+
+	/**
+	 * min max value
+	 */
+	@Test(timeout = 10)
+	public void minMaxTest() {
+		int timeOfTest = 1000;
+		System.out.println(timeOfTest + " test cases");
+		Random random = new Random(System.currentTimeMillis());
+		while (timeOfTest-- > 0) {
+			int anInt = random.nextInt();
+			int anInt2 = random.nextInt();
+			double aDouble = random.nextDouble();
+			double aDouble2 = random.nextDouble();
+			long aLong = random.nextLong();
+			long aLong2 = random.nextLong();
+			float aFloat = random.nextFloat();
+			float aFloat2 = random.nextFloat();
+			assertEquals(Math.min(anInt, anInt2), java.lang.Math.min(anInt, anInt2));
+			assertEquals(Math.min(aLong, aLong2), java.lang.Math.min(aLong, aLong2));
+			assertEquals(Math.min(aDouble, aDouble2), java.lang.Math.min(aDouble, aDouble2), 1e-15);
+			assertEquals(Math.min(aFloat, aFloat2), java.lang.Math.min(aFloat, aFloat2), 1e-15);
+			assertEquals(Math.max(anInt, anInt2), java.lang.Math.max(anInt, anInt2));
+			assertEquals(Math.max(aLong, aLong2), java.lang.Math.max(aLong, aLong2));
+			assertEquals(Math.max(aDouble, aDouble2), java.lang.Math.max(aDouble, aDouble2), 1e-15);
+			assertEquals(Math.max(aFloat, aFloat2), java.lang.Math.max(aFloat, aFloat2), 1e-15);
+
+		}
 	}
 }

@@ -12,7 +12,7 @@ import static org.junit.Assert.assertArrayEquals;
  *
  * @author ice1000
  */
-public class ArrayUtilsTest {
+public final class ArrayUtilsTest {
 	@BeforeClass
 	public static void setUp() {
 		System.loadLibrary("jni");
@@ -26,10 +26,5 @@ public class ArrayUtilsTest {
 		assertArrayEquals(new long[]{2, 0, 4, 1, 3, 3}, longs1);
 //		for (int i = 0; i < sum.length - 1; i++) assertEquals(longs[i], sum.data[i + 1]);
 //		assertEquals(5, sum.query());
-	}
-
-	public static void main(String[] args) {
-		setUp();
-		new ArrayUtilsTest().test();
 	}
 }
