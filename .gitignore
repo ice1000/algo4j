@@ -3,6 +3,7 @@
 *.iml
 .idea/
 jni/.idea/
+jni/.vscode/
 
 # Compile output #
 
@@ -16,11 +17,12 @@ jni/org_ice1000_public_functions.o
 jni/org_ice1000_util_ArrayUtils.o
 jni/org_ice1000_util_Math.o
 out/
+jni/build/
 
 # Unneccessary files #
 
 jni/jni.layout
 
 # Logs #
-*.log
 
+*.log
