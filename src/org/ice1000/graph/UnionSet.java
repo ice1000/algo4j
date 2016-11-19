@@ -7,15 +7,15 @@ package org.ice1000.graph;
  */
 @SuppressWarnings("WeakerAccess")
 abstract class UnionSet {
-	private long[] data;
+	private int[] data;
 	public final int length;
 
 	public UnionSet(int length) {
 		this.length = length;
-		data = new long[length];
+		data = new int[length];
 	}
 
-	protected native int find(long[] data, int length, int num);
+	protected native int find(int[] data, int length, int num);
 
-	protected native void merge(long[] data, int length, int a, int b);
+	protected native void merge(int[] data, int length, int a, int b);
 }

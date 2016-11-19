@@ -12,16 +12,20 @@ using namespace ice1000_bit;
 
 JNIEXPORT void JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
 		JNIEnv *env, jobject jo, jlongArray _data, jint len, jint idx, jlong value) {
-	jlong *data = env->GetLongArrayElements(_data, 0);
+	auto option = new jboolean(false);
+	auto data = env->GetLongArrayElements(_data, option);
 	add(data, len, idx, value);
 	env->ReleaseLongArrayElements(_data, data, 0);
+	delete option;
 }
 
 JNIEXPORT jlong JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
 		JNIEnv *env, jobject jo, jlongArray _data, jint len, jint idx) {
-	auto data = env->GetLongArrayElements(_data, 0);
+	auto option = new jboolean(false);
+	auto data = env->GetLongArrayElements(_data, option);
 	auto result = sum(data, idx);
 	env->ReleaseLongArrayElements(_data, data, 0);
+	delete option;
 	return result;
 }
 

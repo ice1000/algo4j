@@ -13,12 +13,12 @@ extern "C" {
 /**
  * Class:     org_ice1000_graph_UnionSet
  * Method:    find
- * Signature: ([JII)I
+ * Signature: ([III)I
  */
 JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find(
 		JNIEnv *,
 		jobject,
-		jlongArray,
+		jintArray,
 		jint,
 		jint
 );
@@ -26,12 +26,12 @@ JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find(
 /**
  * Class:     org_ice1000_graph_UnionSet
  * Method:    merge
- * Signature: ([JIII)V
+ * Signature: ([IIII)V
  */
 JNIEXPORT void JNICALL Java_org_ice1000_graph_UnionSet_merge(
 		JNIEnv *,
 		jobject,
-		jlongArray,
+		jintArray,
 		jint,
 		jint,
 		jint

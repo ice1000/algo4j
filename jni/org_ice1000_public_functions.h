@@ -157,6 +157,12 @@ namespace ice1000_util {
 	// }
 // }
 
+namespace ice1000_uset {
+	jint find(jint *, jint);
+
+	void merge(jint *, jint, jint);
+}
+
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
 #pragma clang diagnostic pop
