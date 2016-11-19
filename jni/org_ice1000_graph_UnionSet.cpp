@@ -1,3 +1,7 @@
+///
+/// Created by ice1000 on 2016/11/19.
+///
+
 #include "org_ice1000_graph_UnionSet.h"
 
 #pragma clang diagnostic push
@@ -20,7 +24,7 @@ JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find(
   return ret;
 }
 
-
+/// changed implementation into Java code
 // JNIEXPORT void JNICALL Java_org_ice1000_graph_UnionSet_merge(
 // 		JNIEnv *env,
 // 		jobject jo,

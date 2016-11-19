@@ -1,3 +1,7 @@
+///
+/// Created by ice1000 on 2016/11/19.
+///
+
 #include "org_ice1000_graph_FrontStarGraph.h"
 
 JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
