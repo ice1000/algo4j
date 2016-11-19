@@ -25,8 +25,6 @@ public final class IntervalUpdatePointQuery extends BinaryIndexedTree {
 	 */
 	public void update(int begin, int end, int value) {
 		if (end < begin) throw new BinaryIndexedTreeException("end should be smaller than begin!");
-		if (begin < 1) throw new BinaryIndexedTreeException("index should be at least 1");
-		if (end > length) throw new BinaryIndexedTreeException("index should be at least 1");
 		add(begin, value);
 		add(end + 1, -value);
 	}

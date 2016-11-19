@@ -113,9 +113,9 @@ jint ice1000_uset::find(jint *data, jint n) {
   return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
 }
 
-void ice1000_uset::merge(jint *data, jint a, jint b) {
-  int i = ice1000_uset::find(data, a), j = ice1000_uset::find(data, b);
-	if (i != j) data[i] = j;
-}
+// void ice1000_uset::merge(jint *data, jint a, jint b) {
+//   int i = ice1000_uset::find(data, a), j = ice1000_uset::find(data, b);
+// 	if (i != j) data[i] = j;
+// }
 
 #pragma clang diagnostic pop

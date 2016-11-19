@@ -23,7 +23,7 @@ public final class PointUpdateIntervalQueryTest {
 	 */
 	@Test(timeout = 10)
 	public void test() {
-		PointUpdateIntervalQuery tree = new PointUpdateIntervalQuery(10);
+		BinaryIndexedTree tree = new BinaryIndexedTree(10);
 		tree.add(1, 4);
 		tree.add(2, 5);
 		tree.add(3, 6);

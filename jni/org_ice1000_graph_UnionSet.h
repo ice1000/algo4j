@@ -28,14 +28,14 @@ JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find(
  * Method:    merge
  * Signature: ([IIII)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_graph_UnionSet_merge(
-		JNIEnv *,
-		jobject,
-		jintArray,
-		jint,
-		jint,
-		jint
-);
+// JNIEXPORT void JNICALL Java_org_ice1000_graph_UnionSet_merge(
+// 		JNIEnv *,
+// 		jobject,
+// 		jintArray,
+// 		jint,
+// 		jint,
+// 		jint
+// );
 
 #ifdef __cplusplus
 }

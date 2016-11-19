@@ -36,8 +36,12 @@ public final class FrontStarGraph {
 	}
 
 	public void addEdge(int from, int to, int val) {
-		if (from < 1 || to < 1 || from > nodeCount || to > nodeCount || from == to)
-			throw new FrontStarGraphException("node number is invalid!");
+		if (from < 1 ||
+				to < 1 ||
+				from > nodeCount ||
+				to > nodeCount ||
+				from == to)
+			throw FrontStarGraphException.numberInvalid();
 		target[addingEdgeIndex] = to;
 		value[addingEdgeIndex] = val;
 		next[addingEdgeIndex] = head[from];
@@ -46,8 +50,9 @@ public final class FrontStarGraph {
 
 	/**
 	 * add two edges
-	 * @param p1 position1
-	 * @param p2 position2
+	 *
+	 * @param p1   position1
+	 * @param p2   position2
 	 * @param p1p2 distance from position1 to position2
 	 * @param p2p1 distance from position2 to position1
 	 */
@@ -63,6 +68,8 @@ public final class FrontStarGraph {
 	 * @return the shortest path to each position
 	 */
 	public long[] spfa(int source) {
+		if (source < 1 || source > nodeCount)
+			throw FrontStarGraphException.indexOutBound();
 		return spfa(source, next, head, target, value, edgeCount, nodeCount);
 	}
 
@@ -76,7 +83,8 @@ public final class FrontStarGraph {
 	}
 
 	/**
-	 * Shortest path faster algorithm
+	 * Shortest path faster algorithm (‘_’)
+	 * (‘_’) %%%
 	 *
 	 * @param source    start node id
 	 * @param next      memset(next, -1, sizeof(next))
@@ -86,7 +94,15 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
-	private native long[] spfa(int source, long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
+	private native long[] spfa(
+			int source,
+			long[] next,
+			long[] head,
+			long[] target,
+			long[] value,
+			int edgeCount,
+			int nodeCount
+	);
 
 	/**
 	 * @param next      memset(next, -1, sizeof(next))
@@ -96,5 +112,12 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
-	private native long kruskal(long[] next, long[] head, long[] target, long[] value, int edgeCount, int nodeCount);
+	private native long kruskal(
+			long[] next,
+			long[] head,
+			long[] target,
+			long[] value,
+			int edgeCount,
+			int nodeCount
+	);
 }
