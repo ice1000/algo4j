@@ -166,7 +166,6 @@ public final class MathTest {
 			assertEquals(Math.max(aLong, aLong2), java.lang.Math.max(aLong, aLong2));
 			assertEquals(Math.max(aDouble, aDouble2), java.lang.Math.max(aDouble, aDouble2), 1e-15);
 			assertEquals(Math.max(aFloat, aFloat2), java.lang.Math.max(aFloat, aFloat2), 1e-15);
-
 		}
 	}
 
