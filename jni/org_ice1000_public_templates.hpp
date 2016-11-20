@@ -24,10 +24,10 @@ namespace ice1000_util {
 			array[j] = array[i];
 		}
 		array[i] = standard;
+		delete &temp;
 		__quick_sort_core(array, left, i - 1);
 		__quick_sort_core(array, i + 1, right);
 	}
-
 
 	template<typename T>
 	void __quick_sort_core_with_cmp(
@@ -47,6 +47,7 @@ namespace ice1000_util {
 			array[j] = array[i];
 		}
 		array[i] = standard;
+		delete &temp;
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
 		__quick_sort_core_with_cmp(array, i + 1, right, compare);
 	}
@@ -74,6 +75,8 @@ namespace ice1000_util {
 		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
 
 		Ice1000Pair() { }
+
+		~Ice1000Pair() { }
 
 		void setValue(const T1 &f, const T2 &s) {
 			first = f;

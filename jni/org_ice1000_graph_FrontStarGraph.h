@@ -48,6 +48,33 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		jint
 );
 
+typedef struct FrontStarNode {
+  jint value;
+  jint to;
+  jint from;
+
+	FrontStarNode(const jint v, const jint t, const jint f) : value(v), to(t), from(f) {  }
+	FrontStarNode() {  }
+	~FrontStarNode() {  }
+
+	/**
+	 * set values of fields
+	 */
+	void setValue(const jint v, const jint t, const jint f) {
+	  value = v;
+	  from = f;
+	  to = t;
+	}
+
+	const bool operator<(const FrontStarNode &o) const {
+	  return value < o.value;
+	}
+
+	const bool operator==(const FrontStarNode &o) const {
+	  return value == o.value;
+	}
+} FrontStarNode;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

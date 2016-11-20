@@ -41,7 +41,7 @@ public final class MathTest {
 	 */
 	@SuppressWarnings("deprecation")
 	@Test(timeout = 100)
-	public void sqrtTime() {
+	public void sqrtTest() {
 		Random random = new Random(System.currentTimeMillis());
 		int timesOfTesting = 1000000;
 		System.out.println(timesOfTesting + " test cases");
@@ -56,7 +56,7 @@ public final class MathTest {
 	 */
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Test(timeout = 100)
-	public void sqrtStdTime() {
+	public void sqrtStdTest() {
 		Random random = new Random(System.currentTimeMillis());
 		int timesOfTesting = 1000000;
 		System.out.println(timesOfTesting + " test cases");
@@ -68,7 +68,7 @@ public final class MathTest {
 
 	@Test(timeout = 100)
 	@SuppressWarnings("deprecation")
-	public void sqrtCorrectness() {
+	public void sqrtCorrectnessTest() {
 		Random random = new Random(System.currentTimeMillis());
 		int testNumber = 100;
 		System.out.println(Math.sqrt(testNumber));
@@ -79,6 +79,7 @@ public final class MathTest {
 		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();
 			assertTrue(Math.abs(Math.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5);
+			assertTrue(Math.abs(Math.sqrtStrict(temp) - java.lang.Math.sqrt(temp)) < 1e-15);
 		}
 		System.out.println("test passed");
 	}
@@ -110,7 +111,7 @@ public final class MathTest {
 	 * 2 ^ 10 => 1024, 1024 % 10 => 4
 	 * 233 * 233 => 54289, 54289 % 1000 => 289
 	 */
-	@Test(timeout = 5)
+	@Test(timeout = 100)
 	public void fastPlusPowerTest() {
 		assertEquals(24, Math.fastPower(2, 10, 1000));
 		assertEquals(12, Math.fastPower(2, 9, 100));
@@ -123,7 +124,7 @@ public final class MathTest {
 	/**
 	 * abstract value
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	public void absTest() {
 		int timeOfTest = 4000;
 		System.out.println(timeOfTest + " test cases");
@@ -144,7 +145,7 @@ public final class MathTest {
 	/**
 	 * min max value
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	public void minMaxTest() {
 		int timeOfTest = 1000;
 		System.out.println(timeOfTest + " test cases");
@@ -169,7 +170,7 @@ public final class MathTest {
 		}
 	}
 
-	@Test(timeout = 10)
+	@Test(timeout = 1000)
 	public void logTest() {
 		int timeOfTest = 5000;
 		Random random = new Random(System.currentTimeMillis());

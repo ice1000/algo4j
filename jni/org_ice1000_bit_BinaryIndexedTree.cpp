@@ -1,5 +1,5 @@
 ///
-/// Created by ice1000
+/// Created by ice1000 on 2016.11.16
 ///
 
 #include "org_ice1000_bit_BinaryIndexedTree.h"

@@ -62,6 +62,7 @@ public final class FrontStarGraph {
 	}
 
 	/**
+	 * O(n) = n * log(n)
 	 * Shortest path faster algorithm
 	 *
 	 * @param source the begin position

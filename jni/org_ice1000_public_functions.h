@@ -58,7 +58,7 @@ namespace ice1000_math {
 
 	jdouble sec_ice(const jdouble);
 
-	jdouble sqrt_carmack(float);
+	jfloat sqrt_carmack(jfloat);
 
 	jdouble sqrt_strict(const jdouble);
 
@@ -82,6 +82,7 @@ namespace ice1000_math {
 namespace ice1000_uset {
 	jint find(jint *, jint);
 
+	/// changed implementation into Java code
 	// void merge(jint *, jint, jint);
 }
 #ifdef __cplusplus
