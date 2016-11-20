@@ -48,4 +48,26 @@ public final class FrontStarGraphTest {
 		System.out.println(ArrayUtils.toString(res1));
 		assertArrayEquals(new long[]{-1, -1, -1, -1}, res1);
 	}
+
+	/**
+	 * data from vijos:
+	 * https://vijos.org/p/1190
+	 * 4 5
+	 * 1 2 3
+	 * 1 4 5
+	 * 2 4 7
+	 * 2 3 6
+	 * 3 4 8
+	 */
+	@Test
+	public void kruskalTest() {
+		FrontStarGraph graph = new FrontStarGraph(4, 5 << 1);
+		graph.addDirectionlessEdge(1, 2, 3);
+		graph.addDirectionlessEdge(1, 4, 5);
+		graph.addDirectionlessEdge(2, 4, 7);
+		graph.addDirectionlessEdge(2, 3, 6);
+		graph.addDirectionlessEdge(3, 4, 8);
+		System.out.println("edges added.");
+		assertEquals(6, graph.kruskal());
+	}
 }

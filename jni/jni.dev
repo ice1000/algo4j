@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=000000c0g0000000000011000
-UnitCount=12
+UnitCount=13
 
 [VersionInfo]
 Major=1
@@ -162,6 +162,16 @@ BuildCmd=
 
 [Unit12]
 FileName=org_ice1000_graph_UnionSet.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit13]
+FileName=org_ice1000_public_templates.hpp
 CompileCpp=1
 Folder=
 Compile=1

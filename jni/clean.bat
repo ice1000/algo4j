@@ -1,7 +1,9 @@
 @echo off
 title cleaning jni library
 
-del /f /s /q *.o
+if exist *.o (
+	del /f /s /q *.o
+)
 
 if exist jni.layout (
 	del /f /s /q jni.layout
@@ -21,8 +23,16 @@ if exist build (
 
 if exist ./cpp-test (
 	cd ./cpp-test
-	del /f /s /q *.exe
+	if exist *.exe (
+		del /f /s /q *.exe
+	)
 	cd ..
+)
+
+if exist ../*.log (
+	cd ..
+	del /f /s /q *.log
+	cd ./jni
 )
 
 REM cd ../

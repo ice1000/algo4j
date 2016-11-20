@@ -37,14 +37,14 @@ jlong ice1000_bit::lowbit(const jlong x) {
 	return __lowbit(x);
 }
 
-jdouble ice1000_math::sqrt_carmack(float x) {
+jfloat ice1000_math::sqrt_carmack(jfloat x) {
 	auto x_half = 0.5F * x;
-	auto i = *(int *) &x;
+	auto i = *(jint *) &x;
 	i = org_ice1000_util_Math_MAGIC_NUMBER - (i >> 1);
-	x = *(float *) &i;
+	x = *(jfloat *) &i;
 	x *= (1.5F - x_half * x * x);
 	x *= (1.5F - x_half * x * x);
-	return (jdouble) (1 / x);
+	return 1 / x;
 }
 
 jdouble ice1000_math::sqrt_strict(const jdouble x) {
@@ -108,5 +108,14 @@ jlong ice1000_math::fast_power(jlong a, jlong b, jlong m) {
 	}
 	return ret;
 }
+
+jint ice1000_uset::find(jint *data, jint n) {
+	return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
+}
+
+// void ice1000_uset::merge(jint *data, jint a, jint b) {
+//   int i = ice1000_uset::find(data, a), j = ice1000_uset::find(data, b);
+// 	if (i != j) data[i] = j;
+// }
 
 #pragma clang diagnostic pop

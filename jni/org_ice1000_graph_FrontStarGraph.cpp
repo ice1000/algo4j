@@ -1,3 +1,7 @@
+///
+/// Created by ice1000 on 2016/11/19.
+///
+
 #include "org_ice1000_graph_FrontStarGraph.h"
 
 JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
@@ -12,10 +16,10 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		jint node_count) {
 	auto _dis = env->NewLongArray(node_count);
 	auto dis = new jlong[node_count];
-	auto inq = new bool[node_count];
-	auto vis = new int[node_count];
+	auto inq = new jboolean[node_count];
+	auto vis = new jint[node_count];
 	auto queue = new jlong[edge_count];
-	size_t begin = 0, end = 0;
+	jsize begin = 0, end = 0;
 	jlong i, j;
 	auto option = new jboolean(false);
 	auto looped = false;
@@ -67,10 +71,55 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		jlongArray _next,
 		jlongArray _head,
 		jlongArray _target,
+		jlongArray _depature,
 		jlongArray _value,
 		jint edge_count,
 		jint node_count) {
-	return NULL;
+	auto option = new jboolean(false);
+	auto looped = false;
+	auto next = env->GetLongArrayElements(_next, option);
+	auto head = env->GetLongArrayElements(_head, option);
+	auto target = env->GetLongArrayElements(_target, option);
+	auto depature = env->GetLongArrayElements(_depature, option);
+	auto value = env->GetLongArrayElements(_value, option);
+	auto uset = new jint[node_count]();
+	auto depth = new jint[node_count]();
+	auto edges = new FrontStarNode[edge_count]();
+	jlong min_len = 0;
+	jlong count = 0;
+	jlong find_res_1;
+	jlong find_res_2;
+	__ice_memset(depth, 0);
+	for (auto i = 0; i <= edge_count; ++i) {
+		edges[i].setValue(value[i], target[i], depature[i]);
+	}
+	env->ReleaseLongArrayElements(_next, next, 0);
+	env->ReleaseLongArrayElements(_head, head, 0);
+	env->ReleaseLongArrayElements(_target, target, 0);
+	env->ReleaseLongArrayElements(_depature, depature, 0);
+	env->ReleaseLongArrayElements(_value, value, 0);
+	ice1000_util::quick_sort(edges, edge_count);
+	for (auto i = 0; i < edge_count; ++i) {
+		find_res_1 = ice1000_uset::find(uset, edges[i].from);
+		find_res_2 = ice1000_uset::find(uset, edges[i].to);
+		if (find_res_1 != find_res_2) {
+			// if (depth[find_res_1] > depth[find_res_2]) {
+				uset[find_res_1] = find_res_2;
+			// } else {
+			// 	uset[find_res_2] = find_res_1;
+			// 	if (depth[find_res_1] == depth[find_res_2])
+			// 		++depth[find_res_1];
+			// }
+			min_len += edges[i].value;
+			if (++count >= node_count)
+				break;
+		}
+	}
+	delete option;
+	delete depth;
+	delete uset;
+	delete edges;
+	return min_len;
 }
 
 

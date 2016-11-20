@@ -67,6 +67,7 @@ public final class MathTest {
 	}
 
 	@Test(timeout = 100)
+	@SuppressWarnings("deprecation")
 	public void sqrtCorrectness() {
 		Random random = new Random(System.currentTimeMillis());
 		int testNumber = 100;
@@ -109,7 +110,7 @@ public final class MathTest {
 	 * 2 ^ 10 => 1024, 1024 % 10 => 4
 	 * 233 * 233 => 54289, 54289 % 1000 => 289
 	 */
-	@Test(timeout = 5)
+	@Test(timeout = 100)
 	public void fastPlusPowerTest() {
 		assertEquals(24, Math.fastPower(2, 10, 1000));
 		assertEquals(12, Math.fastPower(2, 9, 100));
@@ -122,7 +123,7 @@ public final class MathTest {
 	/**
 	 * abstract value
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	public void absTest() {
 		int timeOfTest = 4000;
 		System.out.println(timeOfTest + " test cases");
@@ -143,7 +144,7 @@ public final class MathTest {
 	/**
 	 * min max value
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	public void minMaxTest() {
 		int timeOfTest = 1000;
 		System.out.println(timeOfTest + " test cases");
@@ -165,7 +166,19 @@ public final class MathTest {
 			assertEquals(Math.max(aLong, aLong2), java.lang.Math.max(aLong, aLong2));
 			assertEquals(Math.max(aDouble, aDouble2), java.lang.Math.max(aDouble, aDouble2), 1e-15);
 			assertEquals(Math.max(aFloat, aFloat2), java.lang.Math.max(aFloat, aFloat2), 1e-15);
-
 		}
+	}
+
+	@Test(timeout = 10)
+	public void logTest() {
+		int timeOfTest = 5000;
+		Random random = new Random(System.currentTimeMillis());
+		System.out.println(timeOfTest + " test cases");
+		while (timeOfTest-- > 0) {
+			double temp = random.nextDouble();
+			assertEquals(Math.ln(temp), java.lang.Math.log(temp), 1e-15);
+			assertEquals(Math.lg(temp), java.lang.Math.log10(temp), 1e-15);
+		}
+		System.out.println("test passed");
 	}
 }

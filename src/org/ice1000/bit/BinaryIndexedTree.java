@@ -1,13 +1,16 @@
 package org.ice1000.bit;
 
+import org.ice1000.error.BinaryIndexedTreeException;
+
 /**
+ * [1, length]
  * A binary indexed tree, implemented by using jni.
  * Created by ice1000 on 2016/11/15.
  *
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-abstract class BinaryIndexedTree {
+public class BinaryIndexedTree {
 	private long[] data;
 	public final int length;
 
@@ -16,15 +19,55 @@ abstract class BinaryIndexedTree {
 		data = new long[length];
 	}
 
-	protected void add(int index, long value) {
+	/**
+	 * O(n) = log(n)
+	 * bit standard add function
+	 *
+	 * @param index position to add value
+	 * @param value value to add
+	 */
+	public void add(int index, long value) {
+		if (index > length || index < 0) throw BinaryIndexedTreeException.indexOutBound();
 		add(data, length, index, value);
 	}
 
-	protected long sum(int index) {
+	/**
+	 * O(n) = log(n)
+	 * bit standard sum function
+	 *
+	 * @param index bound
+	 * @return summary value, from 1 to index
+	 */
+	public long sum(int index) {
+		if (index > length || index < 1) throw BinaryIndexedTreeException.indexOutBound();
 		return sum(data, length, index);
 	}
 
-	private native void add(long[] data, int length, int index, long value);
+	/**
+	 * O(n) = 2 * log(n)
+	 * returns sum(right) - sum(left). Mention that it's (left, right]
+	 *
+	 * @param left  left bound of (left, right]
+	 * @param right right bound of (left, right]
+	 * @return sum(right) - sum(left)
+	 * @see #sum(int)
+	 */
+	public long sum(int left, int right) {
+		if (right > length || left < 0) throw BinaryIndexedTreeException.indexOutBound();
+		if (left > right) throw new BinaryIndexedTreeException("left should be smaller than right");
+		return sum(right) - sum(left - 1);
+	}
 
-	private native long sum(long[] data, int length, int index);
+	private native void add(
+			long[] data,
+			int length,
+			int index,
+			long value
+	);
+
+	private native long sum(
+			long[] data,
+			int length,
+			int index
+	);
 }
