@@ -2,6 +2,7 @@
 /// Created by ice1000 on 2016/11/16.
 ///
 
+#include <jni.h>
 #include <math.h>
 #include <string.h>
 #include "org_ice1000_public_templates.hpp"

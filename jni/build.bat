@@ -2,8 +2,14 @@
 title building jni library
 
 call compile.bat
-call clean.bat
 
+if "%1"=="nc" (
+	goto mov
+) else (
+	call clean.bat
+)
+
+:mov
 move jni.dll ../
 
 echo ================================================
@@ -17,4 +23,8 @@ echo ================================================
 echo ================================================
 echo Have a nice day with jni. : )
 
-pause
+if "%2"=="np" (
+	goto end
+) else (pause)
+
+:end

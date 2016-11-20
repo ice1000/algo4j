@@ -110,7 +110,7 @@ jlong ice1000_math::fast_power(jlong a, jlong b, jlong m) {
 }
 
 jint ice1000_uset::find(jint *data, jint n) {
-  return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
+	return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
 }
 
 // void ice1000_uset::merge(jint *data, jint a, jint b) {

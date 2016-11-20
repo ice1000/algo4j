@@ -41,7 +41,7 @@ public final class MathTest {
 	 */
 	@SuppressWarnings("deprecation")
 	@Test(timeout = 100)
-	public void sqrtTest() {
+	public void sqrtTime() {
 		Random random = new Random(System.currentTimeMillis());
 		int timesOfTesting = 1000000;
 		System.out.println(timesOfTesting + " test cases");
@@ -56,7 +56,7 @@ public final class MathTest {
 	 */
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Test(timeout = 100)
-	public void sqrtStdTest() {
+	public void sqrtStdTime() {
 		Random random = new Random(System.currentTimeMillis());
 		int timesOfTesting = 1000000;
 		System.out.println(timesOfTesting + " test cases");
@@ -68,7 +68,7 @@ public final class MathTest {
 
 	@Test(timeout = 100)
 	@SuppressWarnings("deprecation")
-	public void sqrtCorrectnessTest() {
+	public void sqrtCorrectness() {
 		Random random = new Random(System.currentTimeMillis());
 		int testNumber = 100;
 		System.out.println(Math.sqrt(testNumber));
@@ -79,7 +79,6 @@ public final class MathTest {
 		while (timesOfTesting-- > 0) {
 			double temp = random.nextDouble();
 			assertTrue(Math.abs(Math.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5);
-			assertTrue(Math.abs(Math.sqrtStrict(temp) - java.lang.Math.sqrt(temp)) < 1e-15);
 		}
 		System.out.println("test passed");
 	}
@@ -170,7 +169,7 @@ public final class MathTest {
 		}
 	}
 
-	@Test(timeout = 1000)
+	@Test(timeout = 10)
 	public void logTest() {
 		int timeOfTest = 5000;
 		Random random = new Random(System.currentTimeMillis());

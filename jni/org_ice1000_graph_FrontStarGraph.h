@@ -35,11 +35,12 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 /**
  * Class:     org_ice1000_graph_FrontStarGraph
  * Method:    kruskal
- * Signature: ([J[J[J[JII)J
+ * Signature: ([J[J[J[J[JII)J
  */
 JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		JNIEnv *,
 		jobject,
+		jlongArray,
 		jlongArray,
 		jlongArray,
 		jlongArray,
@@ -49,9 +50,9 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 );
 
 typedef struct FrontStarNode {
-  jint value;
-  jint to;
-  jint from;
+	jint value;
+	jint to;
+	jint from;
 
 	FrontStarNode(const jint v, const jint t, const jint f) : value(v), to(t), from(f) {  }
 	FrontStarNode() {  }
@@ -61,17 +62,17 @@ typedef struct FrontStarNode {
 	 * set values of fields
 	 */
 	void setValue(const jint v, const jint t, const jint f) {
-	  value = v;
-	  from = f;
-	  to = t;
+		value = v;
+		from = f;
+		to = t;
 	}
 
 	const bool operator<(const FrontStarNode &o) const {
-	  return value < o.value;
+		return value < o.value;
 	}
 
 	const bool operator==(const FrontStarNode &o) const {
-	  return value == o.value;
+		return value == o.value;
 	}
 } FrontStarNode;
 

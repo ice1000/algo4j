@@ -16,6 +16,12 @@ public final class ArrayUtils {
 		discretization(data, data.length);
 	}
 
+	public static native void discretization(int[] data, int length);
+
+	public static void discretization(int[] data) {
+		discretization(data, data.length);
+	}
+
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
