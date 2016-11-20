@@ -97,6 +97,19 @@ namespace ice1000_util {
 		}
 	}
 
+	template<typename T>
+	T *discretization(T *data, const jsize len) {
+		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
+		auto after = new T[len];
+		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
+		ice1000_util::bubble_sort(pair, len);
+		for (auto i = 0, j = 0; i < len; ++i, ++j) {
+			after[pair[i].second] = j;
+			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
+		}
+		delete after;
+	}
+
 	template<typename T1, typename T2>
 	struct Ice1000Pair {
 		T1 first;

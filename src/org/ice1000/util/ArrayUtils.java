@@ -24,9 +24,39 @@ public final class ArrayUtils {
 		discretization(data, data.length);
 	}
 
+	public static void discretization(double[] data) {
+		discretization(data, data.length);
+	}
+
+	public static void discretization(float[] data) {
+		discretization(data, data.length);
+	}
+
+	public static void discretization(short[] data) {
+		discretization(data, data.length);
+	}
+
 	private static native void discretization(int[] data, int length);
 
 	private static native void discretization(long[] data, int length);
+
+	private static native void discretization(double[] data, int length);
+
+	private static native void discretization(float[] data, int length);
+
+	private static native void discretization(short[] data, int length);
+
+	private static native void quickSort(int[] data, int length);
+
+	private static native void quickSort(long[] data, int length);
+
+	private static native void quickSort(double[] data, int length);
+
+	private static native void quickSort(float[] data, int length);
+
+	private static native void quickSort(byte[] data, int length);
+
+	private static native void quickSort(short[] data, int length);
 
 	/**
 	 * Returns a string representation of the contents of the specified array.

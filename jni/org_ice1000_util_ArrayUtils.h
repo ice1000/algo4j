@@ -33,6 +33,114 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3II(
 		jint
 );
 
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    discretization
+ * Signature: ([DI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3DI( 
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    discretization
+ * Signature: ([FI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3FI( 
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    discretization
+ * Signature: ([SI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3SI( 
+		JNIEnv *,
+		jclass,
+		jshortArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([II)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([JI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([DI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([FI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([SI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3SI(
+		JNIEnv *,
+		jclass,
+		jshortArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_ArrayUtils
+ * Method:    quickSort
+ * Signature: ([BI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3BI(
+		JNIEnv *,
+		jclass,
+		jbyteArray,
+		jint
+);
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
