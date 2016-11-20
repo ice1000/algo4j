@@ -74,6 +74,29 @@ namespace ice1000_util {
 		__quick_sort_core_with_cmp(array, 0, length - 1, compare);
 	}
 
+	template<typename T>
+	void bubble_sort(
+			T *array,
+			const jsize length) {
+		for (auto i = length - 1; i > 0; --i) {
+			for (auto j = 0; j < i; ++j) {
+				if (array[j] > array[i]) swap(array[i], array[j]);
+			}
+		}
+	}
+
+	template<typename T>
+	void bubble_sort_with_cmp(
+			T *array,
+			const jsize length,
+			bool (*compare)(const T &, const T &)) {
+		for (auto i = length - 1; i > 0; --i) {
+			for (auto j = 0; j < i; ++j) {
+				if (compare(array[j], array[i]) < 0) swap(array[i], array[j]);
+			}
+		}
+	}
+
 	template<typename T1, typename T2>
 	struct Ice1000Pair {
 		T1 first;

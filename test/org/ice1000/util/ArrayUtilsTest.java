@@ -18,7 +18,7 @@ public final class ArrayUtilsTest {
 		System.loadLibrary("jni");
 	}
 
-	@Test(timeout = 100)
+	@Test(timeout = 1000)
 	public void test() {
 		int[] ints = new int[]{33, 1, 100, 20, 43, 43};
 		ArrayUtils.discretization(ints);

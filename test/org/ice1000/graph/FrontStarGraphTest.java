@@ -31,7 +31,7 @@ public final class FrontStarGraphTest {
 	 * 2 3 -1
 	 * 3 1 -1
 	 */
-	@Test
+	@Test(timeout = 100)
 	public void spfaTest() {
 		FrontStarGraph graph = new FrontStarGraph(3, 2 << 1);
 		graph.addEdge(1, 2, 2, -1);
@@ -59,7 +59,7 @@ public final class FrontStarGraphTest {
 	 * 2 3 6
 	 * 3 4 8
 	 */
-	@Test
+	@Test(timeout = 100) // TODO
 	public void kruskalTest() {
 		FrontStarGraph graph = new FrontStarGraph(4, 5 << 1);
 		graph.addDirectionlessEdge(1, 2, 3);

@@ -40,7 +40,7 @@ public final class MathTest {
 	 * 2.5e-4ms per calc
 	 */
 	@SuppressWarnings("deprecation")
-	@Test(timeout = 100)
+	@Test(timeout = 500)
 	public void sqrtTime() {
 		Random random = new Random(System.currentTimeMillis());
 		int timesOfTesting = 1000000;

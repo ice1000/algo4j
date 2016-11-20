@@ -21,7 +21,7 @@ public final class UnionSetTest {
 	 * data from:
 	 * http://codevs.cn/problem/1073/
 	 */
-	@Test
+	@Test(timeout = 100)
 	public void test() {
 		UnionSet set = new UnionSet(6);
 		set.merge(1, 2);

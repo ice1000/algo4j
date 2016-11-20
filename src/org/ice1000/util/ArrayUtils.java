@@ -10,17 +10,23 @@ public final class ArrayUtils {
 	private ArrayUtils() {
 	}
 
-	public static native void discretization(long[] data, int length);
+	/**
+	 * using bubble sort.
+	 * TODO change into quick sort(fix the bug of quick sort)
+	 *
+	 * @param data the array to be discretization.
+	 */
+	public static void discretization(int[] data) {
+		discretization(data, data.length);
+	}
 
 	public static void discretization(long[] data) {
 		discretization(data, data.length);
 	}
 
-	public static native void discretization(int[] data, int length);
+	private static native void discretization(int[] data, int length);
 
-	public static void discretization(int[] data) {
-		discretization(data, data.length);
-	}
+	private static native void discretization(long[] data, int length);
 
 	/**
 	 * Returns a string representation of the contents of the specified array.
