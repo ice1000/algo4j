@@ -18,7 +18,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3JI(
 	ice1000_util::quick_sort(pair, len);
 	for (auto i = 0, j = 0; i < len; ++i, ++j) {
 		after[pair[i].second] = j;
-		if (i + 1 < len and pair[i].first == pair[i + 1].first) --j;
+		if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
 	}
 //	for (auto i = 0; i < len; ++i) printf("%lli ", after[i]);
 //	env->SetObjectArrayElement()
@@ -41,16 +41,16 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3II(
 	auto pair = new ice1000_util::Ice1000Pair<jint, jint>[len]();
 	auto after = new jint[len];
 	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
-	ice1000_util::quick_sort(pair, len);
+	// ice1000_util::quick_sort(pair, len);
 	for (auto i = 0, j = 0; i < len; ++i, ++j) {
 		after[pair[i].second] = j;
-		if (i + 1 < len and pair[i].first == pair[i + 1].first) --j;
+		if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
 	}
 	env->ReleaseIntArrayElements(_data, data, 0);
 	env->SetIntArrayRegion(_data, 0, len, after);
 	delete option;
 	delete after;
-//	delete pair;
+	// delete pair;
 }
 
 

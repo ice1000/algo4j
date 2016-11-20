@@ -5,6 +5,13 @@
 
 namespace ice1000_util {
 
+	template<typename T>
+	void swap(T &a, T &b) {
+	  T c = a;
+	  a = b;
+	  b = c;
+	}
+
 // 日了狗了 实在不行我就硬编码类型进去 md
 
 	template<typename T>
@@ -15,16 +22,16 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
-		auto standard = array[left];
+		T standard = array[left];
 		T temp;
 		while (i < j) {
-			while (i < j and standard < array[j]) --j;
+			while ((i <= j) and (standard < array[j] or standard == array[j])) --j;
 			array[i] = array[j];
-			while (i < j and !(standard < array[i])) ++i;
+			while ((i <= j) and !(standard < array[i])) ++i;
 			array[j] = array[i];
 		}
 		array[i] = standard;
-		delete &temp;
+		// delete &temp;
 		__quick_sort_core(array, left, i - 1);
 		__quick_sort_core(array, i + 1, right);
 	}
@@ -38,16 +45,16 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
-		auto standard = array[left];
+		T standard = array[left];
 		T temp;
 		while (i < j) {
-			while (i < j and compare(standard, array[i])) --j;
+			while ((i < j) and compare(standard, array[j]) >= 0) --j;
 			array[i] = array[j];
-			while (i < j and !compare(standard, array[i])) ++i;
+			while ((i < j) and compare(standard, array[i]) <= 0) ++i;
 			array[j] = array[i];
 		}
 		array[i] = standard;
-		delete &temp;
+		// delete &temp;
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
 		__quick_sort_core_with_cmp(array, i + 1, right, compare);
 	}
@@ -64,7 +71,7 @@ namespace ice1000_util {
 			T *array,
 			const jsize length,
 			bool (*compare)(const T &, const T &)) {
-		__quick_sort_core_with_cmp(array, 0, (int) (length - 1), compare);
+		__quick_sort_core_with_cmp(array, 0, length - 1, compare);
 	}
 
 	template<typename T1, typename T2>
@@ -76,7 +83,10 @@ namespace ice1000_util {
 
 		Ice1000Pair() { }
 
-		~Ice1000Pair() { }
+		~Ice1000Pair() {
+		  delete &first;
+		  delete &second;
+		}
 
 		void setValue(const T1 &f, const T2 &s) {
 			first = f;
@@ -85,6 +95,26 @@ namespace ice1000_util {
 
 		const bool operator<(const Ice1000Pair &o) const {
 			return first == o.first ? second < o.second : first < o.first;
+		}
+
+		const bool operator==(const Ice1000Pair &o) const {
+		  return first == o.first and second == o.second;
+		}
+
+		const bool operator<=(const Ice1000Pair &o) const {
+		  return *this < o or *this == o;
+		}
+
+		const bool operator>(const Ice1000Pair &o) const {
+		  return !(*this <= o);
+		}
+
+		const bool operator>=(const Ice1000Pair &o) const {
+		  return !(*this < o);
+		}
+
+		const bool operator!=(const Ice1000Pair &o) const {
+		  return !(*this == o);
 		}
 	};
 }

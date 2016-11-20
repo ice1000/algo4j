@@ -20,11 +20,11 @@ public final class ArrayUtilsTest {
 
 	@Test(timeout = 100)
 	public void test() {
-		long[] longs = new long[]{33, 1, 100, 20, 43, 43};
-		ArrayUtils.discretization(longs);
-		System.out.println(Arrays.toString(longs));
-		assertArrayEquals(new long[]{2, 0, 4, 1, 3, 3}, longs);
-//		for (int i = 0; i < sum.length - 1; i++) assertEquals(longs[i], sum.data[i + 1]);
+		int[] ints = new int[]{33, 1, 100, 20, 43, 43};
+		ArrayUtils.discretization(ints);
+		System.out.println(Arrays.toString(ints));
+		assertArrayEquals(new int[]{2, 0, 4, 1, 3, 3}, ints);
+//		for (int i = 0; i < sum.length - 1; i++) assertEquals(ints[i], sum.data[i + 1]);
 //		assertEquals(5, sum.query());
 	}
 
