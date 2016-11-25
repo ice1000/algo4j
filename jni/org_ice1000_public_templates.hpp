@@ -1,3 +1,7 @@
+//
+// Created by ice1000 at 2016/11
+//
+
 #include <jni.h>
 
 #ifndef JNI_ORG_ICE1000_PUBLIC_TEMPLATES_HPP
@@ -102,6 +106,7 @@ namespace ice1000_util {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len];
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
+		// TODO change into quick sort
 		ice1000_util::bubble_sort(pair, len);
 		for (auto i = 0, j = 0; i < len; ++i, ++j) {
 			after[pair[i].second] = j;

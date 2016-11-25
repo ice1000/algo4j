@@ -7,16 +7,23 @@ set(BUILD_USE_64BITS on)
 
 set(SOURCE_FILES
 		org_ice1000_bit_BinaryIndexedTree.cpp
+		org_ice1000_graph_FrontStarGraph.cpp
+		org_ice1000_math_Trigonometric.cpp
+		org_ice1000_public_templates.hpp
 		org_ice1000_public_functions.cpp
 		org_ice1000_util_ArrayUtils.cpp
-		org_ice1000_util_Math.cpp
+		org_ice1000_math_MathUtils.cpp
+		org_ice1000_graph_UnionSet.cpp
 		)
 
 set(SOURCE_HEADERS
 		org_ice1000_bit_BinaryIndexedTree.h
+		org_ice1000_graph_FrontStarGraph.h
+		org_ice1000_math_Trigonometric.h
 		org_ice1000_public_functions.h
 		org_ice1000_util_ArrayUtils.h
-		org_ice1000_util_Math.h
+		org_ice1000_math_MathUtils.h
+		org_ice1000_graph_UnionSet.h
 		)
 
 # add_executable(jni ${SOURCE_FILES})

@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016/11/16.
 ///
 
-#include "org_ice1000_util_Math.h"
+#include "org_ice1000_math_MathUtils.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -10,7 +10,7 @@
 
 using namespace ice1000_math;
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_gcd(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcd(
 		JNIEnv *env,
 		jclass jc,
 		jlong a,
@@ -18,63 +18,21 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_gcd(
 	return gcd(a, b);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrt(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
 	return sqrt_carmack((float) a);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sqrtStrict(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrtStrict(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
 	return sqrt_strict(a);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sin(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return sin_ice(a);
-}
-
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_cos(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return cos_ice(a);
-}
-
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_tan(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return tan_ice(a);
-}
-
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_cot(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return cot_ice(a);
-}
-
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_csc(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return csc_ice(a);
-}
-
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_sec(
-		JNIEnv *env,
-		jclass jc,
-		jdouble a) {
-	return sec_ice(a);
-}
-
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPlus(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_fastPlus(
 		JNIEnv *env,
 		jclass jc,
 		jlong a,
@@ -83,7 +41,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPlus(
 	return fast_plus(a, b, m);
 }
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_fastPower(
 		JNIEnv *env,
 		jclass jc,
 		jlong a,
@@ -98,28 +56,28 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_fastPower(
 
 #define __abs__ice__ (a > 0 ? a : -a)
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_abs__D(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_abs__D(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
   return __abs__ice__;
 }
 
-JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_abs__F(
+JNIEXPORT jfloat JNICALL Java_org_ice1000_math_MathUtils_abs__F(
 		JNIEnv *env,
 		jclass jc,
 		jfloat a) {
   return __abs__ice__;
 }
 
-JNIEXPORT jint JNICALL Java_org_ice1000_util_Math_abs__I(
+JNIEXPORT jint JNICALL Java_org_ice1000_math_MathUtils_abs__I(
 		JNIEnv *env,
 		jclass jc,
 		jint a) {
   return __abs__ice__;
 }
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_abs__J(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_abs__J(
 		JNIEnv *env,
 		jclass jc,
 		jlong a) {
@@ -134,7 +92,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_abs__J(
 
 #define __max__ice__ (a > b ? a : b)
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__JJ(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_max__JJ(
 		JNIEnv *env,
 		jclass jc,
 		jlong a,
@@ -142,7 +100,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__JJ(
   return __max__ice__;
 }
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__II(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_max__II(
 		JNIEnv *env,
 		jclass jc,
 		jint a,
@@ -150,7 +108,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_max__II(
   return __max__ice__;
 }
 
-JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_max__FF(
+JNIEXPORT jfloat JNICALL Java_org_ice1000_math_MathUtils_max__FF(
 		JNIEnv *env,
 		jclass jc,
 		jfloat a,
@@ -158,7 +116,7 @@ JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_max__FF(
   return __max__ice__;
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_max__DD(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_max__DD(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a,
@@ -174,7 +132,7 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_max__DD(
 
 #define __min__ice__ (a > b ? b : a)
 
-JNIEXPORT jint JNICALL Java_org_ice1000_util_Math_min__II(
+JNIEXPORT jint JNICALL Java_org_ice1000_math_MathUtils_min__II(
 		JNIEnv *env,
 		jclass jc,
 		jint a,
@@ -182,7 +140,7 @@ JNIEXPORT jint JNICALL Java_org_ice1000_util_Math_min__II(
 	return __min__ice__;
 }
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_min__JJ(
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_min__JJ(
 		JNIEnv *env,
 		jclass jc,
 		jlong a,
@@ -190,7 +148,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_util_Math_min__JJ(
 	return __min__ice__;
 }
 
-JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_min__FF(
+JNIEXPORT jfloat JNICALL Java_org_ice1000_math_MathUtils_min__FF(
 		JNIEnv *env,
 		jclass jc,
 		jfloat a,
@@ -198,7 +156,7 @@ JNIEXPORT jfloat JNICALL Java_org_ice1000_util_Math_min__FF(
 	return __min__ice__;
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_min__DD(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_min__DD(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a,
@@ -208,14 +166,14 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_min__DD(
 
 #undef __min__ice__
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_ln(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_ln(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
   return ln_ice(a);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_util_Math_lg(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_lg(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
