@@ -9,6 +9,51 @@
 
 namespace ice1000_util {
 
+	template<typename T1, typename T2>
+	class Ice1000Pair {
+	public:
+		T1 first;
+		T2 second;
+
+		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+
+		Ice1000Pair() { }
+
+		~Ice1000Pair() {
+			delete &first;
+			delete &second;
+		}
+
+		void setValue(const T1 &f, const T2 &s) {
+			first = f;
+			second = s;
+		}
+
+		const bool operator<(const Ice1000Pair &o) const {
+			return first == o.first ? second < o.second : first < o.first;
+		}
+
+		const bool operator==(const Ice1000Pair &o) const {
+			return first == o.first and second == o.second;
+		}
+
+		const bool operator<=(const Ice1000Pair &o) const {
+			return *this < o or *this == o;
+		}
+
+		const bool operator>(const Ice1000Pair &o) const {
+			return !(*this <= o);
+		}
+
+		const bool operator>=(const Ice1000Pair &o) const {
+			return !(*this < o);
+		}
+
+		const bool operator!=(const Ice1000Pair &o) const {
+			return !(*this == o);
+		}
+	};
+
 	template<typename T>
 	void swap(T &a, T &b) {
 	  T c = a;
@@ -112,52 +157,8 @@ namespace ice1000_util {
 			after[pair[i].second] = j;
 			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
 		}
-		delete after;
+		return after;
 	}
-
-	template<typename T1, typename T2>
-	struct Ice1000Pair {
-		T1 first;
-		T2 second;
-
-		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
-
-		Ice1000Pair() { }
-
-		~Ice1000Pair() {
-		  delete &first;
-		  delete &second;
-		}
-
-		void setValue(const T1 &f, const T2 &s) {
-			first = f;
-			second = s;
-		}
-
-		const bool operator<(const Ice1000Pair &o) const {
-			return first == o.first ? second < o.second : first < o.first;
-		}
-
-		const bool operator==(const Ice1000Pair &o) const {
-		  return first == o.first and second == o.second;
-		}
-
-		const bool operator<=(const Ice1000Pair &o) const {
-		  return *this < o or *this == o;
-		}
-
-		const bool operator>(const Ice1000Pair &o) const {
-		  return !(*this <= o);
-		}
-
-		const bool operator>=(const Ice1000Pair &o) const {
-		  return !(*this < o);
-		}
-
-		const bool operator!=(const Ice1000Pair &o) const {
-		  return !(*this == o);
-		}
-	};
 }
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
