@@ -33,12 +33,13 @@ class MathUtilsTest {
 	 * 2.5e-4ms per calc
 	 */
 	@SuppressWarnings("deprecation")
-	@Test(timeout = 100)
+	@Test(timeout = 500)
 	fun sqrtTime() {
 		val random = Random(System.currentTimeMillis())
 		var timesOfTesting = 1000000
 		println("$timesOfTesting test cases")
 		while (timesOfTesting-- > 0) {
+			@Suppress("DEPRECATION")
 			MathUtils.sqrt(random.nextDouble() * 10000)
 		}
 		println("test passed")

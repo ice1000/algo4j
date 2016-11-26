@@ -15,7 +15,7 @@ class PointUpdateIntervalQueryTest {
 	 * data from:
 	 * http://www.codevs.cn/problem/1080/
 	 */
-	@Test(timeout = 10)
+	@Test(timeout = 200)
 	fun test() {
 		val tree = BinaryIndexedTree(10)
 		tree.add(1, 4)

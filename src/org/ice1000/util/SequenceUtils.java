@@ -6,57 +6,63 @@ package org.ice1000.util;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class ArrayUtils {
-	private ArrayUtils() {
+public final class SequenceUtils {
+	private SequenceUtils() {
 	}
 
-	/**
-	 * using bubble sort.
-	 * TODO change into quick sort(fix the bug of quick sort)
-	 *
-	 * @param data the array to be discretization.
-	 */
-	public static void discretization(int[] data) {
-		discretization(data, data.length);
-	}
+	private static native void discretization(long[] data, int length);
 
 	public static void discretization(long[] data) {
 		discretization(data, data.length);
 	}
 
-	public static void discretization(double[] data) {
+	private static native void discretization(int[] data, int length);
+
+	public static void discretization(int[] data) {
 		discretization(data, data.length);
 	}
+
+	private static native void discretization(float[] data, int length);
 
 	public static void discretization(float[] data) {
 		discretization(data, data.length);
 	}
 
-	public static void discretization(short[] data) {
+	private static native void discretization(double[] data, int length);
+
+	public static void discretization(double[] data) {
 		discretization(data, data.length);
 	}
 
-	private static native void discretization(int[] data, int length);
+	private static native void sortBubble(int[] data, int length);
 
-	private static native void discretization(long[] data, int length);
+	public static void sortBubble(int[] data) {
+		sortBubble(data, data.length);
+	}
 
-	private static native void discretization(double[] data, int length);
+	private static native void sortBubble(long[] data, int length);
 
-	private static native void discretization(float[] data, int length);
+	public static void sortBubble(long[] data) {
+		sortBubble(data, data.length);
+	}
 
-	private static native void discretization(short[] data, int length);
+	private static native void sortBubble(float[] data, int length);
 
-	private static native void quickSort(int[] data, int length);
+	public static void sortBubble(float[] data) {
+		sortBubble(data, data.length);
+	}
 
-	private static native void quickSort(long[] data, int length);
+	private static native void sortBubble(double[] data, int length);
 
-	private static native void quickSort(double[] data, int length);
+	public static void sortBubble(double[] data) {
+		sortBubble(data, data.length);
+	}
 
-	private static native void quickSort(float[] data, int length);
+	private static native void sortQuick(int[] data, int length);
 
-	private static native void quickSort(byte[] data, int length);
-
-	private static native void quickSort(short[] data, int length);
+	public static void sortQuick(int[] data) {
+		sortQuick(data, data.length);
+	}
 
 	/**
 	 * Returns a string representation of the contents of the specified array.

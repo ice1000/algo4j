@@ -1,7 +1,7 @@
 @echo off
 title Compiling jni library
 
-mingw32-make -f Makefile.win all
+mingw32-make -f Build.win all
 
 
 echo ================================================

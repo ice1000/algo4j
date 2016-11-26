@@ -2,6 +2,9 @@
 #include "org_ice1000_public_functions.h"
 /* Header for class org_ice1000_math_Trigonometric */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef _Included_org_ice1000_math_Trigonometric
 #define _Included_org_ice1000_math_Trigonometric
 
@@ -82,3 +85,5 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_sec(
 
 #endif /// _Included_org_ice1000_math_Trigonometric
 
+
+#pragma clang diagnostic pop

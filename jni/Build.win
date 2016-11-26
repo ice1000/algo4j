@@ -5,8 +5,8 @@ MINGWLOC = D:/Program Files/Dev-Cpp/MinGW64
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o org_ice1000_graph_FrontStarGraph.o org_ice1000_util_ArrayUtils.o org_ice1000_graph_UnionSet.o org_ice1000_math_Trigonometric.o
-LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_util_Math.o org_ice1000_graph_FrontStarGraph.o org_ice1000_util_ArrayUtils.o org_ice1000_graph_UnionSet.o org_ice1000_math_Trigonometric.o
+OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_graph_FrontStarGraph.o org_ice1000_util_SequenceUtils.o org_ice1000_graph_UnionSet.o org_ice1000_math_MathUtils.o org_ice1000_math_Trigonometric.o
+LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_graph_FrontStarGraph.o org_ice1000_util_SequenceUtils.o org_ice1000_graph_UnionSet.o org_ice1000_math_MathUtils.o org_ice1000_math_Trigonometric.o
 LIBS     = -L"$(MINGWLOC)/lib" -L"$(DEVLOC)/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -s
 INCS     = -I"$(MINGWLOC)/include" -I"$(DEVLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"$(MINGWLOC)/include" -I"$(MINGWLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -39,8 +39,8 @@ org_ice1000_util_Math.o: org_ice1000_util_Math.cpp
 org_ice1000_graph_FrontStarGraph.o: org_ice1000_graph_FrontStarGraph.cpp
 	$(CPP) -c org_ice1000_graph_FrontStarGraph.cpp -o org_ice1000_graph_FrontStarGraph.o $(CXXFLAGS)
 
-org_ice1000_util_ArrayUtils.o: org_ice1000_util_ArrayUtils.cpp
-	$(CPP) -c org_ice1000_util_ArrayUtils.cpp -o org_ice1000_util_ArrayUtils.o $(CXXFLAGS)
+org_ice1000_util_SequenceUtils.o: org_ice1000_util_SequenceUtils.cpp
+	$(CPP) -c org_ice1000_util_SequenceUtils.cpp -o org_ice1000_util_SequenceUtils.o $(CXXFLAGS)
 
 org_ice1000_graph_UnionSet.o: org_ice1000_graph_UnionSet.cpp
 	$(CPP) -c org_ice1000_graph_UnionSet.cpp -o org_ice1000_graph_UnionSet.o $(CXXFLAGS)

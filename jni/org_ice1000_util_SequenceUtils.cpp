@@ -2,7 +2,10 @@
 /// Created by ice1000
 ///
 
-#include "org_ice1000_util_ArrayUtils.h"
+#include "org_ice1000_util_SequenceUtils.h"
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3JI(
 		JNIEnv *env,
@@ -111,3 +114,5 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3BI(
 
 }
 
+
+#pragma clang diagnostic pop

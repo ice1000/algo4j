@@ -1,4 +1,4 @@
-#include "../org_ice1000_util_ArrayUtils.h"
+#include "../org_ice1000_util_SequenceUtils.h"
 #include <iostream>
 
 #define size 11

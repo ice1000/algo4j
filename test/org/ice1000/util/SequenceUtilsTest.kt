@@ -10,16 +10,16 @@ import java.util.*
 
  * @author ice1000
  */
-class ArrayUtilsTest {
+class SequenceUtilsTest {
 
 	@Test(timeout = 100)
 	fun test() {
 		val ints = intArrayOf(33, 1, 100, 20, 43, 43)
-		ArrayUtils.discretization(ints)
+		SequenceUtils.discretization(ints)
 		println(Arrays.toString(ints))
 		assertArrayEquals(intArrayOf(2, 0, 4, 1, 3, 3), ints)
-		//		for (int i = 0; i < sum.length - 1; i++) assertEquals(ints[i], sum.data[i + 1]);
-		//		assertEquals(5, sum.query());
+//		for (int i = 0; i < sum.length - 1; i++) assertEquals(ints[i], sum.data[i+1]);
+//		assertEquals(5, sum.query());
 	}
 
 	companion object {
@@ -32,7 +32,7 @@ class ArrayUtilsTest {
 		@JvmStatic
 		fun main(args: Array<String>) {
 			loadJniLibrary()
-			ArrayUtilsTest().test()
+			SequenceUtilsTest().test()
 		}
 	}
 }

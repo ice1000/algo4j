@@ -1,15 +1,15 @@
-package org.ice1000.util;
+package org.ice1000.math;
 
 /**
- * Math class
+ * MathUtils class
  * Created by ice1000 on 2016/11/16.
  *
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public final class Math {
+public final class MathUtils {
 
-	private Math() {
+	private MathUtils() {
 	}
 
 	public static final double E = java.lang.Math.E;
@@ -48,42 +48,6 @@ public final class Math {
 	public static native double sqrtStrict(double a);
 
 	/**
-	 * same as {@code java.lang.Math.sin(double)}
-	 *
-	 * @return sin(a)
-	 */
-	public static native double sin(double a);
-
-	/**
-	 * same as {@code java.lang.Math.cos(double)}
-	 *
-	 * @return cos(a)
-	 */
-	public static native double cos(double a);
-
-	/**
-	 * same as {@code java.lang.Math.tan(double)}
-	 *
-	 * @return tan(a)
-	 */
-	public static native double tan(double a);
-
-	/**
-	 * @return cot(a)
-	 */
-	public static native double cot(double a);
-
-	/**
-	 * @return csc(a)
-	 */
-	public static native double csc(double a);
-
-	/**
-	 * @return sec(a)
-	 */
-	public static native double sec(double a);
-
-	/**
 	 * A fast algorithm to calculate (a * b) % m. O(log(b))
 	 *
 	 * @param a   param1
@@ -104,91 +68,91 @@ public final class Math {
 	public static native long fastPower(long a, long b, long mod);
 
 	/**
-	 * same as {@code java.lang.Math.abs(double)}
+	 * same as {@code java.lang.MathUtils.abs(double)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native double abs(double a);
 
 	/**
-	 * same as {@code java.lang.Math.abs(float)}
+	 * same as {@code java.lang.MathUtils.abs(float)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native float abs(float a);
 
 	/**
-	 * same as {@code java.lang.Math.abs(int)}
+	 * same as {@code java.lang.MathUtils.abs(int)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native int abs(int a);
 
 	/**
-	 * same as {@code java.lang.Math.abs(long)}
+	 * same as {@code java.lang.MathUtils.abs(long)}
 	 *
 	 * @return abstract value of a
 	 */
 	public static native long abs(long a);
 
 	/**
-	 * same as {@code java.lang.Math.max(long)}
+	 * same as {@code java.lang.MathUtils.max(long)}
 	 *
 	 * @return the larger one of {@code a} and {@code b}.
 	 */
 	public static native long max(long a, long b);
 
 	/**
-	 * same as {@code java.lang.Math.max(int)}
+	 * same as {@code java.lang.MathUtils.max(int)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	public static native long max(int a, int b);
 
 	/**
-	 * same as {@code java.lang.Math.max(float)}
+	 * same as {@code java.lang.MathUtils.max(float)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	public static native float max(float a, float b);
 
 	/**
-	 * same as {@code java.lang.Math.max(double)}
+	 * same as {@code java.lang.MathUtils.max(double)}
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	public static native double max(double a, double b);
 
 	/**
-	 * same as {@code java.lang.Math.min(int)}
+	 * same as {@code java.lang.MathUtils.min(int)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	public static native int min(int a, int b);
 
 	/**
-	 * same as {@code java.lang.Math.min(long)}
+	 * same as {@code java.lang.MathUtils.min(long)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	public static native long min(long a, long b);
 
 	/**
-	 * same as {@code java.lang.Math.min(float)}
+	 * same as {@code java.lang.MathUtils.min(float)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	public static native float min(float a, float b);
 
 	/**
-	 * same as {@code java.lang.Math.min(double)}
+	 * same as {@code java.lang.MathUtils.min(double)}
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	public static native double min(double a, double b);
 
 	/**
-	 * same as {@code java.lang.Math.log(double)}
+	 * same as {@code java.lang.MathUtils.log(double)}
 	 *
 	 * @param a a param
 	 * @return ln(a), base is e
@@ -196,7 +160,7 @@ public final class Math {
 	public static native double ln(double a);
 
 	/**
-	 * same as {@code java.lang.Math.log10(double)}
+	 * same as {@code java.lang.MathUtils.log10(double)}
 	 *
 	 * @param a a param
 	 * @return lg(a), base is 10
