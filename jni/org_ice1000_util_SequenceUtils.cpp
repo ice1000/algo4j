@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI 
 		JNIEnv *,
 		jclass,
 		jfloatArray,
-		jint) {
+		jint len) {
 	__ice_create_jni_option
 	__ice_delete_jni_option
 }
@@ -63,7 +63,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI 
 		JNIEnv *env,
 		jclass,
 		jdoubleArray,
-		jint) {
+		jint len) {
 	__ice_create_jni_option
 	__ice_delete_jni_option
 }
@@ -71,8 +71,8 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI 
 #define __ice_bubble_sort__\
 ice1000_util::bubble_sort(data, len);\
 
-#define __ice_bubble_get_params _data, option
-#define __ice_bubble_set_params _data, 0, len, data
+#define bubble_get_params _data, option
+#define bubble_set_params _data, 0, len, data
 
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
@@ -81,9 +81,9 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
 		jintArray _data,
 		jint len) {
 	__ice_create_jni_option
-	auto data = env->GetIntArrayElements(__ice_bubble_get_params);
+	auto data = env->GetIntArrayElements(bubble_get_params);
 	__ice_bubble_sort__
-	env->SetIntArrayRegion(__ice_bubble_set_params);
+	env->SetIntArrayRegion(bubble_set_params);
 	__ice_delete_jni_option
 }
 
@@ -93,9 +93,9 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
 		jlongArray _data,
 		jint len) {
 	__ice_create_jni_option
-	auto data = env->GetLongArrayElements(__ice_bubble_get_params);
+	auto data = env->GetLongArrayElements(bubble_get_params);
 	__ice_bubble_sort__
-	env->SetLongArrayRegion(__ice_bubble_set_params);
+	env->SetLongArrayRegion(bubble_set_params);
 	__ice_delete_jni_option
 }
 
@@ -110,9 +110,9 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI (
 		jfloatArray _data,
 		jint len) {
 	__ice_create_jni_option
-	auto data = env->GetFloatArrayElements(__ice_bubble_get_params);
+	auto data = env->GetFloatArrayElements(bubble_get_params);
 	__ice_bubble_sort__
-	env->SetFloatArrayRegion(__ice_bubble_set_params);
+	env->SetFloatArrayRegion(bubble_set_params);
 	__ice_delete_jni_option
 }
 
@@ -127,64 +127,53 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI (
 		jdoubleArray _data,
 		jint len) {
 	__ice_create_jni_option
-	auto data = env->GetDoubleArrayElements(__ice_bubble_get_params);
+	auto data = env->GetDoubleArrayElements(bubble_get_params);
 	__ice_bubble_sort__
-	env->SetDoubleArrayRegion(__ice_bubble_set_params);
+	env->SetDoubleArrayRegion(bubble_set_params);
 	__ice_delete_jni_option
 }
 
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortQuick
- * Signature: ([II)V
- */
+#undef __ice_bubble_sort__
+#undef bubble_set_params
+#undef bubble_get_params
+
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II (
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
 		jint len) {
-	auto option = new jboolean(false);
+	__ice_create_jni_option
 	auto data = env->GetIntArrayElements(_data, option);
 	// TODO
 	env->SetIntArrayRegion(_data, 0, len, data);
-	delete option;
+	__ice_delete_jni_option
 }
 
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortQuick
- * Signature: ([JI)V
- */
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
 		JNIEnv *env,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray _data,
+		jint len) {
+	__ice_create_jni_option
+	__ice_delete_jni_option
+}
 
-);
-
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortQuick
- * Signature: ([FI)V
- */
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
 		JNIEnv *env,
 		jclass,
-		jfloatArray,
-		jint
-);
+		jfloatArray _data,
+		jint len) {
+	__ice_create_jni_option
+	__ice_delete_jni_option
+}
 
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortQuick
- * Signature: ([DI)V
- */
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
 		JNIEnv *env,
 		jclass,
-		jdoubleArray,
-		jint
-);
+		jdoubleArray _data,
+		jint len) {
+	__ice_create_jni_option
+	__ice_delete_jni_option
+}
 
 #pragma clang diagnostic pop

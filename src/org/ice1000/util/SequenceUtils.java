@@ -64,6 +64,24 @@ public final class SequenceUtils {
 		sortQuick(data, data.length);
 	}
 
+	private static native void sortQuick(long[] data, int length);
+
+	public static void sortQuick(long[] data) {
+		sortQuick(data, data.length);
+	}
+
+	private static native void sortQuick(float[] data, int length);
+
+	public static void sortQuick(float[] data) {
+		sortQuick(data, data.length);
+	}
+
+	private static native void sortQuick(double[] data, int length);
+
+	public static void sortQuick(double[] data) {
+		sortQuick(data, data.length);
+	}
+
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
