@@ -1,6 +1,6 @@
 package org.ice1000.graph
 
-import org.ice1000.util.ArrayUtils
+import org.ice1000.util.SequenceUtils
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -35,7 +35,7 @@ class FrontStarGraphTest {
 		graph.addEdge(1, 2, 2, -1)
 		graph.addEdge(2, 3, 0, 1)
 		val res = graph.spfa(1)
-		println(ArrayUtils.toString(res))
+		println(SequenceUtils.toString(res))
 		assertEquals(2, res[3])
 
 		val graph1 = FrontStarGraph(3, 3)
@@ -43,7 +43,7 @@ class FrontStarGraphTest {
 		graph1.addEdge(2, 3, -1)
 		graph1.addEdge(3, 1, -1)
 		val res1 = graph1.spfa(1)
-		println(ArrayUtils.toString(res1))
+		println(SequenceUtils.toString(res1))
 		assertArrayEquals(longArrayOf(-1, -1, -1, -1), res1)
 	}
 
