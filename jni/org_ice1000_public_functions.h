@@ -25,6 +25,19 @@
 #define __lowbit(x) ((x) & (-(x)))
 #endif /// __lowbit
 
+#ifdef __ice_create_jni_option
+#undef __ice_create_jni_option
+#endif
+
+#define __ice_create_jni_option\
+auto option = new jboolean(false);
+
+#ifdef __ice_delete_jni_option
+#undef __ice_delete_jni_option
+#endif
+
+#define __ice_delete_jni_option\
+delete option;
 
 #ifdef __cplusplus
 extern "C" {

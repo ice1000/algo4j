@@ -13,11 +13,11 @@ extern "C" {
 #endif /// __cplusplus
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
+ * Class:     org_ice1000_util_SequenceUtils
  * Method:    discretization
  * Signature: ([JI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3JI( 
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI (
 		JNIEnv *,
 		jclass,
 		jlongArray,
@@ -25,11 +25,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3JI(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
+ * Class:     org_ice1000_util_SequenceUtils
  * Method:    discretization
  * Signature: ([II)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3II( 
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II (
 		JNIEnv *,
 		jclass,
 		jintArray,
@@ -37,23 +37,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3II(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    discretization
- * Signature: ([DI)V
- */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3DI( 
-		JNIEnv *,
-		jclass,
-		jdoubleArray,
-		jint
-);
-
-/**
- * Class:     org_ice1000_util_ArrayUtils
+ * Class:     org_ice1000_util_SequenceUtils
  * Method:    discretization
  * Signature: ([FI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3FI( 
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI (
 		JNIEnv *,
 		jclass,
 		jfloatArray,
@@ -61,23 +49,23 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3FI(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
+ * Class:     org_ice1000_util_SequenceUtils
  * Method:    discretization
- * Signature: ([SI)V
+ * Signature: ([DI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_discretization___3SI( 
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI (
 		JNIEnv *,
 		jclass,
-		jshortArray,
+		jdoubleArray,
 		jint
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortBubble
  * Signature: ([II)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3II(
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
 		JNIEnv *,
 		jclass,
 		jintArray,
@@ -85,11 +73,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3II(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortBubble
  * Signature: ([JI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3JI(
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
 		JNIEnv *,
 		jclass,
 		jlongArray,
@@ -97,23 +85,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3JI(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
- * Signature: ([DI)V
- */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3DI(
-		JNIEnv *,
-		jclass,
-		jdoubleArray,
-		jint
-);
-
-/**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortBubble
  * Signature: ([FI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3FI(
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI (
 		JNIEnv *,
 		jclass,
 		jfloatArray,
@@ -121,26 +97,62 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3FI(
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
- * Signature: ([SI)V
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortBubble
+ * Signature: ([DI)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3SI(
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI (
 		JNIEnv *,
 		jclass,
-		jshortArray,
+		jdoubleArray,
 		jint
 );
 
 /**
- * Class:     org_ice1000_util_ArrayUtils
- * Method:    quickSort
- * Signature: ([BI)V
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortQuick
+ * Signature: ([II)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3BI(
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II (
 		JNIEnv *,
 		jclass,
-		jbyteArray,
+		jintArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortQuick
+ * Signature: ([JI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortQuick
+ * Signature: ([FI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+);
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortQuick
+ * Signature: ([DI)V
+ */
+JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
 		jint
 );
 
@@ -149,7 +161,6 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_ArrayUtils_quickSort___3BI(
 #endif /// __cplusplus
 
 #endif /// _Included_org_ice1000_util_ArrayUtils
-
 
 
 #pragma clang diagnostic pop
