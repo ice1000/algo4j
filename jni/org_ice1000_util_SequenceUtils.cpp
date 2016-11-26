@@ -12,7 +12,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI 
 		jclass,
 		jlongArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(_data, option);
 	auto pair = new ice1000_util::Ice1000Pair<jlong, jint>[len]();
 	auto after = new jlong[len];
@@ -29,7 +29,7 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI 
 //  jlong l[] = { 3, 2, 1, 5, 4 };
 	env->ReleaseLongArrayElements(_data, data, 0);
 	env->SetLongArrayRegion(_data, 0, len, after);
-	__ice_delete_jni_option
+	delete option;
 	delete after;
 //	delete pair;
 }
@@ -39,13 +39,13 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II 
 		jclass,
 		jintArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetIntArrayElements(_data, option);
 	auto pair = new ice1000_util::Ice1000Pair<jint, jint>[len]();
 	auto after = ice1000_util::discretization(data, len);
 	env->ReleaseIntArrayElements(_data, data, 0);
 	env->SetIntArrayRegion(_data, 0, len, after);
-	__ice_delete_jni_option
+	delete option;
 	delete after;
 	// delete pair;
 }
@@ -55,8 +55,8 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI 
 		jclass,
 		jfloatArray,
 		jint len) {
-	__ice_create_jni_option
-	__ice_delete_jni_option
+	auto option = new jboolean(false);
+	delete option;
 }
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI (
@@ -64,12 +64,12 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI 
 		jclass,
 		jdoubleArray,
 		jint len) {
-	__ice_create_jni_option
-	__ice_delete_jni_option
+	auto option = new jboolean(false);
+	delete option;
 }
 
-#define __ice_bubble_sort__\
-ice1000_util::bubble_sort(data, len);\
+#define __ice_bubble_sort__ \
+ice1000_util::bubble_sort(data, len);
 
 #define bubble_get_params _data, option
 #define bubble_set_params _data, 0, len, data
@@ -80,11 +80,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
 		jclass,
 		jintArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetIntArrayElements(bubble_get_params);
 	__ice_bubble_sort__
 	env->SetIntArrayRegion(bubble_set_params);
-	__ice_delete_jni_option
+	delete option;
 }
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
@@ -92,28 +92,23 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
 		jclass,
 		jlongArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(bubble_get_params);
 	__ice_bubble_sort__
 	env->SetLongArrayRegion(bubble_set_params);
-	__ice_delete_jni_option
+	delete option;
 }
 
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortBubble
- * Signature: ([FI)V
- */
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI (
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetFloatArrayElements(bubble_get_params);
 	__ice_bubble_sort__
 	env->SetFloatArrayRegion(bubble_set_params);
-	__ice_delete_jni_option
+	delete option;
 }
 
 /**
@@ -126,11 +121,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI (
 		jclass,
 		jdoubleArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetDoubleArrayElements(bubble_get_params);
 	__ice_bubble_sort__
 	env->SetDoubleArrayRegion(bubble_set_params);
-	__ice_delete_jni_option
+	delete option;
 }
 
 #undef __ice_bubble_sort__
@@ -142,11 +137,11 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II (
 		jclass,
 		jintArray _data,
 		jint len) {
-	__ice_create_jni_option
+	auto option = new jboolean(false);
 	auto data = env->GetIntArrayElements(_data, option);
 	// TODO
 	env->SetIntArrayRegion(_data, 0, len, data);
-	__ice_delete_jni_option
+	delete option;
 }
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
@@ -154,8 +149,8 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
 		jclass,
 		jlongArray _data,
 		jint len) {
-	__ice_create_jni_option
-	__ice_delete_jni_option
+	auto option = new jboolean(false);
+	delete option;
 }
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
@@ -163,8 +158,8 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
 		jclass,
 		jfloatArray _data,
 		jint len) {
-	__ice_create_jni_option
-	__ice_delete_jni_option
+	auto option = new jboolean(false);
+	delete option;
 }
 
 JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
@@ -172,8 +167,8 @@ JNIEXPORT void JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
 		jclass,
 		jdoubleArray _data,
 		jint len) {
-	__ice_create_jni_option
-	__ice_delete_jni_option
+	auto option = new jboolean(false);
+	delete option;
 }
 
 #pragma clang diagnostic pop
