@@ -21,27 +21,27 @@ extern "C" {
  * Method:    add
  * Signature: ([JIIJ)V
  */
-JNIEXPORT void JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
+JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
 		JNIEnv *,
 		jobject,
 		jlongArray,
 		jint,
 		jint,
 		jlong
-);
+) -> void;
 
 /**
  * Class:     org_ice1000_bit_BinaryIndexedTree
  * Method:    sum
  * Signature: ([JII)J
  */
-JNIEXPORT jlong JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
+JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
 		JNIEnv *,
 		jobject,
 		jlongArray,
 		jint,
 		jint
-);
+) -> jlong;
 
 #ifdef __cplusplus
 }

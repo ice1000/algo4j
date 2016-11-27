@@ -20,7 +20,7 @@ extern "C" {
  * Method:    spfa
  * Signature: ()[J
  */
-JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
+JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		JNIEnv *,
 		jobject,
 		jint,
@@ -30,14 +30,14 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		jlongArray,
 		jint,
 		jint
-);
+) -> jlongArray;
 
 /**
  * Class:     org_ice1000_graph_FrontStarGraph
  * Method:    kruskal
  * Signature: ([J[J[J[J[JII)J
  */
-JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
+JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		JNIEnv *,
 		jobject,
 		jlongArray,
@@ -47,7 +47,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		jlongArray,
 		jint,
 		jint
-);
+) -> jlong;
 
 typedef struct FrontStarNode {
 	jint value;

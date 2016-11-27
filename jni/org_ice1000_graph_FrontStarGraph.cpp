@@ -4,7 +4,7 @@
 
 #include "org_ice1000_graph_FrontStarGraph.h"
 
-JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
+JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
 		jobject jo,
 		jint source,
@@ -13,7 +13,7 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		jlongArray _target,
 		jlongArray _value,
 		jint edge_count,
-		jint node_count) {
+		jint node_count) -> jlongArray {
 	auto _dis = env->NewLongArray(node_count);
 	auto dis = new jlong[node_count];
 	auto inq = new jboolean[node_count];
@@ -65,7 +65,7 @@ JNIEXPORT jlongArray JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 	return _dis;
 }
 
-JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
+JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		JNIEnv *env,
 		jobject jo,
 		jlongArray _next,
@@ -74,7 +74,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 		jlongArray _depature,
 		jlongArray _value,
 		jint edge_count,
-		jint node_count) {
+		jint node_count) -> jlong {
 	auto option = new jboolean(false);
 	auto looped = false;
 	auto next = env->GetLongArrayElements(_next, option);
