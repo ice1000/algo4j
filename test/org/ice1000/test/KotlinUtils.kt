@@ -11,7 +11,5 @@ inline fun <reified T> T.loop(block: () -> Unit) {
 
 inline fun <reified T> T.loop(times: Int, block: () -> Unit) {
 	var cnt = times
-	while (cnt --> 0) block.invoke()
+	while (cnt-- > 0) block.invoke()
 }
-
-

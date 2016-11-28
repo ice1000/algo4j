@@ -10,33 +10,33 @@
 
 using namespace ice1000_uset;
 
-JNIEXPORT jint JNICALL Java_org_ice1000_graph_UnionSet_find(
+JNIEXPORT auto JNICALL Java_org_ice1000_graph_UnionSet_find(
 		JNIEnv *env,
 		jobject jo,
 		jintArray _data,
 		jint len,
-		jint a) {
-  auto option = new jboolean(false);
+		jint a) -> jint {
+  __JNI__FUNCTION__INIT__
   auto data = env->GetIntArrayElements(_data, option);
   auto ret = find(data, a);
   env->ReleaseIntArrayElements(_data, data, 0);
-  delete option;
+  __JNI__FUNCTION__CLEAN__
   return ret;
 }
 
 /// changed implementation into Java code
-// JNIEXPORT void JNICALL Java_org_ice1000_graph_UnionSet_merge(
+// JNIEXPORT auto JNICALL Java_org_ice1000_graph_UnionSet_merge(
 // 		JNIEnv *env,
 // 		jobject jo,
 // 		jintArray _data,
 // 		jint len,
 // 		jint a,
-// 		jint b) {
-// 	auto option = new jboolean(false);
+// 		jint b) -> void {
+// 	__JNI__FUNCTION__INIT__
 // 	auto data = env->GetIntArrayElements(_data, option);
 // 	merge(data, a, b);
 // 	env->ReleaseIntArrayElements(_data, data, 0);
-// 	delete option;
+// 	__JNI__FUNCTION__CLEAN__
 // }
 
 #pragma clang diagnostic pop

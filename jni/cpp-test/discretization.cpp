@@ -7,7 +7,7 @@ jlong source[] = {
   10, 20, 30, 50, 40, 100, 70, 80, 90, 60, 11
 };
 
-int main(int argc, const char *argv[]) {
+auto main(int argc, const char *argv[]) -> int {
   auto pair = new ice1000_util::Ice1000Pair<jint, jint>[size]();
   auto after = new jlong[size]();
   for (auto i = 0; i < size; ++i) {
@@ -23,6 +23,8 @@ int main(int argc, const char *argv[]) {
   for (auto i = 0; i < size; ++i) {
     std::cout << after[i] << " ";
   }
+  std::cout << std::endl;
+  std::cout << "should be:\n" << "0 2 3 5 4 9 7 8 10 6 1" << std::endl;
 //  delete pair;
   delete after;
   return 0;

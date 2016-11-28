@@ -6,12 +6,12 @@ CC       = gcc.exe
 WINDRES  = windres.exe
 OBJ      = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_graph_FrontStarGraph.o org_ice1000_graph_UnionSet.o org_ice1000_math_MathUtils.o org_ice1000_math_Trigonometric.o org_ice1000_util_SequenceUtils.o
 LINKOBJ  = org_ice1000_bit_BinaryIndexedTree.o org_ice1000_public_functions.o org_ice1000_graph_FrontStarGraph.o org_ice1000_graph_UnionSet.o org_ice1000_math_MathUtils.o org_ice1000_math_Trigonometric.o org_ice1000_util_SequenceUtils.o
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -s
-INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+LIBS     = -L"D:/Program Files/Dev-Cpp/MinGW64/lib32" -L"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"D:/Program Files/Dev-Cpp/MinGW64/include" -I"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Program Files/Dev-Cpp/MinGW64/include" -I"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
-CXXFLAGS = $(CXXINCS) -Ofast -std=gnu++11 -mwindows -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -Ofast -std=gnu++11 -mwindows -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -m32 -std=gnu++11 -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -m32 -std=gnu++11 -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = libjni.def
 STATIC   = libjni.a

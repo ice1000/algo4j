@@ -13,7 +13,7 @@ Compiler=-DBUILDING_DLL=1_@@_
 CppCompiler=-DBUILDING_DLL=1_@@_
 Linker=
 IsCpp=1
-Icon=
+Icon=jni.ico
 ExeOutput=
 ObjectOutput=
 LogOutput=./log
@@ -27,8 +27,8 @@ CommandLine=
 Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=0
-CompilerSettings=000000c0g0000000000011000
+CompilerSet=3
+CompilerSettings=00000001g0000000000000000
 UnitCount=15
 
 [VersionInfo]

@@ -17,11 +17,11 @@ extern "C" {
  * Method:    sin
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_sin(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_sin(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 
 /**
@@ -29,55 +29,55 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_sin(
  * Method:    cos
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_cos(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_cos(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_ice1000_math_Trigonometric
  * Method:    tan
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_tan(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_tan(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_ice1000_math_Trigonometric
  * Method:    cot
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_cot(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_cot(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_ice1000_math_Trigonometric
  * Method:    csc
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_csc(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_csc(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_ice1000_math_Trigonometric
  * Method:    sec
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_Trigonometric_sec(
+JNIEXPORT auto JNICALL Java_org_ice1000_math_Trigonometric_sec(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 #ifdef __cplusplus
 }

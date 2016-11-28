@@ -25,52 +25,59 @@
 #define __lowbit(x) ((x) & (-(x)))
 #endif /// __lowbit
 
+#define __JNI__FUNCTION__INIT__ \
+auto option = new jboolean(false);
+
+#define __JNI__FUNCTION__CLEAN__ \
+delete option;
+
 #ifdef __cplusplus
 extern "C" {
-#endif
+#endif /// __cplusplus
 
 namespace ice1000_bit {
 	jlong lowbit(const jlong);
 
-	void add(
+	auto add(
 			jlong *,
 			jint,
 			jint,
 			jlong
-	);
+	) -> void;
 
-	jlong sum(
+	auto sum(
 			jlong *,
 			jint
-	);
+	) -> jlong;
 }
 
 namespace ice1000_math {
-	jdouble sin_ice(const jdouble);
+	auto sin_ice(const jdouble) -> jdouble;
 
-	jdouble cos_ice(const jdouble);
+	auto cos_ice(const jdouble) -> jdouble;
 
-	jdouble tan_ice(const jdouble);
+	auto tan_ice(const jdouble) -> jdouble;
 
-	jdouble cot_ice(const jdouble);
+	auto cot_ice(const jdouble) -> jdouble;
 
-	jdouble csc_ice(const jdouble);
+	auto csc_ice(const jdouble) -> jdouble;
 
-	jdouble sec_ice(const jdouble);
+	auto sec_ice(const jdouble) -> jdouble;
 
-	jfloat sqrt_carmack(jfloat);
+	auto sqrt_carmack(jfloat) -> jfloat;
 
-	jdouble sqrt_strict(const jdouble);
+	auto sqrt_strict(const jdouble) -> jdouble;
 
-	jlong gcd(jlong, jlong);
+	auto gcd(jlong, jlong) -> jlong;
 
-	jlong fast_plus(jlong, jlong, jlong);
+	auto fast_plus(jlong, jlong, jlong) -> jlong;
 
-	jlong fast_power(jlong, jlong, jlong);
+	auto fast_power(jlong, jlong, jlong) -> jlong;
 
-	jdouble ln_ice(const jdouble);
+	auto ln_ice(const jdouble) -> jdouble;
 
-	jdouble lg_ice(const jdouble);
+	auto lg_ice(const jdouble) -> jdouble;
+
 }
 
 // namespace ice1000_util {
@@ -80,7 +87,7 @@ namespace ice1000_math {
 // }
 
 namespace ice1000_uset {
-	jint find(jint *, jint);
+	auto find(jint *, jint) -> jint;
 
 	/// changed implementation into Java code
 	// void merge(jint *, jint, jint);
