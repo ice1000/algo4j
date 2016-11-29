@@ -55,19 +55,29 @@ namespace ice1000_util {
 	};
 
 	template<typename T>
-	void swap (T &a, T &b) {
+	auto swap (T &a, T &b) -> void {
 		T c = a;
 		a = b;
 		b = c;
 	}
 
+	template<typename T>
+	auto max(const T &a, const T &b) -> T {
+	  return a < b ? b : a;
+	}
+
+	template<typename T>
+	auto max(const T &a, const T &b) -> T {
+	  return a < b ? a : b;
+	}
+
 // 日了狗了 实在不行我就硬编码类型进去 md
 
 	template<typename T>
-	void __quick_sort_core (
+	auto __quick_sort_core (
 			T *array,
 			const jsize left,
-			const jsize right) {
+			const jsize right) -> void {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
@@ -84,11 +94,11 @@ namespace ice1000_util {
 	}
 
 	template<typename T>
-	void __quick_sort_core_with_cmp (
+	auto __quick_sort_core_with_cmp (
 			T *array,
 			const jsize left,
 			const jsize right,
-			bool (*compare) (const T &, const T &)) {
+			bool (*compare) (const T &, const T &)) -> void {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
@@ -105,24 +115,24 @@ namespace ice1000_util {
 	}
 
 	template<typename T>
-	void quick_sort (
+	auto quick_sort (
 			T *array,
-			const jsize length) {
+			const jsize length) -> void {
 		__quick_sort_core(array, 0, length - 1);
 	}
 
 	template<typename T>
-	void quick_sort_with_cmp (
+	auto quick_sort_with_cmp (
 			T *array,
 			const jsize length,
-			bool (*compare) (const T &, const T &)) {
+			bool (*compare) (const T &, const T &)) -> void {
 		__quick_sort_core_with_cmp(array, 0, length - 1, compare);
 	}
 
 	template<typename T>
-	void bubble_sort (
+	auto bubble_sort (
 			T *array,
-			const jsize length) {
+			const jsize length) -> void {
 		for (auto i = length - 1; i > 0; --i) {
 			for (auto j = 0; j < i; ++j) {
 				if (array[j] > array[i]) swap(array[i], array[j]);
@@ -131,10 +141,10 @@ namespace ice1000_util {
 	}
 
 	template<typename T>
-	void bubble_sort_with_cmp (
+	auto bubble_sort_with_cmp (
 			T *array,
 			const jsize length,
-			bool (*compare) (const T &, const T &)) {
+			bool (*compare) (const T &, const T &)) -> void {
 		for (auto i = length - 1; i > 0; --i) {
 			for (auto j = 0; j < i; ++j) {
 				if (compare(array[j], array[i]) < 0) swap(array[i], array[j]);
@@ -145,7 +155,7 @@ namespace ice1000_util {
 	/// 离散化
 	/// discretization is to reduce the range of data
 	template<typename T>
-	T *discretization (T *data, const jsize len) {
+	auto *discretization (T *data, const jsize len) -> T {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len];
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
