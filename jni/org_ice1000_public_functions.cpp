@@ -99,7 +99,7 @@ jlong ice1000_math::fast_plus(jlong a, jlong b, jlong m) {
 	return ret;
 }
 
-jlong ice1000_math::fast_power(jlong a, jlong b, jlong m) {
+auto ice1000_math::fast_power(jlong a, jlong b, jlong m) -> jlong{
 	jlong ret = 1;
 	while (b) {
 		if (b & 1) ret = ice1000_math::fast_plus(ret, a, m);
@@ -109,7 +109,16 @@ jlong ice1000_math::fast_power(jlong a, jlong b, jlong m) {
 	return ret;
 }
 
-jint ice1000_uset::find(jint *data, jint n) {
+auto ice1000_math::is_prime(const jlong num) -> bool {
+	auto x = num;
+	for (auto a = 2; a * a <= num; ++a) {
+	  if (!(num % a))
+	    return false;
+	}
+	return true;
+}
+
+auto ice1000_uset::find(jint *data, jint n) -> jint{
 	return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
 }
 

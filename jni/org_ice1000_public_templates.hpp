@@ -63,12 +63,12 @@ namespace ice1000_util {
 
 	template<typename T>
 	auto max(const T &a, const T &b) -> T {
-	  return a < b ? b : a;
+		return a < b ? b : a;
 	}
 
 	template<typename T>
 	auto max(const T &a, const T &b) -> T {
-	  return a < b ? a : b;
+		return a < b ? a : b;
 	}
 
 // 日了狗了 实在不行我就硬编码类型进去 md
@@ -84,10 +84,10 @@ namespace ice1000_util {
 		T standard = array[left];
 		while (i < j) {
 			while ((i <= j) and (standard < array[j] or standard == array[j])) --j;
-			array[i] = array[j];
 			while ((i <= j) and !(standard < array[i])) ++i;
-			array[j] = array[i];
+			swap(array[i], array[j]);
 		}
+		array[left] = array[i];
 		array[i] = standard;
 		__quick_sort_core(array, left, i - 1);
 		__quick_sort_core(array, i + 1, right);
@@ -105,10 +105,10 @@ namespace ice1000_util {
 		T standard = array[left];
 		while (i < j) {
 			while ((i < j) and compare(standard, array[j]) >= 0) --j;
-			array[i] = array[j];
 			while ((i < j) and compare(standard, array[i]) <= 0) ++i;
-			array[j] = array[i];
+			swap(array[i], array[j]);
 		}
+		array[left] = array[i];
 		array[i] = standard;
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
 		__quick_sort_core_with_cmp(array, i + 1, right, compare);
