@@ -3,6 +3,11 @@
 //
 
 #include <jni.h>
+#include <ostream>
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 #ifndef JNI_ORG_ICE1000_PUBLIC_TEMPLATES_HPP
 #define JNI_ORG_ICE1000_PUBLIC_TEMPLATES_HPP
@@ -51,6 +56,16 @@ namespace ice1000_util {
 
 		const bool operator!= (const Ice1000Pair &o) const {
 			return !(*this == o);
+		}
+
+		friend std::ostream &operator<<(std::ostream &os, const Ice1000Pair &pair) {
+			os << "first: " << pair.first << " second: " << pair.second;
+			return os;
+		}
+
+		friend std::istream &operator>>(std::istream &is, const Ice1000Pair &pair) {
+			is >> pair.first >> pair.second;
+			return is;
 		}
 	};
 
@@ -171,3 +186,5 @@ namespace ice1000_util {
 
 #endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
 
+
+#pragma clang diagnostic pop

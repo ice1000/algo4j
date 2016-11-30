@@ -7,7 +7,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -34,7 +34,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI 
 //	delete pair;
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -50,19 +50,19 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II 
 	// delete pair;
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI (
-		JNIEnv *,
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI(
+		JNIEnv *env,
 		jclass,
-		jfloatArray,
+		jfloatArray _data,
 		jint len) -> void {
 	__JNI__FUNCTION__INIT__
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 		JNIEnv *env,
 		jclass,
-		jdoubleArray,
+		jdoubleArray _data,
 		jint len) -> void {
 	__JNI__FUNCTION__INIT__
 	__JNI__FUNCTION__CLEAN__
@@ -75,7 +75,7 @@ ice1000_util::bubble_sort(data, len);
 #define sort_set_params _data, 0, len, data
 
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -87,7 +87,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II (
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -99,7 +99,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI (
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -116,7 +116,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI (
  * Method:    sortBubble
  * Signature: ([DI)V
  */
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -130,7 +130,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI (
 
 #undef __ice_bubble_sort__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -142,7 +142,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II (
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -151,7 +151,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI (
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -160,7 +160,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI (
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,

@@ -5,7 +5,7 @@
 #include <jni.h>
 #include <math.h>
 #include <string.h>
-#include "org_ice1000_public_templates.hpp"
+#include "templates.hpp"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
