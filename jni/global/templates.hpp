@@ -82,7 +82,7 @@ namespace ice1000_util {
 	}
 
 	template<typename T>
-	auto max(const T &a, const T &b) -> T {
+	auto min(const T &a, const T &b) -> T {
 		return a < b ? a : b;
 	}
 
