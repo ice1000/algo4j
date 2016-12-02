@@ -172,7 +172,7 @@ namespace ice1000_util {
 	template<typename T>
 	auto discretization (T *data, const jsize len) -> T* {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
-		auto after = new T[len];
+		auto after = new T[len]();
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
 		// TODO change into quick sort
 		ice1000_util::bubble_sort(pair, len);

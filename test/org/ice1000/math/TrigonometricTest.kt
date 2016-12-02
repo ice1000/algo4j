@@ -1,5 +1,6 @@
 package org.ice1000.math
 
+import org.ice1000.test.loop
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -23,9 +24,9 @@ class TrigonometricTest {
 	@Test(timeout = 100)
 	fun triangleTest() {
 		val random = Random(System.currentTimeMillis())
-		var timesOfTesting = 5000
+		val timesOfTesting = 5000
 		println("$timesOfTesting test cases")
-		while (timesOfTesting-- > 0) {
+		loop (timesOfTesting) {
 			val temp = random.nextDouble()
 			assertEquals(Trigonometric.sin(temp), java.lang.Math.sin(temp), 1e-15)
 			assertEquals(Trigonometric.cos(temp), java.lang.Math.cos(temp), 1e-15)

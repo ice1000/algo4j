@@ -5,9 +5,9 @@ if exist *.o (
 	del /f /s /q *.o
 )
 
-if exist *.res (
-	del /f /s /q *.res
-)
+REM if exist *.res (
+	REM del /f /s /q *.res
+REM )
 
 if exist *.layout (
 	del /f /s /q *.layout

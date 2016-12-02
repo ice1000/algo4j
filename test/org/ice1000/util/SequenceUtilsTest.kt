@@ -12,7 +12,7 @@ import java.util.*
  */
 class SequenceUtilsTest {
 
-	@Test(timeout = 200)
+	@Test(timeout = 500)
 	fun test() {
 		val ints = intArrayOf(33, 1, 100, 20, 43, 43)
 		SequenceUtils.discretization(ints)

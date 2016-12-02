@@ -37,7 +37,7 @@ class MathUtilsTest {
 	@Test(timeout = 500)
 	fun sqrtTime() {
 		val random = Random(System.currentTimeMillis())
-		var timesOfTesting = 1000000
+		val timesOfTesting = 1000000
 		println("$timesOfTesting test cases")
 		loop (timesOfTesting) {
 			@Suppress("DEPRECATION")
@@ -55,7 +55,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		var timesOfTesting = 1000000
 		println("$timesOfTesting test cases")
-		while (timesOfTesting-- > 0) {
+		loop (timesOfTesting) {
 			java.lang.Math.sqrt(random.nextDouble() * 10000)
 		}
 		println("test passed")
@@ -71,7 +71,7 @@ class MathUtilsTest {
 		println(java.lang.Math.sqrt(testNumber.toDouble()))
 		var timesOfTesting = 5000
 		println("$timesOfTesting test cases")
-		while (timesOfTesting-- > 0) {
+		loop (timesOfTesting) {
 			val temp = random.nextDouble()
 			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5)
 		}
