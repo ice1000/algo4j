@@ -1,5 +1,6 @@
 package org.ice1000.math
 
+import org.ice1000.test.loop
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
@@ -38,7 +39,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		var timesOfTesting = 1000000
 		println("$timesOfTesting test cases")
-		while (timesOfTesting-- > 0) {
+		loop (timesOfTesting) {
 			@Suppress("DEPRECATION")
 			MathUtils.sqrt(random.nextDouble() * 10000)
 		}
@@ -105,7 +106,7 @@ class MathUtilsTest {
 		var timeOfTest = 4000
 		println("$timeOfTest test cases")
 		val random = Random(System.currentTimeMillis())
-		while (timeOfTest-- > 0) {
+		loop (timeOfTest) {
 			val anInt = random.nextInt()
 			val aDouble = random.nextDouble()
 			val aLong = random.nextLong()
@@ -126,7 +127,7 @@ class MathUtilsTest {
 		var timeOfTest = 1000
 		println("$timeOfTest test cases")
 		val random = Random(System.currentTimeMillis())
-		while (timeOfTest-- > 0) {
+		loop (timeOfTest) {
 			val anInt = random.nextInt()
 			val anInt2 = random.nextInt()
 			val aDouble = random.nextDouble()
@@ -137,28 +138,28 @@ class MathUtilsTest {
 			val aFloat2 = random.nextFloat()
 			assertEquals(
 					MathUtils.min(anInt, anInt2).toLong(),
-					java.lang.Math.min(anInt, anInt2).toLong())
+					Math.min(anInt, anInt2).toLong())
 			assertEquals(
 					MathUtils.min(aLong, aLong2),
-					java.lang.Math.min(aLong, aLong2))
+					Math.min(aLong, aLong2))
 			assertEquals(
 					MathUtils.min(aDouble, aDouble2),
-					java.lang.Math.min(aDouble, aDouble2), 1e-15)
+					Math.min(aDouble, aDouble2), 1e-15)
 			assertEquals(
 					MathUtils.min(aFloat, aFloat2).toDouble(),
-					java.lang.Math.min(aFloat, aFloat2).toDouble(), 1e-15)
+					Math.min(aFloat, aFloat2).toDouble(), 1e-15)
 			assertEquals(
 					MathUtils.max(anInt, anInt2),
-					java.lang.Math.max(anInt, anInt2).toLong())
+					Math.max(anInt, anInt2).toLong())
 			assertEquals(
 					MathUtils.max(aLong, aLong2),
-					java.lang.Math.max(aLong, aLong2))
+					Math.max(aLong, aLong2))
 			assertEquals(
 					MathUtils.max(aDouble, aDouble2),
-					java.lang.Math.max(aDouble, aDouble2), 1e-15)
+					Math.max(aDouble, aDouble2), 1e-15)
 			assertEquals(
 					MathUtils.max(aFloat, aFloat2).toDouble(),
-					java.lang.Math.max(aFloat, aFloat2).toDouble(), 1e-15)
+					Math.max(aFloat, aFloat2).toDouble(), 1e-15)
 		}
 	}
 
@@ -167,7 +168,7 @@ class MathUtilsTest {
 		var timeOfTest = 5000
 		val random = Random(System.currentTimeMillis())
 		println("$timeOfTest test cases")
-		while (timeOfTest-- > 0) {
+		loop (timeOfTest) {
 			val temp = random.nextDouble()
 			assertEquals(
 					MathUtils.ln(temp),

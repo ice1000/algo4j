@@ -5,8 +5,12 @@ if exist *.o (
 	del /f /s /q *.o
 )
 
-if exist jni.layout (
-	del /f /s /q jni.layout
+if exist *.res (
+	del /f /s /q *.res
+)
+
+if exist *.layout (
+	del /f /s /q *.layout
 )
 
 if exist libjni.a (
@@ -21,7 +25,7 @@ if exist build (
 	rd /s /q build
 )
 
-if exist ./cpp-test (
+if exist cpp-test (
 	cd ./cpp-test
 	if exist *.exe (
 		del /f /s /q *.exe

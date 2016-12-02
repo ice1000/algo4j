@@ -170,7 +170,7 @@ namespace ice1000_util {
 	/// 离散化
 	/// discretization is to reduce the range of data
 	template<typename T>
-	auto *discretization (T *data, const jsize len) -> T {
+	auto discretization (T *data, const jsize len) -> T* {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len];
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
