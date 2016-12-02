@@ -20,6 +20,7 @@ jni/org_ice1000_util_ArrayUtils.o
 jni/org_ice1000_math_MathUtils.o
 jni/org_ice1000_graph_UnionSet.o
 jni/org_ice1000_util_Math.o
+jni/cmake-build-debug/
 jni/build/
 out/
 

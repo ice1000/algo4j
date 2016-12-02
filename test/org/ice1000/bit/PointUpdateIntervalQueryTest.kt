@@ -31,8 +31,7 @@ class PointUpdateIntervalQueryTest {
 		assertEquals(22, tree.sum(2, 6))
 	}
 
-	companion object {
-
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

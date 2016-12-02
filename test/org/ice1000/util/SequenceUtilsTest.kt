@@ -22,7 +22,7 @@ class SequenceUtilsTest {
 //		assertEquals(5, sum.query());
 	}
 
-	companion object {
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

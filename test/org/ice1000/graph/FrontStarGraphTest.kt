@@ -69,7 +69,7 @@ class FrontStarGraphTest {
 		assertEquals(6, graph.kruskal())
 	}
 
-	companion object {
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

@@ -12,7 +12,7 @@ import java.util.*
  */
 class TrigonometricTest {
 
-	companion object {
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

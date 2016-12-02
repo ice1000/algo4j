@@ -29,7 +29,7 @@ class UnionSetTest {
 		assertFalse(set.isConnected(5, 6))
 	}
 
-	companion object {
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

@@ -1,9 +1,8 @@
 package org.ice1000.bit
 
+import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
-
-import org.junit.Assert.assertEquals
 
 /**
  * Created by ice1000 on 2016/11/18.
@@ -23,7 +22,7 @@ class IntervalUpdateIntervalQueryTest {
 		assertEquals(9, bit.query(2, 3))
 	}
 
-	companion object {
+	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

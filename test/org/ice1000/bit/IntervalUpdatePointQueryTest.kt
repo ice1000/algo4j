@@ -29,7 +29,7 @@ class IntervalUpdatePointQueryTest {
 		assertEquals(6, tree.query(12))
 	}
 
-	companion object {
+	companion object Initializer {
 
 		@BeforeClass
 		@JvmStatic

@@ -179,7 +179,7 @@ class MathUtilsTest {
 		println("test passed")
 	}
 
-	companion object {
+	companion object Initializer {
 
 		@BeforeClass
 		@JvmStatic
