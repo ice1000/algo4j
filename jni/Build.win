@@ -12,8 +12,8 @@ LIBS     = -L"$(MINGWLOC)/lib" -L"$(DEVLOC)/x86_64-w64-mingw32/lib" -static-libg
 INCS     = -I"$(MINGWLOC)/include" -I"$(DEVLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"$(MINGWLOC)/include" -I"$(MINGWLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
-CXXFLAGS = $(CXXINCS) -std=gnu++11 -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -std=gnu++11 -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -ansi -std=gnu++11 -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -ansi -std=gnu++11 -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = libjni.def
 STATIC   = libjni.a

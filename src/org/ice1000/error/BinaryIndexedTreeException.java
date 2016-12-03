@@ -14,6 +14,10 @@ public final class BinaryIndexedTreeException extends RuntimeException {
 		super(message);
 	}
 
+	public static BinaryIndexedTreeException indexOutBound(int index) {
+		return new BinaryIndexedTreeException("Index " + index + " out of bound!");
+	}
+
 	public static BinaryIndexedTreeException indexOutBound() {
 		return new BinaryIndexedTreeException("Index out of bound!");
 	}

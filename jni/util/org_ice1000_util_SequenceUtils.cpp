@@ -15,23 +15,11 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI(
 	__JNI__FUNCTION__INIT__
 	auto data = env->GetLongArrayElements(_data, option);
 	auto pair = new ice1000_util::Ice1000Pair<jlong, jint>[len]();
-	auto after = new jlong[len];
-	for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
-//	std::sort(pair, pair + len);
-	ice1000_util::quick_sort(pair, len);
-	for (auto i = 0, j = 0; i < len; ++i, ++j) {
-		after[pair[i].second] = j;
-		if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
-	}
-//	for (auto i = 0; i < len; ++i) printf("%lli ", after[i]);
-//	env->SetObjectArrayElement()
-//  auto _after = env->NewLongArray((jsize)len);
-//  jlong l[] = { 3, 2, 1, 5, 4 };
+	auto after = ice1000_util::discretization(data, len);
 	env->ReleaseLongArrayElements(_data, data, 0);
 	env->SetLongArrayRegion(_data, 0, len, after);
 	__JNI__FUNCTION__CLEAN__
 	delete after;
-//	delete pair;
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II(
@@ -47,7 +35,6 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II(
 	env->SetIntArrayRegion(_data, 0, len, after);
 	__JNI__FUNCTION__CLEAN__
 	delete after;
-	// delete pair;
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI(
@@ -56,7 +43,13 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI(
 		jfloatArray _data,
 		jint len) -> void {
 	__JNI__FUNCTION__INIT__
+	auto data = env->GetFloatArrayElements(_data, option);
+	auto pair = new ice1000_util::Ice1000Pair<jfloat, jint>[len]();
+	auto after = ice1000_util::discretization(data, len);
+	env->ReleaseFloatArrayElements(_data, data, 0);
+	env->SetFloatArrayRegion(_data, 0, len, after);
 	__JNI__FUNCTION__CLEAN__
+	delete after;
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
@@ -65,7 +58,13 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 		jdoubleArray _data,
 		jint len) -> void {
 	__JNI__FUNCTION__INIT__
+	auto data = env->GetDoubleArrayElements(_data, option);
+	auto pair = new ice1000_util::Ice1000Pair<jdouble, jint>[len]();
+	auto after = ice1000_util::discretization(data, len);
+	env->ReleaseDoubleArrayElements(_data, data, 0);
+	env->SetDoubleArrayRegion(_data, 0, len, after);
 	__JNI__FUNCTION__CLEAN__
+	delete after;
 }
 
 #define __ice_bubble_sort__ \

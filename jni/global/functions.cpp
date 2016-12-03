@@ -9,7 +9,6 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-
 auto ice1000_bit::add(
 		jlong *data,
 		jint len,
@@ -17,7 +16,7 @@ auto ice1000_bit::add(
 		jlong value) -> void {
 	while (idx < len) {
 		data[idx] += value;
-		idx += __lowbit(idx);
+		idx += lowbit(idx);
 	}
 }
 
@@ -27,13 +26,13 @@ auto ice1000_bit::sum(
 	jlong ret = 0;
 	while (idx > 0) {
 		ret += data[idx];
-		idx -= __lowbit(idx);
+		idx -= lowbit(idx);
 	}
 //	delete data;
 	return ret;
 }
 
-auto ice1000_bit::lowbit(const jlong x) -> jlong {
+constexpr auto ice1000_bit::lowbit(const jlong x) -> jlong {
 	return __lowbit(x);
 }
 

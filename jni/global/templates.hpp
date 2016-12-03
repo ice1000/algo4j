@@ -4,6 +4,7 @@
 
 #include <jni.h>
 #include <ostream>
+#include <istream>
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
@@ -20,69 +21,64 @@ namespace ice1000_util {
 		T1 first;
 		T2 second;
 
-		Ice1000Pair (const T1 &f, const T2 &s) : first(f), second(s) {}
+		Ice1000Pair (const T1 &f = NULL, const T2 &s = NULL) : first(f), second(s) { }
 
-		Ice1000Pair () {}
-
-		~Ice1000Pair () {
-			delete &first;
-			delete &second;
-		}
+		~Ice1000Pair () { }
 
 		void setValue (const T1 &f, const T2 &s) {
 			first = f;
 			second = s;
 		}
 
-		const bool operator< (const Ice1000Pair &o) const {
+		constexpr auto operator< (const Ice1000Pair &o) const -> const bool {
 			return first == o.first ? second < o.second : first < o.first;
 		}
 
-		const bool operator== (const Ice1000Pair &o) const {
+		constexpr auto operator== (const Ice1000Pair &o) const -> const bool {
 			return first == o.first and second == o.second;
 		}
 
-		const bool operator<= (const Ice1000Pair &o) const {
+		constexpr auto operator<= (const Ice1000Pair &o) const -> const bool {
 			return *this < o or *this == o;
 		}
 
-		const bool operator> (const Ice1000Pair &o) const {
+		constexpr auto operator> (const Ice1000Pair &o) const -> const bool {
 			return !(*this <= o);
 		}
 
-		const bool operator>= (const Ice1000Pair &o) const {
+		constexpr auto operator>= (const Ice1000Pair &o) const -> const bool {
 			return !(*this < o);
 		}
 
-		const bool operator!= (const Ice1000Pair &o) const {
+		constexpr const bool operator!= (const Ice1000Pair &o) const {
 			return !(*this == o);
 		}
 
-		friend std::ostream &operator<<(std::ostream &os, const Ice1000Pair &pair) {
+		friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream& {
 			os << "first: " << pair.first << " second: " << pair.second;
 			return os;
 		}
 
-		friend std::istream &operator>>(std::istream &is, const Ice1000Pair &pair) {
+		friend auto operator>>(std::istream &is, const Ice1000Pair &pair) -> std::istream& {
 			is >> pair.first >> pair.second;
 			return is;
 		}
 	};
 
 	template<typename T>
-	auto swap (T &a, T &b) -> void {
+	constexpr auto swap (T &a, T &b) -> void {
 		T c = a;
 		a = b;
 		b = c;
 	}
 
 	template<typename T>
-	auto max(const T &a, const T &b) -> T {
+	constexpr auto max(const T &a, const T &b) -> T {
 		return a < b ? b : a;
 	}
 
 	template<typename T>
-	auto min(const T &a, const T &b) -> T {
+	constexpr auto min(const T &a, const T &b) -> T {
 		return a < b ? a : b;
 	}
 
@@ -98,7 +94,7 @@ namespace ice1000_util {
 		auto j = right;
 		T standard = array[left];
 		while (i < j) {
-			while ((i <= j) and (standard < array[j] or standard == array[j])) --j;
+			while ((i <= j) and (standard < array[j])) --j;
 			while ((i <= j) and !(standard < array[i])) ++i;
 			swap(array[i], array[j]);
 		}
@@ -119,8 +115,8 @@ namespace ice1000_util {
 		auto j = right;
 		T standard = array[left];
 		while (i < j) {
-			while ((i < j) and compare(standard, array[j]) >= 0) --j;
-			while ((i < j) and compare(standard, array[i]) <= 0) ++i;
+			while ((i <= j) and compare(standard, array[j]) < 0) --j;
+			while ((i <= j) and compare(standard, array[i]) >= 0) ++i;
 			swap(array[i], array[j]);
 		}
 		array[left] = array[i];
@@ -150,7 +146,7 @@ namespace ice1000_util {
 			const jsize length) -> void {
 		for (auto i = length - 1; i > 0; --i) {
 			for (auto j = 0; j < i; ++j) {
-				if (array[j] > array[i]) swap(array[i], array[j]);
+				if (!(array[j] < array[i])) swap(array[i], array[j]);
 			}
 		}
 	}
@@ -164,6 +160,37 @@ namespace ice1000_util {
 			for (auto j = 0; j < i; ++j) {
 				if (compare(array[j], array[i]) < 0) swap(array[i], array[j]);
 			}
+		}
+	}
+
+	template<typename T>
+	auto insertion_sort (
+			T *array,
+			const jsize length) -> void {
+		for (auto i = 1; i < length; ++i) {
+			auto j = i - 1;
+			auto key = array[i];
+			while (j >= 0 and array[j] > key) {
+				array[j + 1] = array[j];
+				--j;
+			}
+			array[j + 1] = key;
+		}
+	}
+
+	template<typename T>
+	auto insertion_sort_with_cmp (
+			T *array,
+			const jsize length,
+			bool (*compare) (const T &, const T &)) -> void {
+		for (auto i = 1; i < length; ++i) {
+			auto j = i - 1;
+			auto key = array[i];
+			while (j >= 0 and compare(array[j], key) > 0) {
+				array[j + 1] = array[j];
+				--j;
+			}
+			array[j + 1] = key;
 		}
 	}
 

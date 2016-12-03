@@ -5,6 +5,36 @@ if exist *.o (
 	del /f /s /q *.o
 )
 
+cd bit
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
+cd global
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
+cd graph
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
+cd math
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
+cd util
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
 REM if exist *.res (
 	REM del /f /s /q *.res
 REM )
@@ -13,16 +43,24 @@ if exist *.layout (
 	del /f /s /q *.layout
 )
 
-if exist libjni.a (
-	del /f /s /q libjni.a
+if exist *.a (
+	del /f /s /q *.a
 )
 
-if exist libjni.def (
-	del /f /s /q libjni.def
+if exist *.def (
+	del /f /s /q *.def
+)
+
+if exist *.exe (
+	del /f /s /q *.exe
 )
 
 if exist build (
 	rd /s /q build
+)
+
+if exist cmake-build-debug (
+	rd /s /q cmake-build-debug
 )
 
 if exist cpp-test (

@@ -39,7 +39,7 @@ public class BinaryIndexedTree {
 	 * @return summary value, from 1 to index
 	 */
 	public long sum(int index) {
-		if (index > length || index < 1) throw BinaryIndexedTreeException.indexOutBound();
+		if (index > length || index < 1) throw BinaryIndexedTreeException.indexOutBound(index);
 		return sum(data, length, index);
 	}
 

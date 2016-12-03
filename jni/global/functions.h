@@ -36,7 +36,7 @@ extern "C" {
 #endif /// __cplusplus
 
 namespace ice1000_bit {
-	jlong lowbit(const jlong);
+	constexpr auto lowbit(const jlong) -> jlong;
 
 	auto add(
 			jlong *,
