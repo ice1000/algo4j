@@ -14,7 +14,7 @@ public final class FrontStarGraph {
 	private long[] next;
 	private long[] head;
 	private long[] target;
-	private long[] departure;
+	private long[] depart;
 	private long[] value;
 	private int nodeCount;
 	private int edgeCount;
@@ -29,12 +29,12 @@ public final class FrontStarGraph {
 		this.edgeCount = edgeCount;
 		value = new long[edgeCount];
 		target = new long[edgeCount];
-		departure = new long[edgeCount];
+		depart = new long[edgeCount];
 		next = new long[edgeCount];
 		head = new long[nodeCount];
 		Arrays.fill(next, -1);
 		Arrays.fill(head, -1);
-		// there's no need to initialize departure.
+		// there's no need to initialize depart.
 	}
 
 	public void addEdge(int from, int to, int val) {
@@ -45,7 +45,7 @@ public final class FrontStarGraph {
 				from == to)
 			throw FrontStarGraphException.numberInvalid();
 		target[addingEdgeIndex] = to;
-		departure[addingEdgeIndex] = from;
+		depart[addingEdgeIndex] = from;
 		value[addingEdgeIndex] = val;
 		next[addingEdgeIndex] = head[from];
 		head[from] = addingEdgeIndex++;
@@ -95,7 +95,7 @@ public final class FrontStarGraph {
 	 * @return the length of the minimum spanning tree
 	 */
 	public long kruskal() {
-		return kruskal(next, head, target, departure, value, edgeCount, nodeCount);
+		return kruskal(next, head, target, depart, value, edgeCount, nodeCount);
 	}
 
 	/**

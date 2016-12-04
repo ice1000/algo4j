@@ -166,4 +166,22 @@ public final class MathUtils {
 	 * @return lg(a), base is 10
 	 */
 	public static native double lg(double a);
+
+	/**
+	 * This function returns true if a is a prime number.
+	 * Mention that if a is 1 or 0, it will return false.
+	 * If a is a positive number, it will always return false.
+	 *
+	 * @param a an integer number
+	 * @return if a is a prime number, returns true.
+	 */
+	public static native boolean isPrime(long a);
+
+	/**
+	 * return an array of primes.
+	 *
+	 * @param count the number of primes
+	 * @return an array of primes
+	 */
+	public static native long[] getPrimes(int count);
 }

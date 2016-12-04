@@ -37,27 +37,52 @@ class PointUpdateIntervalQueryTest {
 	@Test(timeout = 1000)
 	fun strongTest() {
 		val max = 300
-		val bruteForce = LongArray(max)
+		val bruteForce = BruteForce(max)
 		val bit = BinaryIndexedTree(max)
 		val rand = Random(System.currentTimeMillis())
-		loop(10000) {
-			val index = rand.nextInt(max - 2) + 2
-			val value = rand.nextLong()
-			bruteForce[index] += value
-			bit.add(index, value)
-		}
-		loop(10000) {
-			var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			if (num2 < num1) {
-				val tmp = num1
-				num1 = num2
-				num2 = tmp
+		loop(1000) {
+			loop(10) {
+				val index = rand.nextInt(max - 2) + 2
+				val value = rand.nextLong()
+				bruteForce.add(index, value)
+				bit.add(index, value)
 			}
-			var res = 0L
-			(num1..num2).forEach { i -> res += bruteForce[i] }
-			assertEquals(res, bit.sum(num1, num2))
+			loop(10) {
+				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				if (num2 < num1) {
+					val tmp = num1
+					num1 = num2
+					num2 = tmp
+				}
+				assertEquals(bruteForce.sum(num1, num2), bit.sum(num1, num2))
+			}
 		}
+	}
+
+	/**
+	 * brute force implementation of binary indexed tree.
+	 */
+	private inner class BruteForce(length: Int) {
+		private val data = LongArray(length)
+
+		/**
+		 * standard add operation
+		 */
+		fun add(index: Int, value: Long) {
+			data[index] += value
+		}
+
+		/**
+		 * standard sum operation
+		 */
+		fun sum(from: Int, to: Int): Long {
+			var ret = 0L
+			(from..to).forEach { i -> ret += data[i] }
+			return ret
+		}
+
+		fun sum(index: Int) = sum(1, index)
 	}
 
 	companion object Initializer {

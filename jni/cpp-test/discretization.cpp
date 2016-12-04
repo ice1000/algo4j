@@ -28,6 +28,7 @@ auto main(int argc, const char *argv[]) -> int {
   }
   cout << endl;
   cout << "should be:\n" << "0 2 3 5 4 9 7 8 10 6 1" << endl;
+  delete[] pair;
 //  delete pair;
   delete after;
   return 0;

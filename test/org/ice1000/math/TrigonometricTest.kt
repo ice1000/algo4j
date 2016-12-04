@@ -25,7 +25,7 @@ class TrigonometricTest {
 	fun triangleTest() {
 		val random = Random(System.currentTimeMillis())
 		val timesOfTesting = 5000
-		println("$timesOfTesting test cases")
+		println("$timesOfTesting discretizationTest cases")
 		loop (timesOfTesting) {
 			val temp = random.nextDouble()
 			assertEquals(Trigonometric.sin(temp), java.lang.Math.sin(temp), 1e-15)
@@ -36,7 +36,7 @@ class TrigonometricTest {
 			assertEquals(Trigonometric.cos(temp) * Trigonometric.sec(temp), 1.0, 1e-15)
 			assertEquals(Trigonometric.sin(temp) * Trigonometric.csc(temp), 1.0, 1e-15)
 		}
-		println("test passed")
+		println("discretizationTest passed")
 	}
 
 }

@@ -1,8 +1,7 @@
 package org.ice1000.math
 
-import org.ice1000.test.loop
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.ice1000.test.test
+import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
 import java.util.*
@@ -14,12 +13,12 @@ import java.util.*
  */
 class MathUtilsTest {
 
-	@Test
+	@Test(timeout = 100)
 	fun basic() {
-		assertEquals(4, (2 + 2).toLong())
+		assertEquals(4, 2L + 2L)
 	}
 
-	@Test
+	@Test(timeout = 100)
 	fun gcd() {
 		assertEquals(MathUtils.gcd(12, 15), 3)
 		assertEquals(MathUtils.gcd(12, 16), 4)
@@ -27,59 +26,55 @@ class MathUtilsTest {
 		assertEquals(MathUtils.gcd(100, 1000), 100)
 		assertEquals(MathUtils.gcd(1000, 100), 100)
 		assertEquals(MathUtils.gcd(1, 1), 1)
-		println("test passed")
+		println("discretizationTest passed")
 	}
 
 	/**
 	 * 2.5e-4ms per calc
 	 */
-	@SuppressWarnings("deprecation")
 	@Test(timeout = 500)
 	fun sqrtTime() {
 		val random = Random(System.currentTimeMillis())
-		val timesOfTesting = 1000000
-		println("$timesOfTesting test cases")
-		loop (timesOfTesting) {
+		test(1000000) {
 			@Suppress("DEPRECATION")
-			MathUtils.sqrt(random.nextDouble() * 10000)
+			MathUtils.sqrtStrict(random.nextDouble() * 10000)
 		}
-		println("test passed")
+		println("discretizationTest passed")
 	}
 
 	/**
 	 * 2.5e-4ms per calc
 	 */
-	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Test(timeout = 100)
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	fun sqrtStdTime() {
 		val random = Random(System.currentTimeMillis())
-		var timesOfTesting = 1000000
-		println("$timesOfTesting test cases")
-		loop (timesOfTesting) {
-			java.lang.Math.sqrt(random.nextDouble() * 10000)
+		test(1000000) {
+			@Suppress("DEPRECATION")
+			MathUtils.sqrt(random.nextDouble() * 10000)
 		}
-		println("test passed")
+		println("discretizationTest passed")
 	}
 
 	@Test(timeout = 100)
 	@SuppressWarnings("deprecation")
 	fun sqrtCorrectness() {
 		val random = Random(System.currentTimeMillis())
-		val testNumber = 100
-		println(MathUtils.sqrt(testNumber.toDouble()))
-		println(MathUtils.sqrtStrict(testNumber.toDouble()))
-		println(java.lang.Math.sqrt(testNumber.toDouble()))
-		var timesOfTesting = 5000
-		println("$timesOfTesting test cases")
-		loop (timesOfTesting) {
+		val testNumber = random.nextDouble() * 10000
+		@Suppress("DEPRECATION")
+		println(MathUtils.sqrt(testNumber))
+		println(MathUtils.sqrtStrict(testNumber))
+		println(Math.sqrt(testNumber))
+		test(5000) {
 			val temp = random.nextDouble()
-			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - java.lang.Math.sqrt(temp)) < 1e-5)
+			@Suppress("DEPRECATION")
+			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - Math.sqrt(temp)) < 1e-5)
+			assertTrue(MathUtils.abs(MathUtils.sqrtStrict(temp) - Math.sqrt(temp)) < 1e-10)
 		}
-		println("test passed")
 	}
 
 	/**
-	 * fast power and fast plus test
+	 * fast power and fast plus discretizationTest
 	 *
 	 *
 	 * data:
@@ -93,9 +88,7 @@ class MathUtilsTest {
 		assertEquals(24, MathUtils.fastPower(2, 10, 1000))
 		assertEquals(12, MathUtils.fastPower(2, 9, 100))
 		assertEquals(4, MathUtils.fastPower(2, 10, 10))
-
 		assertEquals(289, MathUtils.fastPlus(233, 233, 1000))
-		println("test passed")
 	}
 
 	/**
@@ -103,10 +96,8 @@ class MathUtilsTest {
 	 */
 	@Test(timeout = 100)
 	fun absTest() {
-		var timeOfTest = 4000
-		println("$timeOfTest test cases")
 		val random = Random(System.currentTimeMillis())
-		loop (timeOfTest) {
+		test(4000) {
 			val anInt = random.nextInt()
 			val aDouble = random.nextDouble()
 			val aLong = random.nextLong()
@@ -116,7 +107,6 @@ class MathUtilsTest {
 			assertEquals(MathUtils.abs(aDouble), MathUtils.abs(aDouble), 1e-15)
 			assertEquals(MathUtils.abs(aFloat).toDouble(), MathUtils.abs(aFloat).toDouble(), 1e-15)
 		}
-		println("test passed")
 	}
 
 	/**
@@ -124,10 +114,8 @@ class MathUtilsTest {
 	 */
 	@Test(timeout = 100)
 	fun minMaxTest() {
-		var timeOfTest = 1000
-		println("$timeOfTest test cases")
 		val random = Random(System.currentTimeMillis())
-		loop (timeOfTest) {
+		test(1000) {
 			val anInt = random.nextInt()
 			val anInt2 = random.nextInt()
 			val aDouble = random.nextDouble()
@@ -165,19 +153,32 @@ class MathUtilsTest {
 
 	@Test(timeout = 50)
 	fun logTest() {
-		var timeOfTest = 5000
 		val random = Random(System.currentTimeMillis())
-		println("$timeOfTest test cases")
-		loop (timeOfTest) {
+		test(5000) {
 			val temp = random.nextDouble()
 			assertEquals(
 					MathUtils.ln(temp),
-					java.lang.Math.log(temp), 1e-15)
+					Math.log(temp), 1e-15)
 			assertEquals(
 					MathUtils.lg(temp),
-					java.lang.Math.log10(temp), 1e-15)
+					Math.log10(temp), 1e-15)
 		}
-		println("test passed")
+	}
+
+	@Test(timeout = 233)
+	fun isPrimeTest() {
+		val primes = listOf(
+				2L, 3L, 5L, 7L,
+				11L, 13L, 17L, 19L,
+				23L, 29L, 31L, 37L,
+				41L, 43L, 47L, 53L,
+				59L, 61L, 67L, 71L,
+				73L, 79L, 83L, 89L,
+				97L, 101L)
+		(0L..102L).forEach { i ->
+			if (primes.contains(i)) assertTrue(MathUtils.isPrime(i))
+			else assertFalse(MathUtils.isPrime(i))
+		}
 	}
 
 	companion object Initializer {

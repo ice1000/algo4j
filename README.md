@@ -10,9 +10,9 @@ file name|usage
 jni|C++ codes
 code_drafts|something written but not used ATM
 jni.dll|jni library
-jni/cpp-test|C++ tests
+jni/cpp-discretizationTest|C++ tests
 src|source
-test|tests
+discretizationTest|tests
 
 ## Algorithm(also data structure)
 
@@ -20,7 +20,7 @@ test|tests
 - [X] Trigonometric functions, like: sin cos tan cot sec csc
 - [X] Union set. including path compression and heuristic merge.
 - [ ] MathUtils, will be more powerful than java.lang.Math.
-- [ ] SequenceUtils, like sorting an array with different algorithm or discretization.
+- [ ] SequenceUtils, like sorting an data with different algorithm or discretization.
 - [ ] Front star graph, including shortest-path-faster-algorithm, kruskal is still in progress.
 
 Actually, every java classes are well-documented.<br/>
@@ -39,5 +39,5 @@ java port tests|Kotlin
 
 There is a README file under `jni` path, it's strongly-recommended to read that.
 
-This library is test-driven, so there are tests for every class. If you want to contribute, please offer tests for your classes.
+This library is discretizationTest-driven, so there are tests for every class. If you want to contribute, please offer tests for your classes.
 

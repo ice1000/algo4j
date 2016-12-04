@@ -82,6 +82,54 @@ public final class SequenceUtils {
 		sortQuick(data, data.length);
 	}
 
+	private static native void sortInPlace(int[] data, int length);
+
+	public static void sortInPlace(int[] data) {
+		sortInPlace(data, data.length);
+	}
+
+	private static native void sortInPlace(long[] data, int length);
+
+	public static void sortInPlace(long[] data) {
+		sortInPlace(data, data.length);
+	}
+
+	private static native void sortInPlace(float[] data, int length);
+
+	public static void sortInPlace(float[] data) {
+		sortInPlace(data, data.length);
+	}
+
+	private static native void sortInPlace(double[] data, int length);
+
+	public static void sortInPlace(double[] data) {
+		sortInPlace(data, data.length);
+	}
+
+	private static native void sortInsertion(int[] data, int length);
+
+	public static void sortInsertion(int[] data) {
+		sortInsertion(data, data.length);
+	}
+
+	private static native void sortInsertion(long[] data, int length);
+
+	public static void sortInsertion(long[] data) {
+		sortInsertion(data, data.length);
+	}
+
+	private static native void sortInsertion(float[] data, int length);
+
+	public static void sortInsertion(float[] data) {
+		sortInsertion(data, data.length);
+	}
+
+	private static native void sortInsertion(double[] data, int length);
+
+	public static void sortInsertion(double[] data) {
+		sortInsertion(data, data.length);
+	}
+
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */

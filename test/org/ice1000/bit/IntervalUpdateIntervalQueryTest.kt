@@ -28,35 +28,58 @@ class IntervalUpdateIntervalQueryTest {
 	@Test(timeout = 1000)
 	fun strongTest() {
 		val max = 300
-		val bruteForce = LongArray(max)
+		val bruteForce = BruteForce(max)
 		val bit = IntervalUpdateIntervalQuery(max)
 		val rand = Random(System.currentTimeMillis())
-		loop(10000) {
-			var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			if (num2 < num1) {
-				val tmp = num1
-				num1 = num2
-				num2 = tmp
+		loop(1000) {
+			loop(10) {
+				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				if (num2 < num1) {
+					val tmp = num1
+					num1 = num2
+					num2 = tmp
+				}
+				val value = rand.nextLong()
+				bruteForce.update(num1, num2, value)
+				bit.update(num1, num2, value)
 			}
-			val value = rand.nextLong()
-			(num1..num2).forEach { i -> bruteForce[i] += value }
-			bit.update(num1, num2, value)
-		}
-		loop(10000) {
-			var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-			if (num2 < num1) {
-				val tmp = num1
-				num1 = num2
-				num2 = tmp
+			loop(100) {
+				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				if (num2 < num1) {
+					val tmp = num1
+					num1 = num2
+					num2 = tmp
+				}
+				assertEquals(bruteForce.query(num1, num2), bit.query(num1, num2))
 			}
-			var res = 0L
-			(num1..num2).forEach { i -> res += bruteForce[i] }
-			assertEquals(res, bit.query(num1, num2))
+
 		}
 	}
 
+	/**
+	 * brute force implementation of binary indexed tree.
+	 */
+	private inner class BruteForce(length: Int) {
+		private val data = LongArray(length)
+
+		/**
+		 * standard update operation
+		 */
+		fun update(from: Int, to: Int, value: Long) {
+			(from..to).forEach { i -> data[i] += value }
+		}
+
+		/**
+		 * standard query operation
+		 */
+		fun query(from: Int, to: Int): Long {
+			var ret = 0L
+			(from..to).forEach { i -> ret += data[i] }
+			return ret
+		}
+	}
 
 	companion object Initializer {
 		@BeforeClass
