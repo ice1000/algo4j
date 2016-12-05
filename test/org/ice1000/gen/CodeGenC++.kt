@@ -14,12 +14,12 @@ private data class Type(
 )
 
 private fun exe(deep: List<Type>, className: String, methodName: String) {
-	deep.forEach { dark ->
+	deep.forEach { (type, mark) ->
 		"""
-JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3${dark.mark}(
+JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 		JNIEnv *env,
 		jclass,
-		j${dark.type}Array _data,
+		j${type}Array _data,
 		jint len) -> void {
 }
 """.print()
@@ -28,17 +28,17 @@ JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3${dark.mar
 	println()
 	println()
 	println()
-	deep.forEach { fantasy ->
+	deep.forEach { (type, mark) ->
 		"""
 /**
  * Class:     org_ice1000_$className
  * Method:    $methodName
- * Signature: ([${fantasy.mark})V
+ * Signature: ([$mark)V
  */
-JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3${fantasy.mark}(
+JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 		JNIEnv *,
 		jclass,
-		j${fantasy.type}Array,
+		j${type}Array,
 		jint
 ) -> void;
 """.print()
