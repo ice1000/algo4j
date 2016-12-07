@@ -6,8 +6,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
-OBJ      = bit/org_ice1000_bit_BinaryIndexedTree.o global/functions.o graph/org_ice1000_graph_FrontStarGraph.o graph/org_ice1000_graph_UnionSet.o math/org_ice1000_math_MathUtils.o math/org_ice1000_math_Trigonometric.o util/org_ice1000_util_SequenceUtils.o $(RES)
-LINKOBJ  = bit/org_ice1000_bit_BinaryIndexedTree.o global/functions.o graph/org_ice1000_graph_FrontStarGraph.o graph/org_ice1000_graph_UnionSet.o math/org_ice1000_math_MathUtils.o math/org_ice1000_math_Trigonometric.o util/org_ice1000_util_SequenceUtils.o $(RES)
+OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
+LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
 LIBS     = -L"$(MINGWLOC)/lib" -L"$(DEVLOC)/x86_64-w64-mingw32/lib" -static-libgcc -mwindows -s
 INCS     = -I"$(MINGWLOC)/include" -I"$(DEVLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"$(MINGWLOC)/include" -I"$(MINGWLOC)/x86_64-w64-mingw32/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"$(MINGWLOC)/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -26,7 +26,7 @@ clean: clean-custom
 	${RM} $(OBJ) $(BIN) $(DEF) $(STATIC)
 
 $(BIN): $(LINKOBJ)
-	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
+	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--println-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
 
 bit/org_ice1000_bit_BinaryIndexedTree.o: bit/org_ice1000_bit_BinaryIndexedTree.cpp
 	$(CPP) -c bit/org_ice1000_bit_BinaryIndexedTree.cpp -o bit/org_ice1000_bit_BinaryIndexedTree.o $(CXXFLAGS)

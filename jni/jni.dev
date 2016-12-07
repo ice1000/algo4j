@@ -24,7 +24,7 @@ HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
-Folders=
+Folders=bit,global,graph,math,util
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=1
@@ -51,9 +51,9 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit2]
-FileName=bit\org_ice1000_bit_BinaryIndexedTree.h
+FileName=bit\BinaryIndexedTree.h
 CompileCpp=1
-Folder=
+Folder=bit
 Compile=1
 Link=1
 Priority=1000
@@ -63,7 +63,7 @@ BuildCmd=
 [Unit3]
 FileName=global\functions.cpp
 CompileCpp=1
-Folder=
+Folder=global
 Compile=1
 Link=1
 Priority=1000
@@ -73,7 +73,7 @@ BuildCmd=
 [Unit4]
 FileName=global\functions.h
 CompileCpp=1
-Folder=
+Folder=global
 Compile=1
 Link=1
 Priority=1000
@@ -83,7 +83,7 @@ BuildCmd=
 [Unit5]
 FileName=global\templates.hpp
 CompileCpp=1
-Folder=
+Folder=global
 Compile=1
 Link=1
 Priority=1000
@@ -91,9 +91,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=graph\org_ice1000_graph_FrontStarGraph.cpp
+FileName=graph\FrontStarGraph.cpp
 CompileCpp=1
-Folder=
+Folder=graph
 Compile=1
 Link=1
 Priority=1000
@@ -101,9 +101,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=graph\org_ice1000_graph_UnionSet.cpp
+FileName=graph\UnionSet.cpp
 CompileCpp=1
-Folder=
+Folder=graph
 Compile=1
 Link=1
 Priority=1000
@@ -111,9 +111,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=math\org_ice1000_math_MathUtils.cpp
+FileName=math\MathUtils.cpp
 CompileCpp=1
-Folder=
+Folder=math
 Compile=1
 Link=1
 Priority=1000
@@ -121,9 +121,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=graph\org_ice1000_graph_FrontStarGraph.h
+FileName=graph\FrontStarGraph.h
 CompileCpp=1
-Folder=
+Folder=graph
 Compile=1
 Link=1
 Priority=1000
@@ -131,9 +131,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=graph\org_ice1000_graph_UnionSet.h
+FileName=graph\UnionSet.h
 CompileCpp=1
-Folder=
+Folder=graph
 Compile=1
 Link=1
 Priority=1000
@@ -141,9 +141,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=math\org_ice1000_math_MathUtils.h
+FileName=math\MathUtils.h
 CompileCpp=1
-Folder=
+Folder=math
 Compile=1
 Link=1
 Priority=1000
@@ -151,9 +151,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=math\org_ice1000_math_Trigonometric.h
+FileName=math\Trigonometric.h
 CompileCpp=1
-Folder=
+Folder=math
 Compile=1
 Link=1
 Priority=1000
@@ -161,9 +161,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=math\org_ice1000_math_Trigonometric.cpp
+FileName=math\Trigonometric.cpp
 CompileCpp=1
-Folder=
+Folder=math
 Compile=1
 Link=1
 Priority=1000
@@ -171,9 +171,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=util\org_ice1000_util_SequenceUtils.cpp
+FileName=util\SequenceUtils.cpp
 CompileCpp=1
-Folder=
+Folder=util
 Compile=1
 Link=1
 Priority=1000
@@ -181,9 +181,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=util\org_ice1000_util_SequenceUtils.h
+FileName=util\SequenceUtils.h
 CompileCpp=1
-Folder=
+Folder=util
 Compile=1
 Link=1
 Priority=1000
@@ -191,9 +191,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit1]
-FileName=bit\org_ice1000_bit_BinaryIndexedTree.cpp
+FileName=bit\BinaryIndexedTree.cpp
 CompileCpp=1
-Folder=
+Folder=bit
 Compile=1
 Link=1
 Priority=1000

@@ -5,17 +5,17 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
-OBJ      = bit/org_ice1000_bit_BinaryIndexedTree.o global/functions.o graph/org_ice1000_graph_FrontStarGraph.o graph/org_ice1000_graph_UnionSet.o math/org_ice1000_math_MathUtils.o math/org_ice1000_math_Trigonometric.o util/org_ice1000_util_SequenceUtils.o $(RES)
-LINKOBJ  = bit/org_ice1000_bit_BinaryIndexedTree.o global/functions.o graph/org_ice1000_graph_FrontStarGraph.o graph/org_ice1000_graph_UnionSet.o math/org_ice1000_math_MathUtils.o math/org_ice1000_math_Trigonometric.o util/org_ice1000_util_SequenceUtils.o $(RES)
+OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
+LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
 LIBS     = -L"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -mwindows
 INCS     = -I"D:/Program Files/Dev-Cpp/MinGW64/include" -I"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files/Dev-Cpp/MinGW64/include" -I"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = jni32.dll
+BIN      = jni.dll
 CXXFLAGS = $(CXXINCS) -ansi -O1 -m32 -std=gnu++11 -Wall -mwindows -DBUILDING_DLL=1
 CFLAGS   = $(INCS) -ansi -O1 -m32 -std=gnu++11 -Wall -mwindows -DBUILDING_DLL=1
 RM       = rm.exe -f
-DEF      = libjni32.def
-STATIC   = libjni32.a
+DEF      = libjni.def
+STATIC   = libjni.a
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -27,26 +27,26 @@ clean: clean-custom
 $(BIN): $(LINKOBJ)
 	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
 
-bit/org_ice1000_bit_BinaryIndexedTree.o: bit/org_ice1000_bit_BinaryIndexedTree.cpp
-	$(CPP) -c bit/org_ice1000_bit_BinaryIndexedTree.cpp -o bit/org_ice1000_bit_BinaryIndexedTree.o $(CXXFLAGS)
+bit/BinaryIndexedTree.o: bit/BinaryIndexedTree.cpp
+	$(CPP) -c bit/BinaryIndexedTree.cpp -o bit/BinaryIndexedTree.o $(CXXFLAGS)
 
 global/functions.o: global/functions.cpp
 	$(CPP) -c global/functions.cpp -o global/functions.o $(CXXFLAGS)
 
-graph/org_ice1000_graph_FrontStarGraph.o: graph/org_ice1000_graph_FrontStarGraph.cpp
-	$(CPP) -c graph/org_ice1000_graph_FrontStarGraph.cpp -o graph/org_ice1000_graph_FrontStarGraph.o $(CXXFLAGS)
+graph/FrontStarGraph.o: graph/FrontStarGraph.cpp
+	$(CPP) -c graph/FrontStarGraph.cpp -o graph/FrontStarGraph.o $(CXXFLAGS)
 
-graph/org_ice1000_graph_UnionSet.o: graph/org_ice1000_graph_UnionSet.cpp
-	$(CPP) -c graph/org_ice1000_graph_UnionSet.cpp -o graph/org_ice1000_graph_UnionSet.o $(CXXFLAGS)
+graph/UnionSet.o: graph/UnionSet.cpp
+	$(CPP) -c graph/UnionSet.cpp -o graph/UnionSet.o $(CXXFLAGS)
 
-math/org_ice1000_math_MathUtils.o: math/org_ice1000_math_MathUtils.cpp
-	$(CPP) -c math/org_ice1000_math_MathUtils.cpp -o math/org_ice1000_math_MathUtils.o $(CXXFLAGS)
+math/MathUtils.o: math/MathUtils.cpp
+	$(CPP) -c math/MathUtils.cpp -o math/MathUtils.o $(CXXFLAGS)
 
-math/org_ice1000_math_Trigonometric.o: math/org_ice1000_math_Trigonometric.cpp
-	$(CPP) -c math/org_ice1000_math_Trigonometric.cpp -o math/org_ice1000_math_Trigonometric.o $(CXXFLAGS)
+math/Trigonometric.o: math/Trigonometric.cpp
+	$(CPP) -c math/Trigonometric.cpp -o math/Trigonometric.o $(CXXFLAGS)
 
-util/org_ice1000_util_SequenceUtils.o: util/org_ice1000_util_SequenceUtils.cpp
-	$(CPP) -c util/org_ice1000_util_SequenceUtils.cpp -o util/org_ice1000_util_SequenceUtils.o $(CXXFLAGS)
+util/SequenceUtils.o: util/SequenceUtils.cpp
+	$(CPP) -c util/SequenceUtils.cpp -o util/SequenceUtils.o $(CXXFLAGS)
 
 jni_private.res: jni_private.rc 
 	$(WINDRES) -i jni_private.rc -F pe-i386 --input-format=rc -o jni_private.res -O coff 
