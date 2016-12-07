@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016/11/19.
 ///
 
-#include "org_ice1000_graph_FrontStarGraph.h"
+#include "FrontStarGraph.h"
 
 JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 		JNIEnv *env,

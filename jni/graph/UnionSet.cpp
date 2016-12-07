@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016/11/19.
 ///
 
-#include "org_ice1000_graph_UnionSet.h"
+#include "UnionSet.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

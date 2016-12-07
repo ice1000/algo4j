@@ -21,36 +21,40 @@ namespace ice1000_util {
 		T1 first;
 		T2 second;
 
-		Ice1000Pair (const T1 &f = NULL, const T2 &s = NULL) : first(f), second(s) { }
+		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+		
+		explicit Ice1000Pair(const T1 &o) : first(o), second(static_cast<T2>(o)) { };
 
-		~Ice1000Pair () { }
+		explicit Ice1000Pair() { }
 
-		void setValue (const T1 &f, const T2 &s) {
+		~Ice1000Pair() { }
+
+		void setValue(const T1 &f, const T2 &s) {
 			first = f;
 			second = s;
 		}
 
-		constexpr auto operator< (const Ice1000Pair &o) const -> const bool {
+		constexpr auto operator<(const Ice1000Pair &o) const -> const bool {
 			return first == o.first ? second < o.second : first < o.first;
 		}
 
-		constexpr auto operator== (const Ice1000Pair &o) const -> const bool {
+		constexpr auto operator==(const Ice1000Pair &o) const -> const bool {
 			return first == o.first and second == o.second;
 		}
 
-		constexpr auto operator<= (const Ice1000Pair &o) const -> const bool {
+		constexpr auto operator<=(const Ice1000Pair &o) const -> const bool {
 			return *this < o or *this == o;
 		}
 
-		constexpr auto operator> (const Ice1000Pair &o) const -> const bool {
+		constexpr auto operator>(const Ice1000Pair &o) const -> const bool {
 			return !(*this <= o);
 		}
 
-		constexpr auto operator>= (const Ice1000Pair &o) const -> const bool {
+		constexpr auto operator>=(const Ice1000Pair &o) const -> const bool {
 			return !(*this < o);
 		}
 
-		constexpr const bool operator!= (const Ice1000Pair &o) const {
+		constexpr const bool operator!=(const Ice1000Pair &o) const {
 			return !(*this == o);
 		}
 
@@ -59,7 +63,7 @@ namespace ice1000_util {
 			return os;
 		}
 
-		friend auto operator>>(std::istream &is, const Ice1000Pair &pair) -> std::istream& {
+		friend auto operator>>(std::istream &is, Ice1000Pair &pair) -> std::istream& {
 			is >> pair.first >> pair.second;
 			return is;
 		}
@@ -92,14 +96,12 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
-		T standard = array[left];
 		while (i < j) {
-			while ((i <= j) and (standard < array[j])) --j;
-			while ((i <= j) and !(standard < array[i])) ++i;
+			while ((i <= j) and  (array[left] < array[j])) --j;
+			while ((i <= j) and !(array[left] < array[i])) ++i;
 			swap(array[i], array[j]);
 		}
-		array[left] = array[i];
-		array[i] = standard;
+		swap(array[left], array[i]);
 		__quick_sort_core(array, left, i - 1);
 		__quick_sort_core(array, i + 1, right);
 	}
@@ -113,14 +115,12 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
-		T standard = array[left];
 		while (i < j) {
-			while ((i <= j) and compare(standard, array[j]) < 0) --j;
-			while ((i <= j) and compare(standard, array[i]) >= 0) ++i;
+			while ((i <= j) and compare(array[left], array[j]) < 0) --j;
+			while ((i <= j) and compare(array[left], array[i]) >= 0) ++i;
 			swap(array[i], array[j]);
 		}
-		array[left] = array[i];
-		array[i] = standard;
+		swap(array[left], array[i]);
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
 		__quick_sort_core_with_cmp(array, i + 1, right, compare);
 	}
@@ -192,6 +192,21 @@ namespace ice1000_util {
 			}
 			array[j + 1] = key;
 		}
+	}
+
+	template<typename T>
+	auto in_place_sort(
+			T *array,
+			const jsize length) -> void {
+		//
+	}
+
+	template<typename T>
+	auto in_place_sort_with_cmp(
+			T *array,
+			const jsize length,
+			bool (*compare) (const T &, const T &)) -> void {
+		//
 	}
 
 	/// 离散化

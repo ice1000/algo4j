@@ -156,6 +156,102 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
 		jint
 ) -> void;
 
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInPlace
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInPlace
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInPlace
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInPlace
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInsertion
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInsertion
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInsertion
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortInsertion
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

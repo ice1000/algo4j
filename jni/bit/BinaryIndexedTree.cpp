@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016.11.16
 ///
 
-#include "org_ice1000_bit_BinaryIndexedTree.h"
+#include "BinaryIndexedTree.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

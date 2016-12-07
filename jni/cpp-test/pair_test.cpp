@@ -8,7 +8,8 @@ using ice1000_util::Ice1000Pair;
 
 auto main(int argc, const char *argv[]) -> int {
 	auto pair = *new Ice1000Pair<int, int>(233, 666);
-//	cin >> pair;
+	cout << pair << endl;
+	cin >> pair;
 	cout << pair << endl;
 	return 0;
 }

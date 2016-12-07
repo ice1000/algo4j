@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016/11/16.
 ///
 
-#include "org_ice1000_math_MathUtils.h"
+#include "MathUtils.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -84,8 +84,6 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_abs__J(
   return __abs__ice__;
 }
 
-#undef __abs__ice__
-
 #ifdef __max__ice__
 #undef __max__ice__
 #endif /// __max__ice__
@@ -123,8 +121,6 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_max__DD(
 		jdouble b) {
   return __max__ice__;
 }
-
-#undef __max__ice__
 
 #ifdef __min__ice__
 #undef __min__ice__
@@ -164,8 +160,6 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_min__DD(
   return __min__ice__;
 }
 
-#undef __min__ice__
-
 JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_ln(
 		JNIEnv *env,
 		jclass jc,
@@ -179,5 +173,16 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_lg(
 		jdouble a) {
   return lg_ice(a);
 }
+
+JNIEXPORT jboolean JNICALL Java_org_ice1000_math_MathUtils_isPrime(
+		JNIEnv *,
+		jclass,
+		jlong a) {
+	return *new jboolean(is_prime(__abs__ice__));
+}
+
+#undef __abs__ice__
+#undef __max__ice__
+#undef __min__ice__
 
 #pragma clang diagnostic pop

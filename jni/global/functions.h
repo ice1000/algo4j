@@ -79,6 +79,8 @@ namespace ice1000_math {
 	auto lg_ice(const jdouble) -> jdouble;
 
 	auto is_prime(const jlong) -> bool;
+
+	auto get_primes_simple(const jint) -> jlong*;
 }
 
 // namespace ice1000_util {

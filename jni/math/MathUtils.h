@@ -245,6 +245,18 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_lg(
 		jdouble
 );
 
+/**
+ * Class:     org_ice1000_math_MathUtils
+ * Method:    isPrime
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_ice1000_math_MathUtils_isPrime(
+		JNIEnv *,
+		jclass,
+		jlong
+);
+
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

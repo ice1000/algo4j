@@ -2,7 +2,7 @@
 /// Created by ice1000
 ///
 
-#include "org_ice1000_math_Trigonometric.h"
+#include "Trigonometric.h"
 
 using namespace ice1000_math;
 

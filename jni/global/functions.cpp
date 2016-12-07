@@ -109,11 +109,27 @@ auto ice1000_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
 }
 
 auto ice1000_math::is_prime(const jlong num) -> bool {
-	for (auto a = 2; a * a <= num; ++a) {
+	if (num < 2) return false;
+	if (num == 2) return true;
+	if (!(num & 1)) return false;
+	for (auto a = 3; a * a <= num; a += 2) {
 		if (!(num % a))
 			return false;
 	}
 	return true;
+}
+
+auto ice1000_math::get_primes_simple(const jint cnt) -> jlong* {
+	auto primes = new jlong[cnt]();
+	auto index = 0;
+	for (auto i = 2; index < cnt; ++i) {
+		auto j = 0;
+		for ( ; j < index; ++j) {
+			if (!(i % j)) break;
+		}
+		if (j >= index) primes[index++] = i;
+	}
+	return primes;
 }
 
 auto ice1000_uset::find(jint *data, jint n) -> jint {
