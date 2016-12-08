@@ -14,7 +14,8 @@ private data class Type(
 )
 
 private fun exe(deep: List<Type>, className: String, methodName: String) {
-	deep.forEach { (type, mark) ->
+	deep.forEach { dark ->
+		val (type, mark) = dark
 		"""
 JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 		JNIEnv *env,
@@ -28,7 +29,8 @@ JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 	println()
 	println()
 	println()
-	deep.forEach { (type, mark) ->
+	deep.forEach { dark ->
+		val (type, mark) = dark
 		"""
 /**
  * Class:     org_ice1000_$className

@@ -165,7 +165,7 @@ class MathUtilsTest {
 		}
 	}
 
-	@Test(timeout = 233)
+	@Test(timeout = 1000)
 	fun isPrimeTest() {
 		val primes = listOf(
 				2L, 3L, 5L, 7L,
@@ -178,6 +178,13 @@ class MathUtilsTest {
 		(0L..102L).forEach { i ->
 			if (primes.contains(i)) assertTrue(MathUtils.isPrime(i))
 			else assertFalse(MathUtils.isPrime(i))
+		}
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			assertFalse(MathUtils.isPrime(
+					((MathUtils.abs(rand.nextInt(100)) + 2) *
+							(MathUtils.abs(rand.nextInt(100)) + 2)).toLong()
+			))
 		}
 	}
 

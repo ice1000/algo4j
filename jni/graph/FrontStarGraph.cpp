@@ -85,10 +85,10 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 	auto uset = new jint[node_count]();
 	auto depth = new jint[node_count]();
 	auto edges = new FrontStarNode[edge_count]();
-	jlong min_len = 0;
-	jlong count = 0;
-	jlong find_res_1;
-	jlong find_res_2;
+	auto min_len = 0;
+	auto count = 0;
+	auto find_res_1 = 0;
+	auto find_res_2 = 0;
 	__ice_memset(depth, 0);
 	for (auto i = 0; i <= edge_count; ++i) {
 		edges[i].setValue(value[i], target[i], depature[i]);
@@ -118,7 +118,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 	delete option;
 	delete depth;
 	delete uset;
-	delete edges;
+	delete[] edges;
 	return min_len;
 }
 

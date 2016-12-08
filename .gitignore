@@ -7,20 +7,24 @@ jni/.vscode/
 
 # Compile output #
 
-jni.dll
-jni/libjni.a
-jni/libjni.def
+*.dll
+*.a
+*.def
 *.o
 
 jni/cmake-build-debug/
 jni/build/
 out/
 
-# Unneccessary files #
+Makefile.win
+
+# Unnecessary files #
 
 jni/jni.layout
+*.res
 lib/
 
 # Logs #
 
 *.log
+*.txt

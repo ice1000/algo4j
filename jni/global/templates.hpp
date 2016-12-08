@@ -96,12 +96,15 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
+		const auto temp = array[left];
 		while (i < j) {
-			while ((i <= j) and  (array[left] < array[j])) --j;
-			while ((i <= j) and !(array[left] < array[i])) ++i;
-			swap(array[i], array[j]);
+			while ((i < j) and  (temp < array[j] or temp == array[j])) --j;
+			while ((i < j) and !(temp < array[i])) ++i;
+			if (i < j)
+				swap(array[i], array[j]);
 		}
-		swap(array[left], array[i]);
+		array[left] = array[i];
+		array[i] = temp;
 		__quick_sort_core(array, left, i - 1);
 		__quick_sort_core(array, i + 1, right);
 	}
@@ -115,12 +118,15 @@ namespace ice1000_util {
 		if (left >= right) return;
 		auto i = left;
 		auto j = right;
+		const auto temp = array[left];
 		while (i < j) {
-			while ((i <= j) and compare(array[left], array[j]) < 0) --j;
-			while ((i <= j) and compare(array[left], array[i]) >= 0) ++i;
-			swap(array[i], array[j]);
+			while ((i < j) and compare(temp, array[j]) <= 0) --j;
+			while ((i < j) and compare(temp, array[i]) >= 0) ++i;
+			if (i < j)
+				swap(array[i], array[j]);
 		}
-		swap(array[left], array[i]);
+		array[left] = array[i];
+		array[i] = temp;
 		__quick_sort_core_with_cmp(array, left, i - 1, compare);
 		__quick_sort_core_with_cmp(array, i + 1, right, compare);
 	}
@@ -198,7 +204,7 @@ namespace ice1000_util {
 	auto in_place_sort(
 			T *array,
 			const jsize length) -> void {
-		//
+		// TODO
 	}
 
 	template<typename T>
@@ -206,7 +212,7 @@ namespace ice1000_util {
 			T *array,
 			const jsize length,
 			bool (*compare) (const T &, const T &)) -> void {
-		//
+		// TODOs
 	}
 
 	/// 离散化

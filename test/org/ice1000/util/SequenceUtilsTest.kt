@@ -1,5 +1,6 @@
 package org.ice1000.util
 
+import org.ice1000.test.println
 import org.ice1000.test.test
 import org.junit.Assert.assertArrayEquals
 import org.junit.BeforeClass
@@ -16,54 +17,62 @@ class SequenceUtilsTest {
 	@Test(timeout = 500)
 	fun discretizationTest() {
 		val ints = intArrayOf(33, 1, 100, 20, 43, 43)
-		SequenceUtils.discretization(ints)
-		println(Arrays.toString(ints))
-		assertArrayEquals(intArrayOf(2, 0, 4, 1, 3, 3), ints)
-//		for (int i = 0; i < sum.length - 1; i++) assertEquals(ints[i], sum.data[i+1]);
-//		assertEquals(5, sum.query());
+		val result = intArrayOf(2, 0, 4, 1, 3, 3)
+		SequenceUtils
+				.discretization(ints)
+		SequenceUtils
+				.toString(ints)
+				.println()
+		assertArrayEquals(result, ints)
+		val doubles = ints
+				.map(Int::toDouble)
+				.toDoubleArray()
+		SequenceUtils
+				.discretization(doubles)
+		SequenceUtils
+				.toString(doubles)
+				.println()
+		assertArrayEquals(
+				result
+						.map(Int::toDouble)
+						.toDoubleArray(),
+				doubles,
+				1e-10
+		)
 	}
 
-	@Test(timeout = 1000)
-	fun sortBubbleTest() {
-		test(5000) {
-			val data = shuffledArray
-			val res1 = data.toIntArray()
-			Arrays.sort(res1)
-			val res2 = data.toIntArray()
-			SequenceUtils.sortBubble(res2)
-			assertArrayEquals(res1, res2)
+	@JvmOverloads
+	fun sortTest(
+			sortInt: (IntArray) -> Unit,
+			sortDouble: (DoubleArray) -> Unit,
+			times: Int = 5000) {
+		test(times) {
+			val data1 = shuffledIntList
+			val res11 = data1.toIntArray()
+			Arrays.sort(res11)
+			val res12 = data1.toIntArray()
+			sortInt(res12)
+			assertArrayEquals(res11, res12)
+			val data2 = shuffledDoubleList
+			val res21 = data2.toDoubleArray()
+			Arrays.sort(res21)
+			val res22 = data2.toDoubleArray()
+			sortDouble(res22)
+			assertArrayEquals(res21, res22, 1e-10)
 		}
 	}
 
 	@Test(timeout = 1000)
-	fun sortInsertionTest() {
-		test(5000) {
-			val data = shuffledArray
-			val res1 = data.toIntArray()
-			Arrays.sort(res1)
-			val res2 = data.toIntArray()
-			SequenceUtils.sortInsertion(res2)
-			assertArrayEquals(res1, res2)
-		}
-	}
+	fun sortBubbleTest() =
+			sortTest(SequenceUtils::sortBubble, SequenceUtils::sortBubble)
 
 	@Test(timeout = 1000)
-	fun sortQuickTest() {
-		test(10000) {
-//			it.println()
-			val data = shuffledArray
-			val res1 = data.toIntArray()
-			Arrays.sort(res1)
-			val res2 = data.toIntArray()
-			SequenceUtils.sortQuick(res2)
-//			try {
-			assertArrayEquals(res1, res2)
-//			} catch (e: Exception) {
-//				SequenceUtils.toString(res1).println()
-//				SequenceUtils.toString(res2).println()
-//			}
-		}
-	}
+	fun sortInsertionTest() =
+			sortTest(SequenceUtils::sortInsertion, SequenceUtils::sortInsertion)
+
+	@Test(timeout = 1000)
+	fun sortQuickTest() =
+			sortTest(SequenceUtils::sortQuick, SequenceUtils::sortQuick)
 
 	companion object Initializer {
 		@BeforeClass
@@ -73,7 +82,7 @@ class SequenceUtilsTest {
 		}
 
 		val bound = 2333
-		val shuffledArray: List<Int>
+		val shuffledIntList: List<Int>
 			get() {
 				val rand = Random(System.currentTimeMillis())
 				return listOf(
@@ -87,6 +96,23 @@ class SequenceUtilsTest {
 						rand.nextInt(bound), rand.nextInt(bound), rand.nextInt(bound),
 						rand.nextInt(bound), rand.nextInt(bound), rand.nextInt(bound),
 						rand.nextInt(bound), rand.nextInt(bound), rand.nextInt(bound)
+				)
+			}
+
+		val shuffledDoubleList: List<Double>
+			get() {
+				val rand = Random(System.currentTimeMillis())
+				return listOf(
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
+						rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000
 				)
 			}
 

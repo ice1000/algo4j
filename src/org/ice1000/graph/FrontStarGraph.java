@@ -20,7 +20,10 @@ public final class FrontStarGraph {
 	private int edgeCount;
 	private int addingEdgeIndex = 0;
 
+	/** used in jni C++ port. */
 	public static final int INFINITY = 0x7f7f7f7f;
+
+	/** used in jni C++ port. */
 	public static final int INFINITY_FILLING = 0x7f;
 
 	public FrontStarGraph(int nodeCount, int edgeCount) {
@@ -37,6 +40,13 @@ public final class FrontStarGraph {
 		// there's no need to initialize depart.
 	}
 
+	/**
+	 * add an edge to this front star graph.
+	 *
+	 * @param from begin position
+	 * @param to   end position
+	 * @param val  the value of the edge
+	 */
 	public void addEdge(int from, int to, int val) {
 		if (from < 1 ||
 				to < 1 ||
@@ -79,6 +89,7 @@ public final class FrontStarGraph {
 	/**
 	 * O(n) = n * log(n)
 	 * Shortest path faster algorithm
+	 * The queue-based optimization of bellman-ford algorithm.
 	 *
 	 * @param source the begin position
 	 * @return the shortest path to each position
