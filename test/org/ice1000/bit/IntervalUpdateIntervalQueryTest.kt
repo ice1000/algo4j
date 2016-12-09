@@ -32,7 +32,7 @@ class IntervalUpdateIntervalQueryTest {
 		val bruteForce = BruteForce(max)
 		val bit = IntervalUpdateIntervalQuery(max)
 		val rand = Random(System.currentTimeMillis())
-		test(1000) {
+		test(200) {
 			loop(10) {
 				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
 				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
