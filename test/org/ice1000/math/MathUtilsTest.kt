@@ -26,7 +26,6 @@ class MathUtilsTest {
 		assertEquals(MathUtils.gcd(100, 1000), 100)
 		assertEquals(MathUtils.gcd(1000, 100), 100)
 		assertEquals(MathUtils.gcd(1, 1), 1)
-		println("discretizationTest passed")
 	}
 
 	/**
@@ -39,7 +38,6 @@ class MathUtilsTest {
 			@Suppress("DEPRECATION")
 			MathUtils.sqrtStrict(random.nextDouble() * 10000)
 		}
-		println("discretizationTest passed")
 	}
 
 	/**
@@ -53,7 +51,6 @@ class MathUtilsTest {
 			@Suppress("DEPRECATION")
 			MathUtils.sqrt(random.nextDouble() * 10000)
 		}
-		println("discretizationTest passed")
 	}
 
 	@Test(timeout = 100)

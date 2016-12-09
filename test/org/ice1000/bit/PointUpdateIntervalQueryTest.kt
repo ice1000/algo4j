@@ -2,6 +2,7 @@ package org.ice1000.bit
 
 import org.ice1000.math.MathUtils
 import org.ice1000.test.loop
+import org.ice1000.test.test
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -40,7 +41,7 @@ class PointUpdateIntervalQueryTest {
 		val bruteForce = BruteForce(max)
 		val bit = BinaryIndexedTree(max)
 		val rand = Random(System.currentTimeMillis())
-		loop(1000) {
+		test(1000) {
 			loop(10) {
 				val index = rand.nextInt(max - 2) + 2
 				val value = rand.nextLong()

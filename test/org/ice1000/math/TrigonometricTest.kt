@@ -1,6 +1,6 @@
 package org.ice1000.math
 
-import org.ice1000.test.loop
+import org.ice1000.test.test
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -21,12 +21,10 @@ class TrigonometricTest {
 		}
 	}
 
-	@Test(timeout = 100)
+	@Test(timeout = 500)
 	fun triangleTest() {
 		val random = Random(System.currentTimeMillis())
-		val timesOfTesting = 5000
-		println("$timesOfTesting discretizationTest cases")
-		loop (timesOfTesting) {
+		test(5000) {
 			val temp = random.nextDouble()
 			assertEquals(Trigonometric.sin(temp), java.lang.Math.sin(temp), 1e-15)
 			assertEquals(Trigonometric.cos(temp), java.lang.Math.cos(temp), 1e-15)
@@ -36,7 +34,6 @@ class TrigonometricTest {
 			assertEquals(Trigonometric.cos(temp) * Trigonometric.sec(temp), 1.0, 1e-15)
 			assertEquals(Trigonometric.sin(temp) * Trigonometric.csc(temp), 1.0, 1e-15)
 		}
-		println("discretizationTest passed")
 	}
 
 }

@@ -7,6 +7,8 @@
 
 #include "sort.hpp"
 
+using ice1000_sort::merge_sort;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -77,8 +79,7 @@ namespace ice1000_util {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len]();
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
-		// TODO change into quick sort
-		ice1000_sort::merge_sort(pair, len);
+		merge_sort(pair, len);
 		for (auto i = 0, j = 0; i < len; ++i, ++j) {
 			after[pair[i].second] = j;
 			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;

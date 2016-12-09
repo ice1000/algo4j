@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=1
 CompilerSettings=100000aag0000000001000000
-UnitCount=15
+UnitCount=17
 
 [VersionInfo]
 Major=1
@@ -194,6 +194,26 @@ BuildCmd=
 FileName=bit\BinaryIndexedTree.cpp
 CompileCpp=1
 Folder=bit
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=global\basics.hpp
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit17]
+FileName=global\sort.hpp
+CompileCpp=1
+Folder=global
 Compile=1
 Link=1
 Priority=1000

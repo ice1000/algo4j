@@ -1,6 +1,7 @@
 package org.ice1000.bit
 
 import org.ice1000.math.MathUtils
+import org.ice1000.test.test
 import org.ice1000.test.loop
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -38,7 +39,7 @@ class IntervalUpdatePointQueryTest {
 		val bruteForce = BruteForce(max)
 		val bit = IntervalUpdatePointQuery(max)
 		val rand = Random(System.currentTimeMillis())
-		loop(1000) {
+		test(1000) {
 			loop(10) {
 				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
 				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
