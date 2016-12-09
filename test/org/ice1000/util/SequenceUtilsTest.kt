@@ -45,7 +45,7 @@ class SequenceUtilsTest {
 	fun sortTest(
 			sortInt: (IntArray) -> Unit,
 			sortDouble: (DoubleArray) -> Unit,
-			times: Int = 5000) {
+			times: Int = 10000) {
 		test(times) {
 			val data1 = shuffledIntList
 			val res11 = data1.toIntArray()
@@ -77,6 +77,18 @@ class SequenceUtilsTest {
 	@Test(timeout = 1000)
 	fun sortMergeTest() =
 			sortTest(SequenceUtils::sortMerge, SequenceUtils::sortMerge)
+
+	@Test(timeout = 1000)
+	fun sortSelectionTest() =
+			sortTest(SequenceUtils::sortSelection, SequenceUtils::sortSelection)
+
+	@Test(timeout = 1000)
+	fun sortCombTest() =
+			sortTest(SequenceUtils::sortComb, SequenceUtils::sortComb)
+
+	@Test(timeout = 1000)
+	fun sortCocktailTest() =
+			sortTest(SequenceUtils::sortCocktail, SequenceUtils::sortCocktail)
 
 	companion object Initializer {
 		@BeforeClass

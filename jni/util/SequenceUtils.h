@@ -158,54 +158,6 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI (
 
 /**
  * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortInPlace
- * Signature: ([II)V
- */
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3II(
-		JNIEnv *,
-		jclass,
-		jintArray,
-		jint
-) -> void;
-
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortInPlace
- * Signature: ([JI)V
- */
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3JI(
-		JNIEnv *,
-		jclass,
-		jlongArray,
-		jint
-) -> void;
-
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortInPlace
- * Signature: ([FI)V
- */
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3FI(
-		JNIEnv *,
-		jclass,
-		jfloatArray,
-		jint
-) -> void;
-
-/**
- * Class:     org_ice1000_util_SequenceUtils
- * Method:    sortInPlace
- * Signature: ([DI)V
- */
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3DI(
-		JNIEnv *,
-		jclass,
-		jdoubleArray,
-		jint
-) -> void;
-
-/**
- * Class:     org_ice1000_util_SequenceUtils
  * Method:    sortInsertion
  * Signature: ([II)V
  */
@@ -294,6 +246,150 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3FI(
  * Signature: ([DI)V
  */
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortComb
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortComb
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortComb
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortComb
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortSelection
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortSelection
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortSelection
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortSelection
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortCocktail
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortCocktail
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortCocktail
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortCocktail
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3DI(
 		JNIEnv *,
 		jclass,
 		jdoubleArray,

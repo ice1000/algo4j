@@ -12,7 +12,9 @@ fun main(args: Array<String>) {
 	listOf(
 			"discretization",
 			"sortBubble",
-			"sortInPlace",
+			"sortComb",
+			"sortSelection",
+			"sortCocktail",
 			"sortInsertion",
 			"sortMerge",
 			"sortQuick"

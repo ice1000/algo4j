@@ -4,6 +4,14 @@
 
 #include "SequenceUtils.h"
 
+using ice1000_sort::insertion_sort;
+using ice1000_sort::merge_sort;
+using ice1000_sort::bubble_sort;
+using ice1000_sort::quick_sort;
+using ice1000_sort::comb_sort;
+using ice1000_sort::selection_sort;
+using ice1000_sort::cocktail_sort;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
@@ -144,47 +152,6 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI(
 
 #undef __ice1000_quick_sort
 
-#define __ice_in_place_sort(type) \
-__JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_sort::in_place_sort(data, len); \
-env->Set ## type ## ArrayRegion(_data, 0, len, data); \
-__JNI__FUNCTION__CLEAN__
-
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3II(
-		JNIEnv *env,
-		jclass,
-		jintArray _data,
-		jint len) -> void {
-	__ice_in_place_sort(Int);
-}
-
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3JI(
-		JNIEnv *env,
-		jclass,
-		jlongArray _data,
-		jint len) -> void {
-	__ice_in_place_sort(Long);
-}
-
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3FI(
-		JNIEnv *env,
-		jclass,
-		jfloatArray _data,
-		jint len) -> void {
-	__ice_in_place_sort(Float);
-}
-
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3DI(
-		JNIEnv *env,
-		jclass,
-		jdoubleArray _data,
-		jint len) -> void {
-	__ice_in_place_sort(Double);
-}
-
-#undef __ice_in_place_sort
-
 #define __ice_insertion_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
@@ -269,5 +236,128 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3DI(
 }
 
 #undef __ice_merge_sort
+
+#define __ice_comb_sort(type) \
+__JNI__FUNCTION__INIT__ \
+auto data = env->Get ## type ## ArrayElements(_data, option); \
+comb_sort(data, len); \
+env->Set ## type ## ArrayRegion(_data, 0, len, data); \
+__JNI__FUNCTION__CLEAN__
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3II(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint len) -> void {
+	__ice_comb_sort(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3JI(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data,
+		jint len) -> void {
+	__ice_comb_sort(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3FI(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data,
+		jint len) -> void {
+	__ice_comb_sort(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3DI(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data,
+		jint len) -> void {
+	__ice_comb_sort(Double);
+}
+
+#undef __ice_comb_sort
+
+#define __ice_selection_sort(type) \
+__JNI__FUNCTION__INIT__ \
+auto data = env->Get ## type ## ArrayElements(_data, option); \
+selection_sort(data, len); \
+env->Set ## type ## ArrayRegion(_data, 0, len, data); \
+__JNI__FUNCTION__CLEAN__
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3II(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint len) -> void {
+	__ice_selection_sort(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3JI(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data,
+		jint len) -> void {
+	__ice_selection_sort(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3FI(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data,
+		jint len) -> void {
+	__ice_selection_sort(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3DI(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data,
+		jint len) -> void {
+	__ice_selection_sort(Double);
+}
+
+#undef __ice_selection_sort
+
+#define __ice_cocktail_sort(type) \
+__JNI__FUNCTION__INIT__ \
+auto data = env->Get ## type ## ArrayElements(_data, option); \
+cocktail_sort(data, len); \
+env->Set ## type ## ArrayRegion(_data, 0, len, data); \
+__JNI__FUNCTION__CLEAN__
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3II(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint len) -> void {
+	__ice_cocktail_sort(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3JI(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data,
+		jint len) -> void {
+	__ice_cocktail_sort(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3FI(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data,
+		jint len) -> void {
+	__ice_cocktail_sort(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3DI(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data,
+		jint len) -> void {
+	__ice_cocktail_sort(Double);
+}
+
+#undef __ice_cocktail_sort
 
 #pragma clang diagnostic pop

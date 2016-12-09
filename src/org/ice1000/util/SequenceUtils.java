@@ -82,30 +82,6 @@ public final class SequenceUtils {
 		sortQuick(data, data.length);
 	}
 
-	private static native void sortInPlace(int[] data, int length);
-
-	public static void sortInPlace(int[] data) {
-		sortInPlace(data, data.length);
-	}
-
-	private static native void sortInPlace(long[] data, int length);
-
-	public static void sortInPlace(long[] data) {
-		sortInPlace(data, data.length);
-	}
-
-	private static native void sortInPlace(float[] data, int length);
-
-	public static void sortInPlace(float[] data) {
-		sortInPlace(data, data.length);
-	}
-
-	private static native void sortInPlace(double[] data, int length);
-
-	public static void sortInPlace(double[] data) {
-		sortInPlace(data, data.length);
-	}
-
 	private static native void sortInsertion(int[] data, int length);
 
 	public static void sortInsertion(int[] data) {
@@ -152,6 +128,78 @@ public final class SequenceUtils {
 
 	public static void sortMerge(double[] data) {
 		sortMerge(data, data.length);
+	}
+
+	public static native void sortComb(int[] data, int length);
+
+	public static void sortComb(int[] data) {
+		sortComb(data, data.length);
+	}
+
+	public static native void sortComb(long[] data, int length);
+
+	public static void sortComb(long[] data) {
+		sortComb(data, data.length);
+	}
+
+	public static native void sortComb(float[] data, int length);
+
+	public static void sortComb(float[] data) {
+		sortComb(data, data.length);
+	}
+
+	public static native void sortComb(double[] data, int length);
+
+	public static void sortComb(double[] data) {
+		sortComb(data, data.length);
+	}
+
+	public static native void sortSelection(int[] data, int length);
+
+	public static void sortSelection(int[] data) {
+		sortSelection(data, data.length);
+	}
+
+	public static native void sortSelection(long[] data, int length);
+
+	public static void sortSelection(long[] data) {
+		sortSelection(data, data.length);
+	}
+
+	public static native void sortSelection(float[] data, int length);
+
+	public static void sortSelection(float[] data) {
+		sortSelection(data, data.length);
+	}
+
+	public static native void sortSelection(double[] data, int length);
+
+	public static void sortSelection(double[] data) {
+		sortSelection(data, data.length);
+	}
+
+	public static native void sortCocktail(int[] data, int length);
+
+	public static void sortCocktail(int[] data) {
+		sortCocktail(data, data.length);
+	}
+
+	public static native void sortCocktail(long[] data, int length);
+
+	public static void sortCocktail(long[] data) {
+		sortCocktail(data, data.length);
+	}
+
+	public static native void sortCocktail(float[] data, int length);
+
+	public static void sortCocktail(float[] data) {
+		sortCocktail(data, data.length);
+	}
+
+	public static native void sortCocktail(double[] data, int length);
+
+	public static void sortCocktail(double[] data) {
+		sortCocktail(data, data.length);
 	}
 
 	/**
