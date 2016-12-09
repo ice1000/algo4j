@@ -1,4 +1,5 @@
-#include "../util/org_ice1000_util_SequenceUtils.h"
+
+#include "../util/SequenceUtils.h"
 #include <iostream>
 
 #define size 11
@@ -17,7 +18,7 @@ auto main(int argc, const char *argv[]) -> int {
     pair[i].setValue(source[i], i);
   }
   cout << "set." << endl;
-  ice1000_util::bubble_sort(pair, size);
+  ice1000_sort::bubble_sort(pair, size);
   cout << "sort." << endl;
   for (auto i = 0, j = 0; i < size; ++i, ++j) {
     after[pair[i].second] = j;

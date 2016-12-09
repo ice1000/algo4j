@@ -4,9 +4,11 @@
 #define size 10
 
 using std::cout;
+
 int arr[size] = {
     34, 43, 43, 23, 2, 43, 545, 45, 6565, 65
 };
+
 void quicksort(const int left,const int right)
 {
 	if (left>right)
@@ -29,8 +31,9 @@ void quicksort(const int left,const int right)
 	quicksort(left,i-1);
 	quicksort(i+1,right);
 }
+
 auto main(int argc, const char *argv[]) -> int {
-	ice1000_util::quick_sort<int>(arr, sizeof(arr) / sizeof(arr[0]));
+	ice1000_sort::quick_sort<int>(arr, sizeof(arr) / sizeof(arr[0]));
 //	quicksort(0, size-1);
 	for (auto i = 0;
 			i < sizeof(arr) / sizeof(decltype(arr[0]));

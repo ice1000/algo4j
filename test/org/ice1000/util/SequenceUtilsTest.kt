@@ -74,6 +74,10 @@ class SequenceUtilsTest {
 	fun sortQuickTest() =
 			sortTest(SequenceUtils::sortQuick, SequenceUtils::sortQuick)
 
+	@Test(timeout = 1000)
+	fun sortMergeTest() =
+			sortTest(SequenceUtils::sortMerge, SequenceUtils::sortMerge)
+
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic

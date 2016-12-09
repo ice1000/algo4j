@@ -98,7 +98,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 	env->ReleaseLongArrayElements(_target, target, 0);
 	env->ReleaseLongArrayElements(_depature, depature, 0);
 	env->ReleaseLongArrayElements(_value, value, 0);
-	ice1000_util::quick_sort(edges, edge_count);
+	ice1000_sort::merge_sort(edges, edge_count);
 	for (auto i = 0; i < edge_count; ++i) {
 		find_res_1 = ice1000_uset::find(uset, edges[i].from);
 		find_res_2 = ice1000_uset::find(uset, edges[i].to);

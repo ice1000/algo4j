@@ -14,11 +14,12 @@ fun main(args: Array<String>) {
 			"sortBubble",
 			"sortInPlace",
 			"sortInsertion",
+			"sortMerge",
 			"sortQuick"
 	).forEach { name ->
 		listOf("int", "long", "float", "double").forEach { type ->
 			"""
-	public static native void $name($type[] data, int length) {
+	public static native void $name($type[] data, int length);
 
 	public static void $name($type[] data) {
 		$name(data, data.length);

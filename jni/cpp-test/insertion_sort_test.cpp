@@ -3,7 +3,7 @@
 
 using std::cout;
 using std::endl;
-using ice1000_util::insertion_sort;
+using ice1000_sort::insertion_sort;
 
 auto main(int argc, const char *argv[]) -> int {
 	int a[] = { 3, 5, 2, 4 };

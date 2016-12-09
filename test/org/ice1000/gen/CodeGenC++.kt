@@ -49,7 +49,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 
 fun main(args: Array<String>) {
 	val className = "util_SequenceUtils"
-	val methodName = "sortInsertion"
+	val methodName = "sortMerge"
 	exe(listOf(
 			Type("int", "II"),
 			Type("long", "JI"),

@@ -10,8 +10,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-#ifndef JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
-#define JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
+#ifndef __ICE1000_FUNCTIONS_H__
+#define __ICE1000_FUNCTIONS_H__
 
 /// 0x5F3759DF thank you Carmack
 #undef org_ice1000_util_Math_MAGIC_NUMBER
@@ -98,6 +98,6 @@ namespace ice1000_uset {
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
-#endif /// JNI_ORG_ICE1000_PUBLIC_FUNCTIONS_H
+#endif /// __ICE1000_FUNCTIONS_H__
 
 #pragma clang diagnostic pop

@@ -252,6 +252,54 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3DI(
 		jint
 ) -> void;
 
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortMerge
+ * Signature: ([II)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortMerge
+ * Signature: ([JI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortMerge
+ * Signature: ([FI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> void;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    sortMerge
+ * Signature: ([DI)V
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> void;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

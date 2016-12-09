@@ -65,7 +65,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 #define __ice_bubble_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_util::bubble_sort(data, len); \
+ice1000_sort::bubble_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -106,7 +106,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI(
 #define __ice1000_quick_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_util::quick_sort(data, len); \
+ice1000_sort::quick_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -144,47 +144,51 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI(
 
 #undef __ice1000_quick_sort
 
-#define __ice1000_in_place_sort(type) \
+#define __ice_in_place_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_util::in_place_sort(data, len); \
+ice1000_sort::in_place_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3II(
 		JNIEnv *env,
 		jclass,
-		jintArray,
-		jint) -> void {
+		jintArray _data,
+		jint len) -> void {
+	__ice_in_place_sort(Int);
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3JI(
-		JNIEnv *,
+		JNIEnv *env,
 		jclass,
-		jlongArray,
-		jint) -> void {
+		jlongArray _data,
+		jint len) -> void {
+	__ice_in_place_sort(Long);
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3FI(
-		JNIEnv *,
+		JNIEnv *env,
 		jclass,
-		jfloatArray,
-		jint) -> void {
+		jfloatArray _data,
+		jint len) -> void {
+	__ice_in_place_sort(Float);
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInPlace___3DI(
-		JNIEnv *,
+		JNIEnv *env,
 		jclass,
-		jdoubleArray,
-		jint) -> void {
+		jdoubleArray _data,
+		jint len) -> void {
+	__ice_in_place_sort(Double);
 }
 
-#undef __ice1000_in_place_sort
+#undef __ice_in_place_sort
 
 #define __ice_insertion_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_util::insertion_sort(data, len); \
+ice1000_sort::insertion_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -225,6 +229,45 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3DI(
 
 #undef __ice_insertion_sort
 
-#undef __ice1000_in_place_sort
+#define __ice_merge_sort(type) \
+__JNI__FUNCTION__INIT__ \
+auto data = env->Get ## type ## ArrayElements(_data, option); \
+ice1000_sort::merge_sort(data, len); \
+env->Set ## type ## ArrayRegion(_data, 0, len, data); \
+__JNI__FUNCTION__CLEAN__
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3II(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint len) -> void {
+	__ice_merge_sort(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3JI(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data,
+		jint len) -> void {
+	__ice_merge_sort(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3FI(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data,
+		jint len) -> void {
+	__ice_merge_sort(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3DI(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data,
+		jint len) -> void {
+	__ice_merge_sort(Double);
+}
+
+#undef __ice_merge_sort
 
 #pragma clang diagnostic pop

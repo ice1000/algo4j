@@ -130,6 +130,30 @@ public final class SequenceUtils {
 		sortInsertion(data, data.length);
 	}
 
+	public static native void sortMerge(int[] data, int length);
+
+	public static void sortMerge(int[] data) {
+		sortMerge(data, data.length);
+	}
+
+	public static native void sortMerge(long[] data, int length);
+
+	public static void sortMerge(long[] data) {
+		sortMerge(data, data.length);
+	}
+
+	public static native void sortMerge(float[] data, int length);
+
+	public static void sortMerge(float[] data) {
+		sortMerge(data, data.length);
+	}
+
+	public static native void sortMerge(double[] data, int length);
+
+	public static void sortMerge(double[] data) {
+		sortMerge(data, data.length);
+	}
+
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
