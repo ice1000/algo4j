@@ -12,9 +12,9 @@ file name|usage
 jni|C++ codes
 code_drafts|something written but not used ATM
 jni.dll|jni library
-jni/cpp-discretizationTest|C++ tests
+jni/cpp-test|C++ tests
 src|source
-discretizationTest|tests
+test|tests
 
 ## Algorithm(also data structure)
 
