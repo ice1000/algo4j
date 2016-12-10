@@ -73,13 +73,13 @@ auto ice1000_math::exgcd(jlong a, jlong b, jlong &x, jlong &y) -> jlong {
 	return r;
 }
 
-auto ice1000_math::gcdStain(jlong a, jlong b) -> jlong {
+auto ice1000_math::gcd_stein(jlong a, jlong b) -> jlong {
 	if (!a) return b;
 	if (!b) return a;
-	if (!(a % 2) and !(b % 2)) return gcdStain(a >> 1, b >> 1) << 1;
-	else if (!(a % 2)) return gcdStain(a >> 1, b);
-	else if (!(b % 2)) return gcdStain(a, b >> 1);
-	else return gcdStain(abs(a - b), min(a, b));
+	if (!(a & 1) and !(b & 1)) return gcd_stein(a >> 1, b >> 1) << 1;
+	else if (!(a & 1)) return gcd_stein(a >> 1, b);
+	else if (!(b & 1)) return gcd_stein(a, b >> 1);
+	else return gcd_stein((a + b) >> 1, abs(a - b) >> 1);
 }
 
 auto ice1000_math::sin_ice(const jdouble x) -> jdouble {

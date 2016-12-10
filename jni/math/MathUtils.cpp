@@ -15,17 +15,41 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcd(
 		jclass jc,
 		jlong a,
 		jlong b) {
-	return gcdStain(a, b);
+	return gcd(a, b);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
+JNIEXPORT jlongArray JNICALL Java_org_ice1000_math_MathUtils_exgcdJni(
+		JNIEnv *env,
+		jclass,
+		jlong a,
+		jlong b) {
+  jlong x, y;
+  auto c = exgcd(a, b, x, y);
+  auto ret = new jlong[3];
+  ret[0] = c;
+  ret[1] = x;
+  ret[2] = y;
+  auto arr = env->NewLongArray(3);
+  env->SetLongArrayRegion(arr, 0, 3, ret);
+  return arr;
+}
+
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcdStein(
+		JNIEnv *,
+		jclass,
+		jlong a,
+		jlong b) {
+  return gcd_stein(a, b);
+}
+
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrtCarmark(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {
 	return sqrt_carmack((float) a);
 }
 
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrtStrict(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) {

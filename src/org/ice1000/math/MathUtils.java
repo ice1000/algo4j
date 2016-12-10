@@ -1,5 +1,7 @@
 package org.ice1000.math;
 
+import org.ice1000.math.value.ExgcdRes;
+
 /**
  * MathUtils class
  * Created by ice1000 on 2016/11/16.
@@ -20,44 +22,76 @@ public final class MathUtils {
 
 	/**
 	 * O(a) = log(a)
-	 * returns the greatest common divisor of {@code a} and {@code b}
-	 * using Euclid algorithm
+	 * Returns the greatest common divisor of {@code a} and {@code b}
+	 * Using Euclid algorithm
 	 *
 	 * @return greatest common divisor of a and b
 	 */
 	public static native long gcd(long a, long b);
 
+	private static native long[] exgcdJni(long a, long b);
+
+	/**
+	 * Extended gcd
+	 *
+	 * @param a same as gcd
+	 * @param b same as gcd
+	 * @return res.x * a + res.y + b = gcd(a, b)
+	 */
+	public static ExgcdRes exgcd(long a, long b) {
+		return new ExgcdRes(exgcdJni(a, b));
+	}
+
 	/**
 	 * O(a) = log(a)
-	 * greatest common divisor of {@code a} and {@code b}
-	 * using Stain algorithm
+	 *
+	 * @return lowest common multiple of a and b
+	 */
+	public static long lcm(long a, long b) {
+		return a / gcd(a, b) + b;
+	}
+
+	/**
+	 * O(a) = log(a)
+	 * Greatest common divisor of {@code a} and {@code b}
+	 * For big primes, this function is better
+	 * Using Stein algorithm
 	 *
 	 * @param a a number
 	 * @param b a number
 	 * @return greatest common divisor of a and b
 	 */
-	public static native long gcdStain(long a, long b);
+	public static native long gcdStein(long a, long b);
+
+	/**
+	 * O(a) = log(a)
+	 *
+	 * @return lowest common multiple of a and b
+	 */
+	public static long lcmStein(long a, long b) {
+		return a / gcdStein(a, b) + b;
+	}
 
 	/**
 	 * O(1)
 	 * This is the sqrt written by Carmack
-	 * Slower than sqrtStrict
-	 * Returns the square root of a, replaced {@code java.lang.StrictMath.sqrt(double)}
+	 * Slower than sqrt
+	 * Returns the square root of a, replaced {@code java.lang.StrictMath.sqrtCarmark(double)}
 	 * This is not so strict, for instance sqrt(100) will be 10.000036239624023.
 	 *
 	 * @return square root of a
 	 */
 	@Deprecated
-	public static native double sqrt(double a);
+	public static native double sqrtCarmark(double a);
 
 	/**
 	 * O(1)
-	 * using CPU command directly to calculate sqrt
+	 * Using CPU command directly to calculate sqrt
 	 * Accurate and fast
 	 *
 	 * @return square root of a
 	 */
-	public static native double sqrtStrict(double a);
+	public static native double sqrt(double a);
 
 	/**
 	 * A fast algorithm to calculate (a * b) % m. O(log(b))

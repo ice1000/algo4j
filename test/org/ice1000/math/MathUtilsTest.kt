@@ -18,18 +18,25 @@ class MathUtilsTest {
 		assertEquals(4, 2L + 2L)
 	}
 
-	@Test(timeout = 100)
-	fun gcd() {
-		fun function(gcd: (Long, Long) -> Long) = {
-			assertEquals(gcd(12, 15), 3)
-			assertEquals(gcd(12, 16), 4)
-			assertEquals(gcd(15, 20), 5)
-			assertEquals(gcd(100, 1000), 100)
-			assertEquals(gcd(1000, 100), 100)
-			assertEquals(gcd(1, 1), 1)
+	@Test(timeout = 1000)
+	fun gcdTest() {
+		val rand = Random(System.currentTimeMillis())
+		test(10000) {
+			val a: Long = rand.nextInt(23333333).toLong()
+			val b: Long = rand.nextInt(23333333).toLong()
+			assertEquals(MathUtils.gcdStein(a, b), MathUtils.gcd(a, b))
 		}
-		function(MathUtils::gcd)
-		function(MathUtils::gcdStain)
+	}
+
+	@Test(timeout = 1000)
+	fun exgcdTest() {
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val a: Long = rand.nextInt(23333333).toLong()
+			val b: Long = rand.nextInt(23333333).toLong()
+			val res = MathUtils.exgcd(a, b)
+			assertEquals(MathUtils.gcd(a, b), res.x * a + res.y * b)
+		}
 	}
 
 	/**
@@ -40,7 +47,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		test(1000000) {
 			@Suppress("DEPRECATION")
-			MathUtils.sqrtStrict(random.nextDouble() * 10000)
+			MathUtils.sqrt(random.nextDouble() * 10000)
 		}
 	}
 
@@ -53,7 +60,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		test(1000000) {
 			@Suppress("DEPRECATION")
-			MathUtils.sqrt(random.nextDouble() * 10000)
+			MathUtils.sqrtCarmark(random.nextDouble() * 10000)
 		}
 	}
 
@@ -63,14 +70,14 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		val testNumber = random.nextDouble() * 10000
 		@Suppress("DEPRECATION")
+		println(MathUtils.sqrtCarmark(testNumber))
 		println(MathUtils.sqrt(testNumber))
-		println(MathUtils.sqrtStrict(testNumber))
 		println(Math.sqrt(testNumber))
 		test(5000) {
 			val temp = random.nextDouble()
 			@Suppress("DEPRECATION")
-			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - Math.sqrt(temp)) < 1e-5)
-			assertTrue(MathUtils.abs(MathUtils.sqrtStrict(temp) - Math.sqrt(temp)) < 1e-10)
+			assertTrue(MathUtils.abs(MathUtils.sqrtCarmark(temp) - Math.sqrt(temp)) < 1e-5)
+			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - Math.sqrt(temp)) < 1e-10)
 		}
 	}
 

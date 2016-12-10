@@ -36,10 +36,34 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcd(
 
 /**
  * Class:     org_ice1000_math_MathUtils
- * Method:    sqrt
+ * Method:    exgcd
+ * Signature: ([JJ)J
+ */
+JNIEXPORT jlongArray JNICALL Java_org_ice1000_math_MathUtils_exgcdJni(
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong
+);
+
+/**
+ * Class:     org_ice1000_math_MathUtils
+ * Method:    gcdStein
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcdStein(
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong
+);
+
+/**
+ * Class:     org_ice1000_math_MathUtils
+ * Method:    sqrtCarmark
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrtCarmark(
 		JNIEnv *,
 		jclass,
 		jdouble
@@ -47,10 +71,10 @@ JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
 
 /**
  * Class:     org_ice1000_math_MathUtils
- * Method:    sqrtStrict
+ * Method:    sqrt
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrtStrict(
+JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(
 		JNIEnv *,
 		jclass,
 		jdouble

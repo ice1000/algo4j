@@ -1,18 +1,18 @@
 # Project: jni
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe -D__DEBUG__
-CC       = gcc.exe -D__DEBUG__
+CPP      = g++.exe
+CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
 OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
 LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SequenceUtils.o $(RES)
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64 -g3
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
-CXXFLAGS = $(CXXINCS) -ansi -O2 -m64 -std=gnu++11 -g3 -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -ansi -O2 -m64 -std=gnu++11 -g3 -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -ansi -m64 -std=gnu++11 -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -ansi -m64 -std=gnu++11 -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = libjni.def
 STATIC   = libjni.a
