@@ -12,7 +12,7 @@ namespace ice1000_sort {
 
 // 日了狗了 实在不行我就硬编码类型进去 md
 	template<typename T>
-	auto __quick_sort_core (
+	auto __quick_sort_core(
 			T *array,
 			const jsize left,
 			const jsize right) -> void {
@@ -21,7 +21,7 @@ namespace ice1000_sort {
 		auto j = right;
 		const auto temp = array[left];
 		while (i < j) {
-			while ((i < j) and  (temp < array[j] or temp == array[j])) --j;
+			while ((i < j) and (temp < array[j] or temp == array[j])) --j;
 			while ((i < j) and !(temp < array[i])) ++i;
 			if (i < j)
 				swap(array[i], array[j]);
@@ -33,14 +33,14 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto quick_sort (
+	auto quick_sort(
 			T *array,
 			const jsize length) -> void {
 		__quick_sort_core(array, 0, length - 1);
 	}
 
 	template<typename T>
-	auto bubble_sort (
+	auto bubble_sort(
 			T *array,
 			const jsize length) -> void {
 		for (auto i = length - 1; i > 0; --i) {
@@ -51,7 +51,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto insertion_sort (
+	auto insertion_sort(
 			T *array,
 			const jsize length) -> void {
 		for (auto i = 1; i < length; ++i) {
@@ -67,49 +67,49 @@ namespace ice1000_sort {
 
 	template<typename T>
 	auto merge_sort(
-			T *arr,
-			const jsize len) -> void {
-		auto a = arr;
-		auto b = new T[len];
-		for (jsize seg = 1; seg < len; seg += seg) {
-			for (jsize start = 0; start < len; start += seg + seg) {
+			T *array,
+			const jsize length) -> void {
+		auto copy = array;
+		auto arr2 = new T[length];
+		for (jsize seg = 1; seg < length; seg += seg) {
+			for (jsize start = 0; start < length; start += seg + seg) {
 				auto low = start;
-				auto mid = min(start + seg, len);
-				auto high = min(start + seg + seg, len);
+				auto mid = min(start + seg, length);
+				auto high = min(start + seg + seg, length);
 				auto k = low;
 				auto start1 = low;
 				auto end1 = mid;
 				auto start2 = mid;
 				auto end2 = high;
 				while (start1 < end1 and start2 < end2)
-					b[k++] = a[start1] < a[start2] ? a[start1++] : a[start2++];
+					arr2[k++] = copy[start1] < copy[start2] ? copy[start1++] : copy[start2++];
 				while (start1 < end1)
-					b[k++] = a[start1++];
+					arr2[k++] = copy[start1++];
 				while (start2 < end2)
-					b[k++] = a[start2++];
+					arr2[k++] = copy[start2++];
 			}
-			swap(a, b);
+			swap(copy, arr2);
 		}
-		if (a != arr) {
-			for (auto i = 0; i < len; ++i)
-				b[i] = a[i];
-			b = a;
+		if (copy != array) {
+			for (auto i = 0; i < length; ++i)
+				arr2[i] = copy[i];
+			arr2 = copy;
 		}
-		delete[] b;
+		delete[] arr2;
 	}
 
 	template<typename T>
 	auto comb_sort(
 			T *arr,
-			jsize len) -> void {
+			const jsize length) -> void {
 		auto shrink_factor = 0.8;
-		auto gap = len;
+		auto gap = length;
 		auto swapped = true;
 		while (gap > 1 || swapped) {
 			if (gap > 1)
-				gap = static_cast<int>((static_cast<double>(gap) * shrink_factor));
+				gap = static_cast<int>(static_cast<double>(gap) * shrink_factor);
 			swapped = false;
-			for (auto i = 0; gap + i < len; ++i)
+			for (auto i = 0; gap + i < length; ++i)
 				if (arr[i] > arr[i + gap]) {
 					swap(arr[i], arr[i + gap]);
 					swapped = true;
@@ -120,11 +120,11 @@ namespace ice1000_sort {
 	template<typename T>
 	auto selection_sort(
 			T *arr,
-			jsize len) -> void {
+			const jsize length) -> void {
 		jsize min;
-		for (auto i = 0; i < len - 1; ++i) {
+		for (auto i = 0; i < length - 1; ++i) {
 			min = i;
-			for (auto j = i + 1; j < len; ++j)
+			for (auto j = i + 1; j < length; ++j)
 				if (arr[min] > arr[j])
 					min = j;
 			swap(arr[i], arr[min]);
@@ -134,7 +134,7 @@ namespace ice1000_sort {
 	template<typename T>
 	auto cocktail_sort(
 			T *arr,
-			jsize len) -> void {
+			const jsize len) -> void {
 		auto left = 0;
 		auto right = len - 1;
 		while (left < right) {

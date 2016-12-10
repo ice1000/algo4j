@@ -80,14 +80,8 @@ namespace ice1000_math {
 
 	auto is_prime(const jlong) -> bool;
 
-	auto get_primes_simple(const jint) -> jlong*;
+	auto get_primes_simple(const jint) -> jlong *;
 }
-
-// namespace ice1000_util {
-	// void _a_b_c_d_e_f_g_h_i_j_k_l_m_n_() {
-		// quick_sort(new Ice1000Pair[233], 233);
-	// }
-// }
 
 namespace ice1000_uset {
 	auto find(jint *, jint) -> jint;
@@ -95,9 +89,17 @@ namespace ice1000_uset {
 	/// changed implementation into Java code
 	// void merge(jint *, jint, jint);
 }
+
+namespace ice1000_mem {
+	auto alloc(size_t) -> jlong;
+
+	auto release(jlong) -> void;
+}
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
+
 #endif /// __ICE1000_FUNCTIONS_H__
 
 #pragma clang diagnostic pop

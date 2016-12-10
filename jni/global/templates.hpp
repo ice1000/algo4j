@@ -25,7 +25,7 @@ namespace ice1000_util {
 		T2 second;
 
 		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
-		
+
 		explicit Ice1000Pair(const T1 &o) : first(o), second(static_cast<T2>(o)) { };
 
 		explicit Ice1000Pair() { }
@@ -57,16 +57,16 @@ namespace ice1000_util {
 			return !(*this < o);
 		}
 
-		constexpr const bool operator!=(const Ice1000Pair &o) const {
+		constexpr auto operator!=(const Ice1000Pair &o) const -> const bool {
 			return !(*this == o);
 		}
 
-		friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream& {
+		friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream & {
 			os << "first: " << pair.first << " second: " << pair.second;
 			return os;
 		}
 
-		friend auto operator>>(std::istream &is, Ice1000Pair &pair) -> std::istream& {
+		friend auto operator>>(std::istream &is, Ice1000Pair &pair) -> std::istream & {
 			is >> pair.first >> pair.second;
 			return is;
 		}
@@ -75,7 +75,9 @@ namespace ice1000_util {
 	/// 离散化
 	/// discretization is to reduce the range of data
 	template<typename T>
-	auto discretization (T *data, const jsize len) -> T* {
+	auto discretization(
+			T *data,
+			const jsize len) -> T * {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len]();
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
@@ -84,6 +86,7 @@ namespace ice1000_util {
 			after[pair[i].second] = j;
 			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
 		}
+		delete[] pair;
 		return after;
 	}
 }

@@ -11,11 +11,14 @@ set(
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
 		global/templates.hpp
+		global/basics.hpp
+		global/sort.hpp
+		global/winapi.h
 		global/functions.cpp
 		util/SequenceUtils.cpp
 		math/MathUtils.cpp
 		graph/UnionSet.cpp
-)
+		global/winapi.cpp)
 
 set(
 		SOURCE_HEADERS

@@ -89,7 +89,7 @@ auto ice1000_math::lg_ice(const jdouble x) -> jdouble {
 }
 
 auto ice1000_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
-	jlong ret = 0;
+	decltype(a) ret = 0;
 	while (b) {
 		if (b & 1) ret = (ret + a) % m;
 		b >>= 1;
@@ -99,7 +99,7 @@ auto ice1000_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
 }
 
 auto ice1000_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
-	jlong ret = 1;
+	decltype(a) ret = 1;
 	while (b) {
 		if (b & 1) ret = ice1000_math::fast_plus(ret, a, m);
 		b >>= 1;
@@ -119,12 +119,12 @@ auto ice1000_math::is_prime(const jlong num) -> bool {
 	return true;
 }
 
-auto ice1000_math::get_primes_simple(const jint cnt) -> jlong* {
+auto ice1000_math::get_primes_simple(const jint cnt) -> jlong * {
 	auto primes = new jlong[cnt]();
 	auto index = 0;
 	for (auto i = 2; index < cnt; ++i) {
 		auto j = 0;
-		for ( ; j < index; ++j) {
+		for (; j < index; ++j) {
 			if (!(i % j)) break;
 		}
 		if (j >= index) primes[index++] = i;
@@ -136,9 +136,12 @@ auto ice1000_uset::find(jint *data, jint n) -> jint {
 	return data[n] == n ? n : (data[n] = ice1000_uset::find(data, data[n]));
 }
 
-// void ice1000_uset::merge(jint *data, jint a, jint b) {
-//   int i = ice1000_uset::find(data, a), j = ice1000_uset::find(data, b);
-// 	if (i != j) data[i] = j;
-// }
+auto ice1000_mem::alloc(size_t size) -> jlong {
+	return (jlong) malloc(size);
+}
+
+auto ice1000_mem::release(jlong pointer) -> void {
+	free((void *) pointer);
+}
 
 #pragma clang diagnostic pop
