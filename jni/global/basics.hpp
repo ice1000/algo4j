@@ -3,10 +3,25 @@
 //
 
 #include <jni.h>
+#include <string.h>
 #include <stdlib.h>
 
 #ifndef __ICE1000_BASICS_HPP__
 #define __ICE1000_BASICS_HPP__
+
+#ifndef __ice_memset
+#define __ice_memset(x, y) (memset(x, y, sizeof(x)))
+#endif /// __ice_memset
+
+/// 0x5F3759DF thank you Carmack
+#undef org_ice1000_util_Math_MAGIC_NUMBER
+#define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
+
+#define __JNI__FUNCTION__INIT__ \
+auto option = new jboolean(false);
+
+#define __JNI__FUNCTION__CLEAN__ \
+delete option;
 
 namespace ice1000_util {
 	template<typename T>

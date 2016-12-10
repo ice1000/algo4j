@@ -28,5 +28,15 @@ fun main(args: Array<String>) {
 	}""".println()
 		}
 	}
+	listOf("inversion").forEach { ass ->
+		listOf("int", "long", "float", "double").forEach { we ->
+			"""
+	public static native long $ass($we[] data, int length);
+
+	public static long $ass($we[] data) {
+		return $ass(data, data.length);
+	}""".println()
+		}
+	}
 }
 

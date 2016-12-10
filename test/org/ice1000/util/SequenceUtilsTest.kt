@@ -41,6 +41,11 @@ class SequenceUtilsTest {
 		)
 	}
 
+	@Test(timeout = 1000)
+	fun inversionTest() {
+		SequenceUtils.inversion(intArrayOf(3, 1, 5, 2, 4)).println()
+	}
+
 	@JvmOverloads
 	fun sortTest(
 			sortInt: (IntArray) -> Unit,

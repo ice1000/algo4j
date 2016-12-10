@@ -14,31 +14,6 @@ using ice1000_util::abs;
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-auto ice1000_bit::add(
-		jlong *data,
-		jint len,
-		jint idx,
-		jlong value) -> void {
-	while (idx < len) {
-		data[idx] += value;
-		idx += lowbit(idx);
-	}
-}
-
-auto ice1000_bit::sum(
-		jlong *data,
-		jint idx) -> jlong {
-	jlong ret = 0;
-	while (idx > 0) {
-		ret += data[idx];
-		idx -= lowbit(idx);
-	}
-	return ret;
-}
-
-constexpr auto ice1000_bit::lowbit(const jlong x) -> jlong {
-	return __lowbit(x);
-}
 
 auto ice1000_math::sqrt_carmack(jfloat x) -> jfloat {
 	auto x_half = 0.5F * x;
@@ -61,7 +36,7 @@ auto ice1000_math::gcd(jlong n, jlong m) -> jlong {
 	return n;
 }
 
-auto ice1000_math::exgcd(jlong a, jlong b, jlong &x, jlong &y) -> jlong {
+auto ice1000_math::exgcd(const jlong a, const jlong b, jlong &x, jlong &y) -> jlong {
 	if (!b) {
 		x = 1, y = 0;
 		return a;

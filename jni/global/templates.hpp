@@ -17,6 +17,56 @@ using ice1000_sort::quick_sort;
 #ifndef __ICE1000_TEMPLATES_HPP__
 #define __ICE1000_TEMPLATES_HPP__
 
+#ifndef __lowbit
+#define __lowbit(x) ((x) & (-(x)))
+#endif /// __lowbit
+
+namespace ice1000_bit {
+	constexpr auto lowbit(const long long int a) -> jlong {
+		return __lowbit(a);
+	}
+
+	template<typename T>
+	auto add(
+			T *data,
+			jsize len,
+			jsize idx,
+			T value) -> void {
+		while (idx < len) {
+			data[idx] += value;
+			idx += lowbit(idx);
+		}
+	}
+
+	template<typename T>
+	auto sum(
+			T *data,
+			jsize idx) -> jlong {
+		jlong ret = 0;
+		while (idx > 0) {
+			ret += data[idx];
+			idx -= lowbit(idx);
+		}
+		return ret;
+	}
+
+	template<typename T>
+	auto inversion(
+			T *arr,
+			const jsize len,
+      const jsize maxV) -> jlong {
+		auto bit = new jlong[maxV]();
+		memset(bit, 0, sizeof(bit[0]) * maxV);
+		jlong ret = 0;
+		for (jsize i = 0; i < len; ++i) {
+			add(bit, static_cast<jsize>(len) + 1, arr[i], 1LL);
+			ret += i + 1 - sum(bit, arr[i]);
+		}
+		delete bit;
+		return ret;
+	}
+}
+
 namespace ice1000_util {
 
 	template<typename T1, typename T2>
@@ -92,7 +142,7 @@ namespace ice1000_util {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len]();
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
-		quick_sort(pair, len);
+		merge_sort(pair, len);
 		for (auto i = 0, j = 0; i < len; ++i, ++j) {
 			after[pair[i].second] = j;
 			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;

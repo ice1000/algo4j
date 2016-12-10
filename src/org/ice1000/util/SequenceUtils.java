@@ -34,6 +34,30 @@ public final class SequenceUtils {
 		discretization(data, data.length);
 	}
 
+	public static native long inversion(int[] data, int length);
+
+	public static long inversion(int[] data) {
+		return inversion(data, data.length);
+	}
+
+	public static native long inversion(long[] data, int length);
+
+	public static long inversion(long[] data) {
+		return inversion(data, data.length);
+	}
+
+	public static native long inversion(float[] data, int length);
+
+	public static long inversion(float[] data) {
+		return inversion(data, data.length);
+	}
+
+	public static native long inversion(double[] data, int length);
+
+	public static long inversion(double[] data) {
+		return inversion(data, data.length);
+	}
+
 	private static native void sortBubble(int[] data, int length);
 
 	public static void sortBubble(int[] data) {

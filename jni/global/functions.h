@@ -4,7 +4,6 @@
 
 #include <jni.h>
 #include <math.h>
-#include <string.h>
 #include "templates.hpp"
 
 #pragma clang diagnostic push
@@ -13,43 +12,9 @@
 #ifndef __ICE1000_FUNCTIONS_H__
 #define __ICE1000_FUNCTIONS_H__
 
-/// 0x5F3759DF thank you Carmack
-#undef org_ice1000_util_Math_MAGIC_NUMBER
-#define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
-
-#ifndef __ice_memset
-#define __ice_memset(x, y) (memset(x, y, sizeof(x)))
-#endif /// __ice_memset
-
-#ifndef __lowbit
-#define __lowbit(x) ((x) & (-(x)))
-#endif /// __lowbit
-
-#define __JNI__FUNCTION__INIT__ \
-auto option = new jboolean(false);
-
-#define __JNI__FUNCTION__CLEAN__ \
-delete option;
-
 #ifdef __cplusplus
 extern "C" {
 #endif /// __cplusplus
-
-namespace ice1000_bit {
-	constexpr auto lowbit(const jlong) -> jlong;
-
-	auto add(
-			jlong *,
-			jint,
-			jint,
-			jlong
-	) -> void;
-
-	auto sum(
-			jlong *,
-			jint
-	) -> jlong;
-}
 
 namespace ice1000_math {
 	auto sin_ice(const jdouble) -> jdouble;
@@ -72,7 +37,7 @@ namespace ice1000_math {
 
 	auto gcd_stein(jlong, jlong) -> jlong;
 
-	auto exgcd(jlong, jlong, jlong &, jlong &) -> jlong;
+	auto exgcd(const jlong, const jlong, jlong &, jlong &) -> jlong;
 
 	auto fast_plus(jlong, jlong, jlong) -> jlong;
 
