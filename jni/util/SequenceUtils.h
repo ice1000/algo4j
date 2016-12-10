@@ -62,6 +62,54 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI 
 
 /**
  * Class:     org_ice1000_util_SequenceUtils
+ * Method:    inversion
+ * Signature: ([II)J
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3II(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint
+) -> jlong;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    inversion
+ * Signature: ([JI)J
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3JI(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jint
+) -> jlong;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    inversion
+ * Signature: ([FI)J
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3FI(
+		JNIEnv *,
+		jclass,
+		jfloatArray,
+		jint
+) -> jlong;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
+ * Method:    inversion
+ * Signature: ([DI)J
+ */
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3DI(
+		JNIEnv *,
+		jclass,
+		jdoubleArray,
+		jint
+) -> jlong;
+
+/**
+ * Class:     org_ice1000_util_SequenceUtils
  * Method:    sortBubble
  * Signature: ([II)V
  */

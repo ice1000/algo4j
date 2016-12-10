@@ -12,6 +12,9 @@ using ice1000_sort::quick_sort;
 using ice1000_sort::comb_sort;
 using ice1000_sort::selection_sort;
 using ice1000_sort::cocktail_sort;
+using ice1000_bit::add;
+using ice1000_bit::sum;
+using ice1000_bit::inversion;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -65,6 +68,52 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 }
 
 #undef __discretization_with
+
+#define __ice_inversion(type) \
+__JNI__FUNCTION__INIT__ \
+auto data = env->Get ## type ## ArrayElements(_data, option); \
+auto pair = new ice1000_util::Ice1000Pair<jlong, jint>[len](); \
+auto after = discretization(data, len); \
+auto ret = inversion(after, len, len + 1); \
+env->Release ## type ## ArrayElements(_data, data, 0); \
+__JNI__FUNCTION__CLEAN__ \
+delete after; \
+delete[] pair; \
+return ret;
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3II(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint len) -> jlong {
+  __ice_inversion(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3JI(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data,
+		jint len) -> jlong {
+  __ice_inversion(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3FI(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data,
+		jint len) -> jlong {
+  __ice_inversion(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3DI(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data,
+		jint len) -> jlong {
+  __ice_inversion(Double);
+}
+
+#undef __ice_inversion
 
 /**
  * implemention
