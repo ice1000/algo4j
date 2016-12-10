@@ -86,6 +86,14 @@ if exist ../*.log (
 	cd ./jni
 )
 
+if exist ./jni.dll (
+	move jni.dll ../
+)
+
+if exist ./jni32.dll (
+	move jni32.dll ../
+)
+
 REM cd ../
 REM if exist jni.dll (
 REM 	del /f /s /q jni.dll

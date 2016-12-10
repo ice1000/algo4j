@@ -3,6 +3,7 @@ package org.ice1000.util
 import org.ice1000.test.println
 import org.ice1000.test.test
 import org.junit.Assert.assertArrayEquals
+import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
 import java.util.*
@@ -43,7 +44,7 @@ class SequenceUtilsTest {
 
 	@Test(timeout = 1000)
 	fun inversionTest() {
-		SequenceUtils.inversion(intArrayOf(3, 1, 5, 2, 4)).println()
+		assertEquals(SequenceUtils.inversion(intArrayOf(3, 1, 5, 2, 4)), 4)
 	}
 
 	@JvmOverloads
