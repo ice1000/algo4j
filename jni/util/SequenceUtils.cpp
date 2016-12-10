@@ -71,6 +71,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
 auto after = discretization(data, len); \
+for (auto i = 0; i < len; ++i) ++after[i]; \
 auto ret = inversion(after, len, len + 1); \
 env->Release ## type ## ArrayElements(_data, data, 0); \
 __JNI__FUNCTION__CLEAN__ \
@@ -82,15 +83,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3II(
 		jclass,
 		jintArray _data,
 		jint len) -> jlong {
-  __JNI__FUNCTION__INIT__
-  auto data = env->GetIntArrayElements(_data, option);
-  auto after = discretization(data, len);
-  for (auto i = 0; i < len; ++i) ++after[i];
-  auto ret = inversion(after, len, len + 2);
-  env->ReleaseIntArrayElements(_data, data, 0);
-  __JNI__FUNCTION__CLEAN__
-  delete after;
-  return ret;
+	__ice_inversion(Int);
 }
 
 JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3JI(
