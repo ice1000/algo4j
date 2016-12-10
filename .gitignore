@@ -10,18 +10,21 @@ jni/.vscode/
 *.dll
 *.a
 *.def
+*.exe
+*.jar
+*.layout
+*.win
+*.class
 *.o
 
 jni/cmake-build-debug/
 jni/build/
 out/
 
-Makefile.win
-
 # Unnecessary files #
 
-jni/jni.layout
 *.res
+*.ico
 lib/
 
 # Logs #
