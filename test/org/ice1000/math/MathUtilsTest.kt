@@ -20,12 +20,16 @@ class MathUtilsTest {
 
 	@Test(timeout = 100)
 	fun gcd() {
-		assertEquals(MathUtils.gcd(12, 15), 3)
-		assertEquals(MathUtils.gcd(12, 16), 4)
-		assertEquals(MathUtils.gcd(15, 20), 5)
-		assertEquals(MathUtils.gcd(100, 1000), 100)
-		assertEquals(MathUtils.gcd(1000, 100), 100)
-		assertEquals(MathUtils.gcd(1, 1), 1)
+		fun function(gcd: (Long, Long) -> Long) = {
+			assertEquals(gcd(12, 15), 3)
+			assertEquals(gcd(12, 16), 4)
+			assertEquals(gcd(15, 20), 5)
+			assertEquals(gcd(100, 1000), 100)
+			assertEquals(gcd(1000, 100), 100)
+			assertEquals(gcd(1, 1), 1)
+		}
+		function(MathUtils::gcd)
+		function(MathUtils::gcdStain)
 	}
 
 	/**

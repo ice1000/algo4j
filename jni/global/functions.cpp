@@ -73,7 +73,7 @@ auto ice1000_math::exgcd(jlong a, jlong b, jlong &x, jlong &y) -> jlong {
 	return r;
 }
 
-auto gcdStain(jlong a, jlong b) -> jlong {
+auto ice1000_math::gcdStain(jlong a, jlong b) -> jlong {
 	if (!a) return b;
 	if (!b) return a;
 	if (!(a % 2) and !(b % 2)) return gcdStain(a >> 1, b >> 1) << 1;

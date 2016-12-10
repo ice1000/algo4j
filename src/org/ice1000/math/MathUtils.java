@@ -21,10 +21,22 @@ public final class MathUtils {
 	/**
 	 * O(a) = log(a)
 	 * returns the greatest common divisor of {@code a} and {@code b}
+	 * using Euclid algorithm
 	 *
 	 * @return greatest common divisor of a and b
 	 */
 	public static native long gcd(long a, long b);
+
+	/**
+	 * O(a) = log(a)
+	 * greatest common divisor of {@code a} and {@code b}
+	 * using Stain algorithm
+	 *
+	 * @param a a number
+	 * @param b a number
+	 * @return greatest common divisor of a and b
+	 */
+	public static native long gcdStain(long a, long b);
 
 	/**
 	 * O(1)
