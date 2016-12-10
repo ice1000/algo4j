@@ -6,6 +6,11 @@
 
 #include "functions.h"
 
+using ice1000_util::max;
+using ice1000_util::min;
+using ice1000_util::swap;
+using ice1000_util::abs;
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
@@ -28,7 +33,6 @@ auto ice1000_bit::sum(
 		ret += data[idx];
 		idx -= lowbit(idx);
 	}
-//	delete data;
 	return ret;
 }
 
@@ -50,10 +54,32 @@ auto ice1000_math::sqrt_strict(const jdouble x) -> jdouble {
 	return sqrt(x);
 }
 
+/// euclid gcd
 auto ice1000_math::gcd(jlong n, jlong m) -> jlong {
 	jlong c;
 	for (; m > 0; c = n % m, n = m, m = c);
 	return n;
+}
+
+auto ice1000_math::exgcd(jlong a, jlong b, jlong &x, jlong &y) -> jlong {
+	if (!b) {
+		x = 1, y = 0;
+		return a;
+	}
+	auto r = exgcd(b, a % b, x, y);
+	auto t = x;
+	x = y;
+	y = t - a / b * y;
+	return r;
+}
+
+auto gcdStain(jlong a, jlong b) -> jlong {
+	if (!a) return b;
+	if (!b) return a;
+	if (!(a % 2) and !(b % 2)) return gcdStain(a >> 1, b >> 1) << 1;
+	else if (!(a % 2)) return gcdStain(a >> 1, b);
+	else if (!(b % 2)) return gcdStain(a, b >> 1);
+	else return gcdStain(abs(a - b), min(a, b));
 }
 
 auto ice1000_math::sin_ice(const jdouble x) -> jdouble {
@@ -101,9 +127,9 @@ auto ice1000_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
 auto ice1000_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
 	decltype(a) ret = 1;
 	while (b) {
-		if (b & 1) ret = ice1000_math::fast_plus(ret, a, m);
+		if (b & 1) ret = fast_plus(ret, a, m);
 		b >>= 1;
-		a = ice1000_math::fast_plus(a, a, m);
+		a = fast_plus(a, a, m);
 	}
 	return ret;
 }

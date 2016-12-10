@@ -70,6 +70,10 @@ namespace ice1000_math {
 
 	auto gcd(jlong, jlong) -> jlong;
 
+	auto gcdStain(jlong, jlong) -> jlong;
+
+	auto exgcd(jlong, jlong, jlong &, jlong &) -> jlong;
+
 	auto fast_plus(jlong, jlong, jlong) -> jlong;
 
 	auto fast_power(jlong, jlong, jlong) -> jlong;

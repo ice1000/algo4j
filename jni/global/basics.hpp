@@ -10,20 +10,25 @@
 
 namespace ice1000_util {
 	template<typename T>
-	constexpr auto swap(T &a, T &b) -> void {
+	inline constexpr auto swap(T &a, T &b) -> void {
 		T c = a;
 		a = b;
 		b = c;
 	}
 
 	template<typename T1, typename T2>
-	constexpr auto max(const T1 &a, const T2 &b) -> T1 {
+	inline constexpr auto max(const T1 &a, const T2 &b) -> T1 {
 		return a < b ? b : a;
 	}
 
 	template<typename T1, typename T2>
-	constexpr auto min(const T1 &a, const T2 &b) -> T1 {
+	inline constexpr auto min(const T1 &a, const T2 &b) -> T1 {
 		return a > b ? a : b;
+	}
+
+	template<typename T>
+	inline constexpr auto abs(const T &o) -> T {
+		return o < 0 ? -o : o;
 	}
 }
 

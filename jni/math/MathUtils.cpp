@@ -15,7 +15,7 @@ JNIEXPORT jlong JNICALL Java_org_ice1000_math_MathUtils_gcd(
 		jclass jc,
 		jlong a,
 		jlong b) {
-	return gcd(a, b);
+	return gcdStain(a, b);
 }
 
 JNIEXPORT jdouble JNICALL Java_org_ice1000_math_MathUtils_sqrt(

@@ -24,11 +24,19 @@ namespace ice1000_util {
 		T1 first;
 		T2 second;
 
-		Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+		constexpr Ice1000Pair(const T1 &f, const T2 &s) :
+				first(f),
+				second(s) { }
 
-		explicit Ice1000Pair(const T1 &o) : first(o), second(static_cast<T2>(o)) { };
+		constexpr explicit Ice1000Pair(const T1 &o) :
+				first(o),
+				second(static_cast<T2>(o)) { }
 
-		explicit Ice1000Pair() { }
+		constexpr explicit Ice1000Pair(const Ice1000Pair<T1, T2> &pair) :
+				first(pair.first),
+				second(pair.second) { }
+
+		constexpr explicit Ice1000Pair() : first(), second() { }
 
 		~Ice1000Pair() { }
 
@@ -61,6 +69,12 @@ namespace ice1000_util {
 			return !(*this == o);
 		}
 
+		auto operator=(Ice1000Pair &pair) -> Ice1000Pair & {
+			first = pair.first;
+			second = pair.second;
+			return *this;
+		}
+
 		friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream & {
 			os << "first: " << pair.first << " second: " << pair.second;
 			return os;
@@ -75,7 +89,7 @@ namespace ice1000_util {
 	/// 离散化
 	/// discretization is to reduce the range of data
 	template<typename T>
-	auto discretization(
+	inline auto discretization(
 			T *data,
 			const jsize len) -> T * {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();

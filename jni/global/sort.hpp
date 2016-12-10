@@ -33,14 +33,14 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto quick_sort(
+	inline auto quick_sort(
 			T *array,
 			const jsize length) -> void {
 		__quick_sort_core(array, 0, length - 1);
 	}
 
 	template<typename T>
-	auto bubble_sort(
+	inline auto bubble_sort(
 			T *array,
 			const jsize length) -> void {
 		for (auto i = length - 1; i > 0; --i) {
@@ -51,7 +51,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto insertion_sort(
+	inline auto insertion_sort(
 			T *array,
 			const jsize length) -> void {
 		for (auto i = 1; i < length; ++i) {
@@ -66,7 +66,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto merge_sort(
+	inline auto merge_sort(
 			T *array,
 			const jsize length) -> void {
 		auto copy = array;
@@ -99,7 +99,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto comb_sort(
+	inline auto comb_sort(
 			T *arr,
 			const jsize length) -> void {
 		auto shrink_factor = 0.8;
@@ -118,7 +118,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto selection_sort(
+	inline auto selection_sort(
 			T *arr,
 			const jsize length) -> void {
 		jsize min;
@@ -132,7 +132,7 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	auto cocktail_sort(
+	inline auto cocktail_sort(
 			T *arr,
 			const jsize len) -> void {
 		auto left = 0;
