@@ -4,6 +4,7 @@
 
 #include "SequenceUtils.h"
 
+using ice1000_util::discretization;
 using ice1000_sort::insertion_sort;
 using ice1000_sort::merge_sort;
 using ice1000_sort::bubble_sort;
@@ -24,7 +25,7 @@ using ice1000_sort::cocktail_sort;
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
 auto pair = new ice1000_util::Ice1000Pair<jlong, jint>[len](); \
-auto after = ice1000_util::discretization(data, len); \
+auto after = discretization(data, len); \
 env->Release ## type ## ArrayElements(_data, data, 0); \
 env->Set ## type ## ArrayRegion(_data, 0, len, after); \
 __JNI__FUNCTION__CLEAN__ \
@@ -73,7 +74,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
 #define __ice_bubble_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_sort::bubble_sort(data, len); \
+bubble_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -114,7 +115,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI(
 #define __ice1000_quick_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_sort::quick_sort(data, len); \
+quick_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -155,7 +156,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI(
 #define __ice_insertion_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_sort::insertion_sort(data, len); \
+insertion_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
@@ -199,7 +200,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3DI(
 #define __ice_merge_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
-ice1000_sort::merge_sort(data, len); \
+merge_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 

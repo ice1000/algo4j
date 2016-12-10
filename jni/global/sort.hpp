@@ -66,36 +66,31 @@ namespace ice1000_sort {
 	}
 
 	template<typename T>
-	inline auto merge_sort(
-			T *array,
+	auto merge_sort_recursive(T arr[], T reg[], jsize start, jsize end) -> void {
+		if (start >= end)
+			return;
+		auto len = end - start, mid = (len >> 1) + start;
+		auto start1 = start, end1 = mid;
+		auto start2 = mid + 1, end2 = end;
+		merge_sort_recursive(arr, reg, start1, end1);
+		merge_sort_recursive(arr, reg, start2, end2);
+		auto k = start;
+		while (start1 <= end1 and start2 <= end2)
+			reg[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];
+		while (start1 <= end1)
+			reg[k++] = arr[start1++];
+		while (start2 <= end2)
+			reg[k++] = arr[start2++];
+		for (k = start; k <= end; ++k)
+			arr[k] = reg[k];
+	}
+
+	template<typename T>
+	auto merge_sort(
+			T *arr,
 			const jsize length) -> void {
-		auto copy = array;
-		auto arr2 = new T[length];
-		for (jsize seg = 1; seg < length; seg += seg) {
-			for (jsize start = 0; start < length; start += seg + seg) {
-				auto low = start;
-				auto mid = min(start + seg, length);
-				auto high = min(start + seg + seg, length);
-				auto k = low;
-				auto start1 = low;
-				auto end1 = mid;
-				auto start2 = mid;
-				auto end2 = high;
-				while (start1 < end1 and start2 < end2)
-					arr2[k++] = copy[start1] < copy[start2] ? copy[start1++] : copy[start2++];
-				while (start1 < end1)
-					arr2[k++] = copy[start1++];
-				while (start2 < end2)
-					arr2[k++] = copy[start2++];
-			}
-			swap(copy, arr2);
-		}
-		if (copy != array) {
-			for (auto i = 0; i < length; ++i)
-				arr2[i] = copy[i];
-			arr2 = copy;
-		}
-		delete[] arr2;
+		auto reg = new T[length]();
+		merge_sort_recursive(arr, reg, 0, length - 1);
 	}
 
 	template<typename T>

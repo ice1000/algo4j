@@ -8,6 +8,7 @@
 #include "sort.hpp"
 
 using ice1000_sort::merge_sort;
+using ice1000_sort::quick_sort;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
@@ -31,10 +32,6 @@ namespace ice1000_util {
 		constexpr explicit Ice1000Pair(const T1 &o) :
 				first(o),
 				second(static_cast<T2>(o)) { }
-
-		constexpr explicit Ice1000Pair(const Ice1000Pair<T1, T2> &pair) :
-				first(pair.first),
-				second(pair.second) { }
 
 		constexpr explicit Ice1000Pair() : first(), second() { }
 
@@ -69,11 +66,11 @@ namespace ice1000_util {
 			return !(*this == o);
 		}
 
-		auto operator=(Ice1000Pair &pair) -> Ice1000Pair & {
-			first = pair.first;
-			second = pair.second;
-			return *this;
-		}
+//		auto operator=(Ice1000Pair &pair) -> Ice1000Pair & {
+//			first = pair.first;
+//			second = pair.second;
+//			return *this;
+//		}
 
 		friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream & {
 			os << "first: " << pair.first << " second: " << pair.second;
@@ -95,7 +92,7 @@ namespace ice1000_util {
 		auto pair = new ice1000_util::Ice1000Pair<T, jint>[len]();
 		auto after = new T[len]();
 		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
-		merge_sort(pair, len);
+		quick_sort(pair, len);
 		for (auto i = 0, j = 0; i < len; ++i, ++j) {
 			after[pair[i].second] = j;
 			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;

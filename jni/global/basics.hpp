@@ -11,7 +11,7 @@
 namespace ice1000_util {
 	template<typename T>
 	inline constexpr auto swap(T &a, T &b) -> void {
-		T c = a;
+		auto c = a;
 		a = b;
 		b = c;
 	}
