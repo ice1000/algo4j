@@ -10,7 +10,7 @@
 
 using namespace algo4j_bit;
 
-JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
+JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 		JNIEnv *env, jobject jo, jlongArray _data, jint len, jint idx, jlong value) -> void {
 	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(_data, option);
@@ -19,7 +19,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
 	delete option;
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_sum(
+JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
 		JNIEnv *env,
 		jobject jo,
 		jlongArray _data,

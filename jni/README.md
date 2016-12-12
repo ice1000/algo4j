@@ -95,4 +95,4 @@ Then compile it.
 ## Using CLion
 
 There is a CMakeLists.txt and a configuration file named `.idea` for CLion.<br/>
-using CLion is much easier than other ways, and it's more recommanded.
+using CLion is much easier than other ways, and it's more recommended.
