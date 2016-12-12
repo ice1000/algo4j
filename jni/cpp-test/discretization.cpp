@@ -12,13 +12,13 @@ jlong source[] = {
 };
 
 auto main(int argc, const char *argv[]) -> int {
-  auto pair = new ice1000_util::Ice1000Pair<jint, jint>[size]();
+  auto pair = new algo4j_util::Ice1000Pair<jint, jint>[size]();
   auto after = new jlong[size]();
   for (auto i = 0; i < size; ++i) {
     pair[i].setValue(source[i], i);
   }
   cout << "set." << endl;
-  ice1000_sort::bubble_sort(pair, size);
+  algo4j_sort::bubble_sort(pair, size);
   cout << "sort." << endl;
   for (auto i = 0, j = 0; i < size; ++i, ++j) {
     after[pair[i].second] = j;

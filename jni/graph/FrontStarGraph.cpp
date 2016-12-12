@@ -4,7 +4,7 @@
 
 #include "FrontStarGraph.h"
 
-JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
 		jobject jo,
 		jint source,
@@ -27,7 +27,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 	auto head = env->GetLongArrayElements(_head, option);
 	auto target = env->GetLongArrayElements(_target, option);
 	auto value = env->GetLongArrayElements(_value, option);
-	memset(dis, org_ice1000_graph_FrontStarGraph_INFINITY_FILLING, sizeof(dis[0]) * node_count);
+	memset(dis, org_algo4j_graph_FrontStarGraph_INFINITY_FILLING, sizeof(dis[0]) * node_count);
 	memset(vis, 0, sizeof(vis[0]) * node_count);
 	memset(inq, false, sizeof(inq[0]) * node_count);
 	dis[source] = 0;
@@ -65,7 +65,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_spfa(
 	return _dis;
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *env,
 		jobject jo,
 		jlongArray _next,
@@ -89,7 +89,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 	auto count = 0;
 	auto find_res_1 = 0;
 	auto find_res_2 = 0;
-	__ice_memset(depth, 0);
+	__algo4j_memset(depth, 0);
 	for (auto i = 0; i <= edge_count; ++i) {
 		edges[i].setValue(value[i], target[i], depature[i]);
 	}
@@ -98,10 +98,10 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_FrontStarGraph_kruskal(
 	env->ReleaseLongArrayElements(_target, target, 0);
 	env->ReleaseLongArrayElements(_depature, depature, 0);
 	env->ReleaseLongArrayElements(_value, value, 0);
-	ice1000_sort::merge_sort(edges, edge_count);
+	algo4j_sort::merge_sort(edges, edge_count);
 	for (auto i = 0; i < edge_count; ++i) {
-		find_res_1 = ice1000_uset::find(uset, edges[i].from);
-		find_res_2 = ice1000_uset::find(uset, edges[i].to);
+		find_res_1 = algo4j_uset::find(uset, edges[i].from);
+		find_res_2 = algo4j_uset::find(uset, edges[i].to);
 		if (find_res_1 != find_res_2) {
 			// if (depth[find_res_1] > depth[find_res_2]) {
 				uset[find_res_1] = find_res_2;

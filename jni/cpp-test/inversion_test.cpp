@@ -3,7 +3,7 @@
 
 using std::cout;
 using std::endl;
-using ice1000_bit::inversion;
+using algo4j_bit::inversion;
 
 auto main(int argc, const char *argv[]) -> int {
   int dark[] = { 3, 1, 5, 2, 4 };

@@ -4,6 +4,6 @@
 
 #include "winapi.h"
 
-auto ice1000_win::beep(unsigned long freq, unsigned long duration) -> void {
+auto algo4j_win::beep(unsigned long freq, unsigned long duration) -> void {
 	Beep(static_cast<DWORD>(freq), static_cast<DWORD>(duration));
 }

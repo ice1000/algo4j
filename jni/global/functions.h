@@ -9,14 +9,14 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-#ifndef __ICE1000_FUNCTIONS_H__
-#define __ICE1000_FUNCTIONS_H__
+#ifndef __ALGO4J_FUNCTIONS_H__
+#define __ALGO4J_FUNCTIONS_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif /// __cplusplus
 
-namespace ice1000_math {
+namespace algo4j_math {
 	auto sin_ice(const jdouble) -> jdouble;
 
 	auto cos_ice(const jdouble) -> jdouble;
@@ -52,14 +52,14 @@ namespace ice1000_math {
 	auto get_primes_simple(const jint) -> jlong *;
 }
 
-namespace ice1000_uset {
+namespace algo4j_uset {
 	auto find(jint *, jint) -> jint;
 
 	/// changed implementation into Java code
 	// void merge(jint *, jint, jint);
 }
 
-namespace ice1000_mem {
+namespace algo4j_mem {
 	auto alloc(size_t) -> jlong;
 
 	auto release(jlong) -> void;
@@ -69,6 +69,6 @@ namespace ice1000_mem {
 }
 #endif /// __cplusplus
 
-#endif /// __ICE1000_FUNCTIONS_H__
+#endif /// __algo4j_FUNCTIONS_H__
 
 #pragma clang diagnostic pop

@@ -3,7 +3,7 @@
 
 using std::cout;
 using std::endl;
-using ice1000_math::is_prime;
+using algo4j_math::is_prime;
 
 const jlong primes[] = {
 		2L, 3L, 5L, 7L,

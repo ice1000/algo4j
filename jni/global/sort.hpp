@@ -1,14 +1,14 @@
 
 #include "basics.hpp"
 
-using ice1000_util::min;
-using ice1000_util::max;
-using ice1000_util::swap;
+using algo4j_util::min;
+using algo4j_util::max;
+using algo4j_util::swap;
 
-#ifndef __ICE1000_SORT_HPP__
-#define __ICE1000_SORT_HPP__
+#ifndef __ALGO4J_SORT_HPP__
+#define __ALGO4J_SORT_HPP__
 
-namespace ice1000_sort {
+namespace algo4j_sort {
 
 // 日了狗了 实在不行我就硬编码类型进去 md
 	template<typename T>
@@ -147,5 +147,5 @@ namespace ice1000_sort {
 }
 
 
-#endif // __ICE1000_SORT_HPP__
+#endif // __ALGO4J_SORT_HPP__
 

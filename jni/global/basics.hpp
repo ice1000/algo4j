@@ -6,16 +6,16 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifndef __ICE1000_BASICS_HPP__
-#define __ICE1000_BASICS_HPP__
+#ifndef __ALGO4J_BASICS_HPP__
+#define __ALGO4J_BASICS_HPP__
 
-#ifndef __ice_memset
-#define __ice_memset(x, y) (memset(x, y, sizeof(x)))
-#endif /// __ice_memset
+#ifndef __algo4j_memset
+#define __algo4j_memset(x, y) (memset(x, y, sizeof(x)))
+#endif /// __algo4j_memset
 
 /// 0x5F3759DF thank you Carmack
-#undef org_ice1000_util_Math_MAGIC_NUMBER
-#define org_ice1000_util_Math_MAGIC_NUMBER 1597463007L
+#undef org_algo4j_util_Math_MAGIC_NUMBER
+#define org_algo4j_util_Math_MAGIC_NUMBER 1597463007L
 
 #define __JNI__FUNCTION__INIT__ \
 auto option = new jboolean(false);
@@ -23,7 +23,7 @@ auto option = new jboolean(false);
 #define __JNI__FUNCTION__CLEAN__ \
 delete option;
 
-namespace ice1000_util {
+namespace algo4j_util {
 	template<typename T>
 	inline constexpr auto swap(T &a, T &b) -> void {
 		auto c = a;

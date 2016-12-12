@@ -3,7 +3,7 @@
 
 using std::cout;
 using std::endl;
-using ice1000_sort::merge_sort;
+using algo4j_sort::merge_sort;
 
 template<typename T>
 void merge_sort2(T arr[], const jsize len) {
@@ -22,7 +22,7 @@ void merge_sort2(T arr[], const jsize len) {
 			while (start2 < end2)
 				b[k++] = a[start2++];
 		}
-		ice1000_util::swap(a, b); 
+		algo4j_util::swap(a, b); 
 	}
 	if (a != arr) {
 		for (int i = 0; i < len; i++)

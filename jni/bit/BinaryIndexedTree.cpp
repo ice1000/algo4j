@@ -8,7 +8,7 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-using namespace ice1000_bit;
+using namespace algo4j_bit;
 
 JNIEXPORT auto JNICALL Java_org_ice1000_bit_BinaryIndexedTree_add(
 		JNIEnv *env, jobject jo, jlongArray _data, jint len, jint idx, jlong value) -> void {

@@ -1,20 +1,20 @@
 ///
-/// Created by ice1000
+/// Created by algo4j
 ///
 
 #include "SequenceUtils.h"
 
-using ice1000_util::discretization;
-using ice1000_sort::insertion_sort;
-using ice1000_sort::merge_sort;
-using ice1000_sort::bubble_sort;
-using ice1000_sort::quick_sort;
-using ice1000_sort::comb_sort;
-using ice1000_sort::selection_sort;
-using ice1000_sort::cocktail_sort;
-using ice1000_bit::add;
-using ice1000_bit::sum;
-using ice1000_bit::inversion;
+using algo4j_util::discretization;
+using algo4j_sort::insertion_sort;
+using algo4j_sort::merge_sort;
+using algo4j_sort::bubble_sort;
+using algo4j_sort::quick_sort;
+using algo4j_sort::comb_sort;
+using algo4j_sort::selection_sort;
+using algo4j_sort::cocktail_sort;
+using algo4j_bit::add;
+using algo4j_bit::sum;
+using algo4j_bit::inversion;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -33,7 +33,7 @@ env->Set ## type ## ArrayRegion(_data, 0, len, after); \
 __JNI__FUNCTION__CLEAN__ \
 delete after;
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_discretization___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -41,7 +41,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3JI(
 	__discretization_with(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_discretization___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -49,7 +49,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3II(
 	__discretization_with(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_discretization___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -57,7 +57,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3FI(
 	__discretization_with(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_discretization___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_discretization___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -78,7 +78,7 @@ __JNI__FUNCTION__CLEAN__ \
 delete after; \
 return ret;
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_inversion___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -86,7 +86,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3II(
 	__ice_inversion(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_inversion___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -94,7 +94,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3JI(
   __ice_inversion(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_inversion___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -102,7 +102,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3FI(
   __ice_inversion(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_inversion___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_inversion___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -124,7 +124,7 @@ bubble_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortBubble___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -132,7 +132,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3II(
 	__ice_bubble_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortBubble___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -140,7 +140,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3JI(
 	__ice_bubble_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortBubble___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -148,7 +148,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3FI(
 	__ice_bubble_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortBubble___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -158,46 +158,46 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortBubble___3DI(
 
 #undef __ice_bubble_sort
 
-#define __ice1000_quick_sort(type) \
+#define __algo4j_quick_sort(type) \
 __JNI__FUNCTION__INIT__ \
 auto data = env->Get ## type ## ArrayElements(_data, option); \
 quick_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortQuick___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
 		jint len) -> void {
-	__ice1000_quick_sort(Int);
+	__algo4j_quick_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortQuick___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
 		jint len) -> void {
-	__ice1000_quick_sort(Long);
+	__algo4j_quick_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortQuick___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
 		jint len) -> void {
-	__ice1000_quick_sort(Float);
+	__algo4j_quick_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortQuick___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortQuick___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
 		jint len) -> void {
-	__ice1000_quick_sort(Double);
+	__algo4j_quick_sort(Double);
 }
 
-#undef __ice1000_quick_sort
+#undef __algo4j_quick_sort
 
 #define __ice_insertion_sort(type) \
 __JNI__FUNCTION__INIT__ \
@@ -206,7 +206,7 @@ insertion_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortInsertion___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -215,7 +215,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3II(
 }
 
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortInsertion___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -224,7 +224,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3JI(
 }
 
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortInsertion___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -233,7 +233,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3FI(
 }
 
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortInsertion___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortInsertion___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -250,7 +250,7 @@ merge_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortMerge___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -258,7 +258,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3II(
 	__ice_merge_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortMerge___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -266,7 +266,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3JI(
 	__ice_merge_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortMerge___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -274,7 +274,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3FI(
 	__ice_merge_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortMerge___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortMerge___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -291,7 +291,7 @@ comb_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortComb___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -299,7 +299,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3II(
 	__ice_comb_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortComb___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -307,7 +307,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3JI(
 	__ice_comb_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortComb___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -315,7 +315,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3FI(
 	__ice_comb_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortComb___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortComb___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -332,7 +332,7 @@ selection_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortSelection___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -340,7 +340,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3II(
 	__ice_selection_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortSelection___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -348,7 +348,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3JI(
 	__ice_selection_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortSelection___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -356,7 +356,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3FI(
 	__ice_selection_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortSelection___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortSelection___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,
@@ -373,7 +373,7 @@ cocktail_sort(data, len); \
 env->Set ## type ## ArrayRegion(_data, 0, len, data); \
 __JNI__FUNCTION__CLEAN__
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortCocktail___3II(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -381,7 +381,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3II(
 	__ice_cocktail_sort(Int);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortCocktail___3JI(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -389,7 +389,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3JI(
 	__ice_cocktail_sort(Long);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortCocktail___3FI(
 		JNIEnv *env,
 		jclass,
 		jfloatArray _data,
@@ -397,7 +397,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3FI(
 	__ice_cocktail_sort(Float);
 }
 
-JNIEXPORT auto JNICALL Java_org_ice1000_util_SequenceUtils_sortCocktail___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SequenceUtils_sortCocktail___3DI(
 		JNIEnv *env,
 		jclass,
 		jdoubleArray _data,

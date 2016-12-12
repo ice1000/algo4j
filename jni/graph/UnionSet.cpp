@@ -8,9 +8,9 @@
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-using namespace ice1000_uset;
+using namespace algo4j_uset;
 
-JNIEXPORT auto JNICALL Java_org_ice1000_graph_UnionSet_find(
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_find(
 		JNIEnv *env,
 		jobject jo,
 		jintArray _data,
@@ -25,7 +25,7 @@ JNIEXPORT auto JNICALL Java_org_ice1000_graph_UnionSet_find(
 }
 
 /// changed implementation into Java code
-// JNIEXPORT auto JNICALL Java_org_ice1000_graph_UnionSet_merge(
+// JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_merge(
 // 		JNIEnv *env,
 // 		jobject jo,
 // 		jintArray _data,

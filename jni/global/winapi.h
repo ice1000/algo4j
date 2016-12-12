@@ -8,7 +8,7 @@
 #define JNI_WINAPI_H
 
 
-namespace ice1000_win {
+namespace algo4j_win {
 	auto beep(unsigned long, unsigned long) -> void;
 }
 

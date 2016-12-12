@@ -10,25 +10,25 @@ As you see, I used both DEV-CPP and CLion to contribute the C++ codes.
 
 /// classes
 template<typename T1, typename T2>
-class Ice1000Pair {
+class Pair {
 public:
 	T1 first;
 	T2 second;
 
 	// when there's nothing inside a pair of braces, put a space inside.
-	Ice1000Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
+	Pair(const T1 &f, const T2 &s) : first(f), second(s) { }
 
 	// explicit is necessary.
-	explicit Ice1000Pair() { }
+	explicit Pair() { }
 
-	~Ice1000Pair() { }
+	~Pair() { }
 
 	// if a method can be a constexpr, it's also necessary to declare it as one.
-	constexpr auto operator<(const Ice1000Pair &o) const -> const bool {
+	constexpr auto operator<(const Pair &o) const -> const bool {
 		return first == o.first ? second < o.second : first < o.first;
 	}
 
-	friend auto operator<<(std::ostream &os, const Ice1000Pair &pair) -> std::ostream& {
+	friend auto operator<<(std::ostream &os, const Pair &pair) -> std::ostream& {
 		os << "first: " << pair.first << " second: " << pair.second;
 		return os;
 	}
@@ -52,7 +52,7 @@ auto bubble_sort (
 // Functions with more than 2 parameters should follow format like the one above.
 
 /// header files
-namespace ice1000_bit {
+namespace algo4j_bit {
 	auto lowbit(const jlong) -> jlong;
 
 	auto add(
