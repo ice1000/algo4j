@@ -3,9 +3,9 @@ package org.algo4j.bit;
 import org.algo4j.error.BinaryIndexedTreeException;
 
 /**
- * Created by algo4j on 2016/11/15.
+ * Created by ice1000 on 2016/11/15.
  *
- * @author algo4j
+ * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
 public final class IntervalUpdatePointQuery extends BinaryIndexedTree {

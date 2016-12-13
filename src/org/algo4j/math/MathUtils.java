@@ -4,9 +4,9 @@ import org.algo4j.math.value.ExgcdRes;
 
 /**
  * MathUtils class
- * Created by algo4j on 2016/11/16.
+ * Created by ice1000 on 2016/11/16.
  *
- * @author algo4j
+ * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
 public final class MathUtils {
@@ -153,7 +153,7 @@ public final class MathUtils {
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
-	public static native long max(int a, int b);
+	public static native int max(int a, int b);
 
 	/**
 	 * same as {@code java.lang.MathUtils.max(float)}

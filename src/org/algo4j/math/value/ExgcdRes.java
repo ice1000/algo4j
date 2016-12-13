@@ -1,9 +1,9 @@
 package org.algo4j.math.value;
 
 /**
- * Created by algo4j on 2016/12/10.
+ * Created by ice1000 on 2016/12/10.
  *
- * @author algo4j
+ * @author ice1000
  */
 public class ExgcdRes {
 	private long c;

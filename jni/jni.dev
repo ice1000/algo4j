@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=1000000ag0000000000000000
-UnitCount=17
+UnitCount=19
 
 [VersionInfo]
 Major=1
@@ -171,9 +171,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=util\SequenceUtils.cpp
+FileName=global\basics.hpp
 CompileCpp=1
-Folder=util
+Folder=global
 Compile=1
 Link=1
 Priority=1000
@@ -181,9 +181,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=util\SequenceUtils.h
+FileName=global\sort.hpp
 CompileCpp=1
-Folder=util
+Folder=global
 Compile=1
 Link=1
 Priority=1000
@@ -201,9 +201,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit16]
-FileName=global\basics.hpp
+FileName=util\SeqUtils.cpp
 CompileCpp=1
-Folder=global
+Folder=util
 Compile=1
 Link=1
 Priority=1000
@@ -211,9 +211,29 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit17]
-FileName=global\sort.hpp
+FileName=util\SeqUtils.h
 CompileCpp=1
-Folder=global
+Folder=util
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit18]
+FileName=util\Statistics.cpp
+CompileCpp=1
+Folder=util
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit19]
+FileName=util\Statistics.h
+CompileCpp=1
+Folder=util
 Compile=1
 Link=1
 Priority=1000

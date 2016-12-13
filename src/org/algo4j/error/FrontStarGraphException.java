@@ -1,9 +1,9 @@
 package org.algo4j.error;
 
 /**
- * Created by algo4j on 2016/11/18.
+ * Created by ice1000 on 2016/11/18.
  *
- * @author algo4j
+ * @author ice1000
  */
 public final class FrontStarGraphException extends RuntimeException {
 	public FrontStarGraphException() {

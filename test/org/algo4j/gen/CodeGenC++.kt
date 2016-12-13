@@ -1,11 +1,14 @@
+@file:JvmMultifileClass
+@file:JvmName("CodeGen")
+
 package org.algo4j.gen
 
 import org.algo4j.test.print
 
 /**
- * Created by algo4j on 2016/12/6.
+ * Created by ice1000 on 2016/12/6.
  *
- * @author algo4j
+ * @author ice1000
  */
 
 private data class Type(
@@ -17,15 +20,17 @@ private fun exe(
 		deep: List<Type>,
 		className: String,
 		methodName: String,
-		ret: String) {
+		ret: String? = null,
+		retMark: String) {
 	deep.forEach { dark ->
 		val (type, mark) = dark
 		"""
-JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
+JNIEXPORT auto JNICALL Java_org_algo4j_${className}_${methodName}___3${mark}I(
 		JNIEnv *env,
 		jclass,
-		j${type}Array _data,
-		jint len) -> $ret {
+		${type}Array _data,
+		jint len) -> ${ret ?: type} {
+	__ice__()
 }
 """.print()
 	}
@@ -37,27 +42,27 @@ JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
 		val (type, mark) = dark
 		"""
 /**
- * Class:     org_ice1000_$className
+ * Class:     org_algo4j_$className
  * Method:    $methodName
- * Signature: ([$mark)J
+ * Signature: ([${mark}I)${if (ret == null) mark else retMark}
  */
-JNIEXPORT auto JNICALL Java_org_ice1000_${className}_${methodName}___3$mark(
+JNIEXPORT auto JNICALL Java_org_algo4j_${className}_${methodName}___3${mark}I(
 		JNIEnv *,
 		jclass,
-		j${type}Array,
+		${type}Array,
 		jint
-) -> $ret;
+) -> ${ret ?: type};
 """.print()
 	}
 }
 
 fun main(args: Array<String>) {
-	val className = "util_SequenceUtils"
-	val methodName = "inversion"
+	val className = "util_Statistics"
+	val methodName = "stdDiv"
 	exe(listOf(
-			Type("int", "II"),
-			Type("long", "JI"),
-			Type("float", "FI"),
-			Type("double", "DI")
-	), className, methodName, "jlong")
+			Type("jint", "I"),
+			Type("jlong", "J"),
+			Type("jfloat", "F"),
+			Type("jdouble", "D")
+	), className, methodName, "jdouble", "D")
 }

@@ -1,5 +1,5 @@
 
-# JniAlgorithm
+# algo4j
 
 This is an algorithm library for Java use, and core is written in C++ with JNI.
 

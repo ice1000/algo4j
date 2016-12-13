@@ -9,9 +9,9 @@ import org.junit.Test
 import java.util.*
 
 /**
- * Created by algo4j on 2016/11/16.
+ * Created by ice1000 on 2016/11/16.
 
- * @author algo4j
+ * @author ice1000
  */
 class PointUpdateIntervalQueryTest {
 
@@ -79,7 +79,7 @@ class PointUpdateIntervalQueryTest {
 		 */
 		fun sum(from: Int, to: Int): Long {
 			var ret = 0L
-			(from..to).forEach { i -> ret += data[i] }
+			(from..to).forEach { ret += data[it] }
 			return ret
 		}
 

@@ -9,9 +9,9 @@ import org.junit.Test
 import java.util.*
 
 /**
- * Created by algo4j on 2016/11/18.
+ * Created by ice1000 on 2016/11/18.
 
- * @author algo4j
+ * @author ice1000
  */
 class IntervalUpdateIntervalQueryTest {
 
@@ -69,7 +69,7 @@ class IntervalUpdateIntervalQueryTest {
 		 * standard update operation
 		 */
 		fun update(from: Int, to: Int, value: Long) {
-			(from..to).forEach { i -> data[i] += value }
+			(from..to).forEach { data[it] += value }
 		}
 
 		/**
@@ -77,7 +77,7 @@ class IntervalUpdateIntervalQueryTest {
 		 */
 		fun query(from: Int, to: Int): Long {
 			var ret = 0L
-			(from..to).forEach { i -> ret += data[i] }
+			(from..to).forEach {  ret += data[it] }
 			return ret
 		}
 	}

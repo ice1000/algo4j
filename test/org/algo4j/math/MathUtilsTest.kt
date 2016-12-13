@@ -4,19 +4,17 @@ import org.algo4j.test.test
 import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
+import java.lang.SuppressWarnings
+import java.lang.System
 import java.util.*
+import java.lang.Math as StdMath
 
 /**
- * Created by algo4j on 2016/11/16.
+ * Created by ice1000 on 2016/11/16.
 
- * @author algo4j
+ * @author ice1000
  */
 class MathUtilsTest {
-
-	@Test(timeout = 100)
-	fun basic() {
-		assertEquals(4, 2L + 2L)
-	}
 
 	@Test(timeout = 1000)
 	fun gcdTest() {
@@ -56,7 +54,7 @@ class MathUtilsTest {
 	 */
 	@Test(timeout = 100)
 	@SuppressWarnings("ResultOfMethodCallIgnored")
-	fun sqrtStdTime() {
+	fun sqrtCarmarkTime() {
 		val random = Random(System.currentTimeMillis())
 		test(1000000) {
 			@Suppress("DEPRECATION")
@@ -72,12 +70,12 @@ class MathUtilsTest {
 		@Suppress("DEPRECATION")
 		println(MathUtils.sqrtCarmark(testNumber))
 		println(MathUtils.sqrt(testNumber))
-		println(Math.sqrt(testNumber))
+		println(StdMath.sqrt(testNumber))
 		test(5000) {
 			val temp = random.nextDouble()
 			@Suppress("DEPRECATION")
-			assertTrue(MathUtils.abs(MathUtils.sqrtCarmark(temp) - Math.sqrt(temp)) < 1e-5)
-			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - Math.sqrt(temp)) < 1e-10)
+			assertTrue(MathUtils.abs(MathUtils.sqrtCarmark(temp) - StdMath.sqrt(temp)) < 1e-5)
+			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - StdMath.sqrt(temp)) < 1e-10)
 		}
 	}
 
@@ -133,29 +131,29 @@ class MathUtilsTest {
 			val aFloat = random.nextFloat()
 			val aFloat2 = random.nextFloat()
 			assertEquals(
-					MathUtils.min(anInt, anInt2).toLong(),
-					Math.min(anInt, anInt2).toLong())
+					MathUtils.min(anInt, anInt2),
+					StdMath.min(anInt, anInt2))
 			assertEquals(
 					MathUtils.min(aLong, aLong2),
-					Math.min(aLong, aLong2))
+					StdMath.min(aLong, aLong2))
 			assertEquals(
 					MathUtils.min(aDouble, aDouble2),
-					Math.min(aDouble, aDouble2), 1e-15)
+					StdMath.min(aDouble, aDouble2), 1e-15)
 			assertEquals(
-					MathUtils.min(aFloat, aFloat2).toDouble(),
-					Math.min(aFloat, aFloat2).toDouble(), 1e-15)
+					MathUtils.min(aFloat, aFloat2),
+					StdMath.min(aFloat, aFloat2), 1e-10F)
 			assertEquals(
 					MathUtils.max(anInt, anInt2),
-					Math.max(anInt, anInt2).toLong())
+					StdMath.max(anInt, anInt2))
 			assertEquals(
 					MathUtils.max(aLong, aLong2),
-					Math.max(aLong, aLong2))
+					StdMath.max(aLong, aLong2))
 			assertEquals(
 					MathUtils.max(aDouble, aDouble2),
-					Math.max(aDouble, aDouble2), 1e-15)
+					StdMath.max(aDouble, aDouble2), 1e-15)
 			assertEquals(
-					MathUtils.max(aFloat, aFloat2).toDouble(),
-					Math.max(aFloat, aFloat2).toDouble(), 1e-15)
+					MathUtils.max(aFloat, aFloat2),
+					StdMath.max(aFloat, aFloat2), 1e-10F)
 		}
 	}
 
@@ -166,10 +164,10 @@ class MathUtilsTest {
 			val temp = random.nextDouble()
 			assertEquals(
 					MathUtils.ln(temp),
-					Math.log(temp), 1e-15)
+					StdMath.log(temp), 1e-15)
 			assertEquals(
 					MathUtils.lg(temp),
-					Math.log10(temp), 1e-15)
+					StdMath.log10(temp), 1e-15)
 		}
 	}
 

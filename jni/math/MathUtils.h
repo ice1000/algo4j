@@ -27,224 +27,224 @@ extern "C" {
  * Method:    gcd
  * Signature: (JJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_gcd(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_gcd(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    exgcd
  * Signature: ([JJ)J
  */
-JNIEXPORT jlongArray JNICALL Java_org_algo4j_math_MathUtils_exgcdJni(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_exgcdJni(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong
-);
+) -> jlongArray;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    gcdStein
  * Signature: (JJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_gcdStein(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_gcdStein(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    sqrtCarmark
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_sqrtCarmark(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_sqrtCarmark(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    sqrt
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_sqrt(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_sqrt(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    fastPlus
  * Signature: (JJJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_fastPlus(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastPlus(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    fastPower
  * Signature: (JJJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_fastPower(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastPower(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    abs
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_abs__D(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__D(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    abs
  * Signature: (F)F
  */
-JNIEXPORT jfloat JNICALL Java_org_algo4j_math_MathUtils_abs__F(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__F(
 		JNIEnv *,
 		jclass,
 		jfloat
-);
+) -> jfloat;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    abs
  * Signature: (I)I
  */
-JNIEXPORT jint JNICALL Java_org_algo4j_math_MathUtils_abs__I(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__I(
 		JNIEnv *,
 		jclass,
 		jint
-);
+) -> jint;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    abs
  * Signature: (J)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_abs__J(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__J(
 		JNIEnv *,
 		jclass,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    max
  * Signature: (JJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_max__JJ(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__JJ(
 		JNIEnv *,
 		jclass,
 		jlong,
-    jlong
-);
+		jlong
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:		max
- * Signature: (II)J
+ * Signature: (II)I
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_max__II(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__II(
 		JNIEnv *,
 		jclass,
-    jint,
-    jint
-);
+		jint,
+		jint
+) -> jint;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    max
  * Signature: (FF)F
  */
-JNIEXPORT jfloat JNICALL Java_org_algo4j_math_MathUtils_max__FF(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__FF(
 		JNIEnv *,
 		jclass,
 		jfloat,
 		jfloat
-);
+) -> jfloat;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    max
  * Signature: (DD)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_max__DD(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__DD(
 		JNIEnv *,
 		jclass,
 		jdouble,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    min
  * Signature: (II)I
  */
-JNIEXPORT jint JNICALL Java_org_algo4j_math_MathUtils_min__II(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_min__II(
 		JNIEnv *,
 		jclass,
 		jint,
 		jint
-);
+) -> jint;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    min
  * Signature: (JJ)J
  */
-JNIEXPORT jlong JNICALL Java_org_algo4j_math_MathUtils_min__JJ(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_min__JJ(
 		JNIEnv *,
 		jclass,
 		jlong,
 		jlong
-);
+) -> jlong;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    min
  * Signature: (FF)F
  */
-JNIEXPORT jfloat JNICALL Java_org_algo4j_math_MathUtils_min__FF(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_min__FF(
 		JNIEnv *,
 		jclass,
 		jfloat,
 		jfloat
-);
+) -> jfloat;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    min
  * Signature: (DD)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_min__DD(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_min__DD(
 		JNIEnv *,
 		jclass,
 		jdouble,
 		jdouble
-);
+) -> jdouble;
 
 
 /**
@@ -252,33 +252,33 @@ JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_min__DD(
  * Method:    ln
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_ln(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_ln(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    lg
  * Signature: (D)D
  */
-JNIEXPORT jdouble JNICALL Java_org_algo4j_math_MathUtils_lg(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_lg(
 		JNIEnv *,
 		jclass,
 		jdouble
-);
+) -> jdouble;
 
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    isPrime
  * Signature: (J)Z
  */
-JNIEXPORT jboolean JNICALL Java_org_algo4j_math_MathUtils_isPrime(
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 		JNIEnv *,
 		jclass,
 		jlong
-);
+) -> jboolean;
 
 
 #ifdef __cplusplus

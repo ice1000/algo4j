@@ -3,9 +3,9 @@ package org.algo4j.graph;
 import org.algo4j.error.UnionSetException;
 
 /**
- * Created by algo4j on 2016/11/17.
+ * Created by ice1000 on 2016/11/17.
  *
- * @author algo4j
+ * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
 public class UnionSet {

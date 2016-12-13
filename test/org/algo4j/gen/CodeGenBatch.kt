@@ -4,9 +4,9 @@ import org.algo4j.test.print
 import org.algo4j.test.println
 
 /**
- * Created by algo4j on 2016/12/7.
+ * Created by ice1000 on 2016/12/7.
  *
- * @author algo4j
+ * @author ice1000
  */
 
 fun main(args: Array<String>) {

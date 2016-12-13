@@ -1,17 +1,17 @@
 package org.algo4j.bit
 
 import org.algo4j.math.MathUtils
-import org.algo4j.test.test
 import org.algo4j.test.loop
+import org.algo4j.test.test
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
 import java.util.*
 
 /**
- * Created by algo4j on 2016/11/16.
+ * Created by ice1000 on 2016/11/16.
 
- * @author algo4j
+ * @author ice1000
  */
 class IntervalUpdatePointQueryTest {
 
@@ -69,7 +69,7 @@ class IntervalUpdatePointQueryTest {
 		 * standard update operation
 		 */
 		fun update(from: Int, to: Int, value: Long) {
-			(from..to).forEach { i -> data[i] += value }
+			(from..to).forEach { data[it] += value }
 		}
 
 		/**

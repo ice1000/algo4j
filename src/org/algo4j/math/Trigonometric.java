@@ -1,9 +1,9 @@
 package org.algo4j.math;
 
 /**
- * Created by algo4j on 2016/11/24.
+ * Created by ice1000 on 2016/11/24.
  *
- * @author algo4j
+ * @author ice1000
  */
 public final class Trigonometric {
 	private Trigonometric() {

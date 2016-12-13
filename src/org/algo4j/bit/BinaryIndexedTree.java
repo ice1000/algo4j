@@ -5,9 +5,9 @@ import org.algo4j.error.BinaryIndexedTreeException;
 /**
  * [1, length]
  * A binary indexed tree, implemented by using jni.
- * Created by algo4j on 2016/11/15.
+ * Created by ice1000 on 2016/11/15.
  *
- * @author algo4j
+ * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
 public class BinaryIndexedTree {

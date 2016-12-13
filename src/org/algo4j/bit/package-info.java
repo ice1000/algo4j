@@ -16,8 +16,8 @@
  * 本来想写逆序模型的，结果写挂了。
  * 于是把离散化代码提取出来之后就放弃了。
  * <p>
- * Created by algo4j on 2016/11/17.
+ * Created by ice1000 on 2016/11/17.
  *
- * @author algo4j
+ * @author ice1000
  */
 package org.algo4j.bit;
