@@ -4,6 +4,9 @@
 
 #include "FrontStarGraph.h"
 
+using algo4j_sort::merge_sort;
+using algo4j_uset::find;
+
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
 		jobject jo,
@@ -89,8 +92,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	auto count = 0;
 	auto find_res_1 = 0;
 	auto find_res_2 = 0;
-	__algo4j_memset(depth, 0);
-	for (auto i = 0; i <= edge_count; ++i) {
+	memset(depth, 0, node_count * sizeof(depth[0]));
+	for (auto i = 0; i < node_count; ++i) {
+		uset[i] = i;
+	}
+	for (auto i = 0; i < edge_count; ++i) {
 		edges[i].setValue(value[i], target[i], depature[i]);
 	}
 	env->ReleaseLongArrayElements(_next, next, 0);
@@ -98,18 +104,18 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	env->ReleaseLongArrayElements(_target, target, 0);
 	env->ReleaseLongArrayElements(_depature, depature, 0);
 	env->ReleaseLongArrayElements(_value, value, 0);
-	algo4j_sort::merge_sort(edges, edge_count);
+	merge_sort(edges, edge_count);
 	for (auto i = 0; i < edge_count; ++i) {
-		find_res_1 = algo4j_uset::find(uset, edges[i].from);
-		find_res_2 = algo4j_uset::find(uset, edges[i].to);
+		find_res_1 = find(uset, edges[i].from);
+		find_res_2 = find(uset, edges[i].to);
 		if (find_res_1 != find_res_2) {
-			// if (depth[find_res_1] > depth[find_res_2]) {
+			if (depth[find_res_1] > depth[find_res_2]) {
+				uset[find_res_2] = find_res_1;
+			} else {
 				uset[find_res_1] = find_res_2;
-			// } else {
-			// 	uset[find_res_2] = find_res_1;
-			// 	if (depth[find_res_1] == depth[find_res_2])
-			// 		++depth[find_res_1];
-			// }
+				if (depth[find_res_1] == depth[find_res_2])
+				++depth[find_res_1];
+			}
 			min_len += edges[i].value;
 			if (++count >= node_count)
 				break;

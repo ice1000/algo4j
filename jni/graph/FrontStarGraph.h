@@ -52,32 +52,35 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		jint
 ) -> jlong;
 
-typedef struct FrontStarNode {
+class FrontStarNode {
+public:
 	jint value;
 	jint to;
 	jint from;
 
-	FrontStarNode(const jint v, const jint t, const jint f) : value(v), to(t), from(f) {  }
-	FrontStarNode() {  }
+	constexpr FrontStarNode(const jint v, const jint t, const jint f) : value(v), to(t), from(f) {  }
+
+	explicit FrontStarNode() {  }
+
 	~FrontStarNode() {  }
 
 	/**
 	 * set values of fields
 	 */
-	void setValue(const jint v, const jint t, const jint f) {
+	inline auto setValue(const jint v, const jint t, const jint f) -> void {
 		value = v;
 		from = f;
 		to = t;
 	}
 
-	const bool operator<(const FrontStarNode &o) const {
+	inline auto operator<(const FrontStarNode &o) const -> const bool {
 		return value < o.value;
 	}
 
-	const bool operator==(const FrontStarNode &o) const {
+	inline auto operator==(const FrontStarNode &o) const -> const bool {
 		return value == o.value;
 	}
-} FrontStarNode;
+};
 
 #ifdef __cplusplus
 }

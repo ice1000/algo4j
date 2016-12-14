@@ -134,7 +134,7 @@ auto algo4j_math::get_primes_simple(const jint cnt) -> jlong * {
 }
 
 auto algo4j_uset::find(jint *data, jint n) -> jint {
-	return data[n] == n ? n : (data[n] = algo4j_uset::find(data, data[n]));
+	return data[n] == n ? n : (data[n] = find(data, data[n]));
 }
 
 auto algo4j_mem::alloc(size_t size) -> jlong {

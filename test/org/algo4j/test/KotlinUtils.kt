@@ -34,7 +34,7 @@ fun <T> T.print(): T {
 }
 
 object Monoid {
-	fun <T> combine(func: (T, T) -> T) = { i: T, j: T -> func(i, j) }
+	inline fun <T> combine(crossinline func: (T, T) -> T) = { i: T, j: T -> func(i, j) }
 }
 
 fun <T> MutableList<T>.append(ls: List<T>): MutableList<T> {
@@ -42,7 +42,7 @@ fun <T> MutableList<T>.append(ls: List<T>): MutableList<T> {
 	return this
 }
 
-val shuffledIntList: List<Int>
+inline val shuffledIntList: List<Int>
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -59,7 +59,7 @@ val shuffledIntList: List<Int>
 		)
 	}
 
-val shuffledDoubleList: List<Double>
+inline val shuffledDoubleList: List<Double>
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -76,7 +76,7 @@ val shuffledDoubleList: List<Double>
 		)
 	}
 
-val strongIntArray: List<Int>
+inline val strongIntArray: List<Int>
 	get() {
 		val list = shuffledIntList
 				.toMutableList()

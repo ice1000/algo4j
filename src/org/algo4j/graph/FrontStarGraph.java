@@ -2,6 +2,7 @@ package org.algo4j.graph;
 
 import org.algo4j.error.FrontStarGraphException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -20,10 +21,14 @@ public final class FrontStarGraph {
 	private int edgeCount;
 	private int addingEdgeIndex = 0;
 
-	/** used in jni C++ port. */
+	/**
+	 * used in jni C++ port.
+	 */
 	public static final int INFINITY = 0x7f7f7f7f;
 
-	/** used in jni C++ port. */
+	/**
+	 * used in jni C++ port.
+	 */
 	public static final int INFINITY_FILLING = 0x7f;
 
 	public FrontStarGraph(int nodeCount, int edgeCount) {
@@ -48,11 +53,7 @@ public final class FrontStarGraph {
 	 * @param val  the value of the edge
 	 */
 	public void addEdge(int from, int to, int val) {
-		if (from < 1 ||
-				to < 1 ||
-				from > nodeCount ||
-				to > nodeCount ||
-				from == to)
+		if (from < 1 || to < 1 || from > nodeCount || to > nodeCount || from == to)
 			throw FrontStarGraphException.numberInvalid();
 		target[addingEdgeIndex] = to;
 		depart[addingEdgeIndex] = from;
@@ -82,8 +83,26 @@ public final class FrontStarGraph {
 	 * @param val distance
 	 */
 	public void addDirectionlessEdge(int p1, int p2, int val) {
-		addEdge(p1, p2, val);
-		addEdge(p2, p1, val);
+		addEdge(p1, p2, val, val);
+	}
+
+	/**
+	 * return all edges between p1 and p2
+	 *
+	 * @param p1 position 1
+	 * @param p2 position 2
+	 * @return all edges between p1 and p2
+	 */
+	public long[] getEdges(int p1, int p2) {
+		if (p1 < 1 || p2 < 1 || p1 > nodeCount || p2 > nodeCount)
+			throw FrontStarGraphException.numberInvalid();
+		ArrayList<Long> edges = new ArrayList<>();
+//		if (p1 == p2) edges.add(0L);
+		for (long i = head[p1]; i != -1; i = next[(int) i])
+			if (target[(int) i] == p2) edges.add(value[(int) i]);
+		long[] ret = new long[edges.size()];
+		for (int i = 0; i < ret.length; i++) ret[i] = edges.get(ret.length - i - 1);
+		return ret;
 	}
 
 	/**

@@ -29,7 +29,7 @@ class FrontStarGraphTest {
 	 * 2 3 -1
 	 * 3 1 -1
 	 */
-	@Test
+	@Test(timeout = 1000)
 	fun spfaTest() {
 		val graph = FrontStarGraph(3, 2 shl 1)
 		graph.addEdge(1, 2, 2, -1)
@@ -56,9 +56,8 @@ class FrontStarGraphTest {
 	 * 2 4 7
 	 * 2 3 6
 	 * 3 4 8
-	 * TODO
 	 */
-//	@Test
+	@Test(timeout = 1000)
 	fun kruskalTest() {
 		val graph = FrontStarGraph(4, 5 shl 1)
 		graph.addDirectionlessEdge(1, 2, 3)
@@ -66,8 +65,18 @@ class FrontStarGraphTest {
 		graph.addDirectionlessEdge(2, 4, 7)
 		graph.addDirectionlessEdge(2, 3, 6)
 		graph.addDirectionlessEdge(3, 4, 8)
-		println("edges added.")
-		assertEquals(6, graph.kruskal())
+		assertEquals(14, graph.kruskal())
+	}
+
+	@Test(timeout = 1000)
+	fun getEdgesTest() {
+		val graph = FrontStarGraph(4, 5 shl 1)
+		graph.addDirectionlessEdge(1, 2, 3)
+		graph.addDirectionlessEdge(1, 2, 4)
+		graph.addDirectionlessEdge(1, 2, 5)
+		graph.addDirectionlessEdge(1, 4, 5)
+		assertArrayEquals(longArrayOf(3, 4, 5), graph.getEdges(1, 2))
+		assertArrayEquals(longArrayOf(5), graph.getEdges(1, 4))
 	}
 
 	companion object Initializer {
