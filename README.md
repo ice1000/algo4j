@@ -23,7 +23,7 @@ test|tests
 - [X] Union set. including path compression and heuristic merge.
 - [ ] MathUtils, will be more powerful than java.lang.Math.
 - [ ] SequenceUtils, like sorting an data with different algorithm or discretization.
-- [ ] Front star graph, including shortest-path-faster-algorithm, kruskal is still in progress.
+- [ ] Front star graph, including shortest-path-faster-algorithm, kruskal, etc.
 
 Actually, every java classes are well-documented.<br/>
 For more information, see JavaDocs in each java file or package-info.java.
