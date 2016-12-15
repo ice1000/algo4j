@@ -1,8 +1,10 @@
 package org.algo4j.math
 
+import org.algo4j.test.test
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
+import java.util.*
 import java.math.BigInteger as StdBigInt
 
 /**
@@ -18,10 +20,29 @@ class BigIntTest() {
 		assertEquals(int.toString(), stdInt.toString())
 	}
 
-	@Test
+	@Test(timeout = 1000)
 	fun plusTest() {
-		val int = BigInt(2333)
-		println(int.plus(BigInt(12)).toString())
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val val1 = rand.nextInt(233333)
+			val val2 = rand.nextInt(233333)
+//			println("$val1, $val2")
+			assertEquals(
+					(val1 + val2).toString(),
+					BigInt(val1)
+							.plus(BigInt(val2))
+							.toString())
+		}
+		assertEquals(
+				BigInt("1111111111111111111111111111111111")
+						.plus(BigInt("111111111111111111111111111111111"))
+						.toString(),
+				"1222222222222222222222222222222222")
+	}
+
+	@Test(timeout = 1000)
+	fun minusTest() {
+		val rand = Random(System.currentTimeMillis())
 	}
 
 	companion object Initializer {

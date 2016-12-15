@@ -38,7 +38,9 @@ public final class BigInt {
 	}
 
 	public BigInt plus(BigInt bigInt) {
-		return new BigInt(plus(data, bigInt.data), true);
+		if (sig == bigInt.sig)
+			return new BigInt(plus(data, bigInt.data), sig);
+		else return minus(bigInt);
 	}
 
 	public BigInt minus(BigInt bigInt) {
