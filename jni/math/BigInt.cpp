@@ -49,10 +49,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 	  buf[--res_idx] += a[--a_idx];
 		check_more_than_9
 	}
-	while (buf[0] > '0' and buf[0] <= '9') {
+	while (buf[0] <= '0' or buf[0] > '9') {
 		--res_len;
 		++buf;
 	}
+	if (!buf[0]) --buf;
 	auto ret = env->NewByteArray(res_len);
 	env->SetByteArrayRegion(ret, 0, res_len, buf);
 	env->ReleaseByteArrayElements(_a, a, 0);
@@ -104,7 +105,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
 		buf[--res_idx] += a[--a_idx];
 		check_less_than_0
 	}
-	while (buf[0] > '0' and buf[0] <= '9') {
+	while (buf[0] <= '0' or buf[0] > '9') {
 		--res_len;
 		++buf;
 	}

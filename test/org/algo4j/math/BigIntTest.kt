@@ -34,10 +34,10 @@ class BigIntTest() {
 							.toString())
 		}
 		assertEquals(
+				"1222222222222222222222222222222222",
 				BigInt("1111111111111111111111111111111111")
 						.plus(BigInt("111111111111111111111111111111111"))
-						.toString(),
-				"1222222222222222222222222222222222")
+						.toString())
 	}
 
 	@Test(timeout = 1000)
@@ -61,18 +61,18 @@ class BigIntTest() {
 		test(1000) {
 			val val1 = rand.nextInt(233333)
 			val val2 = rand.nextInt(233333)
-			println("$val1, $val2")
+//			println("$val1, $val2")
 			assertEquals(
-					(val1 + val2).toString(),
+					(val1 - val2).toString(),
 					BigInt(val1)
 							.minus(BigInt(val2))
 							.toString())
 		}
 		assertEquals(
+				"1000000000000000000000000000000000",
 				BigInt("1111111111111111111111111111111111")
-						.plus(BigInt("111111111111111111111111111111111"))
-						.toString(),
-				"1000000000000000000000000000000000")
+						.minus(BigInt("111111111111111111111111111111111"))
+						.toString())
 	}
 
 	companion object Initializer {
