@@ -1,14 +1,14 @@
 # Configuration files #
 
 *.iml
-.idea/
-jni/.idea/
-jni/.vscode/
+.idea
+.vscode
 
 # Compile output #
 
 *.dll
 *.a
+*.exe
 *.def
 *.o
 
@@ -22,6 +22,7 @@ Makefile.win
 
 jni/jni.layout
 *.res
+*.ico
 lib/
 
 # Logs #
