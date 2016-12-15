@@ -11,11 +11,9 @@ import org.algo4j.error.UnionSetException;
 public class UnionSet {
 	private int[] data;
 	private int[] depth;
-	public final int length;
 
 	public UnionSet(int length) {
 		++length;
-		this.length = length;
 		data = new int[length];
 		for (int i = 0; i < length; i++) data[i] = i;
 		depth = new int[length];
@@ -31,8 +29,8 @@ public class UnionSet {
 	 * @return the father of num
 	 */
 	public int find(int num) {
-		if (num < 1 || num > length) throw UnionSetException.indexOutBound();
-		return find(data, length, num);
+		if (num < 1 || num > data.length) throw UnionSetException.indexOutBound();
+		return find(data, num);
 	}
 
 	/**
@@ -68,5 +66,5 @@ public class UnionSet {
 		return find(a) == find(b);
 	}
 
-	private native int find(int[] data, int length, int num);
+	private native int find(int[] data, int num);
 }

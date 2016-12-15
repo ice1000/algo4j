@@ -42,7 +42,7 @@ fun <T> MutableList<T>.append(ls: List<T>): MutableList<T> {
 	return this
 }
 
-inline val shuffledIntList: List<Int>
+val shuffledIntList: List<Int>
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -59,7 +59,7 @@ inline val shuffledIntList: List<Int>
 		)
 	}
 
-inline val shuffledDoubleList: List<Double>
+val shuffledDoubleList: List<Double>
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -76,7 +76,7 @@ inline val shuffledDoubleList: List<Double>
 		)
 	}
 
-inline val strongIntArray: List<Int>
+val strongIntArray: List<Int>
 	get() {
 		val list = shuffledIntList
 				.toMutableList()

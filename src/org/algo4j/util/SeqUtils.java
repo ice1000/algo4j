@@ -10,46 +10,28 @@ public final class SeqUtils {
 	private SeqUtils() {
 	}
 
-	private static native void discretization(long[] data, int length);
-
 	/**
 	 * O(length) = length * 2 + log(length)
 	 * to do discretization to the given array.
 	 *
 	 * @param data the array to be discretization.
 	 */
-	public static void discretization(long[] data) {
-		discretization(data, data.length);
-	}
-
-	private static native void discretization(int[] data, int length);
+	public static native void discretization(long[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static void discretization(int[] data) {
-		discretization(data, data.length);
-	}
-
-	private static native void discretization(float[] data, int length);
+	public static native void discretization(int[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static void discretization(float[] data) {
-		discretization(data, data.length);
-	}
-
-	private static native void discretization(double[] data, int length);
+	public static native void discretization(float[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static void discretization(double[] data) {
-		discretization(data, data.length);
-	}
-
-	private static native long inversion(int[] data, int length);
+	public static native void discretization(double[] data);
 
 	/**
 	 * O(length) = 2 * log(length)
@@ -58,38 +40,22 @@ public final class SeqUtils {
 	 * @param data given array
 	 * @return inversion number
 	 */
-	public static long inversion(int[] data) {
-		return inversion(data, data.length);
-	}
-
-	private static native long inversion(long[] data, int length);
+	public static native long inversion(int[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static long inversion(long[] data) {
-		return inversion(data, data.length);
-	}
-
-	private static native long inversion(float[] data, int length);
+	public static native long inversion(long[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static long inversion(float[] data) {
-		return inversion(data, data.length);
-	}
-
-	private static native long inversion(double[] data, int length);
+	public static native long inversion(float[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static long inversion(double[] data) {
-		return inversion(data, data.length);
-	}
-
-	private static native void sortBubble(int[] data, int length);
+	public static native long inversion(double[] data);
 
 	/**
 	 * O(len) = len ^ 2
@@ -97,38 +63,22 @@ public final class SeqUtils {
 	 *
 	 * @param data the array to be sort
 	 */
-	public static void sortBubble(int[] data) {
-		sortBubble(data, data.length);
-	}
-
-	private static native void sortBubble(long[] data, int length);
+	public static native void sortBubble(int[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static void sortBubble(long[] data) {
-		sortBubble(data, data.length);
-	}
-
-	private static native void sortBubble(float[] data, int length);
+	public static native void sortBubble(long[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static void sortBubble(float[] data) {
-		sortBubble(data, data.length);
-	}
-
-	private static native void sortBubble(double[] data, int length);
+	public static native void sortBubble(float[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static void sortBubble(double[] data) {
-		sortBubble(data, data.length);
-	}
-
-	private static native void sortQuick(int[] data, int length);
+	public static native void sortBubble(double[] data);
 
 	/**
 	 * O(len) = { long(len), len ^ 2 } depends on the array
@@ -136,156 +86,62 @@ public final class SeqUtils {
 	 *
 	 * @param data the array to be sort
 	 */
-	public static void sortQuick(int[] data) {
-		sortQuick(data, data.length);
-	}
-
-	private static native void sortQuick(long[] data, int length);
+	public static native void sortQuick(int[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static void sortQuick(long[] data) {
-		sortQuick(data, data.length);
-	}
-
-	private static native void sortQuick(float[] data, int length);
+	public static native void sortQuick(long[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static void sortQuick(float[] data) {
-		sortQuick(data, data.length);
-	}
-
-	private static native void sortQuick(double[] data, int length);
+	public static native void sortQuick(float[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static void sortQuick(double[] data) {
-		sortQuick(data, data.length);
-	}
+	public static native void sortQuick(double[] data);
 
-	private static native void sortInsertion(int[] data, int length);
+	public static native void sortInsertion(int[] data);
 
-	public static void sortInsertion(int[] data) {
-		sortInsertion(data, data.length);
-	}
+	public static native void sortInsertion(long[] data);
 
-	private static native void sortInsertion(long[] data, int length);
+	public static native void sortInsertion(float[] data);
 
-	public static void sortInsertion(long[] data) {
-		sortInsertion(data, data.length);
-	}
+	public static native void sortInsertion(double[] data);
 
-	private static native void sortInsertion(float[] data, int length);
+	public static native void sortMerge(int[] data);
 
-	public static void sortInsertion(float[] data) {
-		sortInsertion(data, data.length);
-	}
+	public static native void sortMerge(long[] data);
 
-	private static native void sortInsertion(double[] data, int length);
+	public static native void sortMerge(float[] data);
 
-	public static void sortInsertion(double[] data) {
-		sortInsertion(data, data.length);
-	}
+	public static native void sortMerge(double[] data);
 
-	private static native void sortMerge(int[] data, int length);
+	public static native void sortComb(int[] data);
 
-	public static void sortMerge(int[] data) {
-		sortMerge(data, data.length);
-	}
+	public static native void sortComb(long[] data);
 
-	private static native void sortMerge(long[] data, int length);
+	public static native void sortComb(float[] data);
 
-	public static void sortMerge(long[] data) {
-		sortMerge(data, data.length);
-	}
+	public static native void sortComb(double[] data);
 
-	private static native void sortMerge(float[] data, int length);
+	public static native void sortSelection(int[] data);
 
-	public static void sortMerge(float[] data) {
-		sortMerge(data, data.length);
-	}
+	public static native void sortSelection(long[] data);
 
-	private static native void sortMerge(double[] data, int length);
+	public static native void sortSelection(float[] data);
 
-	public static void sortMerge(double[] data) {
-		sortMerge(data, data.length);
-	}
+	public static native void sortSelection(double[] data);
 
-	private static native void sortComb(int[] data, int length);
+	public static native void sortCocktail(int[] data);
 
-	public static void sortComb(int[] data) {
-		sortComb(data, data.length);
-	}
+	public static native void sortCocktail(long[] data);
 
-	private static native void sortComb(long[] data, int length);
+	public static native void sortCocktail(float[] data);
 
-	public static void sortComb(long[] data) {
-		sortComb(data, data.length);
-	}
-
-	private static native void sortComb(float[] data, int length);
-
-	public static void sortComb(float[] data) {
-		sortComb(data, data.length);
-	}
-
-	private static native void sortComb(double[] data, int length);
-
-	public static void sortComb(double[] data) {
-		sortComb(data, data.length);
-	}
-
-	private static native void sortSelection(int[] data, int length);
-
-	public static void sortSelection(int[] data) {
-		sortSelection(data, data.length);
-	}
-
-	private static native void sortSelection(long[] data, int length);
-
-	public static void sortSelection(long[] data) {
-		sortSelection(data, data.length);
-	}
-
-	private static native void sortSelection(float[] data, int length);
-
-	public static void sortSelection(float[] data) {
-		sortSelection(data, data.length);
-	}
-
-	private static native void sortSelection(double[] data, int length);
-
-	public static void sortSelection(double[] data) {
-		sortSelection(data, data.length);
-	}
-
-	private static native void sortCocktail(int[] data, int length);
-
-	public static void sortCocktail(int[] data) {
-		sortCocktail(data, data.length);
-	}
-
-	private static native void sortCocktail(long[] data, int length);
-
-	public static void sortCocktail(long[] data) {
-		sortCocktail(data, data.length);
-	}
-
-	private static native void sortCocktail(float[] data, int length);
-
-	public static void sortCocktail(float[] data) {
-		sortCocktail(data, data.length);
-	}
-
-	private static native void sortCocktail(double[] data, int length);
-
-	public static void sortCocktail(double[] data) {
-		sortCocktail(data, data.length);
-	}
+	public static native void sortCocktail(double[] data);
 
 	/**
 	 * Returns a string representation of the contents of the specified array.
