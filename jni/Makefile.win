@@ -11,8 +11,8 @@ LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
-CXXFLAGS = $(CXXINCS) -ansi -m64 -std=gnu++11 -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -ansi -m64 -std=gnu++11 -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -ansi -O3 -m64 -std=gnu++11 -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -ansi -O3 -m64 -std=gnu++11 -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = libjni.def
 STATIC   = libjni.a

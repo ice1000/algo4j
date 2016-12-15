@@ -1,5 +1,6 @@
 package org.algo4j.math
 
+import org.algo4j.test.loop
 import org.algo4j.test.test
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -24,8 +25,8 @@ class BigIntTest() {
 	fun plusTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
-			val val1 = rand.nextInt(233333)
-			val val2 = rand.nextInt(233333)
+			val val1 = rand.nextInt(233333333)
+			val val2 = rand.nextInt(233333333)
 //			println("$val1, $val2")
 			assertEquals(
 					(val1 + val2).toString(),
@@ -41,11 +42,22 @@ class BigIntTest() {
 	}
 
 	@Test(timeout = 1000)
+	fun stdPlusTest() {
+		val rand = Random(System.currentTimeMillis())
+		loop(1000) {
+			val int = StdBigInt(rand.nextInt(233333333).toString())
+			int.add(StdBigInt(rand.nextInt(233333333).toString())).toString()
+		}
+		StdBigInt("1111111111111111111111111111111111")
+				.add(StdBigInt("111111111111111111111111111111111")).toString()
+	}
+
+	@Test(timeout = 1000)
 	fun compareToTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
-			val val1 = rand.nextInt(233333)
-			val val2 = rand.nextInt(233333)
+			val val1 = rand.nextInt(23333333)
+			val val2 = rand.nextInt(23333333)
 			assertEquals(
 					if (val1 > val2) 1
 					else if (val2 > val1) -1
@@ -79,6 +91,7 @@ class BigIntTest() {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
+			Random(System.currentTimeMillis())
 			System.loadLibrary("jni")
 		}
 	}

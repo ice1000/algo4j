@@ -21,9 +21,10 @@ test|tests
 - [X] Binary indexed tree, including point-update-interval-query, interval-update-point-query and interval-update-interval-query
 - [X] Trigonometric functions, like: sin cos tan cot sec csc
 - [X] Union set. including path compression and heuristic merge.
-- [ ] MathUtils, will be more powerful than java.lang.Math.
-- [ ] SequenceUtils, like sorting an data with different algorithm or discretization.
-- [ ] Front star graph, including shortest-path-faster-algorithm, kruskal, etc.
+- [X] SequenceUtils, like sorting an data with different algorithm or discretization.
+- [X] MathUtils, will be more powerful than java.lang.Math.
+- [X] Front star graph, including shortest-path-faster-algorithm, kruskal, etc.
+- [ ] Big interger, jni implemented, I think it will be faster than java.math.BigInteger..
 
 Actually, every java classes are well-documented.<br/>
 For more information, see JavaDocs in each java file or package-info.java.
