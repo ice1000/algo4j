@@ -15,433 +15,397 @@ extern "C" {
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    discretization
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3JI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    discretization
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3II (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    discretization
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3FI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    discretization
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3DI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    inversion
- * Signature: ([II)J
+ * Signature: ([I)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    inversion
- * Signature: ([JI)J
+ * Signature: ([J)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    inversion
- * Signature: ([FI)J
+ * Signature: ([F)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    inversion
- * Signature: ([DI)J
+ * Signature: ([D)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortBubble
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3II (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortBubble
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3JI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortBubble
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3FI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortBubble
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3DI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortQuick
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3II (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortQuick
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3JI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortQuick
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3FI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortQuick
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3DI (
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortInsertion
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortInsertion
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortInsertion
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortInsertion
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortMerge
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortMerge
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortMerge
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortMerge
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortComb
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortComb
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortComb
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortComb
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortSelection
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortSelection
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortSelection
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortSelection
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortCocktail
- * Signature: ([II)V
+ * Signature: ([I)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortCocktail
- * Signature: ([JI)V
+ * Signature: ([J)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortCocktail
- * Signature: ([FI)V
+ * Signature: ([F)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> void;
 
 /**
  * Class:     org_algo4j_util_SeqUtils
  * Method:    sortCocktail
- * Signature: ([DI)V
+ * Signature: ([D)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> void;
 
 

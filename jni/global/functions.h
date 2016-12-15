@@ -4,6 +4,7 @@
 
 #include <jni.h>
 #include <math.h>
+#include <stdio.h>
 #include "templates.hpp"
 
 #pragma clang diagnostic push

@@ -19,241 +19,221 @@ extern "C" {
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    min
- * Signature: ([II)I
+ * Signature: ([I)I
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jint;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    min
- * Signature: ([JI)J
+ * Signature: ([J)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    min
- * Signature: ([FI)F
+ * Signature: ([F)F
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jfloat;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    min
- * Signature: ([DI)D
+ * Signature: ([D)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    max
- * Signature: ([II)I
+ * Signature: ([I)I
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jint;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    max
- * Signature: ([JI)J
+ * Signature: ([J)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    max
- * Signature: ([FI)F
+ * Signature: ([F)F
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jfloat;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    max
- * Signature: ([DI)D
+ * Signature: ([D)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    sum
- * Signature: ([II)I
+ * Signature: ([I)I
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jint;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    sum
- * Signature: ([JI)J
+ * Signature: ([J)J
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jlong;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    sum
- * Signature: ([FI)F
+ * Signature: ([F)F
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jfloat;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    sum
- * Signature: ([DI)D
+ * Signature: ([D)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    avg
- * Signature: ([II)D
+ * Signature: ([I)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    avg
- * Signature: ([JI)D
+ * Signature: ([J)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    avg
- * Signature: ([FI)D
+ * Signature: ([F)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    avg
- * Signature: ([DI)D
+ * Signature: ([D)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    stdDiv
- * Signature: ([II)D
+ * Signature: ([I)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3II(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3I(
 		JNIEnv *,
 		jclass,
-		jintArray,
-		jint
+		jintArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    stdDiv
- * Signature: ([JI)D
+ * Signature: ([J)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3JI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3J(
 		JNIEnv *,
 		jclass,
-		jlongArray,
-		jint
+		jlongArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    stdDiv
- * Signature: ([FI)D
+ * Signature: ([F)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3FI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3F(
 		JNIEnv *,
 		jclass,
-		jfloatArray,
-		jint
+		jfloatArray
 ) -> jdouble;
 
 /**
  * Class:     org_algo4j_util_Statistics
  * Method:    stdDiv
- * Signature: ([DI)D
+ * Signature: ([D)D
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3DI(
+JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_stdDiv___3D(
 		JNIEnv *,
 		jclass,
-		jdoubleArray,
-		jint
+		jdoubleArray
 ) -> jdouble;
 
 

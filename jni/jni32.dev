@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=10000011g0100000000010000
-UnitCount=21
+UnitCount=23
 
 [VersionInfo]
 Major=1
@@ -254,6 +254,26 @@ BuildCmd=
 FileName=util\Statistics.h
 CompileCpp=1
 Folder=util
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit22]
+FileName=math\BigInt.h
+CompileCpp=1
+Folder=math
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit23]
+FileName=math\BigInt.cpp
+CompileCpp=1
+Folder=math
 Compile=1
 Link=1
 Priority=1000

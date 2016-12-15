@@ -14,7 +14,6 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_find(
 		JNIEnv *env,
 		jobject jo,
 		jintArray _data,
-		jint len,
 		jint a) -> jint {
   __JNI__FUNCTION__INIT__
   auto data = env->GetIntArrayElements(_data, option);

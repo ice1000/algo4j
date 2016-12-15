@@ -10,25 +10,28 @@ set(
 		bit/BinaryIndexedTree.cpp
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
-		global/templates.hpp
-		global/basics.hpp
-		global/sort.hpp
-		global/winapi.h
-		global/functions.cpp
 		util/SequenceUtils.cpp
+		global/functions.cpp
+		global/templates.hpp
 		math/MathUtils.cpp
 		graph/UnionSet.cpp
-		global/winapi.cpp)
+		global/winapi.cpp
+		global/basics.hpp
+		global/sort.hpp
+		math/BigInt.cpp
+)
 
 set(
 		SOURCE_HEADERS
 		bit/BinaryIndexedTree.h
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
-		global/functions.h
 		util/SequenceUtils.h
+		global/functions.h
 		math/MathUtils.h
 		graph/UnionSet.h
+		global/winapi.h
+		math/BigInt.h
 )
 
 # add_executable(jni ${SOURCE_FILES})

@@ -55,6 +55,10 @@ if exist *.exe (
 	del /f /s /q *.exe
 )
 
+if exist *.res (
+	del /f /s /q *.res
+)
+
 if exist build (
 	rd /s /q build
 )

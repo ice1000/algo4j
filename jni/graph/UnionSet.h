@@ -15,13 +15,12 @@ extern "C" {
 /**
  * Class:     org_algo4j_graph_UnionSet
  * Method:    find
- * Signature: ([III)I
+ * Signature: ([II)I
  */
 JNIEXPORT jint JNICALL Java_org_algo4j_graph_UnionSet_find(
 		JNIEnv *,
 		jobject,
 		jintArray,
-		jint,
 		jint
 );
 
