@@ -41,8 +41,38 @@ class BigIntTest() {
 	}
 
 	@Test(timeout = 1000)
+	fun compareToTest() {
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val val1 = rand.nextInt(233333)
+			val val2 = rand.nextInt(233333)
+			assertEquals(
+					if (val1 > val2) 1
+					else if (val2 > val1) -1
+					else 0,
+					BigInt(val1).compareTo(BigInt(val2))
+			)
+		}
+	}
+
+	@Test(timeout = 1000)
 	fun minusTest() {
 		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val val1 = rand.nextInt(233333)
+			val val2 = rand.nextInt(233333)
+			println("$val1, $val2")
+			assertEquals(
+					(val1 + val2).toString(),
+					BigInt(val1)
+							.minus(BigInt(val2))
+							.toString())
+		}
+		assertEquals(
+				BigInt("1111111111111111111111111111111111")
+						.plus(BigInt("111111111111111111111111111111111"))
+						.toString(),
+				"1000000000000000000000000000000000")
 	}
 
 	companion object Initializer {
