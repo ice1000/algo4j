@@ -8,7 +8,7 @@ import org.algo4j.error.UnionSetException;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public class UnionSet {
+public final class UnionSet {
 	private int[] data;
 	private int[] depth;
 
