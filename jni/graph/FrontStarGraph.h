@@ -27,13 +27,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *,
 		jobject,
 		jint,
-		jlongArray,
-		jlongArray,
-		jlongArray,
-		jlongArray,
+		jintArray,
+		jintArray,
+		jintArray,
+		jintArray,
 		jint,
 		jint
-) -> jlongArray;
+) -> jintArray;
 
 /**
  * Class:     org_algo4j_graph_FrontStarGraph
@@ -43,14 +43,14 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *,
 		jobject,
-		jlongArray,
-		jlongArray,
-		jlongArray,
-		jlongArray,
-		jlongArray,
+		jintArray,
+		jintArray,
+		jintArray,
+		jintArray,
+		jintArray,
 		jint,
 		jint
-) -> jlong;
+) -> jint;
 
 class FrontStarNode {
 public:

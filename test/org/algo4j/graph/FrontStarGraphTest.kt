@@ -44,7 +44,7 @@ class FrontStarGraphTest {
 		graph1.addEdge(3, 1, -1)
 		val res1 = graph1.spfa(1)
 		println(SeqUtils.toString(res1))
-		assertArrayEquals(longArrayOf(-1, -1, -1, -1), res1)
+		assertArrayEquals(intArrayOf(-1, -1, -1, -1), res1)
 	}
 
 	/**
@@ -75,8 +75,23 @@ class FrontStarGraphTest {
 		graph.addDirectionlessEdge(1, 2, 4)
 		graph.addDirectionlessEdge(1, 2, 5)
 		graph.addDirectionlessEdge(1, 4, 5)
-		assertArrayEquals(longArrayOf(3, 4, 5), graph.getEdges(1, 2))
-		assertArrayEquals(longArrayOf(5), graph.getEdges(1, 4))
+		assertArrayEquals(intArrayOf(3, 4, 5), graph.getEdges(1, 2))
+		assertArrayEquals(intArrayOf(5), graph.getEdges(1, 4))
+	}
+
+	@Test(timeout = 1000)
+	fun dfsTest() {
+		val graph = FrontStarGraph(4, 4 shl 1)
+		graph.addDirectionlessEdge(1, 2, 3)
+		graph.addDirectionlessEdge(1, 2, 4)
+		graph.addDirectionlessEdge(1, 2, 5)
+		graph.addDirectionlessEdge(1, 4, 5)
+		var count = 0
+		graph.dfs(1, 0, { edge, last ->
+			count++
+			return@dfs last + 1
+		})
+		assertEquals(graph.addedEdgeCount, count)
 	}
 
 	companion object Initializer {

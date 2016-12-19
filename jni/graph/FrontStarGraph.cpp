@@ -11,25 +11,25 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
 		jobject jo,
 		jint source,
-		jlongArray _next,
-		jlongArray _head,
-		jlongArray _target,
-		jlongArray _value,
+		jintArray _next,
+		jintArray _head,
+		jintArray _target,
+		jintArray _value,
 		jint edge_count,
-		jint node_count) -> jlongArray {
-	auto _dis = env->NewLongArray(node_count);
-	auto dis = new jlong[node_count];
+		jint node_count) -> jintArray {
+	auto _dis = env->NewIntArray(node_count);
+	auto dis = new jint[node_count];
 	auto inq = new jboolean[node_count];
 	auto vis = new jint[node_count];
-	auto queue = new jlong[edge_count];
+	auto queue = new jint[edge_count];
 	jsize begin = 0, end = 0;
-	jlong i, j;
+	jint i, j;
 	auto option = new jboolean(false);
 	auto looped = false;
-	auto next = env->GetLongArrayElements(_next, option);
-	auto head = env->GetLongArrayElements(_head, option);
-	auto target = env->GetLongArrayElements(_target, option);
-	auto value = env->GetLongArrayElements(_value, option);
+	auto next = env->GetIntArrayElements(_next, option);
+	auto head = env->GetIntArrayElements(_head, option);
+	auto target = env->GetIntArrayElements(_target, option);
+	auto value = env->GetIntArrayElements(_value, option);
 	memset(dis, org_algo4j_graph_FrontStarGraph_INFINITY_FILLING, sizeof(dis[0]) * node_count);
 	memset(vis, 0, sizeof(vis[0]) * node_count);
 	memset(inq, false, sizeof(inq[0]) * node_count);
@@ -55,11 +55,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		}
 		inq[i] = false;
 	}
-	env->ReleaseLongArrayElements(_next, next, 0);
-	env->ReleaseLongArrayElements(_head, head, 0);
-	env->ReleaseLongArrayElements(_target, target, 0);
-	env->ReleaseLongArrayElements(_value, value, 0);
-	env->SetLongArrayRegion(_dis, 0, node_count, dis);
+	env->ReleaseIntArrayElements(_next, next, 0);
+	env->ReleaseIntArrayElements(_head, head, 0);
+	env->ReleaseIntArrayElements(_target, target, 0);
+	env->ReleaseIntArrayElements(_value, value, 0);
+	env->SetIntArrayRegion(_dis, 0, node_count, dis);
 	delete option;
 	delete dis;
 	delete inq;
@@ -71,20 +71,20 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *env,
 		jobject jo,
-		jlongArray _next,
-		jlongArray _head,
-		jlongArray _target,
-		jlongArray _depature,
-		jlongArray _value,
+		jintArray _next,
+		jintArray _head,
+		jintArray _target,
+		jintArray _depature,
+		jintArray _value,
 		jint edge_count,
-		jint node_count) -> jlong {
+		jint node_count) -> jint {
 	auto option = new jboolean(false);
 	auto looped = false;
-	auto next = env->GetLongArrayElements(_next, option);
-	auto head = env->GetLongArrayElements(_head, option);
-	auto target = env->GetLongArrayElements(_target, option);
-	auto depature = env->GetLongArrayElements(_depature, option);
-	auto value = env->GetLongArrayElements(_value, option);
+	auto next = env->GetIntArrayElements(_next, option);
+	auto head = env->GetIntArrayElements(_head, option);
+	auto target = env->GetIntArrayElements(_target, option);
+	auto depature = env->GetIntArrayElements(_depature, option);
+	auto value = env->GetIntArrayElements(_value, option);
 	auto uset = new jint[node_count]();
 	auto depth = new jint[node_count]();
 	auto edges = new FrontStarNode[edge_count]();
@@ -99,11 +99,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	for (auto i = 0; i < edge_count; ++i) {
 		edges[i].setValue(value[i], target[i], depature[i]);
 	}
-	env->ReleaseLongArrayElements(_next, next, 0);
-	env->ReleaseLongArrayElements(_head, head, 0);
-	env->ReleaseLongArrayElements(_target, target, 0);
-	env->ReleaseLongArrayElements(_depature, depature, 0);
-	env->ReleaseLongArrayElements(_value, value, 0);
+	env->ReleaseIntArrayElements(_next, next, 0);
+	env->ReleaseIntArrayElements(_head, head, 0);
+	env->ReleaseIntArrayElements(_target, target, 0);
+	env->ReleaseIntArrayElements(_depature, depature, 0);
+	env->ReleaseIntArrayElements(_value, value, 0);
 	merge_sort(edges, edge_count);
 	for (auto i = 0; i < edge_count; ++i) {
 		find_res_1 = find(uset, edges[i].from);

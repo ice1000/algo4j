@@ -1,9 +1,12 @@
 package org.algo4j.graph;
 
 import org.algo4j.error.FrontStarGraphException;
+import org.algo4j.math.MathUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * Created by ice1000 on 2016/11/17.
@@ -12,14 +15,15 @@ import java.util.Arrays;
  */
 @SuppressWarnings("WeakerAccess")
 public final class FrontStarGraph {
-	private long[] next;
-	private long[] head;
-	private long[] target;
-	private long[] depart;
-	private long[] value;
-	private int nodeCount;
-	private int edgeCount;
+	private int[] next;
+	private int[] head;
+	private int[] target;
+	private int[] depart;
+	private int[] value;
 	private int addingEdgeIndex = 0;
+	private int maximumNodeNumber = 0;
+	public final int nodeCount;
+	public final int edgeCount;
 
 	/**
 	 * used in jni C++ port.
@@ -35,11 +39,11 @@ public final class FrontStarGraph {
 		++nodeCount;
 		this.nodeCount = nodeCount;
 		this.edgeCount = edgeCount;
-		value = new long[edgeCount];
-		target = new long[edgeCount];
-		depart = new long[edgeCount];
-		next = new long[edgeCount];
-		head = new long[nodeCount];
+		value = new int[edgeCount];
+		target = new int[edgeCount];
+		depart = new int[edgeCount];
+		next = new int[edgeCount];
+		head = new int[nodeCount];
 		Arrays.fill(next, -1);
 		Arrays.fill(head, -1);
 		// there's no need to initialize depart.
@@ -55,6 +59,8 @@ public final class FrontStarGraph {
 	public void addEdge(int from, int to, int val) {
 		if (from < 1 || to < 1 || from > nodeCount || to > nodeCount || from == to)
 			throw FrontStarGraphException.numberInvalid();
+		maximumNodeNumber = MathUtils.max(maximumNodeNumber, from);
+		maximumNodeNumber = MathUtils.max(maximumNodeNumber, to);
 		target[addingEdgeIndex] = to;
 		depart[addingEdgeIndex] = from;
 		value[addingEdgeIndex] = val;
@@ -93,14 +99,14 @@ public final class FrontStarGraph {
 	 * @param p2 position 2
 	 * @return all edges between p1 and p2
 	 */
-	public long[] getEdges(int p1, int p2) {
+	public int[] getEdges(int p1, int p2) {
 		if (p1 < 1 || p2 < 1 || p1 > nodeCount || p2 > nodeCount)
 			throw FrontStarGraphException.numberInvalid();
-		ArrayList<Long> edges = new ArrayList<>();
+		ArrayList<Integer> edges = new ArrayList<>();
 //		if (p1 == p2) edges.add(0L);
-		for (long i = head[p1]; i != -1; i = next[(int) i])
-			if (target[(int) i] == p2) edges.add(value[(int) i]);
-		long[] ret = new long[edges.size()];
+		for (int i = head[p1]; i != -1; i = next[i])
+			if (target[i] == p2) edges.add(value[i]);
+		int[] ret = new int[edges.size()];
 		for (int i = 0; i < ret.length; i++) ret[i] = edges.get(ret.length - i - 1);
 		return ret;
 	}
@@ -113,10 +119,18 @@ public final class FrontStarGraph {
 	 * @param source the begin position
 	 * @return the shortest path to each position
 	 */
-	public long[] spfa(int source) {
+	public int[] spfa(int source) {
 		if (source < 1 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
-		return spfa(source, next, head, target, value, edgeCount, nodeCount);
+		return spfa(
+				source,
+				next,
+				head,
+				target,
+				value,
+				edgeCount,
+				nodeCount
+		);
 	}
 
 	/**
@@ -124,8 +138,65 @@ public final class FrontStarGraph {
 	 *
 	 * @return the length of the minimum spanning tree
 	 */
-	public long kruskal() {
-		return kruskal(next, head, target, depart, value, edgeCount, nodeCount);
+	public int kruskal() {
+		return kruskal(
+				next,
+				head,
+				target,
+				depart,
+				value,
+				edgeCount,
+				nodeCount
+		);
+	}
+
+	/**
+	 * depth first search
+	 *
+	 * @param source       the source position
+	 * @param initValue    origin value passed to the function,
+	 * @param function     the function applied to each search
+	 * @param <DataHolder> the return type of 'function' and 'initValue'
+	 *                     passed from last function call or
+	 */
+	public <DataHolder> void dfs(
+			int source,
+			DataHolder initValue,
+			BiFunction<Edge, DataHolder, DataHolder> function) {
+		dfs(source, initValue, function, new boolean[getAddedEdgeCount() + 1]);
+	}
+
+	public void dfs(
+			int source,
+			Function<Edge, Object> function) {
+		dfs(source, function, new boolean[getAddedEdgeCount() + 1]);
+	}
+
+	public void dfs(
+			int source,
+			Function<Edge, Object> function,
+			boolean[] mark) {
+		for (int i = head[source]; i != -1; i = next[i]) {
+			if (!mark[i]) {
+				mark[i] = true;
+				function.apply(new Edge(target[i], depart[i], value[i]));
+				dfs(target[i], function, mark);
+			}
+		}
+	}
+
+	private <DataHolder> void dfs(
+			int source,
+			DataHolder initValue,
+			BiFunction<Edge, DataHolder, DataHolder> function,
+			boolean[] mark) {
+		for (int i = head[source]; i != -1; i = next[i]) {
+			if (!mark[i]) {
+				mark[i] = true;
+				DataHolder ret = function.apply(new Edge(target[i], depart[i], value[i]), initValue);
+				dfs(target[i], ret, function, mark);
+			}
+		}
 	}
 
 	/**
@@ -140,12 +211,12 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
-	private native long[] spfa(
+	private native int[] spfa(
 			int source,
-			long[] next,
-			long[] head,
-			long[] target,
-			long[] value,
+			int[] next,
+			int[] head,
+			int[] target,
+			int[] value,
 			int edgeCount,
 			int nodeCount
 	);
@@ -158,13 +229,33 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
-	private native long kruskal(
-			long[] next,
-			long[] head,
-			long[] target,
-			long[] departure,
-			long[] value,
+	private native int kruskal(
+			int[] next,
+			int[] head,
+			int[] target,
+			int[] departure,
+			int[] value,
 			int edgeCount,
 			int nodeCount
 	);
+
+	public int getAddedEdgeCount() {
+		return addingEdgeIndex;
+	}
+
+	public int getMaximumNodeNumber() {
+		return maximumNodeNumber;
+	}
+
+	public class Edge {
+		public int target;
+		public int depart;
+		public int value;
+
+		public Edge(int target, int depart, int value) {
+			this.target = target;
+			this.depart = depart;
+			this.value = value;
+		}
+	}
 }
