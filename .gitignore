@@ -1,11 +1,11 @@
-# Configuration files #
+## Configuration files ##
 
 *.iml
 .idea/
 jni/.idea/
 jni/.vscode/
 
-# Compile output #
+## Compile output ##
 
 *.dll
 *.a
@@ -18,13 +18,19 @@ out/
 
 Makefile.win
 
-# Unnecessary files #
+## Unnecessary files ##
 
 jni/jni.layout
 *.res
 lib/
 
-# Logs #
+## Logs ##
 
 *.log
 *.txt
+
+## added by plugin ##
+
+.vscode/
+code_drafts/.vscode/
+jni/jni32.ico
