@@ -44,7 +44,10 @@ public final class BigInt {
 	}
 
 	public BigInt minus(BigInt bigInt) {
-		return plus(new BigInt(bigInt.data, !bigInt.sig));
+		if (compareTo(bigInt) < 0)
+			return new BigInt(minus(bigInt.data, data), false);
+		else
+			return new BigInt(minus(data, bigInt.data), true);
 	}
 
 	public BigInt pow(int pow) {
@@ -73,7 +76,7 @@ public final class BigInt {
 		return (sig ? "" : "-") + new String(data);
 	}
 
-	@SuppressWarnings({"NullableProblems", "WeakerAccess"})
+	@SuppressWarnings("NullableProblems")
 	public int compareTo(BigInt o) {
 		if (this.sig == o.sig)
 			return compareTo(this.data, o.data) * (sig ? 1 : -1);
