@@ -12,6 +12,6 @@ import org.junit.Test
 class ConstantsTest {
 	@Test
 	fun outputConstants() {
-		PLANK_CONSTANT.println()
+		(1e35 * PLANK_CONSTANT).println()
 	}
 }
