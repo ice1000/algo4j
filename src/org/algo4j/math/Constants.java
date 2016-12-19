@@ -20,6 +20,7 @@ public final class Constants {
 
 	/** m */
 	public static final double PLANK_LENGTH = 1.61619997e-35;
+
 	/** s */
 	public static final double PLANK_TIME = 5.3910632e-44;
 
@@ -28,4 +29,10 @@ public final class Constants {
 
 	/** C */
 	public static final double PLANK_CHARGE = 1.87554595641e-18;
+
+	/** K */
+	public static final double PLANK_TEMPRETURE = 1.41683385e32;
+
+	/** m^3 * kg^-1 * s^-1 */
+	public static final double GRAVITATION_CONSTANT = 6.6740831e-11;
 }

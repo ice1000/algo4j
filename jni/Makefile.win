@@ -5,8 +5,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
-OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o $(RES)
-LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o $(RES)
+OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o $(RES)
+LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o $(RES)
 LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -56,6 +56,9 @@ math/BigInt.o: math/BigInt.cpp
 
 win/WinAPI.o: win/WinAPI.cpp
 	$(CPP) -c win/WinAPI.cpp -o win/WinAPI.o $(CXXFLAGS)
+
+global/winapi.o: global/winapi.cpp
+	$(CPP) -c global/winapi.cpp -o global/winapi.o $(CXXFLAGS)
 
 jni_private.res: jni_private.rc 
 	$(WINDRES) -i jni_private.rc --input-format=rc -o jni_private.res -O coff 

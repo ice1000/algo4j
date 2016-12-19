@@ -42,23 +42,6 @@ fun <T> MutableList<T>.append(ls: List<T>): MutableList<T> {
 	return this
 }
 
-val shuffledIntList: List<Int>
-	get() {
-		val rand = Random(System.currentTimeMillis())
-		return listOf(
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound)
-		)
-	}
-
 val shuffledDoubleList: List<Double>
 	get() {
 		val rand = Random(System.currentTimeMillis())
@@ -73,6 +56,23 @@ val shuffledDoubleList: List<Double>
 				rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
 				rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000,
 				rand.nextDouble() * 1000, rand.nextDouble() * 1000, rand.nextDouble() * 1000
+		)
+	}
+
+val shuffledIntList: List<Int>
+	get() {
+		val rand = Random(System.currentTimeMillis())
+		return listOf(
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
+				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound)
 		)
 	}
 
