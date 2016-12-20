@@ -48,7 +48,7 @@ void fpluss(char a[150], char b[150], char c[150])
 	ccc = 1;
 	for (i = 0; i <= len; i++)
 	{
-		if (a[i] =='')
+		if (a[i] == ' ')
 			ccc = 0;
 		if (ccc == 1)
 			aa[i] = a[i] - '0';
@@ -58,50 +58,49 @@ void fpluss(char a[150], char b[150], char c[150])
 	ccc = 1;
 	for (i = 0; i <= len; i++)
 	{
-		if (b[i] =='')
+		if (b[i] == ' ')
 			ccc = 0;
 		if (ccc == 1)
 			bb[i] = b[i] - '0';
 		else
 			bb[i] = 0;
 	}
-}
 
-//*********************************************
-//运算主体。
+	//*********************************************
+	//运算主体。
 
-for (i = 0; i < len; i++)
-{
-	if (aa[i] < bb[i])
+	for (i = 0; i < len; i++)
 	{
-		//判定，如果需要进位则从下一个数夺取1。
-		aa[i] += 10;
-		aa[i + 1]--;
+		if (aa[i] < bb[i])
+		{
+			//判定，如果需要进位则从下一个数夺取1。
+			aa[i] += 10;
+			aa[i + 1]--;
+		}
+		t = (aa[i] - bb[i]);
+		//利用t存储每一步的结果。
+		cc[i] = t;
 	}
-	t = (aa[i] - bb[i]);
-	//利用t存储每一步的结果。
-	cc[i] = t;
-}
-cc[i] = aa[i];
-//取得最后一位。
+	cc[i] = aa[i];
+	//取得最后一位。
 
-//*********************************************
+	//*********************************************
 
-ccc = 1;
-int j = 0;
-for (i = len; i >= 0; i--)
-{
-	//将整数数组块整合为字符串传回。
-	if (cc[i] != 0)
-		ccc = 0;
-	if (ccc == 0)
+	ccc = 1;
+	int j = 0;
+	for (i = len; i >= 0; i--)
 	{
-		c[j++] = cc[i] + '0';
+		//将整数数组块整合为字符串传回。
+		if (cc[i] != 0)
+			ccc = 0;
+		if (ccc == 0)
+		{
+			c[j++] = cc[i] + '0';
+		}
 	}
-}
-if (j == 0)
-	c[j++] = '0';
-c[j] ='';
+	if (j == 0)
+		c[j++] = '0';
+	c[j] = ' ';
 }
 
 void mult(char a[150], int b, char c[150])
@@ -130,14 +129,14 @@ void mult(char a[150], int b, char c[150])
 		tt = t / 10;
 	}
 	c[i++] = tt + '0';
-	c[i] ='';
+	c[i] = ' ';
 	//*********************************************
 	//消零。
 	for (i = strlen(c) - 1; i >= 0; i--)
 	{
 		if (c[i] != '0')
 			break;
-		c[i] ='';
+		c[i] = ' ';
 	}
 
 	//*********************************************
@@ -220,7 +219,7 @@ void cult(char a[150], char b[150], char d[150])
 	{
 		//取整运算中，当除数b大于被除数a时，宣告结果为0；
 		d[0] = '0';
-		d[1] ='';
+		d[1] = ' ';
 		return;
 	}
 	len = len1;
@@ -228,7 +227,7 @@ void cult(char a[150], char b[150], char d[150])
 	for (i = 0; i < len2; i++)
 		//!!1.首先提取一段被除数b长度len2的数串。
 		tem[i] = a[i];
-	tem[i] ='';
+	tem[i] = ' ';
 	ii = i;
 	//将提取的被除数位置信息转存到ii。
 	cx = 0;
@@ -241,7 +240,7 @@ void cult(char a[150], char b[150], char d[150])
 			//!!2.如果取到的数tem小于除数b，则再向a取一位数.
 			len3 = strlen(tem);
 			tem[len3] = a[ii++];
-			tem[len3 + 1] ='';
+			tem[len3 + 1] = ' ';
 			c[cx++] = '0';
 		}
 		else
@@ -255,9 +254,9 @@ void cult(char a[150], char b[150], char d[150])
 				if (cmps(lbj, tem) > 0)
 				{
 					//!!4.
-					mult(b, --i, lbj);
-					break;
-				}
+		mult(b, --i, lbj);
+		break;
+	}
 			}
 			c[cx++] = i + '0';
 			//将商存入c；
@@ -266,11 +265,11 @@ void cult(char a[150], char b[150], char d[150])
 			len3 = strlen(tem);
 			//以下为继续提取数字，以便继续运算。！！不可忽略。!!2处虽然也有提取数字，但其相当于一个运算步骤，需要得到一个商，会违背运算规则。
 			tem[len3] = a[ii++];
-			tem[len3 + 1] ='';
+			tem[len3 + 1] = ' ';
 		}
 	}
 
-	c[cx] ='';
+	c[cx] = ' ';
 	//设置c结束点。
 	int z = 0, k = 0;
 	for (int j = 0; j <= cx; j++)
