@@ -35,6 +35,12 @@ if exist *.o (
 )
 cd ..
 
+cd win
+if exist *.o (
+	del /f /s /q *.o
+)
+cd ..
+
 REM if exist *.res (
 	REM del /f /s /q *.res
 REM )

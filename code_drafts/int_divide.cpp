@@ -22,6 +22,8 @@ typedef char * str;
 
 auto divide(str a, str b) -> str;
 
+auto divide_willot(str a, str b) -> str;
+
 auto get_res(str a, str b, str c, str d) -> void;
 
 auto main(const int argc, const char *argv[]) -> int {
@@ -32,12 +34,13 @@ auto main(const int argc, const char *argv[]) -> int {
 	scanf("%s %s", char1, char2);
 	puts(char1);
 	puts(char2);
-	puts(divide(char1, char2));
-	get_res(char1, char2, c, d);
-	for (auto i = 0; i < strlen(c); ++i) printf("%i", c[i]);
-	puts("");
-	for (auto i = 0; i < strlen(d); ++i) printf("%i", d[i]);
-	puts("");
+//	puts(divide(char1, char2));
+	puts(divide_willot(char1, char2));
+//	get_res(char1, char2, c, d);
+//	for (auto i = 0; i < strlen(c); ++i) printf("%i", c[i]);
+//	puts("");
+//	for (auto i = 0; i < strlen(d); ++i) printf("%i", d[i]);
+//	puts("");
 	return 0;
 }
 
@@ -115,5 +118,26 @@ auto divide(str a, str b) -> str {
 	}
 	printf("%i]\n", strlen(buf));
 	return buf;
+}
+
+auto divide_willot(str a, str b) -> str {
+	auto len = strlen(a);
+	auto b_len = strlen(b);
+	auto c = new char[len - b_len]();
+	auto c_idx = 0;
+	for (auto i = 0, g = 0; i < len; i++) {
+		auto x = a[i] - g;
+		if (i < b_len)
+			x -= b[i];
+		if (x >= 0)
+			g = 0;
+		else {
+			g = 1;
+			x += 10;
+		}
+		c[c_idx] = x;
+	}
+	while (c[0] <= '0' or c[0] > '9') ++c;
+	return c;
 }
 
