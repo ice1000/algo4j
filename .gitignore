@@ -23,6 +23,7 @@ Makefile.win
 
 jni/jni.layout
 *.res
+lib/
 
 ## Logs ##
 
