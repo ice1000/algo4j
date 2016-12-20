@@ -15,7 +15,7 @@ import java.util.function.Function;
  *
  * @author ice1000
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "CanBeFinal"})
 public final class FrontStarGraph {
 	private int[] next;
 	private int[] head;

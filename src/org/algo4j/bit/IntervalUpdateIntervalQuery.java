@@ -9,8 +9,8 @@ import org.algo4j.error.BinaryIndexedTreeException;
  */
 @SuppressWarnings("WeakerAccess")
 public final class IntervalUpdateIntervalQuery {
-	private BinaryIndexedTree bit1;
-	private BinaryIndexedTree bit2;
+	private final BinaryIndexedTree bit1;
+	private final BinaryIndexedTree bit2;
 	public final int length;
 
 	public IntervalUpdateIntervalQuery(int length) {

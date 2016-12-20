@@ -5,6 +5,7 @@ package org.algo4j.math;
  *
  * @author ice1000
  */
+@SuppressWarnings("unused")
 public final class Constants {
 	private Constants() {
 	}

@@ -11,6 +11,7 @@ import org.algo4j.error.BinaryIndexedTreeException;
  */
 @SuppressWarnings("WeakerAccess")
 public class BinaryIndexedTree {
+	@SuppressWarnings("CanBeFinal")
 	private long[] data;
 	public final int length;
 
