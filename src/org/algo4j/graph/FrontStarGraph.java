@@ -72,6 +72,8 @@ public final class FrontStarGraph {
 
 	/**
 	 * add two edges
+	 * <p>
+	 * 前两个参数a, b是点 后面两个分别是a->b和b->a的距离
 	 *
 	 * @param p1   position1
 	 * @param p2   position2
@@ -119,6 +121,8 @@ public final class FrontStarGraph {
 	 * O(n) = n * log(n)
 	 * Shortest path faster algorithm
 	 * The queue-based optimization of bellman-ford algorithm.
+	 * <p>
+	 * 返回一个数组 参数是源点 返回的数组是源点到每个点的最短距离
 	 *
 	 * @param source the begin position
 	 * @return the shortest path to each position

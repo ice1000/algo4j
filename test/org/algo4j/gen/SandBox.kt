@@ -8,5 +8,5 @@ package org.algo4j.gen
 
 fun main(args: Array<String>) {
 	@Suppress("SimplifyBooleanWithConstants")
-	println(1 != 2)
+	println(1 / 0)
 }

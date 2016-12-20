@@ -77,6 +77,8 @@ public final class BigInt {
 	@NotNull
 	@Contract("_ -> !null")
 	public BigInt divide(@NotNull BigInt bigInt) {
+//		if (ZERO.equals(bigInt)) throw new
+//		if (compareTo(bigInt) )
 		return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
 	}
 
@@ -86,17 +88,17 @@ public final class BigInt {
 		return new BigInt(pow(data, pow), (pow & 1) == 1 && !sig);
 	}
 
-	private static native byte[] plus(byte[] a, byte[] b);
+	private static native byte[] plus(@NotNull byte[] a, @NotNull byte[] b);
 
-	private static native byte[] times(byte[] a, byte[] b);
+	private static native byte[] times(@NotNull byte[] a, @NotNull byte[] b);
 
-	private static native byte[] divide(byte[] a, byte[] b);
+	private static native byte[] divide(@NotNull byte[] a, @NotNull byte[] b);
 
-	private static native byte[] minus(byte[] a, byte[] b);
+	private static native byte[] minus(@NotNull byte[] a, @NotNull byte[] b);
 
-	private static native byte[] pow(byte[] a, int pow);
+	private static native byte[] pow(@NotNull byte[] a, int pow);
 
-	private static native int compareTo(byte[] a, byte[] b);
+	private static native int compareTo(@NotNull byte[] a, @NotNull byte[] b);
 
 	@Override
 	@NotNull
