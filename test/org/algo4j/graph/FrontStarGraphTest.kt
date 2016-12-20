@@ -87,7 +87,7 @@ class FrontStarGraphTest {
 		graph.addDirectionlessEdge(1, 2, 5)
 		graph.addDirectionlessEdge(1, 4, 5)
 		var count = 0
-		graph.dfs(1, 0, { edge, last ->
+		graph.dfs(1, 0, { _, last ->
 			count++
 			return@dfs last + 1
 		})

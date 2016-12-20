@@ -14,7 +14,7 @@ inline fun loop(block: () -> Unit) {
 
 inline fun loop(times: Int, block: (Int) -> Unit) {
 	var cnt = times
-	while (cnt-- > 0) block.invoke(times - cnt)
+	while (cnt --> 0) block.invoke(times - cnt)
 }
 
 inline fun test(times: Int, block: (Int) -> Unit) {

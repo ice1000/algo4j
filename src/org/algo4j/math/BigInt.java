@@ -50,6 +50,10 @@ public final class BigInt {
 			return new BigInt(minus(data, bigInt.data), true);
 	}
 
+	public BigInt times(BigInt bigInt) {
+		return new BigInt(times(data, bigInt.data), sig == bigInt.sig);
+	}
+
 	public BigInt pow(int pow) {
 		return new BigInt(pow(data, pow), (pow & 1) == 1 && !sig);
 	}
