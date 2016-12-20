@@ -1,6 +1,8 @@
 package org.algo4j.math;
 
 import org.algo4j.math.value.ExgcdRes;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * MathUtils class
@@ -38,6 +40,8 @@ public final class MathUtils {
 	 * @param b same as gcd
 	 * @return res.x * a + res.y + b = gcd(a, b)
 	 */
+	@NotNull
+	@Contract("_, _ -> !null")
 	public static ExgcdRes exgcd(long a, long b) {
 		return new ExgcdRes(exgcdJni(a, b));
 	}
@@ -229,5 +233,6 @@ public final class MathUtils {
 	 * @param count the number of primes
 	 * @return an array of primes
 	 */
+	@NotNull
 	public static native long[] getPrimes(int count);
 }

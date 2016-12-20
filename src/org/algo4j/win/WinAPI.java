@@ -1,6 +1,7 @@
 package org.algo4j.win;
 
 /**
+ * For Windows only
  * Created by ice1000 on 2016/12/18.
  *
  * @author ice1000

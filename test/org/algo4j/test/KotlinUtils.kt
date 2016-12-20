@@ -18,7 +18,7 @@ inline fun loop(times: Int, block: (Int) -> Unit) {
 }
 
 inline fun test(times: Int, block: (Int) -> Unit) {
-	println("$times test cases")
+	print("$times test cases: ")
 	loop(times, block)
 	println("test passed")
 }

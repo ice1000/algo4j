@@ -1,5 +1,8 @@
 package org.algo4j.util;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Created by ice1000 on 2016/11/18.
  *
@@ -16,22 +19,22 @@ public final class SeqUtils {
 	 *
 	 * @param data the array to be discretization.
 	 */
-	public static native void discretization(long[] data);
+	public static native void discretization(@NotNull long[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static native void discretization(int[] data);
+	public static native void discretization(@NotNull int[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static native void discretization(float[] data);
+	public static native void discretization(@NotNull float[] data);
 
 	/**
 	 * @see SeqUtils#discretization(long[])
 	 */
-	public static native void discretization(double[] data);
+	public static native void discretization(@NotNull double[] data);
 
 	/**
 	 * O(length) = 2 * log(length)
@@ -40,22 +43,22 @@ public final class SeqUtils {
 	 * @param data given array
 	 * @return inversion number
 	 */
-	public static native long inversion(int[] data);
+	public static native long inversion(@NotNull int[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static native long inversion(long[] data);
+	public static native long inversion(@NotNull long[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static native long inversion(float[] data);
+	public static native long inversion(@NotNull float[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
-	public static native long inversion(double[] data);
+	public static native long inversion(@NotNull double[] data);
 
 	/**
 	 * O(len) = len ^ 2
@@ -63,22 +66,22 @@ public final class SeqUtils {
 	 *
 	 * @param data the array to be sort
 	 */
-	public static native void sortBubble(int[] data);
+	public static native void sortBubble(@NotNull int[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static native void sortBubble(long[] data);
+	public static native void sortBubble(@NotNull long[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static native void sortBubble(float[] data);
+	public static native void sortBubble(@NotNull float[] data);
 
 	/**
 	 * @see SeqUtils#sortBubble(int[])
 	 */
-	public static native void sortBubble(double[] data);
+	public static native void sortBubble(@NotNull double[] data);
 
 	/**
 	 * O(len) = { long(len), len ^ 2 } depends on the array
@@ -86,74 +89,77 @@ public final class SeqUtils {
 	 *
 	 * @param data the array to be sort
 	 */
-	public static native void sortQuick(int[] data);
+	public static native void sortQuick(@NotNull int[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static native void sortQuick(long[] data);
+	public static native void sortQuick(@NotNull long[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static native void sortQuick(float[] data);
+	public static native void sortQuick(@NotNull float[] data);
 
 	/**
 	 * @see SeqUtils#sortQuick(int[])
 	 */
-	public static native void sortQuick(double[] data);
+	public static native void sortQuick(@NotNull double[] data);
 
-	public static native void sortInsertion(int[] data);
+	public static native void sortInsertion(@NotNull int[] data);
 
-	public static native void sortInsertion(long[] data);
+	public static native void sortInsertion(@NotNull long[] data);
 
-	public static native void sortInsertion(float[] data);
+	public static native void sortInsertion(@NotNull float[] data);
 
-	public static native void sortInsertion(double[] data);
+	public static native void sortInsertion(@NotNull double[] data);
 
-	public static native void sortMerge(int[] data);
+	public static native void sortMerge(@NotNull int[] data);
 
-	public static native void sortMerge(long[] data);
+	public static native void sortMerge(@NotNull long[] data);
 
-	public static native void sortMerge(float[] data);
+	public static native void sortMerge(@NotNull float[] data);
 
-	public static native void sortMerge(double[] data);
+	public static native void sortMerge(@NotNull double[] data);
 
-	public static native void sortComb(int[] data);
+	public static native void sortComb(@NotNull int[] data);
 
-	public static native void sortComb(long[] data);
+	public static native void sortComb(@NotNull long[] data);
 
-	public static native void sortComb(float[] data);
+	public static native void sortComb(@NotNull float[] data);
 
-	public static native void sortComb(double[] data);
+	public static native void sortComb(@NotNull double[] data);
 
-	public static native void sortSelection(int[] data);
+	public static native void sortSelection(@NotNull int[] data);
 
-	public static native void sortSelection(long[] data);
+	public static native void sortSelection(@NotNull long[] data);
 
-	public static native void sortSelection(float[] data);
+	public static native void sortSelection(@NotNull float[] data);
 
-	public static native void sortSelection(double[] data);
+	public static native void sortSelection(@NotNull double[] data);
 
-	public static native void sortCocktail(int[] data);
+	public static native void sortCocktail(@NotNull int[] data);
 
-	public static native void sortCocktail(long[] data);
+	public static native void sortCocktail(@NotNull long[] data);
 
-	public static native void sortCocktail(float[] data);
+	public static native void sortCocktail(@NotNull float[] data);
 
-	public static native void sortCocktail(double[] data);
+	public static native void sortCocktail(@NotNull double[] data);
 
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static <T> String toString(T[] a) {
+	@NotNull
+	@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
+	public static <T> String toString(@Nullable T[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
 		StringBuilder b = new StringBuilder();
 		b.append("[<");
 		for (int i = 0; ; ++i) {
-			b.append(a[i].toString());
+			if (a[i] != null) a[i].toString();
+			else b.append("null");
 			if (i == a.length - 1) return b.append(">]").toString();
 			b.append(">, <");
 		}
@@ -162,23 +168,8 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(long[] a) {
-		if (a == null) return "null";
-		if (a.length - 1 == -1) return "[]";
-
-		StringBuilder b = new StringBuilder();
-		b.append("[<");
-		for (int i = 0; ; ++i) {
-			b.append(a[i]);
-			if (i == a.length - 1) return b.append(">]").toString();
-			b.append(">, <");
-		}
-	}
-
-	/**
-	 * Returns a string representation of the contents of the specified array.
-	 */
-	public static String toString(int[] a) {
+	@NotNull
+	public static String toString(@Nullable long[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
@@ -194,7 +185,8 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(byte[] a) {
+	@NotNull
+	public static String toString(@Nullable int[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
@@ -210,7 +202,8 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(float[] a) {
+	@NotNull
+	public static String toString(@Nullable byte[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
@@ -226,7 +219,8 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(double[] a) {
+	@NotNull
+	public static String toString(@Nullable float[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
@@ -242,7 +236,8 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(short[] a) {
+	@NotNull
+	public static String toString(@Nullable double[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 
@@ -258,7 +253,25 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
-	public static String toString(char[] a) {
+	@NotNull
+	public static String toString(@Nullable short[] a) {
+		if (a == null) return "null";
+		if (a.length - 1 == -1) return "[]";
+
+		StringBuilder b = new StringBuilder();
+		b.append("[<");
+		for (int i = 0; ; ++i) {
+			b.append(a[i]);
+			if (i == a.length - 1) return b.append(">]").toString();
+			b.append(">, <");
+		}
+	}
+
+	/**
+	 * Returns a string representation of the contents of the specified array.
+	 */
+	@NotNull
+	public static String toString(@Nullable char[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
 

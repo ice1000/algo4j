@@ -1,6 +1,9 @@
 package org.algo4j.math;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 
@@ -18,7 +21,7 @@ public final class BigInt {
 
 	public static final BigInt ZERO = new BigInt(0);
 
-	public BigInt(String origin) {
+	public BigInt(@NotNull String origin) {
 		if (origin.startsWith("-")) {
 			sig = false;
 			origin = origin.substring(1);
@@ -28,7 +31,7 @@ public final class BigInt {
 		data = origin.getBytes();
 	}
 
-	public BigInt(byte[] origin, boolean sig) {
+	public BigInt(@NotNull byte[] origin, boolean sig) {
 		if (origin.length == 1 && origin[0] == '0') sig = true;
 		data = origin;
 		this.sig = sig;
@@ -44,12 +47,12 @@ public final class BigInt {
 		data = Long.toString(abs(origin)).getBytes();
 	}
 
-	public BigInt(BigInt bigInt) {
+	public BigInt(@NotNull BigInt bigInt) {
 		sig = bigInt.sig;
 		data = bigInt.data;
 	}
 
-	public BigInt plus(BigInt bigInt) {
+	public BigInt plus(@NotNull BigInt bigInt) {
 		if (sig == bigInt.sig)
 			return new BigInt(plus(data, bigInt.data), sig);
 		if (compareTo(data, bigInt.data) > 0)
@@ -57,7 +60,7 @@ public final class BigInt {
 		return new BigInt(minus(bigInt.data, data), !sig);
 	}
 
-	public BigInt minus(BigInt bigInt) {
+	public BigInt minus(@NotNull BigInt bigInt) {
 		if (sig != bigInt.sig)
 			return new BigInt(plus(data, bigInt.data), sig);
 		if (compareTo(data, bigInt.data) > 0)
@@ -65,14 +68,20 @@ public final class BigInt {
 		return new BigInt(minus(bigInt.data, data), !sig);
 	}
 
-	public BigInt times(BigInt bigInt) {
+	@NotNull
+	@Contract("_ -> !null")
+	public BigInt times(@NotNull BigInt bigInt) {
 		return new BigInt(times(data, bigInt.data), sig == bigInt.sig);
 	}
 
-	public BigInt divide(BigInt bigInt) {
+	@NotNull
+	@Contract("_ -> !null")
+	public BigInt divide(@NotNull BigInt bigInt) {
 		return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
 	}
 
+	@NotNull
+	@Contract("_ -> !null")
 	public BigInt pow(int pow) {
 		return new BigInt(pow(data, pow), (pow & 1) == 1 && !sig);
 	}
@@ -90,22 +99,27 @@ public final class BigInt {
 	private static native int compareTo(byte[] a, byte[] b);
 
 	@Override
+	@NotNull
+	@Contract(" -> !null")
 	public BigInt clone() {
 		return new BigInt(data, sig);
 	}
 
 	@Override
+	@NotNull
+	@NonNls
 	public String toString() {
 		return (sig ? "" : "-") + new String(data);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	@Contract("null -> false")
+	public boolean equals(@Nullable Object obj) {
 		return obj != null && (super.equals(obj) || obj instanceof BigInt && compareTo((BigInt) obj) == 0);
 	}
 
-	@Contract(pure = true)
 	@Override
+	@Contract(pure = true)
 	public int hashCode() {
 		return (Arrays.hashCode(data) << 1) + (sig ? 1 : 0);
 	}
@@ -121,7 +135,7 @@ public final class BigInt {
 	 * @return 1 if this > o, -1 if this < o, 0 if this == 0
 	 */
 	@SuppressWarnings("NullableProblems")
-	public int compareTo(BigInt o) {
+	public int compareTo(@NotNull BigInt o) {
 		if (this.sig == o.sig)
 			return compareTo(this.data, o.data) * (sig ? 1 : -1);
 		if (this.sig) return 1;

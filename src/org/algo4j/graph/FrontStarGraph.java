@@ -2,6 +2,8 @@ package org.algo4j.graph;
 
 import org.algo4j.error.FrontStarGraphException;
 import org.algo4j.math.MathUtils;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +101,8 @@ public final class FrontStarGraph {
 	 * @param p2 position 2
 	 * @return all edges between p1 and p2
 	 */
+	@NotNull
+	@Contract("_, _ -> !null")
 	public int[] getEdges(int p1, int p2) {
 		if (p1 < 1 || p2 < 1 || p1 > nodeCount || p2 > nodeCount)
 			throw FrontStarGraphException.numberInvalid();
@@ -118,7 +122,10 @@ public final class FrontStarGraph {
 	 *
 	 * @param source the begin position
 	 * @return the shortest path to each position
+	 * @throws FrontStarGraphException if 'source' is out of bound
 	 */
+	@NotNull
+	@Contract("_ -> !null")
 	public int[] spfa(int source) {
 		if (source < 1 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
@@ -158,24 +165,37 @@ public final class FrontStarGraph {
 	 * @param function     the function applied to each search
 	 * @param <DataHolder> the return type of 'function' and 'initValue'
 	 *                     passed from last function call or
+	 * @throws FrontStarGraphException if 'source' is out of bound
 	 */
 	public <DataHolder> void dfs(
 			int source,
-			DataHolder initValue,
-			BiFunction<Edge, DataHolder, DataHolder> function) {
+			@NotNull DataHolder initValue,
+			@NotNull BiFunction<Edge, DataHolder, DataHolder> function) {
+		if (source < 1 || source > nodeCount)
+			throw FrontStarGraphException.indexOutBound();
 		dfs(source, initValue, function, new boolean[getAddedEdgeCount() + 1]);
 	}
 
+	/**
+	 * depth first search
+	 *
+	 * @param source   the source position
+	 * @param function the function applied to each search,
+	 *                 with no 'DataHolder' value passing
+	 * @throws FrontStarGraphException if 'source' is out of bound
+	 */
 	public void dfs(
 			int source,
-			Function<Edge, Object> function) {
+			@NotNull Function<Edge, Object> function) {
+		if (source < 1 || source > nodeCount)
+			throw FrontStarGraphException.indexOutBound();
 		dfs(source, function, new boolean[getAddedEdgeCount() + 1]);
 	}
 
-	public void dfs(
+	private void dfs(
 			int source,
-			Function<Edge, Object> function,
-			boolean[] mark) {
+			@NotNull Function<Edge, Object> function,
+			@NotNull boolean[] mark) {
 		for (int i = head[source]; i != -1; i = next[i]) {
 			if (!mark[i]) {
 				mark[i] = true;
@@ -187,9 +207,9 @@ public final class FrontStarGraph {
 
 	private <DataHolder> void dfs(
 			int source,
-			DataHolder initValue,
-			BiFunction<Edge, DataHolder, DataHolder> function,
-			boolean[] mark) {
+			@NotNull DataHolder initValue,
+			@NotNull BiFunction<Edge, DataHolder, DataHolder> function,
+			@NotNull boolean[] mark) {
 		for (int i = head[source]; i != -1; i = next[i]) {
 			if (!mark[i]) {
 				mark[i] = true;
@@ -213,10 +233,10 @@ public final class FrontStarGraph {
 	 */
 	private native int[] spfa(
 			int source,
-			int[] next,
-			int[] head,
-			int[] target,
-			int[] value,
+			@NotNull int[] next,
+			@NotNull int[] head,
+			@NotNull int[] target,
+			@NotNull int[] value,
 			int edgeCount,
 			int nodeCount
 	);
@@ -230,19 +250,21 @@ public final class FrontStarGraph {
 	 * @param nodeCount nodes
 	 */
 	private native int kruskal(
-			int[] next,
-			int[] head,
-			int[] target,
-			int[] departure,
-			int[] value,
+			@NotNull int[] next,
+			@NotNull int[] head,
+			@NotNull int[] target,
+			@NotNull int[] departure,
+			@NotNull int[] value,
 			int edgeCount,
 			int nodeCount
 	);
 
+	@Contract(pure = true)
 	public int getAddedEdgeCount() {
 		return addingEdgeIndex;
 	}
 
+	@Contract(pure = true)
 	public int getMaximumNodeNumber() {
 		return maximumNodeNumber;
 	}

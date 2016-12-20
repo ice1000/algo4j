@@ -1,5 +1,8 @@
 package org.algo4j.error;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by ice1000 on 2016/11/17.
  *
@@ -10,14 +13,18 @@ public final class BinaryIndexedTreeException extends RuntimeException {
 		this("Binary indexed tree error!");
 	}
 
-	public BinaryIndexedTreeException(String message) {
+	public BinaryIndexedTreeException(@NotNull String message) {
 		super(message);
 	}
 
+	@NotNull
+	@Contract("_ -> !null")
 	public static BinaryIndexedTreeException indexOutBound(int index) {
 		return new BinaryIndexedTreeException("Index " + index + " out of bound!");
 	}
 
+	@NotNull
+	@Contract(" -> !null")
 	public static BinaryIndexedTreeException indexOutBound() {
 		return new BinaryIndexedTreeException("Index out of bound!");
 	}
