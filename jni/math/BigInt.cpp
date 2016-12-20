@@ -137,6 +137,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 		while (b_idx --> 0) {
 			if (!b[b_idx]) continue;
 			buf[a_idx + b_idx + 1] += a[a_idx] * b[b_idx];
+			buf[a_idx + b_idx] += buf[a_idx + b_idx + 1] / 10;
+			buf[a_idx + b_idx + 1] = buf[a_idx + b_idx + 1] % 10;
 		}
 		b_idx = b_len;
 	}
