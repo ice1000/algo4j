@@ -4,18 +4,74 @@
 
 using algo4j_util::swap;
 
+template<typename type>
+int compare(type a[], type b[]) {
+	int i;
+	if (a[0] > b[0]) return 1;
+	else if (a[0] < b[0]) return -1;
+	else {
+		i = a[0];
+		while (a[i] == b[i]) --i;
+		if (i == 0) return 0;
+		else if (a[i] > b[i]) return 1;
+		else return -1;
+	}
+}
+
 typedef char * str;
 
 auto divide(str a, str b) -> str;
 
+auto get_res(str a, str b, str c, str d) -> void;
+
 auto main(const int argc, const char *argv[]) -> int {
 	char char1[233];
 	char char2[222];
+	char c[233];
+	char d[233];
 	scanf("%s %s", char1, char2);
 	puts(char1);
 	puts(char2);
-	puts(times(char1, char2));
+	puts(divide(char1, char2));
+	get_res(char1, char2, c, d);
+	for (auto i = 0; i < strlen(c); ++i) printf("%i", c[i]);
+	puts("");
+	for (auto i = 0; i < strlen(d); ++i) printf("%i", d[i]);
+	puts("");
 	return 0;
+}
+
+auto get_res(str a, str b, str c, str d) -> void {
+	int i, j, len;
+	for (i = 0; i < strlen(a); i++) {
+		c[i] = 0;
+		d[i] = 0;
+	}
+	len = a[0];
+	d[0] = 0;
+	for (i = len; i >= 1; i--) {
+		for (j = d[0]; j >= 1; j--)
+			d[j + 1] = d[j];
+		d[1] = a[i];
+		++d[0];
+		while (compare(d, b) >= 0) {
+			for (j = 1; j <= d[0]; ++j) {
+				d[j] -= b[j];
+				if (d[j] < 0) {
+					d[j] += 10;
+					d[j + 1]--;
+				}
+			}
+			while (j > 0 and !d[j])
+				j--;
+			d[0] = j;
+			c[i]++;
+		}
+	}
+	j = b[0];
+	while (!c[j] and j > 0)
+		j--;
+	c[0] = j;
 }
 
 auto divide(str a, str b) -> str {

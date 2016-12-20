@@ -30,16 +30,14 @@ int main(const int argc, const char *argv[]) {
 }
 
 int compare(int a[], int b[]) {
-	//比较大整数的大小
 	int i;
 	if (a[0] > b[0])
-		return 1; //比较a,b的位数确定返回值
+		return 1;
 	else if (a[0] < b[0])
 		return -1;
 	else {
-		//位数相等时的比较
 		i = a[0];
-		while (a[i] == b[i]) //逐位比较
+		while (a[i] == b[i])
 			i--;
 		if (i == 0)
 			return 0;
@@ -53,9 +51,10 @@ int compare(int a[], int b[]) {
 int bigplus(int a[], int b[], int c[]) {
 	//大整数加法
 	int i, len;
-	len = (a[0] > b[0] ? a[0] :
-	       b[0]); //a[0] b[0]保存数组长度，len为较长的一个
-	for (i = 0; i < MAXINT; i++)       //将数组清0
+	//a[0] b[0]保存数组长度，len为较长的一个
+	len = (a[0] > b[0] ? a[0] : b[0]);
+	//将数组清0
+	for (i = 0; i < MAXINT; i++)
 		c[i] = 0;
 	for (i = 1; i <= len; i++) {
 		//计算每一位的值

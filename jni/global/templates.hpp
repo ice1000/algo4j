@@ -152,6 +152,19 @@ namespace algo4j_util {
 	}
 }
 
+namespace algo4j_int {
+	template<typename SIZE_TYPE>
+	auto compare(jbyte *a, jbyte *b, SIZE_TYPE a_len, SIZE_TYPE b_len) -> jint {
+		jint ret = static_cast<jint>(a_len - b_len);
+		if (!ret) {
+			for (auto idx = 0; idx < a_len and !ret; ++idx) {
+				ret = a[idx] - b[idx];
+			}
+		}
+		return ret;
+	}
+}
+
 #endif /// __ALGO4J_TEMPLATES_HPP__
 
 

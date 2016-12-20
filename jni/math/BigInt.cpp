@@ -5,9 +5,7 @@
 #include "BigInt.h"
 
 using algo4j_util::swap;
-using algo4j_util::max;
-using algo4j_util::min;
-using algo4j_util::abs;
+using algo4j_int::compare;
 
 #define check_less_than_0 \
 while (buf[res_idx] < '0') { \
@@ -184,12 +182,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 	auto b = env->GetByteArrayElements(_b, option);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
-	jint ret = a_len - b_len;
-	if (!ret) {
-		for (auto idx = 0; idx < a_len and !ret; ++idx) {
-			ret = a[idx] - b[idx];
-		}
-	}
+	auto ret = compare(a, b, a_len, b_len);
 	env->ReleaseByteArrayElements(_a, a, 0);
 	env->ReleaseByteArrayElements(_b, b, 0);
 	__JNI__FUNCTION__CLEAN__
