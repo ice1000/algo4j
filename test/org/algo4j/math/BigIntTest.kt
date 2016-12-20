@@ -73,7 +73,7 @@ class BigIntTest {
 		test(1000) {
 			val val1 = rand.nextInt(666666) - 133333
 			val val2 = rand.nextInt(666666) - 133333
-//			println("$val1, $val2")
+			println("$val1, $val2")
 			assertEquals(
 					(val1 - val2).toString(),
 					BigInt(val1)

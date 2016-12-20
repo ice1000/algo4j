@@ -40,18 +40,25 @@ public final class BigInt {
 	public BigInt plus(BigInt bigInt) {
 		if (sig == bigInt.sig)
 			return new BigInt(plus(data, bigInt.data), sig);
-		else return minus(bigInt);
+		if (compareTo(data, bigInt.data) > 0)
+			return new BigInt(minus(data, bigInt.data), sig);
+		return new BigInt(minus(bigInt.data, data), !sig);
 	}
 
 	public BigInt minus(BigInt bigInt) {
+		if (sig != bigInt.sig)
+			return new BigInt(plus(data, bigInt.data), sig);
 		if (compareTo(data, bigInt.data) > 0)
-			return new BigInt(minus(bigInt.data, data), false);
-		else
-			return new BigInt(minus(data, bigInt.data), true);
+			return new BigInt(minus(data, bigInt.data), sig);
+		return new BigInt(minus(bigInt.data, data), !sig);
 	}
 
 	public BigInt times(BigInt bigInt) {
 		return new BigInt(times(data, bigInt.data), sig == bigInt.sig);
+	}
+
+	public BigInt divide(BigInt bigInt) {
+		return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
 	}
 
 	public BigInt pow(int pow) {
