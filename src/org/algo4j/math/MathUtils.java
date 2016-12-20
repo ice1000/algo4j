@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author ice1000
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public final class MathUtils {
 
 	private MathUtils() {

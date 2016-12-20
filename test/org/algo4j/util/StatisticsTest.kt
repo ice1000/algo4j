@@ -12,7 +12,7 @@ import org.junit.Test
 
  * @author ice1000
  */
-class StatisticsTest() {
+class StatisticsTest {
 	@Test(timeout = 1000)
 	fun sumTest() {
 		test(1000) {

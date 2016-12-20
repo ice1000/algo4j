@@ -3,6 +3,8 @@
  *
  * @author ice1000
  */
+@file:Suppress("unused")
+
 package org.algo4j.test
 
 import org.algo4j.util.SeqUtilsTest

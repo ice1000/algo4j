@@ -15,7 +15,7 @@ import java.util.function.Function;
  *
  * @author ice1000
  */
-@SuppressWarnings({"WeakerAccess", "CanBeFinal"})
+@SuppressWarnings({"WeakerAccess", "CanBeFinal", "unused"})
 public final class FrontStarGraph {
 	private int[] next;
 	private int[] head;
@@ -38,6 +38,8 @@ public final class FrontStarGraph {
 	public static final int INFINITY_FILLING = 0x7f;
 
 	public FrontStarGraph(int nodeCount, int edgeCount) {
+		if (nodeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
+		if (edgeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
 		++nodeCount;
 		this.nodeCount = nodeCount;
 		this.edgeCount = edgeCount;

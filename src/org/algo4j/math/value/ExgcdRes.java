@@ -5,11 +5,13 @@ package org.algo4j.math.value;
  *
  * @author ice1000
  */
+@SuppressWarnings({"WeakerAccess", "SpellCheckingInspection"})
 public class ExgcdRes {
 	private long c;
 	private long x;
 	private long y;
 
+	@SuppressWarnings("unused")
 	public ExgcdRes(long c, long x, long y) {
 		this.c = c;
 		this.x = x;
@@ -17,9 +19,9 @@ public class ExgcdRes {
 	}
 	
 	public ExgcdRes(long[] data) {
-		c = data[0];
-		x = data[1];
-		y = data[2];
+		setC(data[0]);
+		setX(data[1]);
+		setY(data[2]);
 	}
 
 	public long getC() {
