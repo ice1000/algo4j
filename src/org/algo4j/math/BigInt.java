@@ -44,7 +44,7 @@ public final class BigInt {
 	}
 
 	public BigInt minus(BigInt bigInt) {
-		if (compareTo(bigInt) < 0)
+		if (compareTo(data, bigInt.data) > 0)
 			return new BigInt(minus(bigInt.data, data), false);
 		else
 			return new BigInt(minus(data, bigInt.data), true);
@@ -80,6 +80,12 @@ public final class BigInt {
 		return (sig ? "" : "-") + new String(data);
 	}
 
+	/**
+	 * compare
+	 *
+	 * @param o another big int
+	 * @return 1 if this > o, -1 if this < o, 0 if this == 0
+	 */
 	@SuppressWarnings("NullableProblems")
 	public int compareTo(BigInt o) {
 		if (this.sig == o.sig)
