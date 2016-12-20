@@ -9,9 +9,9 @@ import org.junit.Test
  * @author ice1000
  */
 class WinAPITest {
-	@Test(timeout = 3000)
+	@Test(timeout = 100)
 	fun beep() {
-		WinAPI.beep(2333, 2333)
+		WinAPI.beep(2333, 1)
 	}
 
 	companion object Initializer {

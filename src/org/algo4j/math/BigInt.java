@@ -29,8 +29,9 @@ public final class BigInt {
 	}
 
 	public BigInt(byte[] origin, boolean sig) {
-		this.sig = sig;
+		if (origin.length == 1 && origin[0] == '0') sig = true;
 		data = origin;
+		this.sig = sig;
 	}
 
 	public BigInt(int origin) {
