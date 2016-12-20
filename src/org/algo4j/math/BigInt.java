@@ -50,47 +50,82 @@ public final class BigInt {
 		data = Long.toString(abs(origin)).getBytes();
 	}
 
-	public BigInt(@NotNull BigInt bigInt) {
-		sig = bigInt.sig;
-		data = bigInt.data;
+	public BigInt(@NotNull BigInt anotherBigInt) {
+		sig = anotherBigInt.sig;
+		data = anotherBigInt.data;
 	}
 
-	public BigInt plus(@NotNull BigInt bigInt) {
-		if (sig == bigInt.sig)
-			return new BigInt(plus(data, bigInt.data), sig);
-		if (compareTo(data, bigInt.data) > 0)
-			return new BigInt(minus(data, bigInt.data), sig);
-		return new BigInt(minus(bigInt.data, data), !sig);
-	}
-
-	public BigInt minus(@NotNull BigInt bigInt) {
-		if (sig != bigInt.sig)
-			return new BigInt(plus(data, bigInt.data), sig);
-		if (compareTo(data, bigInt.data) > 0)
-			return new BigInt(minus(data, bigInt.data), sig);
-		return new BigInt(minus(bigInt.data, data), !sig);
-	}
-
+	/**
+	 * plus
+	 *
+	 * @param anotherBigInt another big int
+	 * @return this + anotherBigInt
+	 */
 	@NotNull
 	@Contract("_ -> !null")
-	public BigInt times(@NotNull BigInt bigInt) {
-		return new BigInt(times(data, bigInt.data), sig == bigInt.sig);
+	public BigInt plus(@NotNull BigInt anotherBigInt) {
+		if (sig == anotherBigInt.sig)
+			return new BigInt(plus(data, anotherBigInt.data), sig);
+		if (compareTo(data, anotherBigInt.data) > 0)
+			return new BigInt(minus(data, anotherBigInt.data), sig);
+		return new BigInt(minus(anotherBigInt.data, data), !sig);
 	}
 
+	/**
+	 * minus
+	 *
+	 * @param anotherBigInt another big int
+	 * @return this - anotherBigInt
+	 */
 	@NotNull
 	@Contract("_ -> !null")
-	public BigInt divide(@NotNull BigInt bigInt) {
-		if (ZERO.equals(bigInt)) throw DividedByZeroException.fromNumber(this);
-		switch (compareTo(bigInt)) {
+	public BigInt minus(@NotNull BigInt anotherBigInt) {
+		if (sig != anotherBigInt.sig)
+			return new BigInt(plus(data, anotherBigInt.data), sig);
+		if (compareTo(data, anotherBigInt.data) > 0)
+			return new BigInt(minus(data, anotherBigInt.data), sig);
+		return new BigInt(minus(anotherBigInt.data, data), !sig);
+	}
+
+	/**
+	 * times
+	 *
+	 * @param anotherBigInt another big int
+	 * @return this * anotherBigInt
+	 */
+	@NotNull
+	@Contract("_ -> !null")
+	public BigInt times(@NotNull BigInt anotherBigInt) {
+		return new BigInt(times(data, anotherBigInt.data), sig == anotherBigInt.sig);
+	}
+
+	/**
+	 * divide
+	 *
+	 * @param anotherBigInt another big int
+	 * @return this / anotherBigInt
+	 * @throws DividedByZeroException if you passed ZERO to this method.
+	 */
+	@NotNull
+	@Contract("_ -> !null")
+	public BigInt divide(@NotNull BigInt anotherBigInt) {
+		if (ZERO.equals(anotherBigInt)) throw DividedByZeroException.fromNumber(this);
+		switch (compareTo(anotherBigInt)) {
 			case -1:
 				return ZERO;
 			case 0:
 				return ONE;
 			default:
-				return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
+				return new BigInt(divide(data, anotherBigInt.data), sig == anotherBigInt.sig);
 		}
 	}
 
+	/**
+	 * power
+	 *
+	 * @param pow exponent to which this BigInt is to be raised.
+	 * @return this ^ pow
+	 */
 	@NotNull
 	@Contract("_ -> !null")
 	public BigInt pow(int pow) {

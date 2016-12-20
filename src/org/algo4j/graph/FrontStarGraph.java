@@ -61,7 +61,7 @@ public final class FrontStarGraph {
 	 * @param val  the value of the edge
 	 */
 	public void addEdge(int from, int to, int val) {
-		if (from < 1 || to < 1 || from > nodeCount || to > nodeCount || from == to)
+		if (from <= 0 || to <= 0 || from > nodeCount || to > nodeCount || from == to)
 			throw FrontStarGraphException.numberInvalid();
 		maximumNodeNumber = MathUtils.max(maximumNodeNumber, from);
 		maximumNodeNumber = MathUtils.max(maximumNodeNumber, to);
@@ -108,7 +108,7 @@ public final class FrontStarGraph {
 	@NotNull
 	@Contract("_, _ -> !null")
 	public int[] getEdges(int p1, int p2) {
-		if (p1 < 1 || p2 < 1 || p1 > nodeCount || p2 > nodeCount)
+		if (p1 <= 0 || p2 <= 0 || p1 > nodeCount || p2 > nodeCount)
 			throw FrontStarGraphException.numberInvalid();
 		ArrayList<Integer> edges = new ArrayList<>();
 //		if (p1 == p2) edges.add(0L);
@@ -133,7 +133,7 @@ public final class FrontStarGraph {
 	@NotNull
 	@Contract("_ -> !null")
 	public int[] spfa(int source) {
-		if (source < 1 || source > nodeCount)
+		if (source <= 0 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
 		return spfa(
 				source,
@@ -177,7 +177,7 @@ public final class FrontStarGraph {
 			int source,
 			@NotNull DataHolder initValue,
 			@NotNull BiFunction<Edge, DataHolder, DataHolder> function) {
-		if (source < 1 || source > nodeCount)
+		if (source <= 0 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
 		dfs(source, initValue, function, new boolean[getAddedEdgeCount() + 1]);
 	}
@@ -193,7 +193,7 @@ public final class FrontStarGraph {
 	public void dfs(
 			int source,
 			@NotNull Function<Edge, Object> function) {
-		if (source < 1 || source > nodeCount)
+		if (source <= 0 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
 		dfs(source, function, new boolean[getAddedEdgeCount() + 1]);
 	}
@@ -280,6 +280,7 @@ public final class FrontStarGraph {
 		public int depart;
 		public int value;
 
+		@Contract(pure = true)
 		public Edge(int target, int depart, int value) {
 			this.target = target;
 			this.depart = depart;

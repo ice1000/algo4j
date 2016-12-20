@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class DividedByZeroException extends RuntimeException {
+public final class DividedByZeroException extends ArithmeticException {
 	public DividedByZeroException(@NotNull String msg) {
 		super(msg);
 	}
