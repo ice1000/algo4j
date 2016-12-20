@@ -1,5 +1,6 @@
 package org.algo4j.math;
 
+import org.algo4j.error.DividedByZeroException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -15,11 +16,13 @@ import static org.algo4j.math.MathUtils.abs;
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public final class BigInt {
 	private final boolean sig;
 	private final byte[] data;
 
 	public static final BigInt ZERO = new BigInt(0);
+	public static final BigInt ONE = new BigInt(1);
 
 	public BigInt(@NotNull String origin) {
 		if (origin.startsWith("-")) {
@@ -77,9 +80,15 @@ public final class BigInt {
 	@NotNull
 	@Contract("_ -> !null")
 	public BigInt divide(@NotNull BigInt bigInt) {
-//		if (ZERO.equals(bigInt)) throw new
-//		if (compareTo(bigInt) )
-		return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
+		if (ZERO.equals(bigInt)) throw DividedByZeroException.fromNumber(this);
+		switch (compareTo(bigInt)) {
+			case -1:
+				return ZERO;
+			case 0:
+				return ONE;
+			default:
+				return new BigInt(divide(data, bigInt.data), sig == bigInt.sig);
+		}
 	}
 
 	@NotNull
