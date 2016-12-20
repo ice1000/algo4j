@@ -1,9 +1,13 @@
 package org.algo4j.math;
 
+import org.jetbrains.annotations.Contract;
+
+import java.util.Arrays;
+
 import static org.algo4j.math.MathUtils.abs;
 
 /**
- * Big integer
+ * Big integer, functionally designed.
  * Created by ice1000 on 2016/12/13.
  *
  * @author ice1000
@@ -11,6 +15,8 @@ import static org.algo4j.math.MathUtils.abs;
 public final class BigInt {
 	private final boolean sig;
 	private final byte[] data;
+
+	public static final BigInt ZERO = new BigInt(0);
 
 	public BigInt(String origin) {
 		if (origin.startsWith("-")) {
@@ -30,6 +36,11 @@ public final class BigInt {
 	public BigInt(int origin) {
 		sig = origin >= 0;
 		data = Integer.toString(abs(origin)).getBytes();
+	}
+
+	public BigInt(long origin) {
+		sig = origin >= 0;
+		data = Long.toString(abs(origin)).getBytes();
 	}
 
 	public BigInt(BigInt bigInt) {
@@ -85,6 +96,21 @@ public final class BigInt {
 	@Override
 	public String toString() {
 		return (sig ? "" : "-") + new String(data);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj != null && (super.equals(obj) || obj instanceof BigInt && compareTo((BigInt) obj) == 0);
+	}
+
+	@Contract(pure = true)
+	@Override
+	public int hashCode() {
+		return (Arrays.hashCode(data) << 1) + (sig ? 1 : 0);
+	}
+
+	@Override
+	protected void finalize() {
 	}
 
 	/**

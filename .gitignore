@@ -11,6 +11,7 @@ jni/.vscode/
 *.a
 *.def
 *.o
+*.exe
 
 jni/cmake-build-debug/
 jni/build/
@@ -22,7 +23,6 @@ Makefile.win
 
 jni/jni.layout
 *.res
-lib/
 
 ## Logs ##
 

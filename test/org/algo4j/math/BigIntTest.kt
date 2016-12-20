@@ -44,12 +44,27 @@ class BigIntTest {
 	@Test(timeout = 1000)
 	fun stdPlusTest() {
 		val rand = Random(System.currentTimeMillis())
+		val fuck: Long by lazy { 100000000000000 }
 		loop(1000) {
 			val int = StdBigInt((rand.nextInt(666666666) - 233333333).toString())
 			int.add(StdBigInt(rand.nextInt(223333333).toString())).toString()
+			assertEquals(100000000000000, fuck)
 		}
 		StdBigInt("1111111111111111111111111111111111")
 				.add(StdBigInt("111111111111111111111111111111111")).toString()
+	}
+
+	@Test(timeout = 1000)
+	fun stdTimesTest() {
+		val rand = Random(System.currentTimeMillis())
+		val fuck: Long by lazy { 100000000000000 }
+		loop(1000) {
+			val int = StdBigInt((rand.nextInt(666666666) - 233333333).toString())
+			int.times(StdBigInt(rand.nextInt(223333333).toString())).toString()
+			assertEquals(100000000000000, fuck)
+		}
+		StdBigInt("1111111111111111111111111111111111")
+				.times(StdBigInt("111111111111111111111111111111111")).toString()
 	}
 
 	@Test(timeout = 1000)
