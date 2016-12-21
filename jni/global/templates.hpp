@@ -4,11 +4,14 @@
 
 #include <ostream>
 #include <istream>
+#include <string.h>
 
 #include "sort.hpp"
 
 using algo4j_sort::merge_sort;
 using algo4j_sort::quick_sort;
+using std::istream;
+using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
@@ -105,15 +108,15 @@ namespace algo4j_util {
 		}
 
 		constexpr auto operator>(const Pair &o) const -> const bool {
-			return !(*this <= o);
+			return not(*this <= o);
 		}
 
 		constexpr auto operator>=(const Pair &o) const -> const bool {
-			return !(*this < o);
+			return not(*this < o);
 		}
 
 		constexpr auto operator!=(const Pair &o) const -> const bool {
-			return !(*this == o);
+			return not(*this == o);
 		}
 
 //		auto operator=(Pair &pair) -> Pair & {
@@ -122,12 +125,12 @@ namespace algo4j_util {
 //			return *this;
 //		}
 
-		friend auto operator<<(std::ostream &os, const Pair &pair) -> std::ostream & {
+		friend auto operator<<(ostream &os, const Pair &pair) -> ostream & {
 			os << "first: " << pair.first << " second: " << pair.second;
 			return os;
 		}
 
-		friend auto operator>>(std::istream &is, Pair &pair) -> std::istream & {
+		friend auto operator>>(istream &is, Pair &pair) -> istream & {
 			is >> pair.first >> pair.second;
 			return is;
 		}
@@ -149,19 +152,6 @@ namespace algo4j_util {
 		}
 		delete[] pair;
 		return after;
-	}
-}
-
-namespace algo4j_int {
-	template<typename SIZE_TYPE>
-	auto compare(jbyte *a, jbyte *b, SIZE_TYPE a_len, SIZE_TYPE b_len) -> jint {
-		jint ret = static_cast<jint>(a_len - b_len);
-		if (!ret) {
-			for (auto idx = 0; idx < a_len and !ret; ++idx) {
-				ret = a[idx] - b[idx];
-			}
-		}
-		return ret;
 	}
 }
 

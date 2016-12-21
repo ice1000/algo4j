@@ -3,6 +3,7 @@
 ///
 
 #include "UnionSet.h"
+#include "../global/basics.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

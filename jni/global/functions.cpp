@@ -1,15 +1,24 @@
 ///
-/// Created by ice1000 on 2016/11/16.
+/// Created by ibufe1000 on 2016/11/16.
 ///
 
 // 我不做大哥好多年 我不爱冰冷的床沿
 
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #include "functions.h"
+#include "templates.hpp"
 
 using algo4j_util::max;
 using algo4j_util::min;
 using algo4j_util::swap;
 using algo4j_util::abs;
+
+using std::istream;
+using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -37,7 +46,7 @@ auto algo4j_math::gcd(jlong n, jlong m) -> jlong {
 }
 
 auto algo4j_math::exgcd(const jlong a, const jlong b, jlong &x, jlong &y) -> jlong {
-	if (!b) {
+	if (not b) {
 		x = 1, y = 0;
 		return a;
 	}
@@ -49,11 +58,11 @@ auto algo4j_math::exgcd(const jlong a, const jlong b, jlong &x, jlong &y) -> jlo
 }
 
 auto algo4j_math::gcd_stein(jlong a, jlong b) -> jlong {
-	if (!a) return b;
-	if (!b) return a;
-	if (!(a & 1) and !(b & 1)) return gcd_stein(a >> 1, b >> 1) << 1;
-	else if (!(a & 1)) return gcd_stein(a >> 1, b);
-	else if (!(b & 1)) return gcd_stein(a, b >> 1);
+	if (not a) return b;
+	if (not b) return a;
+	if (not(a bitand 1) and not(b bitand 1)) return gcd_stein(a >> 1, b >> 1) << 1;
+	else if (not(a bitand 1)) return gcd_stein(a >> 1, b);
+	else if (not(b bitand 1)) return gcd_stein(a, b >> 1);
 	else return gcd_stein((a + b) >> 1, abs(a - b) >> 1);
 }
 
@@ -92,7 +101,7 @@ auto algo4j_math::lg_ice(const jdouble x) -> jdouble {
 auto algo4j_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
 	decltype(a) ret = 0;
 	while (b) {
-		if (b & 1) ret = (ret + a) % m;
+		if (b bitand 1) ret = (ret + a) % m;
 		b >>= 1;
 		a = (a << 1) % m;
 	}
@@ -102,7 +111,7 @@ auto algo4j_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
 auto algo4j_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
 	decltype(a) ret = 1;
 	while (b) {
-		if (b & 1) ret = fast_plus(ret, a, m);
+		if (b bitand 1) ret = fast_plus(ret, a, m);
 		b >>= 1;
 		a = fast_plus(a, a, m);
 	}
@@ -112,9 +121,9 @@ auto algo4j_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
 auto algo4j_math::is_prime(const jlong num) -> bool {
 	if (num < 2) return false;
 	if (num == 2) return true;
-	if (!(num & 1)) return false;
+	if (not(num bitand 1)) return false;
 	for (auto a = 3; a * a <= num; a += 2) {
-		if (!(num % a))
+		if (not(num % a))
 			return false;
 	}
 	return true;
@@ -126,7 +135,7 @@ auto algo4j_math::get_primes_simple(const jint cnt) -> jlong * {
 	for (auto i = 2; index < cnt; ++i) {
 		auto j = 0;
 		for (; j < index; ++j) {
-			if (!(i % j)) break;
+			if (not(i % j)) break;
 		}
 		if (j >= index) primes[index++] = i;
 	}
@@ -144,5 +153,6 @@ auto algo4j_mem::alloc(size_t size) -> jlong {
 auto algo4j_mem::release(jlong pointer) -> void {
 	free((void *) pointer);
 }
+
 
 #pragma clang diagnostic pop

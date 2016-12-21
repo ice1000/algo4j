@@ -3,9 +3,6 @@
 //
 
 #include <jni.h>
-#include <math.h>
-#include <string.h>
-#include <stdlib.h>
 
 #ifndef __ALGO4J_BASICS_HPP__
 #define __ALGO4J_BASICS_HPP__
@@ -46,6 +43,33 @@ namespace algo4j_util {
 	inline constexpr auto abs(const T &o) -> T {
 		return o < 0 ? -o : o;
 	}
+
+	template<typename T>
+	class Single {
+	public:
+		T *value;
+
+		explicit Single(T *val) :
+				value(val) { }
+
+		~Single() {
+			clear();
+		}
+
+		auto set(T * val) -> T * {
+			delete value;
+			return value = val;
+		}
+
+		constexpr auto get() -> T * {
+			return value;
+		}
+
+		constexpr auto clear() -> void {
+			delete value;
+		}
+	};
+
 }
 
 

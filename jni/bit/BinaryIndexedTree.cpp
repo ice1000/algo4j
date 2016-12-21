@@ -3,6 +3,7 @@
 ///
 
 #include "BinaryIndexedTree.h"
+#include "../global/functions.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

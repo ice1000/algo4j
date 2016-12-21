@@ -3,6 +3,7 @@
 ///
 
 #include "SeqUtils.h"
+#include "../global/templates.hpp"
 
 using algo4j_util::discretization;
 using algo4j_sort::insertion_sort;

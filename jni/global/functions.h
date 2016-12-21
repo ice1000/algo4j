@@ -3,9 +3,11 @@
 ///
 
 #include <jni.h>
-#include <math.h>
-#include <stdio.h>
-#include "templates.hpp"
+
+#include <iostream>
+
+using std::istream;
+using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
