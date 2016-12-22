@@ -3,6 +3,7 @@ package org.algo4j.math
 import org.algo4j.test.loop
 import org.algo4j.test.test
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
 import org.junit.Test
 import java.util.*
@@ -44,7 +45,8 @@ class BigIntTest {
 	@Test(timeout = 1000)
 	fun stdPlusTest() {
 		val rand = Random(System.currentTimeMillis())
-		val fuck: Long by lazy { 100000000000000 }
+		@Suppress("CanBeVal")
+		var fuck = 100000000000000
 		loop(1000) {
 			val int = StdBigInt((rand.nextInt(666666666) - 233333333).toString())
 			int.add(StdBigInt(rand.nextInt(223333333).toString())).toString()
@@ -57,7 +59,8 @@ class BigIntTest {
 	@Test(timeout = 1000)
 	fun stdTimesTest() {
 		val rand = Random(System.currentTimeMillis())
-		val fuck: Long by lazy { 100000000000000 }
+		@Suppress("CanBeVal")
+		var fuck = 100000000000000
 		loop(1000) {
 			val int = StdBigInt((rand.nextInt(666666666) - 233333333).toString())
 			int.times(StdBigInt(rand.nextInt(223333333).toString())).toString()
@@ -80,6 +83,17 @@ class BigIntTest {
 					BigInt(val1).compareTo(BigInt(val2))
 			)
 		}
+	}
+
+	@Test(timeout = 1000)
+	fun equalsTest() {
+		val rand = Random(System.currentTimeMillis())
+		test(100) {
+			val num = rand.nextInt() * (if (rand.nextBoolean()) 1 else -1)
+			assertTrue(BigInt(num) == BigInt(num.toString()))
+		}
+		assertTrue(BigInt(0) == BigInt.ZERO)
+		assertTrue(BigInt("-0") == BigInt.ZERO)
 	}
 
 	@Test(timeout = 1000)
@@ -117,7 +131,7 @@ class BigIntTest {
 		}
 	}
 
-	@Test(timeout = 1000)
+	//	@Test(timeout = 1000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {

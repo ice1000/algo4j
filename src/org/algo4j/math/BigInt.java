@@ -25,13 +25,15 @@ public final class BigInt {
 	public static final BigInt ONE = new BigInt(1);
 
 	public BigInt(@NotNull String origin) {
+		boolean sigTemp;
 		if (origin.startsWith("-")) {
-			sig = false;
+			sigTemp = false;
 			origin = origin.substring(1);
-		} else {
-			sig = true;
-		}
-		data = origin.getBytes();
+		} else sigTemp = true;
+		byte[] ori = origin.getBytes();
+		if (ori.length == 1 && ori[0] == '0') sigTemp = true;
+		data = ori;
+		sig = sigTemp;
 	}
 
 	public BigInt(@NotNull byte[] origin, boolean sig) {
