@@ -11,40 +11,25 @@ public class ExgcdRes {
 	private long x;
 	private long y;
 
-	@SuppressWarnings("unused")
+	public ExgcdRes(long[] data) {
+		this(data[0], data[1], data[2]);
+	}
+
 	public ExgcdRes(long c, long x, long y) {
 		this.c = c;
 		this.x = x;
 		this.y = y;
-	}
-	
-	public ExgcdRes(long[] data) {
-		setC(data[0]);
-		setX(data[1]);
-		setY(data[2]);
 	}
 
 	public long getC() {
 		return c;
 	}
 
-	public void setC(long c) {
-		this.c = c;
-	}
-
 	public long getX() {
 		return x;
 	}
 
-	public void setX(long x) {
-		this.x = x;
-	}
-
 	public long getY() {
 		return y;
-	}
-
-	public void setY(long y) {
-		this.y = y;
 	}
 }
