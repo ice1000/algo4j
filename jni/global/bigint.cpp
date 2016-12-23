@@ -8,23 +8,23 @@ using algo4j_int::BigInt;
 
 #define check_less_than_0 \
 while (buf[res_idx] < '0') { \
-    buf[res_idx] += 10; \
-    --(buf[res_idx - 1]); \
+	buf[res_idx] += 10; \
+	--(buf[res_idx - 1]); \
 }
 
 #define check_more_than_9 \
 while (buf[res_idx] > '9') { \
-    buf[res_idx] -= 10; \
-    ++buf[res_idx - 1]; \
+	buf[res_idx] -= 10; \
+	++buf[res_idx - 1]; \
 }
 
 #define trim_string \
 while (res_len > 1 and (buf[0] <= '0' or buf[0] > '9')) { \
-    --res_len; \
-    ++buf; \
+	--res_len; \
+	++buf; \
 } \
 while (res_len > 1 and (buf[res_len - 1] < '0' or buf[res_len - 1] > '9')) { \
-    --res_len; \
+	--res_len; \
 }
 
 algo4j_int::BigInt::BigInt(jbyte *_data, jsize _len) :
