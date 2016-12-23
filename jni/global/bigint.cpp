@@ -160,18 +160,21 @@ auto algo4j_int::divide(
 // return *new BigInt(buf, res_len);
 // }
 
-friend auto algo4j_int::BigInt::operator<<(ostream &os, const BigInt &o) -> ostream & {
-	for (auto i = 0; i < o.len; ++i) {
-		os << o.data[i];
-	}
-	return os;
-}
+namespace algo4j_int {
 
-friend auto algo4j_int::BigInt::operator>>(istream &is, BigInt &o) -> istream & {
-	for (auto i = 0; i < o.len; ++i) {
-		is >> o.data[i];
+	auto operator<<(ostream &os, const BigInt &o) -> ostream & {
+		for (auto i = 0; i < o.len; ++i) {
+			os << o.data[i];
+		}
+		return os;
 	}
-	return is;
+
+	auto operator>>(istream &is, BigInt &o) -> istream & {
+		for (auto i = 0; i < o.len; ++i) {
+			is >> o.data[i];
+		}
+		return is;
+	}
 }
 
 #undef check_more_than_9
