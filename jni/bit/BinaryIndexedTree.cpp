@@ -3,7 +3,7 @@
 ///
 
 #include "BinaryIndexedTree.h"
-#include "../global/functions.h"
+#include "../global/templates.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -36,3 +36,4 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
 
 
 #pragma clang diagnostic pop
+

@@ -3,7 +3,8 @@
 //
 
 #include "Statistics.h"
-#include "../global/basics.hpp"
+#include "../global/functions.h"
+#include "../global/templates.hpp"
 
 using algo4j_util::abs;
 

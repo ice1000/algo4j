@@ -4,6 +4,7 @@
 
 using algo4j_util::swap;
 using algo4j_util::Single;
+using algo4j_int::BigInt;
 
 #define check_less_than_0 \
 while (buf[res_idx] < '0') { \
@@ -30,15 +31,25 @@ algo4j_int::BigInt::BigInt(jbyte *_data, jsize _len) :
 		data(_data),
 		len(_len) { }
 
-auto algo4j_int::BigInt::operator[](const jsize index) const -> jbyte {
-	return data[index];
+auto algo4j_int::compare(
+		const jbyte *a,
+		const jbyte *b,
+		const jsize a_len,
+		const jsize b_len) -> jint {
+	auto ret = static_cast<jint>(a_len - b_len);
+	if (!ret) {
+		for (auto idx = 0; idx < a_len and not ret; ++idx) {
+			ret = a[idx] - b[idx];
+		}
+	}
+	return ret;
 }
 
-auto algo4j_int::BigInt::operator+(const BigInt &o) const -> const BigInt & {
-	auto b_len = o.len;
-	auto a_len = len;
-	auto a = *this;
-	auto b = o;
+auto algo4j_int::plus(
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -58,14 +69,14 @@ auto algo4j_int::BigInt::operator+(const BigInt &o) const -> const BigInt & {
 		check_more_than_9
 	}
 	trim_string
-	return *new BigInt(buf, res_len);
+	return new BigInt(buf, res_len);
 }
 
-auto algo4j_int::BigInt::operator-(const BigInt &o) const -> const BigInt & {
-	auto b_len = o.len;
-	auto a_len = len;
-	auto a = *this;
-	auto b = o;
+auto algo4j_int::minus(
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -84,26 +95,25 @@ auto algo4j_int::BigInt::operator-(const BigInt &o) const -> const BigInt & {
 		check_less_than_0
 	}
 	trim_string
-	return *new BigInt(buf, res_len);
+	return new BigInt(buf, res_len);
 }
 
-auto algo4j_int::BigInt::operator*(const BigInt &o) const -> const BigInt & {
-	auto b_len = o.len;
-	auto a_len = len;
-	auto a = *this;
-	auto b = o;
+auto algo4j_int::times(
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if ((a_len == 1 and a[0] == '0') or (b_len == 1 and b[0] == '0')) {
 		auto buf = new jbyte[1]();
 		buf[0] = '0';
-		return *new BigInt(buf, 1);
+		return new BigInt(buf, 1);
 	}
 	auto a_idx = a_len;
 	auto b_idx = b_len;
 	auto res_len = a_len + b_len;
 	auto buf = new jbyte[res_len]();
-	for (auto i = 0; i < a_len; ++i) a.data[i] -= '0';
-	for (auto i = 0; i < b_len; ++i) b.data[i] -= '0';
-//	printf("233");
+	for (auto i = 0; i < a_len; ++i) a[i] -= '0';
+	for (auto i = 0; i < b_len; ++i) b[i] -= '0';
 	while (a_idx --> 0) {
 		if (!a[a_idx]) continue;
 		while (b_idx --> 0) {
@@ -121,68 +131,36 @@ auto algo4j_int::BigInt::operator*(const BigInt &o) const -> const BigInt & {
 	}
 	buf[0] += '0';
 	trim_string
-	return *new BigInt(buf, res_len);
+	return new BigInt(buf, res_len);
 }
 
-auto algo4j_int::compare(jbyte *a, jbyte *b, jsize a_len, jsize b_len) -> jsize {
-	auto ret = static_cast<jsize>(a_len - b_len);
-	if (!ret) {
-		for (auto idx = 0; idx < a_len and not ret; ++idx) {
-			ret = a[idx] - b[idx];
-		}
-	}
-	return ret;
-}
+auto algo4j_int::divide(
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len
+) -> BigInt * {}
 
-auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
-	auto res_len = len;
-	auto buf = new jbyte[res_len]();
-	auto f_data = new jbyte[1]();
-	f_data[0] = '0';
-	auto f = new Single<BigInt>(new BigInt(f_data, 1));
-	for (int i = len - 1; i >= 0; --i) {
-		f->get()->times_10();
-		f->get()->data[0] = this->data[i];
-		while (*f->get() >= o) {
-			auto tmp = *f->get() - o;
-			f->set(&tmp);
-			++buf[i];
-			printf("[%i, %i]", buf[i], i);
-		}
-	}
-	trim_string
-	delete f;
-	return *new BigInt(buf, res_len);
-}
-
-auto algo4j_int::BigInt::operator==(const BigInt &o) const -> const bool {
-	return not compare(data, o.data, len, o.len);
-}
-
-auto algo4j_int::BigInt::operator<(const BigInt &o) const -> const bool {
-	return compare(data, o.data, len, o.len) < 0;
-}
-
-auto algo4j_int::BigInt::operator>(const BigInt &o) const -> const bool {
-	return compare(data, o.data, len, o.len) > 0;
-}
-
-auto algo4j_int::BigInt::operator>=(const BigInt &o) const -> const bool {
-	return not (*this < o);
-}
-
-auto algo4j_int::BigInt::operator<=(const BigInt &o) const -> const bool {
-	return not (*this > o);
-}
-
-auto algo4j_int::BigInt::operator!=(const BigInt &o) const -> const bool {
-	return not (*this == o);
-}
-
-auto algo4j_int::BigInt::times_10() -> BigInt & {
-	data[len++] = '0';
-	return *this;
-}
+// auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
+	// auto res_len = len;
+	// auto buf = new jbyte[res_len]();
+	// auto f_data = new jbyte[1]();
+	// f_data[0] = '0';
+	// auto f = new Single<BigInt>(new BigInt(f_data, 1));
+	// for (int i = len - 1; i >= 0; --i) {
+		// f->get()->times_10();
+		// f->get()->data[0] = this->data[i];
+		// while (*f->get() >= o) {
+			// auto tmp = *f->get() - o;
+			// f->set(&tmp);
+			// ++buf[i];
+			// printf("[%i, %i]", buf[i], i);
+		// }
+	// }
+	// trim_string
+	// delete f;
+	// return *new BigInt(buf, res_len);
+// }
 
 //friend auto algo4j_int::BigInt::operator<<(ostream &os, const BigInt &o) -> ostream & {
 //	for (auto i = 0; i < len; ++i) {

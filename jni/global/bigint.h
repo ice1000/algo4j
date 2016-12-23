@@ -14,8 +14,6 @@ using std::ostream;
 
 
 namespace algo4j_int {
-	auto compare(jbyte *a, jbyte *b, jsize a_len, jsize b_len) -> jsize;
-
 	class BigInt {
 	public:
 		jbyte *data;
@@ -23,37 +21,45 @@ namespace algo4j_int {
 
 		explicit BigInt(jbyte *_data, jsize _len);
 
-		~BigInt() {
-			delete data;
-		}
-
-		auto operator+(const BigInt &o) const -> const BigInt &;
-
-		auto operator-(const BigInt &o) const -> const BigInt &;
-
-		auto operator*(const BigInt &o) const -> const BigInt &;
-
-		auto operator/(const BigInt &o) const -> BigInt &;
-
-		auto operator[](const jsize index) const -> jbyte;
-
-		auto operator<(const BigInt &o) const -> const bool;
-
-		auto operator==(const BigInt &o) const -> const bool;
-
-		auto operator<=(const BigInt &o) const -> const bool;
-
-		auto operator>(const BigInt &o) const -> const bool;
-
-		auto operator>=(const BigInt &o) const -> const bool;
-
-		auto operator!=(const BigInt &o) const -> const bool;
-
-		auto times_10() -> BigInt &;
-
 		friend auto operator<<(ostream &os, const BigInt &o) -> ostream &;
 
-		friend auto operator>>(istream &is, BigInt &o) -> istream &;	};
+		friend auto operator>>(istream &is, BigInt &o) -> istream &;
+	};
+
+	auto compare(
+			const jbyte *a,
+			const jbyte *b,
+			const jsize a_len,
+			const jsize b_len
+	) -> jint;
+
+	auto plus(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
+
+	auto minus(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
+
+	auto times(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
+
+	auto divide(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
 }
 
 #endif /// __BIG_INT_H__

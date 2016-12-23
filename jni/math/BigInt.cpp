@@ -5,18 +5,18 @@
 // 负数都不怕 加法减法 乘法除法 乘方取余不压位 为了方便输出 为了方便输出 为了方便输出
 //
 
+#include "BigInt.h"
+
 #include "../global/templates.hpp"
 #include "../global/bigint.h"
-
-#include "BigInt.h"
+//#include "../global/bigint.cpp"
 
 using algo4j_util::swap;
 using algo4j_int::compare;
+using algo4j_int::plus;
+using algo4j_int::minus;
+using algo4j_int::times;
 using algo4j_int::BigInt;
-
-#define check_more_than_9
-#define check_less_than_0
-#define trim_string
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 		JNIEnv *env,
@@ -28,9 +28,9 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 	auto b = env->GetByteArrayElements(_b, option);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
-	auto buf = *new BigInt(a, a_len) + *new BigInt(b, b_len);
-	auto ret = env->NewByteArray(buf.len);
-	env->SetByteArrayRegion(ret, 0, buf.len, buf.data);
+	auto buf = plus(a, b, a_len, b_len);
+	auto ret = env->NewByteArray(buf->len);
+	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
 	env->ReleaseByteArrayElements(_a, a, 0);
 	env->ReleaseByteArrayElements(_b, b, 0);
 	__JNI__FUNCTION__CLEAN__
@@ -47,9 +47,9 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
 	auto b = env->GetByteArrayElements(_b, option);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
-	auto buf = *new BigInt(a, a_len) - *new BigInt(b, b_len);
-	auto ret = env->NewByteArray(buf.len);
-	env->SetByteArrayRegion(ret, 0, buf.len, buf.data);
+	auto buf = minus(a, b, a_len, b_len);
+	auto ret = env->NewByteArray(buf->len);
+	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
 	env->ReleaseByteArrayElements(_a, a, 0);
 	env->ReleaseByteArrayElements(_b, b, 0);
 	__JNI__FUNCTION__CLEAN__
@@ -66,11 +66,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 	auto b = env->GetByteArrayElements(_b, option);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
-	auto buf = *new BigInt(a, a_len) * *new BigInt(b, b_len);
-	auto ret = env->NewByteArray(buf.len);
-	env->SetByteArrayRegion(ret, 0, buf.len, buf.data);
-	env->ReleaseByteArrayElements(_a, a, 0);
-	env->ReleaseByteArrayElements(_b, b, 0);
+	auto buf = times(a, b, a_len, b_len);
+	auto ret = env->NewByteArray(buf->len);
+	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
+	env->ReleaseByteArrayElements(_a, a, JNI_ABORT);
+	env->ReleaseByteArrayElements(_b, b, JNI_ABORT);
+//	delete a;
+//	delete b;
 	__JNI__FUNCTION__CLEAN__
 	return ret;
 }

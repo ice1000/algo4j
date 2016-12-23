@@ -3,6 +3,7 @@
 ///
 
 #include "FrontStarGraph.h"
+#include "../global/functions.h"
 #include "../global/templates.hpp"
 
 using algo4j_sort::merge_sort;
