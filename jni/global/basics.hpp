@@ -73,4 +73,4 @@ namespace algo4j_util {
 }
 
 
-#endif // __ICE1000_BASICS_HPP__
+#endif // __ALGO4J_BASICS_HPP__

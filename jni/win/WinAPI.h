@@ -3,6 +3,9 @@
 #include "../global/functions.h"
 #include "../global/winapi.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef _Included_org_algo4j_win_WinAPI
 #define _Included_org_algo4j_win_WinAPI
 
@@ -28,3 +31,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_win_WinAPI_beep(
 
 #endif /// _Included_org_algo4j_win_WinAPI
 
+
+#pragma clang diagnostic pop

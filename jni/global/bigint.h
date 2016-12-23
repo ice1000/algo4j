@@ -12,7 +12,6 @@
 using std::istream;
 using std::ostream;
 
-
 namespace algo4j_int {
 	class BigInt {
 	public:

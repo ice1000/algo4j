@@ -17,30 +17,30 @@ extern "C" {
  * Method:    find
  * Signature: ([II)I
  */
-JNIEXPORT jint JNICALL Java_org_algo4j_graph_UnionSet_find(
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_find(
 		JNIEnv *,
 		jobject,
 		jintArray,
 		jint
-);
+) -> jint;
 
 /**
  * Class:     org_algo4j_graph_UnionSet
  * Method:    merge
  * Signature: ([IIII)V
  */
-// JNIEXPORT void JNICALL Java_org_algo4j_graph_UnionSet_merge(
-// 		JNIEnv *,
-// 		jobject,
-// 		jintArray,
-// 		jint,
-// 		jint,
-// 		jint
-// );
+//JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_merge(
+//		 JNIEnv *,
+//		 jobject,
+//		 jintArray,
+//		 jint,
+//		 jint,
+//		 jint
+//) -> void;
 
 #ifdef __cplusplus
 }
 #endif /// __cplusplus
-#endif
+#endif /// _Included_org_algo4j_graph_UnionSet
 
 #pragma clang diagnostic pop

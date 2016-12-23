@@ -6,12 +6,16 @@
 #include "../global/functions.h"
 #include "../global/templates.hpp"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 using algo4j_sort::merge_sort;
 using algo4j_uset::find;
+using algo4j_frontstar::FrontStarNode;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
-		jobject jo,
+		jobject,
 		jint source,
 		jintArray _next,
 		jintArray _head,
@@ -37,7 +41,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 	memset(inq, false, sizeof(inq[0]) * node_count);
 	dis[source] = 0;
 	dis[0] = -1;
-	inq[source] = true;
+	inq[source] = JNI_TRUE;
 	queue[end++] = source;
 	while (begin < end and !looped) {
 		i = queue[begin++ % edge_count];
@@ -45,17 +49,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 			if (dis[target[j]] > dis[i] + value[j]) {
 				dis[target[j]] = dis[i] + value[j];
 				if (!inq[target[j]]) {
-					inq[target[j]] = true;
+					inq[target[j]] = JNI_TRUE;
 					queue[end++ % edge_count] = target[j];
 					if (++vis[target[j]] >= node_count) {
-					  memset(dis, -1, sizeof(dis[0]) * node_count);
+						memset(dis, -1, sizeof(dis[0]) * node_count);
 						looped = true;
 						break;
 					}
 				}
 			}
 		}
-		inq[i] = false;
+		inq[i] = JNI_FALSE;
 	}
 	env->ReleaseIntArrayElements(_next, next, 0);
 	env->ReleaseIntArrayElements(_head, head, 0);
@@ -72,7 +76,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *env,
-		jobject jo,
+		jobject,
 		jintArray _next,
 		jintArray _head,
 		jintArray _target,
@@ -116,7 +120,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 			} else {
 				uset[find_res_1] = find_res_2;
 				if (depth[find_res_1] == depth[find_res_2])
-				++depth[find_res_1];
+					++depth[find_res_1];
 			}
 			min_len += edges[i].value;
 			if (++count >= node_count)
@@ -131,3 +135,4 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 }
 
 
+#pragma clang diagnostic pop

@@ -9,7 +9,9 @@
 
 #include "../global/templates.hpp"
 #include "../global/bigint.h"
-//#include "../global/bigint.cpp"
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using algo4j_util::swap;
 using algo4j_int::compare;
@@ -112,3 +114,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 	return ret;
 }
 
+
+#pragma clang diagnostic pop

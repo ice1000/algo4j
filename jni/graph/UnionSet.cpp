@@ -27,17 +27,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_find(
 
 /// changed implementation into Java code
 // JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_merge(
-// 		JNIEnv *env,
-// 		jobject jo,
-// 		jintArray _data,
-// 		jint len,
-// 		jint a,
-// 		jint b) -> void {
-// 	__JNI__FUNCTION__INIT__
-// 	auto data = env->GetIntArrayElements(_data, option);
-// 	merge(data, a, b);
-// 	env->ReleaseIntArrayElements(_data, data, 0);
-// 	__JNI__FUNCTION__CLEAN__
+//		 JNIEnv *env,
+//		 jobject jo,
+//		 jintArray _data,
+//		 jint len,
+//		 jint a,
+//		 jint b) -> void {
+//	 __JNI__FUNCTION__INIT__
+//	 auto data = env->GetIntArrayElements(_data, option);
+//	 merge(data, a, b);
+//	 env->ReleaseIntArrayElements(_data, data, 0);
+//	 __JNI__FUNCTION__CLEAN__
 // }
 
 #pragma clang diagnostic pop

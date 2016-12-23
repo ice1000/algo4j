@@ -12,7 +12,12 @@
 using namespace algo4j_bit;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
-		JNIEnv *env, jobject jo, jlongArray _data, jint len, jint idx, jlong value) -> void {
+		JNIEnv *env,
+		jobject jo,
+		jlongArray _data,
+		jint len,
+		jint idx,
+		jlong value) -> void {
 	auto option = new jboolean(false);
 	auto data = env->GetLongArrayElements(_data, option);
 	add(data, len, idx, value);
