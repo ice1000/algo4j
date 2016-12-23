@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=10000011g0100000000010000
-UnitCount=25
+UnitCount=27
 
 [VersionInfo]
 Major=1
@@ -294,6 +294,26 @@ BuildCmd=
 FileName=win\WinAPI.h
 CompileCpp=1
 Folder=win
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit26]
+FileName=global\bigint.cpp
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
+FileName=global\bigint.h
+CompileCpp=1
+Folder=global
 Compile=1
 Link=1
 Priority=1000
