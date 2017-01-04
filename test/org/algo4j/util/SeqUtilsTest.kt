@@ -1,19 +1,22 @@
 package org.algo4j.util
 
 import org.algo4j.test.*
-import org.junit.Assert.assertArrayEquals
-import org.junit.Assert.assertEquals
+import org.jetbrains.annotations.Contract
+import org.jetbrains.annotations.TestOnly
+import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
-import java.util.*
+import java.util.Arrays as StdArrays
 
 /**
  * Created by ice1000 on 2016/11/17.
  *
  * @author ice1000
  */
+@TestOnly
 class SeqUtilsTest {
 
+	@TestOnly
 	@Test(timeout = 500)
 	fun discretizationTest() {
 		val ints = intArrayOf(33, 1, 100, 20, 43, 43)
@@ -41,11 +44,13 @@ class SeqUtilsTest {
 		)
 	}
 
+	@TestOnly
 	@Test(timeout = 100)
 	fun inversionTest() {
 		assertEquals(SeqUtils.inversion(intArrayOf(3, 1, 5, 2, 4)), 4)
 	}
 
+	@TestOnly
 	@JvmOverloads
 	fun sortTest(
 			sortInt: (IntArray) -> Unit,
@@ -54,57 +59,96 @@ class SeqUtilsTest {
 		test(times) {
 			val data1 = shuffledIntList
 			val res11 = data1.toIntArray()
-			Arrays.sort(res11)
+			StdArrays.sort(res11)
 			val res12 = data1.toIntArray()
 			sortInt(res12)
 			assertArrayEquals(res11, res12)
 			val data2 = shuffledDoubleList
 			val res21 = data2.toDoubleArray()
-			Arrays.sort(res21)
+			StdArrays.sort(res21)
 			val res22 = data2.toDoubleArray()
 			sortDouble(res22)
 			assertArrayEquals(res21, res22, 1e-10)
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortBubbleTest() =
 			sortTest(SeqUtils::sortBubble, SeqUtils::sortBubble, 2000)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortInsertionTest() =
 			sortTest(SeqUtils::sortInsertion, SeqUtils::sortInsertion, 2000)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortQuickTest() =
 			sortTest(SeqUtils::sortQuick, SeqUtils::sortQuick)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortMergeTest() =
 			sortTest(SeqUtils::sortMerge, SeqUtils::sortMerge)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortSelectionTest() =
 			sortTest(SeqUtils::sortSelection, SeqUtils::sortSelection, 2000)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortCombTest() =
 			sortTest(SeqUtils::sortComb, SeqUtils::sortComb, 2000)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sortCocktailTest() =
 			sortTest(SeqUtils::sortCocktail, SeqUtils::sortCocktail, 2000)
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun veryStrongTestMergeSort() {
 		SeqUtils.sortMerge(strongIntArray.toIntArray())
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun veryStrongTestQuickSort() {
 		SeqUtils.sortQuick(strongIntArray.toIntArray())
 	}
 
+	@TestOnly
+	@Test(timeout = 1000)
+	fun copyTest() {
+		assertNull(SeqUtils.copy(null as IntArray?))
+		assertNull(SeqUtils.copy(null as DoubleArray?))
+		assertNull(SeqUtils.copy(null as FloatArray?))
+		assertNull(SeqUtils.copy(null as BooleanArray?))
+		assertNull(SeqUtils.copy(null as ShortArray?))
+		assertNull(SeqUtils.copy(null as ByteArray?))
+		assertNull(SeqUtils.copy(null
+				as IntArray?
+				as DoubleArray?
+				as FloatArray?
+				as BooleanArray?
+				as ShortArray?
+				as ByteArray?))
+		test(1000) {
+			val arr = shuffledIntList.toIntArray()
+			val arr2 = shuffledDoubleList.toDoubleArray()
+			assertArrayEquals(
+					StdArrays.copyOf(arr, arr.size),
+					SeqUtils.copy(arr))
+			assertArrayEquals(
+					StdArrays.copyOf(arr2, arr2.size),
+					SeqUtils.copy(arr2),
+					1e-15)
+		}
+	}
+
+	@TestOnly
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
@@ -114,12 +158,19 @@ class SeqUtilsTest {
 		}
 
 		lateinit var randomArray: List<Int>
+			@TestOnly
+			@Contract(pure = true)
+			get
 
 		val bound = 2333
+			@TestOnly
+			@Contract(pure = true)
+			get
 
+		@TestOnly
 		@JvmStatic
 		fun main(args: Array<String>) {
-			loadJniLibrary()
+			Loader.load()
 			SeqUtilsTest().discretizationTest()
 		}
 	}

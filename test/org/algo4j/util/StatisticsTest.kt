@@ -3,6 +3,7 @@ package org.algo4j.util
 import org.algo4j.math.MathUtils
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -12,7 +13,9 @@ import org.junit.Test
 
  * @author ice1000
  */
+@TestOnly
 class StatisticsTest {
+	@TestOnly
 	@Test(timeout = 1000)
 	fun sumTest() {
 		test(1000) {
@@ -23,6 +26,7 @@ class StatisticsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun avgTest() {
 		test(1000) {
@@ -35,6 +39,7 @@ class StatisticsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun minMaxTest() {
 		test(1000) {
@@ -50,6 +55,7 @@ class StatisticsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun stdDivTest() {
 		test(1000) {
@@ -65,6 +71,7 @@ class StatisticsTest {
 		}
 	}
 
+	@TestOnly
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

@@ -1,8 +1,11 @@
 package org.algo4j.bit
 
+import org.algo4j.get
 import org.algo4j.math.MathUtils
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.jetbrains.annotations.Contract
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -13,26 +16,29 @@ import java.util.*
 
  * @author ice1000
  */
+@TestOnly
 class IntervalUpdatePointQueryTest {
 
 	/**
 	 * discretizationTest
 	 * data: I make it myself
 	 */
+	@TestOnly
 	@Test(timeout = 100)
 	fun test() {
 		val tree = IntervalUpdatePointQuery(30)
-		tree.update(10, 20, 5)
-		tree.update(15, 25, 15)
-		assertEquals(20, tree.query(15))
-		assertEquals(20, tree.query(17))
-		assertEquals(20, tree.query(20))
-		assertEquals(20, tree.query(17))
+		tree[10, 20] += 5
+		tree[15, 25] += 15
+		assertEquals(20, tree[15])
+		assertEquals(20, tree[17])
+		assertEquals(20, tree[20])
+		assertEquals(20, tree[17])
 
 		tree.update(1, 15, 1)
-		assertEquals(6, tree.query(12))
+		assertEquals(6, tree[12])
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun strongTest() {
 		val max = 300
@@ -50,11 +56,11 @@ class IntervalUpdatePointQueryTest {
 				}
 				val value = rand.nextLong()
 				bruteForce.update(num1, num2, value)
-				bit.update(num1, num2, value)
+				bit[num1, num2] += value
 			}
 			loop(10) {
 				val index = rand.nextInt(max - 2) + 2
-				assertEquals(bruteForce.query(index), bit.query(index))
+				assertEquals(bruteForce[index], bit[index])
 			}
 		}
 	}
@@ -62,22 +68,35 @@ class IntervalUpdatePointQueryTest {
 	/**
 	 * brute force implementation of binary indexed tree.
 	 */
-	private inner class BruteForce(length: Int) {
+	@TestOnly
+	private inner class BruteForce
+	@TestOnly
+	@Contract(pure = true)
+	internal constructor(length: Int) {
 		private val data = LongArray(length)
 
 		/**
 		 * standard update operation
 		 */
-		fun update(from: Int, to: Int, value: Long) {
+		@TestOnly
+		@Contract(pure = false)
+		internal fun update(from: Int, to: Int, value: Long) {
 			(from..to).forEach { data[it] += value }
 		}
 
 		/**
 		 * standard query operation
 		 */
-		fun query(index: Int) = data[index]
+		@TestOnly
+		@Contract(pure = true)
+		internal fun query(index: Int) = data[index]
+
+		@TestOnly
+		@Contract(pure = true)
+		internal operator fun get(index: Int) = query(index)
 	}
 
+	@TestOnly
 	companion object Initializer {
 
 		@BeforeClass

@@ -34,15 +34,13 @@ fun main(args: Array<String>) {
 //			"avg",
 //			"max",
 //			"min",
-			"stdDiv"
+			"copy"
 	).forEach { ass ->
-		listOf("int", "long", "float", "double").forEach { we ->
+		listOf("int", "long", "float", "double", "short", "byte").forEach { we ->
 			"""
-	private static native $we $ass($we[] data, int length);
-
-	public static $we $ass($we[] data) {
-		return $ass(data, data.length);
-	}""".println()
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native $we[] $ass(@Nullable $we[] data);""".println()
 		}
 	}
 }

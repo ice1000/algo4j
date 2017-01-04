@@ -1,7 +1,9 @@
 package org.algo4j.math
 
+import org.algo4j.div
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
@@ -14,7 +16,9 @@ import java.math.BigInteger as StdBigInt
 
  * @author ice1000
  */
+@TestOnly
 class BigIntTest {
+	@TestOnly
 	@Test
 	fun initTest() {
 		val int = BigInt(-233)
@@ -22,6 +26,7 @@ class BigIntTest {
 		assertEquals(int.toString(), stdInt.toString())
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun plusTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -31,17 +36,16 @@ class BigIntTest {
 //			println("$val1, $val2")
 			assertEquals(
 					(val1 + val2).toString(),
-					BigInt(val1)
-							.plus(BigInt(val2))
-							.toString())
+					(BigInt(val1) + BigInt(val2)).toString())
 		}
 		assertEquals(
 				"1222222222222222222222222222222222",
-				BigInt("1111111111111111111111111111111111")
-						.plus(BigInt("111111111111111111111111111111111"))
+				(BigInt("1111111111111111111111111111111111")
+						+ BigInt("111111111111111111111111111111111"))
 						.toString())
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun stdPlusTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -56,6 +60,7 @@ class BigIntTest {
 				.add(StdBigInt("111111111111111111111111111111111")).toString()
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun stdTimesTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -63,13 +68,14 @@ class BigIntTest {
 		var fuck = 100000000000000
 		loop(1000) {
 			val int = StdBigInt((rand.nextInt(666666666) - 233333333).toString())
-			int.times(StdBigInt(rand.nextInt(223333333).toString())).toString()
+			(int * StdBigInt(rand.nextInt(223333333).toString())).toString()
 			assertEquals(100000000000000, fuck)
 		}
-		StdBigInt("1111111111111111111111111111111111")
-				.times(StdBigInt("111111111111111111111111111111111")).toString()
+		(StdBigInt("1111111111111111111111111111111111")
+				* StdBigInt("111111111111111111111111111111111")).toString()
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun compareToTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -85,6 +91,7 @@ class BigIntTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun equalsTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -96,6 +103,7 @@ class BigIntTest {
 		assertTrue(BigInt("-0") == BigInt.ZERO)
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun minusTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -105,17 +113,16 @@ class BigIntTest {
 //			println("$val1, $val2")
 			assertEquals(
 					(val1 - val2).toString(),
-					BigInt(val1)
-							.minus(BigInt(val2))
-							.toString())
+					(BigInt(val1) - BigInt(val2)).toString())
 		}
 		assertEquals(
 				"1000000000000000000000000000000000",
-				BigInt("1111111111111111111111111111111111")
-						.minus(BigInt("111111111111111111111111111111111"))
+				(BigInt("1111111111111111111111111111111111") -
+						BigInt("111111111111111111111111111111111"))
 						.toString())
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun timesTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -125,12 +132,11 @@ class BigIntTest {
 //			println("$val1 $val2 -> ${val1 * val2}")
 			assertEquals(
 					(val1 * val2).toString(),
-					BigInt(val1)
-							.times(BigInt(val2))
-							.toString())
+					(BigInt(val1) * BigInt(val2)).toString())
 		}
 	}
 
+	//	@TestOnly
 	//	@Test(timeout = 1000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -140,12 +146,11 @@ class BigIntTest {
 			println("$val1 $val2 -> ${val1 / val2}")
 			assertEquals(
 					(val1 / val2).toString(),
-					BigInt(val1)
-							.divide(BigInt(val2))
-							.toString())
+					(BigInt(val1) / BigInt(val2)).toString())
 		}
 	}
 
+	@TestOnly
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

@@ -1,5 +1,6 @@
 package org.algo4j.graph
 
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
@@ -10,13 +11,15 @@ import org.junit.Test
 
  * @author algo4j
  */
+@TestOnly
 class UnionSetTest {
 
 	/**
 	 * data from:
 	 * http://codevs.cn/problem/1073/
 	 */
-	@Test
+	@TestOnly
+	@Test(timeout = 100)
 	fun test() {
 		val set = UnionSet(6)
 		set.merge(1, 2)
@@ -29,6 +32,7 @@ class UnionSetTest {
 		assertFalse(set.isConnected(5, 6))
 	}
 
+	@TestOnly
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic

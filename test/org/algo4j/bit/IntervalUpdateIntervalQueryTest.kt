@@ -3,6 +3,8 @@ package org.algo4j.bit
 import org.algo4j.math.MathUtils
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.jetbrains.annotations.Contract
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -13,19 +15,22 @@ import java.util.*
 
  * @author ice1000
  */
+@TestOnly
 class IntervalUpdateIntervalQueryTest {
 
 	/**
 	 * data:
 	 * http://www.codevs.cn/problem/1082/
 	 */
-	@Test
+	@TestOnly
+	@Test(timeout = 100)
 	fun test() {
-		val bit = IntervalUpdateIntervalQuery(3, 1, 2, 3, 2)
+		val bit = IntervalUpdateIntervalQuery(1, 2, 3, 2)
 		bit.update(2, 3, 2)
 		assertEquals(9, bit.query(2, 3))
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun strongTest() {
 		val max = 300
@@ -62,24 +67,37 @@ class IntervalUpdateIntervalQueryTest {
 	/**
 	 * brute force implementation of binary indexed tree.
 	 */
-	private inner class BruteForce(length: Int) {
+	@TestOnly
+	private inner class BruteForce
+	@TestOnly
+	@Contract(pure = true)
+	internal constructor(length: Int) {
+		@TestOnly
 		private val data = LongArray(length)
 
 		/**
 		 * standard update operation
 		 */
-		fun update(from: Int, to: Int, value: Long) {
+		@TestOnly
+		@Contract(pure = false)
+		internal fun update(from: Int, to: Int, value: Long) {
 			(from..to).forEach { data[it] += value }
 		}
 
 		/**
 		 * standard query operation
 		 */
-		fun query(from: Int, to: Int): Long {
+		@TestOnly
+		@Contract(pure = true)
+		internal fun query(from: Int, to: Int): Long {
 			var ret = 0L
-			(from..to).forEach {  ret += data[it] }
+			(from..to).forEach { ret += data[it] }
 			return ret
 		}
+
+		@TestOnly
+		@Contract(pure = true)
+		internal operator fun get(left: Int, right: Int) = query(left, right)
 	}
 
 	companion object Initializer {

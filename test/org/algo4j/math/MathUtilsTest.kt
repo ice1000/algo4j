@@ -1,6 +1,7 @@
 package org.algo4j.math
 
 import org.algo4j.test.test
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
@@ -14,8 +15,10 @@ import java.lang.Math as StdMath
 
  * @author ice1000
  */
+@TestOnly
 class MathUtilsTest {
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun gcdTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -26,6 +29,7 @@ class MathUtilsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun exgcdTest() {
 		val rand = Random(System.currentTimeMillis())
@@ -40,6 +44,7 @@ class MathUtilsTest {
 	/**
 	 * 2.5e-4ms per calc
 	 */
+	@TestOnly
 	@Test(timeout = 500)
 	fun sqrtTime() {
 		val random = Random(System.currentTimeMillis())
@@ -52,6 +57,7 @@ class MathUtilsTest {
 	/**
 	 * 2.5e-4ms per calc
 	 */
+	@TestOnly
 	@Test(timeout = 100)
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	fun sqrtCarmarkTime() {
@@ -62,6 +68,7 @@ class MathUtilsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 100)
 	@SuppressWarnings("deprecation")
 	fun sqrtCorrectness() {
@@ -89,6 +96,7 @@ class MathUtilsTest {
 	 * 2 ^ 10 => 1024, 1024 % 10 => 4
 	 * 233 * 233 => 54289, 54289 % 1000 => 289
 	 */
+	@TestOnly
 	@Test(timeout = 100)
 	fun fastPlusPowerTest() {
 		assertEquals(24, MathUtils.fastPower(2, 10, 1000))
@@ -100,6 +108,7 @@ class MathUtilsTest {
 	/**
 	 * abstract value
 	 */
+	@TestOnly
 	@Test(timeout = 100)
 	fun absTest() {
 		val random = Random(System.currentTimeMillis())
@@ -118,6 +127,7 @@ class MathUtilsTest {
 	/**
 	 * min max value
 	 */
+	@TestOnly
 	@Test(timeout = 100)
 	fun minMaxTest() {
 		val random = Random(System.currentTimeMillis())
@@ -157,6 +167,7 @@ class MathUtilsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 50)
 	fun logTest() {
 		val random = Random(System.currentTimeMillis())
@@ -171,6 +182,7 @@ class MathUtilsTest {
 		}
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun isPrimeTest() {
 		val primes = listOf(
@@ -194,6 +206,7 @@ class MathUtilsTest {
 		}
 	}
 
+	@TestOnly
 	companion object Initializer {
 
 		@BeforeClass

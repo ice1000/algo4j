@@ -57,10 +57,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_${className}_${methodName}___3${mark}I(
 }
 
 fun main(args: Array<String>) {
-	val className = "util_Statistics"
+	val className = "util_SeqUtils"
 	val methodName = "stdDiv"
 	exe(listOf(
 			Type("jint", "I"),
+			Type("jbyte", "B"),
 			Type("jlong", "J"),
 			Type("jfloat", "F"),
 			Type("jdouble", "D")

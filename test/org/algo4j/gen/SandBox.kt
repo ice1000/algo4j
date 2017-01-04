@@ -7,6 +7,6 @@ package org.algo4j.gen
  */
 
 fun main(args: Array<String>) {
-	@Suppress("SimplifyBooleanWithConstants")
+	@Suppress("SimplifyBooleanWithConstants", "DIVISION_BY_ZERO")
 	println(1 / 0)
 }

@@ -1,8 +1,11 @@
 package org.algo4j.bit
 
+import org.algo4j.get
 import org.algo4j.math.MathUtils
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.jetbrains.annotations.Contract
+import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -13,12 +16,14 @@ import java.util.*
 
  * @author ice1000
  */
+@TestOnly
 class PointUpdateIntervalQueryTest {
 
 	/**
 	 * data from:
 	 * http://www.codevs.cn/problem/1080/
 	 */
+	@TestOnly
 	@Test(timeout = 200)
 	fun test() {
 		val tree = BinaryIndexedTree(10)
@@ -30,11 +35,12 @@ class PointUpdateIntervalQueryTest {
 		tree.add(6, 3)
 		tree.add(7, 4)
 		tree.add(3, 5)
-		assertEquals(14, tree.sum(3, 5))
+		assertEquals(14, tree[3, 5])
 		tree.add(1, 9)
-		assertEquals(22, tree.sum(2, 6))
+		assertEquals(22, tree[2, 6])
 	}
 
+	@TestOnly
 	@Test(timeout = 1000)
 	fun strongTest() {
 		val max = 300
@@ -56,7 +62,7 @@ class PointUpdateIntervalQueryTest {
 					num1 = num2
 					num2 = tmp
 				}
-				assertEquals(bruteForce.sum(num1, num2), bit.sum(num1, num2))
+				assertEquals(bruteForce[num1, num2], bit[num1, num2])
 			}
 		}
 	}
@@ -64,12 +70,17 @@ class PointUpdateIntervalQueryTest {
 	/**
 	 * brute force implementation of binary indexed tree.
 	 */
-	private inner class BruteForce(length: Int) {
+	@TestOnly
+	private inner class BruteForce
+	@TestOnly
+	@Contract(pure = true)
+	internal constructor(length: Int) {
 		private val data = LongArray(length)
 
 		/**
 		 * standard add operation
 		 */
+		@TestOnly
 		fun add(index: Int, value: Long) {
 			data[index] += value
 		}
@@ -77,15 +88,28 @@ class PointUpdateIntervalQueryTest {
 		/**
 		 * standard sum operation
 		 */
+		@TestOnly
+		@Contract(pure = true)
 		fun sum(from: Int, to: Int): Long {
 			var ret = 0L
 			(from..to).forEach { ret += data[it] }
 			return ret
 		}
 
-		fun sum(index: Int) = sum(1, index)
+		@TestOnly
+		@Contract(pure = true)
+		internal operator fun get(left: Int, right: Int) = sum(left, right)
+
+		@TestOnly
+		@Contract(pure = true)
+		internal operator fun get(index: Int) = sum(index)
+
+		@TestOnly
+		@Contract(pure = true)
+		internal fun sum(index: Int) = sum(1, index)
 	}
 
+	@TestOnly
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
