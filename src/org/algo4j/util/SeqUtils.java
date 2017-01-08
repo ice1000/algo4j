@@ -1,5 +1,7 @@
 package org.algo4j.util;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -10,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class SeqUtils {
+	@Contract(pure = true)
 	private SeqUtils() {
 	}
 
@@ -43,21 +46,25 @@ public final class SeqUtils {
 	 * @param data given array
 	 * @return inversion number
 	 */
+	@Contract(pure = true)
 	public static native long inversion(@NotNull int[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
+	@Contract(pure = true)
 	public static native long inversion(@NotNull long[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
+	@Contract(pure = true)
 	public static native long inversion(@NotNull float[] data);
 
 	/**
 	 * @see SeqUtils#inversion(int[])
 	 */
+	@Contract(pure = true)
 	public static native long inversion(@NotNull double[] data);
 
 	/**
@@ -149,7 +156,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(pure = true)
 	@SuppressWarnings({"ConstantConditions", "ResultOfMethodCallIgnored"})
 	public static <T> String toString(@Nullable T[] a) {
 		if (a == null) return "null";
@@ -168,7 +177,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable long[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -185,7 +196,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable int[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -202,7 +215,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable byte[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -219,7 +234,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable float[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -236,7 +253,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable double[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -253,7 +272,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable short[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -270,7 +291,9 @@ public final class SeqUtils {
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */
+	@NonNls
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static String toString(@Nullable char[] a) {
 		if (a == null) return "null";
 		if (a.length - 1 == -1) return "[]";
@@ -283,5 +306,87 @@ public final class SeqUtils {
 			b.append(">, <");
 		}
 	}
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native int[] copy(@Nullable int[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native long[] copy(@Nullable long[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native float[] copy(@Nullable float[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native double[] copy(@Nullable double[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native short[] copy(@Nullable short[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native byte[] copy(@Nullable byte[] data);
+
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native boolean[] copy(@Nullable boolean[] data);
+
+//	@Nullable
+//	@Contract(value = "!null -> !null; null -> null", pure = true)
+//	public static Cloneable[] copy(@Nullable Cloneable[] in) {
+//		if (in == null) return null;
+//		if (in.length == 0) return in.clone();
+//		Cloneable[] ret = new Cloneable[in.length];
+//		for (int i = 0; i < in.length; i++) {
+//			ret[i] = in[i].clone();
+//		}
+//		return ret;
+//	}
 
 }

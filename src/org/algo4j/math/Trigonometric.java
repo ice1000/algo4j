@@ -1,20 +1,23 @@
 package org.algo4j.math;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * Created by ice1000 on 2016/11/24.
  *
  * @author ice1000
  */
 public final class Trigonometric {
+	@Contract(pure = true)
 	private Trigonometric() {
 	}
-
 
 	/**
 	 * same as {@code java.lang.MathUtils.sin(double)}
 	 *
 	 * @return sin(a)
 	 */
+	@Contract(pure = true)
 	public static native double sin(double a);
 
 	/**
@@ -22,6 +25,7 @@ public final class Trigonometric {
 	 *
 	 * @return cos(a)
 	 */
+	@Contract(pure = true)
 	public static native double cos(double a);
 
 	/**
@@ -29,20 +33,24 @@ public final class Trigonometric {
 	 *
 	 * @return tan(a)
 	 */
+	@Contract(pure = true)
 	public static native double tan(double a);
 
 	/**
 	 * @return cot(a)
 	 */
+	@Contract(pure = true)
 	public static native double cot(double a);
 
 	/**
 	 * @return csc(a)
 	 */
+	@Contract(pure = true)
 	public static native double csc(double a);
 
 	/**
 	 * @return sec(a)
 	 */
+	@Contract(pure = true)
 	public static native double sec(double a);
 }

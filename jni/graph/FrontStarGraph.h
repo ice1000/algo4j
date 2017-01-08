@@ -50,7 +50,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		jintArray,
 		jint,
 		jint
-) -> jint;
+) -> jintArray;
 
 namespace algo4j_frontstar {
 	class FrontStarNode {

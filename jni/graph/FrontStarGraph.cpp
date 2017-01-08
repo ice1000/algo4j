@@ -3,8 +3,15 @@
 ///
 
 #include "FrontStarGraph.h"
+#include "../global/basics.hpp"
 #include "../global/functions.h"
 #include "../global/templates.hpp"
+
+//#include <iostream>
+//
+//using std::cin;
+//using std::cout;
+//using std::endl;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -23,19 +30,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		jintArray _value,
 		jint edge_count,
 		jint node_count) -> jintArray {
-	auto _dis = env->NewIntArray(node_count);
+	__JNI__FUNCTION__INIT__
+	__new(Int, dis, node_count);
 	auto dis = new jint[node_count];
 	auto inq = new jboolean[node_count];
 	auto vis = new jint[node_count];
 	auto queue = new jint[edge_count];
 	jsize begin = 0, end = 0;
 	jint i, j;
-	auto option = new jboolean(false);
 	auto looped = false;
-	auto next = env->GetIntArrayElements(_next, option);
-	auto head = env->GetIntArrayElements(_head, option);
-	auto target = env->GetIntArrayElements(_target, option);
-	auto value = env->GetIntArrayElements(_value, option);
+	__get(Int, next);
+	__get(Int, head);
+	__get(Int, target);
+	__get(Int, value);
 	memset(dis, org_algo4j_graph_FrontStarGraph_INFINITY_FILLING, sizeof(dis[0]) * node_count);
 	memset(vis, 0, sizeof(vis[0]) * node_count);
 	memset(inq, false, sizeof(inq[0]) * node_count);
@@ -61,18 +68,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		}
 		inq[i] = JNI_FALSE;
 	}
-	env->ReleaseIntArrayElements(_next, next, 0);
-	env->ReleaseIntArrayElements(_head, head, 0);
-	env->ReleaseIntArrayElements(_target, target, 0);
-	env->ReleaseIntArrayElements(_value, value, 0);
-	env->SetIntArrayRegion(_dis, 0, node_count, dis);
-	delete option;
+	__release(Int, next);
+	__release(Int, head);
+	__release(Int, target);
+	__release(Int, value);
+	__set(Int, dis, node_count);
 	delete dis;
 	delete inq;
 	delete vis;
 	delete queue;
+	__JNI__FUNCTION__CLEAN__
 	return _dis;
 }
+
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *env,
@@ -80,22 +88,20 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		jintArray _next,
 		jintArray _head,
 		jintArray _target,
-		jintArray _depature,
+		jintArray _departure,
 		jintArray _value,
 		jint edge_count,
-		jint node_count) -> jint {
-	auto option = new jboolean(false);
+		jint node_count) -> jintArray {
+	__JNI__FUNCTION__INIT__
 	auto looped = false;
-	auto next = env->GetIntArrayElements(_next, option);
-	auto head = env->GetIntArrayElements(_head, option);
-	auto target = env->GetIntArrayElements(_target, option);
-	auto depature = env->GetIntArrayElements(_depature, option);
-	auto value = env->GetIntArrayElements(_value, option);
+	__get(Int, next);
+	__get(Int, head);
+	__get(Int, target);
+	__get(Int, departure);
+	__get(Int, value);
 	auto uset = new jint[node_count]();
 	auto depth = new jint[node_count]();
 	auto edges = new FrontStarNode[edge_count]();
-	auto min_len = 0;
-	auto count = 0;
 	auto find_res_1 = 0;
 	auto find_res_2 = 0;
 	memset(depth, 0, node_count * sizeof(depth[0]));
@@ -103,14 +109,16 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		uset[i] = i;
 	}
 	for (auto i = 0; i < edge_count; ++i) {
-		edges[i].setValue(value[i], target[i], depature[i]);
+		edges[i].setValue(value[i], target[i], departure[i]);
 	}
-	env->ReleaseIntArrayElements(_next, next, 0);
-	env->ReleaseIntArrayElements(_head, head, 0);
-	env->ReleaseIntArrayElements(_target, target, 0);
-	env->ReleaseIntArrayElements(_depature, depature, 0);
-	env->ReleaseIntArrayElements(_value, value, 0);
+	__release(Int, next);
+	__release(Int, head);
+	__release(Int, target);
+	__release(Int, departure);
+	__release(Int, value);
 	merge_sort(edges, edge_count);
+	auto ret = new jint[(node_count - 2) * 3]();
+	auto ret_idx = 0;
 	for (auto i = 0; i < edge_count; ++i) {
 		find_res_1 = find(uset, edges[i].from);
 		find_res_2 = find(uset, edges[i].to);
@@ -122,17 +130,22 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 				if (depth[find_res_1] == depth[find_res_2])
 					++depth[find_res_1];
 			}
-			min_len += edges[i].value;
-			if (++count >= node_count)
+			ret[ret_idx++] = edges[i].from;
+			ret[ret_idx++] = edges[i].to;
+			ret[ret_idx++] = edges[i].value;
+			if (ret_idx >= (node_count - 2) * 3)
 				break;
 		}
 	}
-	delete option;
+	__new(Int, ret, (node_count - 2) * 3);
+	__set(Int, ret, (node_count - 2) * 3);
 	delete depth;
 	delete uset;
 	delete[] edges;
-	return min_len;
+	__JNI__FUNCTION__CLEAN__
+	return _ret;
 }
 
-
 #pragma clang diagnostic pop
+
+

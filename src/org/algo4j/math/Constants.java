@@ -1,5 +1,7 @@
 package org.algo4j.math;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * Created by ice1000 on 2016/12/18.
  *
@@ -7,6 +9,7 @@ package org.algo4j.math;
  */
 @SuppressWarnings("unused")
 public final class Constants {
+	@Contract(pure = true)
 	private Constants() {
 	}
 

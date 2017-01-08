@@ -26,17 +26,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 		jbyteArray _a,
 		jbyteArray _b) -> jbyteArray {
 	__JNI__FUNCTION__INIT__
-	auto a = env->GetByteArrayElements(_a, option);
-	auto b = env->GetByteArrayElements(_b, option);
+	__get(Byte, a);
+	__get(Byte, b);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
 	auto buf = plus(a, b, a_len, b_len);
-	auto ret = env->NewByteArray(buf->len);
-	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
-	env->ReleaseByteArrayElements(_a, a, 0);
-	env->ReleaseByteArrayElements(_b, b, 0);
+	__new(Byte, ret, buf->len);
+	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__release(Byte, a);
+	__release(Byte, b);
 	__JNI__FUNCTION__CLEAN__
-	return ret;
+	return _ret;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
@@ -45,17 +45,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
 		jbyteArray _a,
 		jbyteArray _b) -> jbyteArray {
 	__JNI__FUNCTION__INIT__
-	auto a = env->GetByteArrayElements(_a, option);
-	auto b = env->GetByteArrayElements(_b, option);
+	__get(Byte, a);
+	__get(Byte, b);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
 	auto buf = minus(a, b, a_len, b_len);
-	auto ret = env->NewByteArray(buf->len);
-	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
-	env->ReleaseByteArrayElements(_a, a, 0);
-	env->ReleaseByteArrayElements(_b, b, 0);
+	__new(Byte, ret, buf->len);
+	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__release(Byte, a);
+	__release(Byte, b);
 	__JNI__FUNCTION__CLEAN__
-	return ret;
+	return _ret;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
@@ -64,19 +64,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 		jbyteArray _a,
 		jbyteArray _b) -> jbyteArray {
 	__JNI__FUNCTION__INIT__
-	auto a = env->GetByteArrayElements(_a, option);
-	auto b = env->GetByteArrayElements(_b, option);
+	__get(Byte, a);
+	__get(Byte, b);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
 	auto buf = times(a, b, a_len, b_len);
-	auto ret = env->NewByteArray(buf->len);
-	env->SetByteArrayRegion(ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len);
+	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
 	env->ReleaseByteArrayElements(_a, a, JNI_ABORT);
 	env->ReleaseByteArrayElements(_b, b, JNI_ABORT);
 //	delete a;
 //	delete b;
 	__JNI__FUNCTION__CLEAN__
-	return ret;
+	return _ret;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
@@ -101,13 +101,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 		jbyteArray _a,
 		jbyteArray _b) -> jint {
 	__JNI__FUNCTION__INIT__
-	auto a = env->GetByteArrayElements(_a, option);
-	auto b = env->GetByteArrayElements(_b, option);
+	__get(Byte, a);
+	__get(Byte, b);
 	auto a_len = env->GetArrayLength(_a);
 	auto b_len = env->GetArrayLength(_b);
 	auto ret = compare(a, b, a_len, b_len);
-	env->ReleaseByteArrayElements(_a, a, 0);
-	env->ReleaseByteArrayElements(_b, b, 0);
+	__release(Byte, a);
+	__release(Byte, b);
 	__JNI__FUNCTION__CLEAN__
 	if (ret > 0) ret = 1;
 	if (ret < 0) ret = -1;

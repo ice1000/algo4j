@@ -28,8 +28,8 @@ using algo4j_bit::inversion;
  */
 #define __discretization_with(type) \
 __JNI__FUNCTION__INIT__ \
-auto len = env->GetArrayLength(_data); \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
+auto len = __len(data); \
+__get(type, data); \
 auto after = discretization(data, len); \
 env->Release ## type ## ArrayElements(_data, data, JNI_ABORT); \
 env->Set ## type ## ArrayRegion(_data, 0, len, after); \
@@ -68,12 +68,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_discretization___3D(
 
 #define __algo4j_inversion(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 auto after = discretization(data, len); \
 for (auto i = 0; i < len; ++i) ++after[i]; \
 auto ret = inversion(after, len, len + 1); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__ \
 delete after; \
 return ret;
@@ -115,10 +115,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3D(
  */
 #define __algo4j_bubble_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 bubble_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3I(
@@ -153,10 +153,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortBubble___3D(
 
 #define __algo4j_quick_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 quick_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3I(
@@ -191,10 +191,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortQuick___3D(
 
 #define __algo4j_insertion_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 insertion_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3I(
@@ -230,10 +230,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortInsertion___3D(
 
 #define __algo4j_merge_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 merge_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3I(
@@ -268,10 +268,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortMerge___3D(
 
 #define __algo4j_comb_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 comb_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3I(
@@ -306,10 +306,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortComb___3D(
 
 #define __algo4j_selection_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 selection_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3I(
@@ -344,10 +344,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortSelection___3D(
 
 #define __algo4j_cocktail_sort(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 cocktail_sort(data, len); \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+__release(type, data) \
 __JNI__FUNCTION__CLEAN__
 
 JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3I(
@@ -380,5 +380,72 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3D(
 
 #undef __algo4j_cocktail_sort
 
+#define __algo4j_arr_copy(type) \
+if (_data == NULL) return NULL; \
+__JNI__FUNCTION__INIT__ \
+__get(type, data); \
+auto len = __len(data); \
+__new(type, ret, len) \
+__get(type, ret); \
+for (auto i = 0; i < len; ++i) { \
+	ret[i] = data[i]; \
+} \
+__release(type, data) \
+__release(type, ret) \
+__JNI__FUNCTION__CLEAN__ \
+return _ret;
+
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3I(
+		JNIEnv *env,
+		jclass,
+		jintArray _data) -> jintArray {
+	__algo4j_arr_copy(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3J(
+		JNIEnv *env,
+		jclass,
+		jlongArray _data) -> jlongArray {
+	__algo4j_arr_copy(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3F(
+		JNIEnv *env,
+		jclass,
+		jfloatArray _data) -> jfloatArray {
+	__algo4j_arr_copy(Float);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3D(
+		JNIEnv *env,
+		jclass,
+		jdoubleArray _data) -> jdoubleArray {
+	__algo4j_arr_copy(Double);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3S(
+		JNIEnv *env,
+		jclass,
+		jshortArray _data) -> jshortArray {
+	__algo4j_arr_copy(Short);
+}
+
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3B(
+		JNIEnv *env,
+		jclass,
+		jbyteArray _data) -> jbyteArray {
+	__algo4j_arr_copy(Byte);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3Z(
+		JNIEnv *env,
+		jclass,
+		jbooleanArray _data) -> jbooleanArray {
+	__algo4j_arr_copy(Boolean);
+}
+
+#undef __algo4j_arr_copy
 
 #pragma clang diagnostic pop

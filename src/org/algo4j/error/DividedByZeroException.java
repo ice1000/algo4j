@@ -2,6 +2,7 @@ package org.algo4j.error;
 
 import org.algo4j.math.BigInt;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -11,10 +12,12 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class DividedByZeroException extends ArithmeticException {
-	public DividedByZeroException(@NotNull String msg) {
+	@Contract(pure = true)
+	public DividedByZeroException(@NotNull @Nls String msg) {
 		super(msg);
 	}
 
+	@Contract(pure = true)
 	public DividedByZeroException() {
 		this("A number cannot be divided by zero");
 	}

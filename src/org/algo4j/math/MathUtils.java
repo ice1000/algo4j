@@ -29,8 +29,11 @@ public final class MathUtils {
 	 *
 	 * @return greatest common divisor of a and b
 	 */
+	@Contract(pure = true)
 	public static native long gcd(long a, long b);
 
+	@NotNull
+	@Contract(pure = true)
 	private static native long[] exgcdJni(long a, long b);
 
 	/**
@@ -41,7 +44,7 @@ public final class MathUtils {
 	 * @return res.x * a + res.y + b = gcd(a, b)
 	 */
 	@NotNull
-	@Contract("_, _ -> !null")
+	@Contract(value = "_, _ -> !null", pure = true)
 	public static ExgcdRes exgcd(long a, long b) {
 		return new ExgcdRes(exgcdJni(a, b));
 	}
@@ -51,6 +54,7 @@ public final class MathUtils {
 	 *
 	 * @return lowest common multiple of a and b
 	 */
+	@Contract(pure = true)
 	public static long lcm(long a, long b) {
 		return a / gcd(a, b) + b;
 	}
@@ -65,6 +69,7 @@ public final class MathUtils {
 	 * @param b a number
 	 * @return greatest common divisor of a and b
 	 */
+	@Contract(pure = true)
 	public static native long gcdStein(long a, long b);
 
 	/**
@@ -72,6 +77,7 @@ public final class MathUtils {
 	 *
 	 * @return lowest common multiple of a and b
 	 */
+	@Contract(pure = true)
 	public static long lcmStein(long a, long b) {
 		return a / gcdStein(a, b) + b;
 	}
@@ -86,6 +92,7 @@ public final class MathUtils {
 	 * @return square root of a
 	 */
 	@Deprecated
+	@Contract(pure = true)
 	public static native double sqrtCarmark(double a);
 
 	/**
@@ -95,6 +102,7 @@ public final class MathUtils {
 	 *
 	 * @return square root of a
 	 */
+	@Contract(pure = true)
 	public static native double sqrt(double a);
 
 	/**
@@ -105,6 +113,7 @@ public final class MathUtils {
 	 * @param mod mod
 	 * @return a * b % m
 	 */
+	@Contract(pure = true)
 	public static native long fastPlus(long a, long b, long mod);
 
 	/**
@@ -115,6 +124,7 @@ public final class MathUtils {
 	 * @param mod mod
 	 * @return a ^ b % m
 	 */
+	@Contract(pure = true)
 	public static native long fastPower(long a, long b, long mod);
 
 	/**
@@ -122,6 +132,7 @@ public final class MathUtils {
 	 *
 	 * @return abstract value of a
 	 */
+	@Contract(pure = true)
 	public static native double abs(double a);
 
 	/**
@@ -129,6 +140,7 @@ public final class MathUtils {
 	 *
 	 * @return abstract value of a
 	 */
+	@Contract(pure = true)
 	public static native float abs(float a);
 
 	/**
@@ -136,6 +148,7 @@ public final class MathUtils {
 	 *
 	 * @return abstract value of a
 	 */
+	@Contract(pure = true)
 	public static native int abs(int a);
 
 	/**
@@ -143,6 +156,7 @@ public final class MathUtils {
 	 *
 	 * @return abstract value of a
 	 */
+	@Contract(pure = true)
 	public static native long abs(long a);
 
 	/**
@@ -150,6 +164,7 @@ public final class MathUtils {
 	 *
 	 * @return the larger one of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native long max(long a, long b);
 
 	/**
@@ -157,6 +172,7 @@ public final class MathUtils {
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native int max(int a, int b);
 
 	/**
@@ -164,6 +180,7 @@ public final class MathUtils {
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native float max(float a, float b);
 
 	/**
@@ -171,6 +188,7 @@ public final class MathUtils {
 	 *
 	 * @return the larger of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native double max(double a, double b);
 
 	/**
@@ -178,6 +196,7 @@ public final class MathUtils {
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native int min(int a, int b);
 
 	/**
@@ -185,6 +204,7 @@ public final class MathUtils {
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native long min(long a, long b);
 
 	/**
@@ -192,6 +212,7 @@ public final class MathUtils {
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native float min(float a, float b);
 
 	/**
@@ -199,6 +220,7 @@ public final class MathUtils {
 	 *
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
+	@Contract(pure = true)
 	public static native double min(double a, double b);
 
 	/**
@@ -207,6 +229,7 @@ public final class MathUtils {
 	 * @param a a param
 	 * @return ln(a), base is e
 	 */
+	@Contract(pure = true)
 	public static native double ln(double a);
 
 	/**
@@ -215,6 +238,7 @@ public final class MathUtils {
 	 * @param a a param
 	 * @return lg(a), base is 10
 	 */
+	@Contract(pure = true)
 	public static native double lg(double a);
 
 	/**
@@ -225,6 +249,7 @@ public final class MathUtils {
 	 * @param a an integer number
 	 * @return if a is a prime number, returns true.
 	 */
+	@Contract(pure = true)
 	public static native boolean isPrime(long a);
 
 	/**
@@ -234,5 +259,6 @@ public final class MathUtils {
 	 * @return an array of primes
 	 */
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
 	public static native long[] getPrimes(int count);
 }

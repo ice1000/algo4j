@@ -1,6 +1,12 @@
 package org.algo4j.bit;
 
 import org.algo4j.error.BinaryIndexedTreeException;
+import org.algo4j.util.SeqUtils;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.Serializable;
 
 /**
  * [1, length]
@@ -10,14 +16,21 @@ import org.algo4j.error.BinaryIndexedTreeException;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public class BinaryIndexedTree {
-	@SuppressWarnings("CanBeFinal")
-	private long[] data;
+public final class BinaryIndexedTree implements
+		Serializable,
+		Cloneable {
+	private final long[] data;
 	public final int length;
 
-	protected BinaryIndexedTree(int length) {
+	@Contract(pure = true)
+	public BinaryIndexedTree(int length) {
 		this.length = length;
 		data = new long[length];
+	}
+
+	private BinaryIndexedTree(long[] data) {
+		this.data = data;
+		this.length = data.length;
 	}
 
 	/**
@@ -39,6 +52,7 @@ public class BinaryIndexedTree {
 	 * @param index bound
 	 * @return summary value, from 1 to index
 	 */
+	@Contract(pure = true)
 	public long sum(int index) {
 		if (index > length || index < 1) throw BinaryIndexedTreeException.indexOutBound(index);
 		return sum(data, length, index);
@@ -53,22 +67,42 @@ public class BinaryIndexedTree {
 	 * @return sum(right) - sum(left)
 	 * @see #sum(int)
 	 */
+	@Contract(pure = true)
 	public long sum(int left, int right) {
 		if (right > length || left < 0) throw BinaryIndexedTreeException.indexOutBound();
 		if (left > right) throw new BinaryIndexedTreeException("left should be smaller than right");
 		return sum(right) - sum(left - 1);
 	}
 
-	private native void add(
-			long[] data,
+	private static native void add(
+			@NotNull long[] data,
 			int length,
 			int index,
 			long value
 	);
 
-	private native long sum(
-			long[] data,
+	@Contract(pure = true)
+	private static native long sum(
+			@NotNull long[] data,
 			int length,
 			int index
 	);
+
+	@Override
+	@Contract(value = "null -> false", pure = true)
+	public boolean equals(@Nullable Object obj) {
+		if (obj == null || !(obj instanceof BinaryIndexedTree)) return false;
+		if (obj == this) return true;
+		BinaryIndexedTree o = (BinaryIndexedTree) obj;
+		if (o.length != this.length) return false;
+		for (int i = 0; i < this.length; ++i) if (this.data[i] != o.data[i]) return false;
+		return true;
+	}
+
+	@Override
+	@NotNull
+	@Contract(value = " -> !null", pure = true)
+	public BinaryIndexedTree clone(){
+		return new BinaryIndexedTree(SeqUtils.copy(data));
+	}
 }

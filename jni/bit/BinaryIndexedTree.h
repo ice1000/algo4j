@@ -23,7 +23,7 @@ extern "C" {
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 		JNIEnv *,
-		jobject,
+		jclass,
 		jlongArray,
 		jint,
 		jint,
@@ -37,7 +37,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
 		JNIEnv *,
-		jobject,
+		jclass,
 		jlongArray,
 		jint,
 		jint

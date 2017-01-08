@@ -409,6 +409,84 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_sortCocktail___3D(
 ) -> void;
 
 
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([I)[I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3I(
+		JNIEnv *,
+		jclass,
+		jintArray
+) -> jintArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([J)[J
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3J(
+	JNIEnv *,
+	jclass,
+	jlongArray
+) -> jlongArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([F)[F
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3F(
+		JNIEnv *,
+		jclass,
+		jfloatArray
+) -> jfloatArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([D)[D
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3D(
+		JNIEnv *,
+		jclass,
+		jdoubleArray
+) -> jdoubleArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([S)[S
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3S(
+		JNIEnv *,
+		jclass,
+		jshortArray
+) -> jshortArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([B)[B
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3B(
+		JNIEnv *,
+		jclass,
+		jbyteArray
+) -> jbyteArray;
+
+/*
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([Z)[Z
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3Z(
+		JNIEnv *,
+		jclass,
+		jbooleanArray
+) -> jbooleanArray;
+
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

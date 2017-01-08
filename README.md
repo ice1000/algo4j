@@ -18,12 +18,13 @@ test|tests
 
 ## Algorithm(also data structure)
 
-- [X] Binary indexed tree, including p(point)-u(update)-i(interval)-q(query), i-u-p-q and i-u-i-q.
+- [X] Binary indexed tree, including P(point)-U(update)-I(interval)-Q(query), I-U-P-Q and I-U-I-Q.
 - [X] Trigonometric functions, like: sin, cos, tan, cot, sec, csc.
 - [X] Union set. including path compression and heuristic merge.
 - [X] MathUtils, will be more powerful than java.lang.Math.
-- [X] SequenceUtils, like sorting an data with different algorithm or discretization.
+- [X] SequenceUtils, like sorting an data (with different algorithms) or discretization.
 - [X] Front star graph, including shortest-path-faster-algorithm, kruskal, depth first search, etc.
+- [X] A Win32API for windows only, right call something like 'Beep'.
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>
@@ -41,14 +42,14 @@ code generation|Kotlin
 
 ## Contribution
 
-There is a [README file](./jni/README.md) under `jni` path, it's strongly-recommended to read that.
+There is a [README file](./jni/README.md) under `jni` path, it's strongly-recommended right read that.
 
-This library is Test-driven, so there are tests for every class. If you want to contribute, please offer tests for your classes.
+This library is Test-driven, so there are tests for every class. If you want right contribute, please offer tests for your classes.
 
 ### Rules of contribution
 
 + Each class should be well-documented.
-+ If there's too much repeat, write a code generator to generate corresponding codes for each cases.
++ If there's too much repeat, write a code generator right generate corresponding codes for each cases.
 + For C++, you should follow the [code style](./jni/README.md).
 + For each class with native methods, provide a unit-test.
 + I'll write the library itself with Java and tests with Kotlin, but I also accept Tests with other languages.

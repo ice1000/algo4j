@@ -2,30 +2,36 @@ package org.algo4j.graph;
 
 import org.algo4j.error.FrontStarGraphException;
 import org.algo4j.math.MathUtils;
+import org.algo4j.util.SeqUtils;
+import org.algo4j.util.Statistics;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
+ * node: from 1 to nodeCount
  * Created by ice1000 on 2016/11/17.
  *
  * @author ice1000
  */
-@SuppressWarnings({"WeakerAccess", "CanBeFinal", "unused"})
-public final class FrontStarGraph {
-	private int[] next;
-	private int[] head;
-	private int[] target;
-	private int[] depart;
-	private int[] value;
-	private int addingEdgeIndex = 0;
-	private int maximumNodeNumber = 0;
+@SuppressWarnings({"WeakerAccess", "unused"})
+public final class FrontStarGraph implements
+		Graph,
+		Iterable<Edge> {
+	private final int[] next;
+	private final int[] head;
+	private final int[] target;
+	private final int[] depart;
+	private final int[] value;
 	public final int nodeCount;
 	public final int edgeCount;
+	private int maximumNodeNumber = 0;
+	private int addingEdgeIndex = 0;
 
 	/**
 	 * used in jni C++ port.
@@ -37,6 +43,7 @@ public final class FrontStarGraph {
 	 */
 	public static final int INFINITY_FILLING = 0x7f;
 
+	@Contract(pure = true)
 	public FrontStarGraph(int nodeCount, int edgeCount) {
 		if (nodeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
 		if (edgeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
@@ -54,12 +61,48 @@ public final class FrontStarGraph {
 	}
 
 	/**
+	 * cloning.
+	 *
+	 * @param next              original next
+	 * @param head              original head
+	 * @param target            original target
+	 * @param depart            original depart
+	 * @param value             original value
+	 * @param addingEdgeIndex   original addingEdgeIndex
+	 * @param maximumNodeNumber original maximumNodeNumber
+	 * @param nodeCount         original nodeCount
+	 * @param edgeCount         original edgeCount
+	 */
+	@Contract(pure = true)
+	private FrontStarGraph(
+			@NotNull int[] next,
+			@NotNull int[] head,
+			@NotNull int[] target,
+			@NotNull int[] depart,
+			@NotNull int[] value,
+			int addingEdgeIndex,
+			int maximumNodeNumber,
+			int nodeCount,
+			int edgeCount) {
+		this.next = next;
+		this.head = head;
+		this.target = target;
+		this.depart = depart;
+		this.value = value;
+		this.addingEdgeIndex = addingEdgeIndex;
+		this.maximumNodeNumber = maximumNodeNumber;
+		this.nodeCount = nodeCount;
+		this.edgeCount = edgeCount;
+	}
+
+	/**
 	 * add an edge to this front star graph.
 	 *
 	 * @param from begin position
 	 * @param to   end position
 	 * @param val  the value of the edge
 	 */
+	@Override
 	public void addEdge(int from, int to, int val) {
 		if (from <= 0 || to <= 0 || from > nodeCount || to > nodeCount || from == to)
 			throw FrontStarGraphException.numberInvalid();
@@ -70,32 +113,6 @@ public final class FrontStarGraph {
 		value[addingEdgeIndex] = val;
 		next[addingEdgeIndex] = head[from];
 		head[from] = addingEdgeIndex++;
-	}
-
-	/**
-	 * add two edges
-	 * <p>
-	 * 前两个参数a, b是点 后面两个分别是a->b和b->a的距离
-	 *
-	 * @param p1   position1
-	 * @param p2   position2
-	 * @param p1p2 distance from position1 to position2
-	 * @param p2p1 distance from position2 to position1
-	 */
-	public void addEdge(int p1, int p2, int p1p2, int p2p1) {
-		addEdge(p1, p2, p1p2);
-		addEdge(p2, p1, p2p1);
-	}
-
-	/**
-	 * add two-direction edge
-	 *
-	 * @param p1  position1
-	 * @param p2  position2
-	 * @param val distance
-	 */
-	public void addDirectionlessEdge(int p1, int p2, int val) {
-		addEdge(p1, p2, val, val);
 	}
 
 	/**
@@ -110,12 +127,12 @@ public final class FrontStarGraph {
 	public int[] getEdges(int p1, int p2) {
 		if (p1 <= 0 || p2 <= 0 || p1 > nodeCount || p2 > nodeCount)
 			throw FrontStarGraphException.numberInvalid();
-		ArrayList<Integer> edges = new ArrayList<>();
-//		if (p1 == p2) edges.add(0L);
+		List<Integer> edges = new ArrayList<>(nodeCount >> 1);
 		for (int i = head[p1]; i != -1; i = next[i])
 			if (target[i] == p2) edges.add(value[i]);
 		int[] ret = new int[edges.size()];
-		for (int i = 0; i < ret.length; i++) ret[i] = edges.get(ret.length - i - 1);
+		for (int i = 0; i < ret.length; ++i)
+			ret[i] = edges.get(ret.length - i - 1);
 		return ret;
 	}
 
@@ -125,17 +142,18 @@ public final class FrontStarGraph {
 	 * The queue-based optimization of bellman-ford algorithm.
 	 * <p>
 	 * 返回一个数组 参数是源点 返回的数组是源点到每个点的最短距离
+	 * 有负权环的话返回 null
 	 *
 	 * @param source the begin position
 	 * @return the shortest path to each position
 	 * @throws FrontStarGraphException if 'source' is out of bound
 	 */
 	@NotNull
-	@Contract("_ -> !null")
+	@Contract(value = "_ -> !null", pure = true)
 	public int[] spfa(int source) {
 		if (source <= 0 || source > nodeCount)
 			throw FrontStarGraphException.indexOutBound();
-		return spfa(
+		int[] ret = spfa(
 				source,
 				next,
 				head,
@@ -144,15 +162,28 @@ public final class FrontStarGraph {
 				edgeCount,
 				nodeCount
 		);
+		assert ret[0] == -1;
+		if (ret[source] == -1) throw FrontStarGraphException.negativeLoop();
+		return ret;
+	}
+
+	@NotNull
+	@Contract("-> !null")
+	public FrontStarGraph kruskal() {
+		return kruskal(false);
 	}
 
 	/**
 	 * The Kruskal algorithm, minimum spanning tree
 	 *
-	 * @return the length of the minimum spanning tree
+	 * @param directionless refers to the returned graph.
+	 * @return The minimum spanning tree.
 	 */
-	public int kruskal() {
-		return kruskal(
+	@NotNull
+	@Contract("_ -> !null")
+	@SuppressWarnings("SameParameterValue")
+	public FrontStarGraph kruskal(boolean directionless) {
+		int[] kruskal = kruskal(
 				next,
 				head,
 				target,
@@ -161,6 +192,17 @@ public final class FrontStarGraph {
 				edgeCount,
 				nodeCount
 		);
+		FrontStarGraph graph = new FrontStarGraph(nodeCount, nodeCount - 1);
+		if (directionless) {
+			/// add directionless edges.
+			for (int i = 0; i < kruskal.length; i += 3)
+				graph.addDirectionlessEdge(kruskal[i], kruskal[i + 1], kruskal[i + 2]);
+		} else {
+			/// add edges not directionless.
+			for (int i = 0; i < kruskal.length; i += 3)
+				graph.addEdge(kruskal[i], kruskal[i + 1], kruskal[i + 2]);
+		}
+		return graph;
 	}
 
 	/**
@@ -225,6 +267,22 @@ public final class FrontStarGraph {
 		}
 	}
 
+	@Override
+	public void forEach(@Nullable Consumer<? super Edge> action) {
+		if (action != null) {
+			for (int i = 0; i < addingEdgeIndex; ++i) {
+				action.accept(new Edge(target[i], depart[i], value[i]));
+			}
+		}
+	}
+
+	@Override
+	@NotNull
+	@Contract(value = " -> !null", pure = true)
+	public Iterator<Edge> iterator() {
+		return new FrontStarItr();
+	}
+
 	/**
 	 * Shortest path faster algorithm (‘_’)
 	 * (‘_’) %%%
@@ -237,6 +295,8 @@ public final class FrontStarGraph {
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
+	@NotNull
+	@Contract(pure = true)
 	private native int[] spfa(
 			int source,
 			@NotNull int[] next,
@@ -254,8 +314,11 @@ public final class FrontStarGraph {
 	 * @param value     memset(next, -1, sizeof(next))
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
+	 * @return the indexes of the edges that the minimum spinning tree consists of.
 	 */
-	private native int kruskal(
+	@NotNull
+	@Contract(pure = true)
+	private native int[] kruskal(
 			@NotNull int[] next,
 			@NotNull int[] head,
 			@NotNull int[] target,
@@ -275,16 +338,75 @@ public final class FrontStarGraph {
 		return maximumNodeNumber;
 	}
 
-	public class Edge {
-		public int target;
-		public int depart;
-		public int value;
+	/**
+	 * returns the sum of all edges.
+	 *
+	 * @return value sum
+	 */
+	@Contract(pure = true)
+	public int getValueSum() {
+		return Statistics.sum(value);
+	}
+
+	@Contract(pure = true)
+	public int getNodeCount() {
+		return nodeCount;
+	}
+
+	@Contract(pure = true)
+	public int getEdgeCount() {
+		return edgeCount;
+	}
+
+	@Override
+	@NotNull
+	@Contract(value = " -> !null", pure = true)
+	public FrontStarGraph clone() {
+		return new FrontStarGraph(
+				SeqUtils.copy(next),
+				SeqUtils.copy(head),
+				SeqUtils.copy(target),
+				SeqUtils.copy(depart),
+				SeqUtils.copy(value),
+				addingEdgeIndex,
+				maximumNodeNumber,
+				nodeCount,
+				edgeCount
+		);
+	}
+
+	public class FrontStarItr implements Iterator<Edge> {
+		private int cursor = 0;
 
 		@Contract(pure = true)
-		public Edge(int target, int depart, int value) {
-			this.target = target;
-			this.depart = depart;
-			this.value = value;
+		public FrontStarItr(int cursor) {
+			this.cursor = cursor;
+		}
+
+		@Contract(pure = true)
+		public FrontStarItr() {
+			this(0);
+		}
+
+		@Override
+		@Contract(pure = true)
+		public boolean hasNext() {
+			return cursor >= getAddedEdgeCount();
+		}
+
+		@Override
+		@Nullable
+		public Edge next() {
+			Edge edge = new Edge(target[cursor], depart[cursor], value[cursor]);
+			++cursor;
+			return edge;
+		}
+
+		@Override
+		@Deprecated
+		public void remove() {
+			throw FrontStarGraphException.cannotRemove();
 		}
 	}
+
 }

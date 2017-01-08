@@ -1,5 +1,7 @@
 package org.algo4j.win;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * For Windows only
  * Created by ice1000 on 2016/12/18.
@@ -7,6 +9,7 @@ package org.algo4j.win;
  * @author ice1000
  */
 public final class WinAPI {
+	@Contract(pure = true)
 	private WinAPI() {
 	}
 

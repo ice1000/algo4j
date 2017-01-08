@@ -1,6 +1,7 @@
 package org.algo4j.error;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -9,11 +10,13 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 public final class BinaryIndexedTreeException extends RuntimeException {
+	@Contract(pure = true)
 	public BinaryIndexedTreeException() {
 		this("Binary indexed tree error!");
 	}
 
-	public BinaryIndexedTreeException(@NotNull String message) {
+	@Contract(pure = true)
+	public BinaryIndexedTreeException(@NotNull @Nls String message) {
 		super(message);
 	}
 

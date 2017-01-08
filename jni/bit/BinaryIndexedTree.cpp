@@ -13,7 +13,7 @@ using namespace algo4j_bit;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 		JNIEnv *env,
-		jobject jo,
+		jclass,
 		jlongArray _data,
 		jint len,
 		jint idx,
@@ -27,7 +27,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
 		JNIEnv *env,
-		jobject jo,
+		jclass,
 		jlongArray _data,
 		jint len,
 		jint idx) -> jlong {

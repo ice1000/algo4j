@@ -320,3 +320,23 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit28]
+FileName=collections\ArraySeq.cpp
+CompileCpp=1
+Folder=collections
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit29]
+FileName=collections\ArraySeq.h
+CompileCpp=1
+Folder=collections
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+

@@ -17,12 +17,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_UnionSet_find(
 		jobject jo,
 		jintArray _data,
 		jint a) -> jint {
-  __JNI__FUNCTION__INIT__
-  auto data = env->GetIntArrayElements(_data, option);
-  auto ret = find(data, a);
-  env->ReleaseIntArrayElements(_data, data, 0);
-  __JNI__FUNCTION__CLEAN__
-  return ret;
+	__JNI__FUNCTION__INIT__
+	__get(Int, data);
+	auto ret = find(data, a);
+	__release(Int, data);
+	__JNI__FUNCTION__CLEAN__
+	return ret;
 }
 
 /// changed implementation into Java code

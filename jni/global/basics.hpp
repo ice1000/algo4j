@@ -21,6 +21,21 @@ auto option = new jboolean(false);
 #define __JNI__FUNCTION__CLEAN__ \
 delete option;
 
+#define __release(type, name) \
+env->Release ## type ## ArrayElements(_ ## name, name, 0);
+
+#define __get(type, name) \
+auto name = env->Get ## type ## ArrayElements(_ ## name, option);
+
+#define __new(type, name, len) \
+auto _ ## name = env->New ## type ## Array(len);
+
+#define __set(type, name, len) \
+env->Set ## type ## ArrayRegion(_ ## name, 0, len, name);
+
+#define __len(name) \
+env->GetArrayLength(_ ## name)
+
 namespace algo4j_util {
 	template<typename T>
 	inline constexpr auto swap(T &a, T &b) -> void {
