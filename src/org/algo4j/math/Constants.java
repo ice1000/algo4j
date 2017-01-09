@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Contract;
  *
  * @author ice1000
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public final class Constants {
 	@Contract(pure = true)
 	private Constants() {
@@ -35,7 +35,7 @@ public final class Constants {
 	public static final double PLANK_CHARGE = 1.87554595641e-18;
 
 	/** K */
-	public static final double PLANK_TEMPRETURE = 1.41683385e32;
+	public static final double PLANK_TEMPERATURE = 1.41683385e32;
 
 	/** m^3 * kg^-1 * s^-1 */
 	public static final double GRAVITATION_CONSTANT = 6.6740831e-11;

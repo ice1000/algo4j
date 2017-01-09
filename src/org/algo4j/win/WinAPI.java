@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Contract;
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public final class WinAPI {
 	@Contract(pure = true)
 	private WinAPI() {

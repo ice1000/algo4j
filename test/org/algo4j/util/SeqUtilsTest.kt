@@ -6,6 +6,7 @@ import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
+import java.util.*
 import java.util.Arrays as StdArrays
 
 /**
@@ -75,50 +76,85 @@ class SeqUtilsTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortBubbleTest() =
-			sortTest(SeqUtils::sortBubble, SeqUtils::sortBubble, 2000)
+			sortTest(
+					SeqUtils::sortBubble,
+					SeqUtils::sortBubble,
+					2000
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortInsertionTest() =
-			sortTest(SeqUtils::sortInsertion, SeqUtils::sortInsertion, 2000)
+			sortTest(
+					SeqUtils::sortInsertion,
+					SeqUtils::sortInsertion,
+					2000
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortQuickTest() =
-			sortTest(SeqUtils::sortQuick, SeqUtils::sortQuick)
+			sortTest(
+					SeqUtils::sortQuick,
+					SeqUtils::sortQuick
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortMergeTest() =
-			sortTest(SeqUtils::sortMerge, SeqUtils::sortMerge)
+			sortTest(
+					SeqUtils::sortMerge,
+					SeqUtils::sortMerge
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortSelectionTest() =
-			sortTest(SeqUtils::sortSelection, SeqUtils::sortSelection, 2000)
+			sortTest(
+					SeqUtils::sortSelection,
+					SeqUtils::sortSelection,
+					2000
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortCombTest() =
-			sortTest(SeqUtils::sortComb, SeqUtils::sortComb, 2000)
+			sortTest(
+					SeqUtils::sortComb,
+					SeqUtils::sortComb,
+					2000
+			)
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun sortCocktailTest() =
-			sortTest(SeqUtils::sortCocktail, SeqUtils::sortCocktail, 2000)
+			sortTest(
+					SeqUtils::sortCocktail,
+					SeqUtils::sortCocktail,
+					2000
+			)
 
+	/**
+	 * 大数据归并测试（归并吊打快排现场）
+	 */
 	@TestOnly
 	@Test(timeout = 1000)
 	fun veryStrongTestMergeSort() {
 		SeqUtils.sortMerge(strongIntArray.toIntArray())
 	}
 
+	/**
+	 * 大数据快排测试（快排被归并吊打现场）
+	 */
 	@TestOnly
 	@Test(timeout = 1000)
 	fun veryStrongTestQuickSort() {
 		SeqUtils.sortQuick(strongIntArray.toIntArray())
 	}
 
+	/**
+	 * 复制测试
+	 */
 	@TestOnly
 	@Test(timeout = 1000)
 	fun copyTest() {
@@ -145,6 +181,29 @@ class SeqUtilsTest {
 					StdArrays.copyOf(arr2, arr2.size),
 					SeqUtils.copy(arr2),
 					1e-15)
+		}
+	}
+
+	/**
+	 * 看毛片测试
+	 */
+	@TestOnly
+	@Test(timeout = 1000)
+	fun testKmp() {
+		assertEquals(2, SeqUtils.kmp(
+				intArrayOf(3, 2, 3, 5, 3, 2, 3),
+				intArrayOf(3, 2, 3)))
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val str = rand.nextInt(10000).toString()
+			val times = rand.nextInt(200)
+			val van = "${str}van".repeat(times)
+			assertEquals(times, SeqUtils.kmp(van, "van"))
+			assertEquals(times, SeqUtils.kmp(van, "va"))
+			assertEquals(times, SeqUtils.kmp(van, "an"))
+			assertEquals(times, SeqUtils.kmp(van, "v"))
+			assertEquals(times, SeqUtils.kmp(van, str)
+			)
 		}
 	}
 

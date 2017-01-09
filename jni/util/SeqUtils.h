@@ -486,6 +486,64 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3Z(
 		jbooleanArray
 ) -> jbooleanArray;
 
+/*
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    copy
+ * Signature: ([C)[C
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3C(
+		JNIEnv *,
+		jclass,
+		jcharArray
+) -> jcharArray;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    kmp
+ * Signature: ([I[I)I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3I_3I(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jintArray
+) -> jint;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    kmp
+ * Signature: ([J[J)I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3J_3J(
+		JNIEnv *,
+		jclass,
+		jlongArray,
+		jlongArray
+) -> jint;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    kmp
+ * Signature: ([C[C)I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3C_3C(
+		JNIEnv *,
+		jclass,
+		jcharArray,
+		jcharArray
+) -> jint;
+
+/**
+ * Class:     org_algo4j_util_SeqUtils
+ * Method:    kmp
+ * Signature: ([B[B)I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3B_3B(
+		JNIEnv *,
+		jclass,
+		jbyteArray,
+		jbyteArray
+) -> jint;
 
 #ifdef __cplusplus
 }

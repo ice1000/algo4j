@@ -28,7 +28,7 @@ Folders=bit,global,graph,math,util,win
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
-CompilerSettings=10000011g0100000000010000
+CompilerSettings=100000a1g0000000000010000
 UnitCount=29
 
 [VersionInfo]
@@ -320,8 +320,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit28]
-FileName=graph\AdjacentMatrix.cpp
+[Unit29]
+FileName=graph\AdjacentMatrixGraph.h
 CompileCpp=1
 Folder=graph
 Compile=1
@@ -330,8 +330,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit29]
-FileName=graph\AdjacentMatrix.h
+[Unit28]
+FileName=graph\AdjacentMatrixGraph.cpp
 CompileCpp=1
 Folder=graph
 Compile=1

@@ -7,9 +7,15 @@
 #include <string.h>
 
 #include "sort.hpp"
+#include "basics.hpp"
 
 using algo4j_sort::merge_sort;
 using algo4j_sort::quick_sort;
+
+using algo4j_util::min;
+using algo4j_util::max;
+using algo4j_util::swap;
+
 using std::istream;
 using std::ostream;
 
@@ -142,16 +148,61 @@ namespace algo4j_util {
 	inline auto discretization(
 			T *data,
 			const jsize len) -> T * {
-		auto pair = new algo4j_util::Pair<T, jint>[len]();
+		auto pair = new Pair<T, jint>[len]();
 		auto after = new T[len]();
-		for (auto i = 0; i < len; ++i) pair[i].setValue(data[i], i);
+		for (auto i = 0; i < len; ++i)
+			pair[i].setValue(data[i], i);
 		merge_sort(pair, len);
 		for (auto i = 0, j = 0; i < len; ++i, ++j) {
 			after[pair[i].second] = j;
-			if ((i + 1 < len) and pair[i].first == pair[i + 1].first) --j;
+			if ((i + 1 < len) and pair[i].first == pair[i + 1].first)
+				--j;
 		}
 		delete[] pair;
 		return after;
+	}
+
+	/// kmp
+	template<typename T>
+	inline auto kmp(
+			T *x, /// shorter
+			const jsize m,
+			T *y, /// longer
+			const jsize n) -> jint {
+		if (m > n) return 0;
+		if (m == 1) {
+			jsize ret = 0;
+			for (auto i = 0; i < n; ++i) {
+				if (y[i] == x[0])
+					++ret;
+			}
+			return ret;
+		}
+		auto next = new T[n]();
+		jsize i = 0;
+		jsize j = next[0] = -1;
+		while (i < m) {
+			if (-1 == j or y[i] == y[j]) {
+				next[++i] = ++j;
+			} else {
+				j = next[j];
+			}
+		}
+		i = 0;
+		j = 0;
+		jint ans = 0;
+		while (i < n and j < m) {
+			if (-1 == j or y[i] == x[j]) {
+				++i;
+				++j;
+			} else {
+				j = next[j];
+			}
+			if (j == m)
+				++ans, i -= j - 1, j = -1;
+		}
+		delete next;
+		return ans;
 	}
 }
 

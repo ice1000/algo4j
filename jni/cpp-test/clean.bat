@@ -4,4 +4,4 @@ if exist *.exe (
 	del /s /f /q *.exe
 )
 
-pause
+REM pause

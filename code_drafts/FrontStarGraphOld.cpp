@@ -81,7 +81,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		jintArray _next,
 		jintArray _head,
 		jintArray _target,
-		jintArray _depature,
+		jintArray _departure,
 		jintArray _value,
 		jint edge_count,
 		jint node_count) -> jint {
@@ -90,7 +90,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	auto next = env->GetIntArrayElements(_next, option);
 	auto head = env->GetIntArrayElements(_head, option);
 	auto target = env->GetIntArrayElements(_target, option);
-	auto depature = env->GetIntArrayElements(_depature, option);
+	auto departure = env->GetIntArrayElements(_departure, option);
 	auto value = env->GetIntArrayElements(_value, option);
 	auto uset = new jint[node_count]();
 	auto depth = new jint[node_count]();
@@ -104,12 +104,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		uset[i] = i;
 	}
 	for (auto i = 0; i < edge_count; ++i) {
-		edges[i].setValue(value[i], target[i], depature[i]);
+		edges[i].setValue(value[i], target[i], departure[i]);
 	}
 	env->ReleaseIntArrayElements(_next, next, 0);
 	env->ReleaseIntArrayElements(_head, head, 0);
 	env->ReleaseIntArrayElements(_target, target, 0);
-	env->ReleaseIntArrayElements(_depature, depature, 0);
+	env->ReleaseIntArrayElements(_departure, departure, 0);
 	env->ReleaseIntArrayElements(_value, value, 0);
 	merge_sort(edges, edge_count);
 	for (auto i = 0; i < edge_count; ++i) {

@@ -16,15 +16,15 @@ jni/cpp-test|C++ tests
 src|source
 test|tests
 
-## Algorithm(also data structure)
+## Overview
 
 - [X] Binary indexed tree, including P(point)-U(update)-I(interval)-Q(query), I-U-P-Q and I-U-I-Q.
-- [X] Trigonometric functions, like: sin, cos, tan, cot, sec, csc.
+- [X] Trigonometric functions, including: sin, cos, tan, cot, sec, csc.
 - [X] Union set. including path compression and heuristic merge.
-- [X] MathUtils, will be more powerful than java.lang.Math.
-- [X] SequenceUtils, like sorting an data (with different algorithms) or discretization.
-- [X] Front star graph, including shortest-path-faster-algorithm, kruskal, depth first search, etc.
-- [X] A Win32API for windows only, right call something like 'Beep'.
+- [X] Math utils, will be more powerful than java.lang.Math.
+- [X] Sequence utils, like sorts, discretization, kmp.
+- [X] Graph theory algorithms, like spfa, floyd, kruskal, dfs, etc.
+- [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>

@@ -30,6 +30,7 @@ public final class BigInt implements
 	public static final BigInt ONE = new BigInt(1);
 	public static final BigInt TWO = new BigInt(2);
 	public static final BigInt TEN = new BigInt(10);
+	public static final BigInt NEGA_TEN = new BigInt(-10);
 
 	@Contract(pure = true)
 	public BigInt(@NotNull @NonNls String origin) {
@@ -124,7 +125,9 @@ public final class BigInt implements
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public BigInt times(@NotNull BigInt anotherBigInt) {
-		return new BigInt(times(data, anotherBigInt.data), sig == anotherBigInt.sig);
+		if (TEN.equals(anotherBigInt)) return timesTen();
+		else if (NEGA_TEN.equals(anotherBigInt)) return timesTen(!sig);
+		else return new BigInt(times(data, anotherBigInt.data), sig == anotherBigInt.sig);
 	}
 
 	/**
@@ -134,8 +137,14 @@ public final class BigInt implements
 	 */
 	@NotNull
 	@Contract(pure = true)
-	public BigInt times10() {
+	public BigInt timesTen(boolean sig) {
 		return new BigInt(times10(data), sig);
+	}
+
+	@NotNull
+	@Contract(pure = true)
+	public BigInt timesTen() {
+		return timesTen(sig);
 	}
 
 	/**

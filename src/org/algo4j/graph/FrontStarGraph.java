@@ -1,6 +1,6 @@
 package org.algo4j.graph;
 
-import org.algo4j.error.FrontStarGraphException;
+import org.algo4j.error.GraphException;
 import org.algo4j.math.MathUtils;
 import org.algo4j.util.SeqUtils;
 import org.algo4j.util.Statistics;
@@ -30,31 +30,40 @@ public final class FrontStarGraph implements
 	private final int[] value;
 	public final int nodeCount;
 	public final int edgeCount;
-	private int maximumNodeNumber = 0;
-	private int addingEdgeIndex = 0;
+	private int maximumNodeNumber;
+	private int addingEdgeIndex;
 
 	/**
 	 * used in jni C++ port.
 	 */
-	public static final int INFINITY = 0x7f7f7f7f;
+	public static final int INFINITY = ORIGINAL_FILLING_VALUE;
 
 	/**
 	 * used in jni C++ port.
 	 */
 	public static final int INFINITY_FILLING = 0x7f;
 
+	/**
+	 * init
+	 *
+	 * @param nodeCount maximum number of nudes.
+	 * @param edgeCount maximum number of edges.
+	 * @throws GraphException if numbers is zero or negative
+	 */
 	@Contract(pure = true)
 	public FrontStarGraph(int nodeCount, int edgeCount) {
-		if (nodeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
-		if (edgeCount <= 0) throw new FrontStarGraphException("node count cannot be lower than 0");
+		if (nodeCount <= 0) throw new GraphException("node count cannot be zero or negative!");
+		if (edgeCount <= 0) throw new GraphException("edge count cannot be zero or negative!");
 		++nodeCount;
 		this.nodeCount = nodeCount;
 		this.edgeCount = edgeCount;
-		value = new int[edgeCount];
 		target = new int[edgeCount];
 		depart = new int[edgeCount];
+		value = new int[edgeCount];
 		next = new int[edgeCount];
 		head = new int[nodeCount];
+		maximumNodeNumber = 0;
+		addingEdgeIndex = 0;
 		Arrays.fill(next, -1);
 		Arrays.fill(head, -1);
 		// there's no need to initialize depart.
@@ -73,7 +82,6 @@ public final class FrontStarGraph implements
 	 * @param nodeCount         original nodeCount
 	 * @param edgeCount         original edgeCount
 	 */
-	@Contract(pure = true)
 	private FrontStarGraph(
 			@NotNull int[] next,
 			@NotNull int[] head,
@@ -101,11 +109,14 @@ public final class FrontStarGraph implements
 	 * @param from begin position
 	 * @param to   end position
 	 * @param val  the value of the edge
+	 * @throws GraphException if index is out of bound
 	 */
 	@Override
-	public void addEdge(int from, int to, int val) {
-		if (from <= 0 || to <= 0 || from > nodeCount || to > nodeCount || from == to)
-			throw FrontStarGraphException.numberInvalid();
+	public synchronized void addEdge(int from, int to, int val) {
+		if (from <= 0 || to <= 0 || from > nodeCount || to > nodeCount)
+			throw GraphException.numberInvalid();
+		if (addingEdgeIndex >= edgeCount)
+			throw GraphException.tooManyEdges();
 		maximumNodeNumber = MathUtils.max(maximumNodeNumber, from);
 		maximumNodeNumber = MathUtils.max(maximumNodeNumber, to);
 		target[addingEdgeIndex] = to;
@@ -121,12 +132,13 @@ public final class FrontStarGraph implements
 	 * @param p1 position 1
 	 * @param p2 position 2
 	 * @return all edges between p1 and p2
+	 * @throws GraphException if 'p1' and 'p2' is out of bound
 	 */
 	@NotNull
 	@Contract("_, _ -> !null")
 	public int[] getEdges(int p1, int p2) {
 		if (p1 <= 0 || p2 <= 0 || p1 > nodeCount || p2 > nodeCount)
-			throw FrontStarGraphException.numberInvalid();
+			throw GraphException.numberInvalid();
 		List<Integer> edges = new ArrayList<>(nodeCount >> 1);
 		for (int i = head[p1]; i != -1; i = next[i])
 			if (target[i] == p2) edges.add(value[i]);
@@ -142,17 +154,18 @@ public final class FrontStarGraph implements
 	 * The queue-based optimization of bellman-ford algorithm.
 	 * <p>
 	 * 返回一个数组 参数是源点 返回的数组是源点到每个点的最短距离
-	 * 有负权环的话返回 null
+	 * 有负权环的话抛异常
 	 *
 	 * @param source the begin position
 	 * @return the shortest path to each position
-	 * @throws FrontStarGraphException if 'source' is out of bound
+	 * @throws GraphException if 'source' is out of bound
+	 * @throws GraphException if there is negative loop
 	 */
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public int[] spfa(int source) {
 		if (source <= 0 || source > nodeCount)
-			throw FrontStarGraphException.indexOutBound();
+			throw GraphException.indexOutBound();
 		int[] ret = spfa(
 				source,
 				next,
@@ -163,7 +176,37 @@ public final class FrontStarGraph implements
 				nodeCount
 		);
 		assert ret[0] == -1;
-		if (ret[source] == -1) throw FrontStarGraphException.negativeLoop();
+		if (ret[source] == -1) throw GraphException.negativeLoop();
+		return ret;
+	}
+
+	/**
+	 * O(n) = n * m
+	 * Bellman-Ford algorithm
+	 * <p>
+	 * 返回一个数组 参数是源点 返回的数组是源点到每个点的最短距离
+	 * 有负权环的话抛异常
+	 *
+	 * @param source the begin position
+	 * @return the shortest path to each position
+	 * @throws GraphException if 'source' is out of bound
+	 * @throws GraphException if there is negative loop
+	 */
+	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
+	public int[] bellmanFord(int source) {
+		if (source <= 0 || source > nodeCount)
+			throw GraphException.indexOutBound();
+		int[] ret = bellmanFord(
+				source,
+				target,
+				depart,
+				value,
+				edgeCount,
+				nodeCount
+		);
+		assert ret[0] == -1;
+		if (ret[source] == -1) throw GraphException.negativeLoop();
 		return ret;
 	}
 
@@ -213,14 +256,14 @@ public final class FrontStarGraph implements
 	 * @param function     the function applied to each search
 	 * @param <DataHolder> the return type of 'function' and 'initValue'
 	 *                     passed from last function call or
-	 * @throws FrontStarGraphException if 'source' is out of bound
+	 * @throws GraphException if 'source' is out of bound
 	 */
 	public <DataHolder> void dfs(
 			int source,
 			@NotNull DataHolder initValue,
 			@NotNull BiFunction<Edge, DataHolder, DataHolder> function) {
 		if (source <= 0 || source > nodeCount)
-			throw FrontStarGraphException.indexOutBound();
+			throw GraphException.indexOutBound();
 		dfs(source, initValue, function, new boolean[getAddedEdgeCount() + 1]);
 	}
 
@@ -230,19 +273,19 @@ public final class FrontStarGraph implements
 	 * @param source   the source position
 	 * @param function the function applied to each search,
 	 *                 with no 'DataHolder' value passing
-	 * @throws FrontStarGraphException if 'source' is out of bound
+	 * @throws GraphException if 'source' is out of bound
 	 */
 	public void dfs(
 			int source,
-			@NotNull Function<Edge, Object> function) {
+			@NotNull Function<Edge, Void> function) {
 		if (source <= 0 || source > nodeCount)
-			throw FrontStarGraphException.indexOutBound();
+			throw GraphException.indexOutBound();
 		dfs(source, function, new boolean[getAddedEdgeCount() + 1]);
 	}
 
-	private void dfs(
+	private <DataHolder> void dfs(
 			int source,
-			@NotNull Function<Edge, Object> function,
+			@NotNull Function<Edge, Void> function,
 			@NotNull boolean[] mark) {
 		for (int i = head[source]; i != -1; i = next[i]) {
 			if (!mark[i]) {
@@ -280,18 +323,18 @@ public final class FrontStarGraph implements
 	@NotNull
 	@Contract(value = " -> !null", pure = true)
 	public Iterator<Edge> iterator() {
-		return new FrontStarItr();
+		return new FrontStarItr(this);
 	}
 
 	/**
 	 * Shortest path faster algorithm (‘_’)
-	 * (‘_’) %%%
+	 * This is Bellman-Ford with queue optimization
 	 *
 	 * @param source    start node id
-	 * @param next      memset(next, -1, sizeof(next))
-	 * @param head      memset(next, -1, sizeof(next))
-	 * @param target    memset(next, -1, sizeof(next))
-	 * @param value     memset(next, -1, sizeof(next))
+	 * @param next      front star graph edge
+	 * @param head      front star graph edge
+	 * @param target    edge target
+	 * @param value     edge value
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 */
@@ -308,10 +351,31 @@ public final class FrontStarGraph implements
 	);
 
 	/**
-	 * @param next      memset(next, -1, sizeof(next))
-	 * @param head      memset(next, -1, sizeof(next))
-	 * @param target    memset(next, -1, sizeof(next))
-	 * @param value     memset(next, -1, sizeof(next))
+	 * Bellman-Ford algorithm(without queue optimization)
+	 *
+	 * @param source    start node id
+	 * @param depart    edge departure
+	 * @param target    edge target
+	 * @param value     edge value
+	 * @param edgeCount edges
+	 * @param nodeCount nodes
+	 */
+	@NotNull
+	@Contract(pure = true)
+	private native int[] bellmanFord(
+			int source,
+			@NotNull int[] target,
+			@NotNull int[] depart,
+			@NotNull int[] value,
+			int edgeCount,
+			int nodeCount
+	);
+
+	/**
+	 * @param next      front star graph edge
+	 * @param head      front star graph edge
+	 * @param target    edge target
+	 * @param value     edge value
 	 * @param edgeCount edges
 	 * @param nodeCount nodes
 	 * @return the indexes of the edges that the minimum spinning tree consists of.
@@ -322,7 +386,7 @@ public final class FrontStarGraph implements
 			@NotNull int[] next,
 			@NotNull int[] head,
 			@NotNull int[] target,
-			@NotNull int[] departure,
+			@NotNull int[] depart,
 			@NotNull int[] value,
 			int edgeCount,
 			int nodeCount
@@ -376,36 +440,44 @@ public final class FrontStarGraph implements
 	}
 
 	public class FrontStarItr implements Iterator<Edge> {
+		@NotNull
+		private final FrontStarGraph context;
 		private int cursor = 0;
 
 		@Contract(pure = true)
-		public FrontStarItr(int cursor) {
+		public FrontStarItr(@NotNull FrontStarGraph context, int cursor) {
+			this.context = context;
 			this.cursor = cursor;
 		}
 
 		@Contract(pure = true)
-		public FrontStarItr() {
-			this(0);
+		public FrontStarItr(@NotNull FrontStarGraph context) {
+			this(context, 0);
 		}
 
 		@Override
 		@Contract(pure = true)
 		public boolean hasNext() {
-			return cursor >= getAddedEdgeCount();
+			return cursor >= context.getAddedEdgeCount();
 		}
 
 		@Override
 		@Nullable
-		public Edge next() {
-			Edge edge = new Edge(target[cursor], depart[cursor], value[cursor]);
+		public synchronized Edge next() {
+			if (!hasNext()) return null;
+			Edge edge = new Edge(
+					context.target[cursor],
+					context.depart[cursor],
+					context.value[cursor]
+			);
 			++cursor;
 			return edge;
 		}
 
 		@Override
 		@Deprecated
-		public void remove() {
-			throw FrontStarGraphException.cannotRemove();
+		public synchronized void remove() {
+			throw GraphException.cannotRemove();
 		}
 	}
 

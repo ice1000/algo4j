@@ -69,30 +69,31 @@ if exist build (
 	rd /s /q build
 )
 
-cd ../out
-if exist production (
-	rd /s /q production
-)
-if exist test (
-	rd /s /q test
-)
-cd ./jni
-
 if exist cmake-build-debug (
 	rd /s /q cmake-build-debug
 )
 
-if exist "cpp-test" (
-	cd "./cpp-test"
-	if exist *.exe (
-		del /f /s /q *.exe
-	)
+if exist ./cpp-test (
+	cd ./cpp-test
+	call clean.bat
 	cd ..
 )
 
 if exist ../*.log (
 	cd ..
 	del /f /s /q *.log
+	cd ./jni
+)
+
+if exist ../out (
+	cd ../out
+
+	if exist production (
+		rd /s /q production
+	)
+	if exist test (
+		rd /s /q test
+	)
 	cd ./jni
 )
 

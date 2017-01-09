@@ -136,6 +136,21 @@ class BigIntTest {
 		}
 	}
 
+	@TestOnly
+	@Test(timeout = 1000)
+	fun times10Test() {
+		val rand = Random(System.currentTimeMillis())
+		test(1000) {
+			val boyNextDoor = rand.nextInt(Int.MAX_VALUE shr 5)
+			assertEquals(
+					(boyNextDoor * 10).toString(),
+					(BigInt(boyNextDoor) * BigInt.TEN).toString())
+			assertEquals(
+					(boyNextDoor * -10).toString(),
+					(BigInt(boyNextDoor) * BigInt.NEGA_TEN).toString())
+		}
+	}
+
 	//	@TestOnly
 	//	@Test(timeout = 1000)
 	fun divideTest() {

@@ -7,6 +7,8 @@
 #include "../global/templates.hpp"
 
 using algo4j_util::discretization;
+using algo4j_util::kmp;
+
 using algo4j_sort::insertion_sort;
 using algo4j_sort::merge_sort;
 using algo4j_sort::bubble_sort;
@@ -14,6 +16,7 @@ using algo4j_sort::quick_sort;
 using algo4j_sort::comb_sort;
 using algo4j_sort::selection_sort;
 using algo4j_sort::cocktail_sort;
+
 using algo4j_bit::add;
 using algo4j_bit::sum;
 using algo4j_bit::inversion;
@@ -109,7 +112,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_inversion___3D(
 #undef __algo4j_inversion
 
 /**
- * implemention
+ * implementation
  *
  * @param type same as __discretization_with
  */
@@ -446,6 +449,58 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3Z(
 	__algo4j_arr_copy(Boolean);
 }
 
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_copy___3C(
+		JNIEnv *env,
+		jclass,
+		jcharArray _data) -> jcharArray {
+	__algo4j_arr_copy(Char);
+}
+
 #undef __algo4j_arr_copy
+
+#define __algo4j_arr_kmp(type) \
+__JNI__FUNCTION__INIT__ \
+__get(type, a); \
+__get(type, b); \
+auto a_len = __len(a); \
+auto b_len = __len(b); \
+auto ret = kmp(b, b_len, a, a_len); \
+__release(type, a); \
+__release(type, b); \
+__JNI__FUNCTION__CLEAN__ \
+return ret;
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3I_3I(
+		JNIEnv *env,
+		jclass,
+		jintArray _a,
+		jintArray _b) -> jint {
+	__algo4j_arr_kmp(Int);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3J_3J(
+		JNIEnv *env,
+		jclass,
+		jlongArray _a,
+		jlongArray _b) -> jint {
+	__algo4j_arr_kmp(Long);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3C_3C(
+		JNIEnv *env,
+		jclass,
+		jcharArray _a,
+		jcharArray _b) -> jint {
+	__algo4j_arr_kmp(Char);
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3B_3B(
+		JNIEnv *env,
+		jclass,
+		jbyteArray _a,
+		jbyteArray _b) -> jint {
+	__algo4j_arr_kmp(Byte);
+}
+
 
 #pragma clang diagnostic pop

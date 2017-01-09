@@ -112,10 +112,12 @@ auto algo4j_int::times(
 	auto buf = new jbyte[res_len]();
 	for (auto i = 0; i < a_len; ++i) a[i] -= '0';
 	for (auto i = 0; i < b_len; ++i) b[i] -= '0';
-	while (a_idx-- > 0) {
-		if (!a[a_idx]) continue;
-		while (b_idx-- > 0) {
-			if (!b[b_idx]) continue;
+	while (a_idx --> 0) {
+		if (!a[a_idx])
+			continue;
+		while (b_idx --> 0) {
+			if (!b[b_idx])
+				continue;
 			buf[a_idx + b_idx + 1] += a[a_idx] * b[b_idx];
 			buf[a_idx + b_idx] += buf[a_idx + b_idx + 1] / 10;
 			buf[a_idx + b_idx + 1] = static_cast<jbyte>(buf[a_idx + b_idx + 1] % 10);
@@ -123,7 +125,7 @@ auto algo4j_int::times(
 		b_idx = b_len;
 	}
 	auto res_idx = res_len;
-	while (res_idx-- > 1) {
+	while (res_idx --> 1) {
 		buf[res_idx - 1] += buf[res_idx] / 10;
 		buf[res_idx] = static_cast<jbyte>(buf[res_idx] % 10 + '0');
 	}

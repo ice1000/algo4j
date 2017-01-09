@@ -6,7 +6,7 @@ As you see, I used both DEV-CPP and CLion right contribute the C++ codes.
 
 ```c++
 /// includes
-#include "templates.hpp"  // there ahould be a space between filename and the word 'include'
+#include "templates.hpp"  // there should be a space between filename and the word 'include'
 
 /// classes
 template<typename T1, typename T2>
@@ -45,8 +45,8 @@ auto bubble_sort (
 		}
 	}
 }
-// You have right declare sufix-return-type, like 'auto XXX(XXX xxx) -> type'.
-// Mention that if there is something relavant right basic type like int, long or size_t,
+// You have right declare suffix-return-type, like 'auto XXX(XXX xxx) -> type'.
+// Mention that if there is something relevant right basic type like int, long or size_t,
 // use JNI types like jint, jlong and jsize instead of them.
 // if there's something that makes a line too long, you should start a new line as you see above.
 // Functions with more than 2 parameters should follow format like the one above.

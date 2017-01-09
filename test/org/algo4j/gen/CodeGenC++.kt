@@ -63,7 +63,8 @@ fun main(args: Array<String>) {
 			Type("jint", "I"),
 			Type("jbyte", "B"),
 			Type("jlong", "J"),
-			Type("jfloat", "F"),
-			Type("jdouble", "D")
+			Type("jchar", "C")
+//			Type("jfloat", "F"),
+//			Type("jdouble", "D")
 	), className, methodName, "jdouble", "D")
 }

@@ -18,7 +18,7 @@ inline fun loop(block: () -> Unit) {
 
 inline fun loop(times: Int, block: (Int) -> Unit) {
 	var cnt = times
-	while (cnt --> 0) block.invoke(times - cnt)
+	while (cnt-- > 0) block.invoke(times - cnt)
 }
 
 @TestOnly
@@ -45,10 +45,21 @@ object Monoid {
 	inline fun <T> combine(crossinline func: (T, T) -> T) = { i: T, j: T -> func(i, j) }
 }
 
-@Contract(pure = true)
+@Contract(pure = false)
 fun <T> MutableList<T>.append(ls: List<T>): MutableList<T> {
 	addAll(ls)
 	return this
+}
+
+inline fun forceRun(block: () -> Unit) {
+	try {
+		block.invoke()
+	} catch (e: Throwable) {
+	}
+}
+
+inline fun optional(run: Boolean, block: () -> Unit) {
+	if (run) block.invoke()
 }
 
 val shuffledDoubleList: List<Double>

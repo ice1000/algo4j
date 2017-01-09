@@ -9,9 +9,12 @@ import java.io.Serializable;
  *
  * @author ice1000
  */
+@SuppressWarnings("unused")
 public interface Graph extends
 		Serializable,
 		Cloneable {
+
+	int ORIGINAL_FILLING_VALUE = Integer.MAX_VALUE >> 1;
 
 	/**
 	 * base add edge method

@@ -52,7 +52,7 @@ public final class ExgcdRes implements
 		if (obj == null || !(obj instanceof ExgcdRes)) return false;
 		if (this == obj) return true;
 		ExgcdRes o = (ExgcdRes) obj;
-		return c == o.c && x == o.x && y == o.y;
+		return getC() == o.c && getX() == o.x && getY() == o.y;
 	}
 
 	@Override

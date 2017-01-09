@@ -134,7 +134,7 @@ int bigmult(int a[], unsigned int b, int c[]) {
 	}
 	if (c[len] == 0)
 		len--; //处理高进位为0情况
-	printf("Big integrs multi small integer: ");
+	printf("Big integers multi small integer: ");
 	for (i = len; i >= 1; i--)
 		printf("%d", c[i]);
 	printf("\n");

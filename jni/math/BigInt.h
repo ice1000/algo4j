@@ -37,6 +37,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 
 /**
  * Class:     org_algo4j_math_BigInt
+ * Method:    times10
+ * Signature: ([B)[B
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times10(
+		JNIEnv *,
+		jclass,
+		jbyteArray
+) -> jbyteArray;
+
+/**
+ * Class:     org_algo4j_math_BigInt
  * Method:    divide
  * Signature: ([B[B)[B
  */

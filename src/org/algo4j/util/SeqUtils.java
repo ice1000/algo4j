@@ -377,6 +377,17 @@ public final class SeqUtils {
 	@Contract(value = "!null -> !null; null -> null", pure = true)
 	public static native boolean[] copy(@Nullable boolean[] data);
 
+	/**
+	 * returns a copy of an array
+	 *
+	 * @param data the data
+	 * @return the copy of the array
+	 */
+	@Nullable
+	@Contract(value = "!null -> !null; null -> null", pure = true)
+	public static native boolean[] copy(@Nullable char[] data);
+
+////fuck Cloneable
 //	@Nullable
 //	@Contract(value = "!null -> !null; null -> null", pure = true)
 //	public static Cloneable[] copy(@Nullable Cloneable[] in) {
@@ -388,5 +399,44 @@ public final class SeqUtils {
 //		}
 //		return ret;
 //	}
+
+	/**
+	 * kmp algorithm
+	 *
+	 * @param a sequence a (longer)
+	 * @param b sequence b (shorter)
+	 * @return how many times does b appears in a.
+	 */
+	@Contract(pure = true)
+	public static native int kmp(@NotNull byte[] a, @NotNull byte[] b);
+
+	/**
+	 * @see SeqUtils#kmp(byte[], byte[])
+	 */
+	@Contract(pure = true)
+	public static native int kmp(@NotNull int[] a, @NotNull int[] b);
+
+	/**
+	 * @see SeqUtils#kmp(byte[], byte[])
+	 */
+	@Contract(pure = true)
+	public static native int kmp(@NotNull long[] a, @NotNull long[] b);
+
+	/**
+	 * @see SeqUtils#kmp(byte[], byte[])
+	 */
+	@Contract(pure = true)
+	public static native int kmp(@NotNull char[] a, @NotNull char[] b);
+
+	/**
+	 * @see SeqUtils#kmp(byte[], byte[])
+	 */
+	@Contract(pure = true)
+	public static int kmp(@NotNull String a, @NotNull String b) {
+		return kmp(
+				a.getBytes(),
+				b.getBytes()
+		);
+	}
 
 }

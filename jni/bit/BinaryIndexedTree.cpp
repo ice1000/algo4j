@@ -4,6 +4,7 @@
 
 #include "BinaryIndexedTree.h"
 #include "../global/templates.hpp"
+#include "../global/basics.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -18,11 +19,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 		jint len,
 		jint idx,
 		jlong value) -> void {
-	auto option = new jboolean(false);
-	auto data = env->GetLongArrayElements(_data, option);
+	__JNI__FUNCTION__INIT__
+	__get(Long, data);
 	add(data, len, idx, value);
-	env->ReleaseLongArrayElements(_data, data, 0);
-	delete option;
+	__release(Long, data);
+	__JNI__FUNCTION__CLEAN__
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
@@ -31,11 +32,11 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
 		jlongArray _data,
 		jint len,
 		jint idx) -> jlong {
-	auto option = new jboolean(false);
-	auto data = env->GetLongArrayElements(_data, option);
+	__JNI__FUNCTION__INIT__
+	__get(Long, data);
 	auto result = sum(data, idx);
-	env->ReleaseLongArrayElements(_data, data, 0);
-	delete option;
+	__release(Long, data);
+	__JNI__FUNCTION__CLEAN__
 	return result;
 }
 

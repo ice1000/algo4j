@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author ice1000
  */
-@SuppressWarnings({"WeakerAccess", "CanBeFinal", "DefaultAnnotationParam"})
+@SuppressWarnings({"WeakerAccess", "CanBeFinal"})
 public final class UnionSet implements
 		Serializable,
 		Cloneable {
@@ -41,8 +41,7 @@ public final class UnionSet implements
 	 * @param num to find a parent of this node
 	 * @return the father of num
 	 */
-	@Contract(pure = false)
-	public int find(int num) {
+	public synchronized int find(int num) {
 		if (num <= 0 || num >= data.length)
 			throw UnionSetException.indexOutBound();
 		return find(data, num);
@@ -57,8 +56,7 @@ public final class UnionSet implements
 	 * @param a param a
 	 * @param b param b
 	 */
-	@Contract(pure = false)
-	public void merge(int a, int b) {
+	public synchronized void merge(int a, int b) {
 		int i = find(a);
 		int j = find(b);
 		if (depth[i] > depth[j]) {

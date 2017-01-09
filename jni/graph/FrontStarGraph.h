@@ -9,7 +9,7 @@
 #define _Included_org_algo4j_graph_FrontStarGraph
 
 #undef org_algo4j_graph_FrontStarGraph_INFINITY
-#define org_algo4j_graph_FrontStarGraph_INFINITY 2139062143L
+#define org_algo4j_graph_FrontStarGraph_INFINITY 2147483647L
 
 #undef org_algo4j_graph_FrontStarGraph_INFINITY_FILLING
 #define org_algo4j_graph_FrontStarGraph_INFINITY_FILLING 127L
@@ -21,7 +21,7 @@ extern "C" {
 /**
  * Class:     org_algo4j_graph_FrontStarGraph
  * Method:    spfa
- * Signature: ()[J
+ * Signature: (I[I[I[I[III)[I
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *,
@@ -38,13 +38,29 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 /**
  * Class:     org_algo4j_graph_FrontStarGraph
  * Method:    kruskal
- * Signature: ([J[J[J[J[JII)J
+ * Signature: ([I[I[I[I[III)[I
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		JNIEnv *,
 		jobject,
 		jintArray,
 		jintArray,
+		jintArray,
+		jintArray,
+		jintArray,
+		jint,
+		jint
+) -> jintArray;
+
+/**
+ * Class:     org_algo4j_graph_FrontStarGraph
+ * Method:    bellmanFord
+ * Signature: (I[I[I[III)[I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_bellmanFord(
+		JNIEnv *,
+		jobject,
+		jint,
 		jintArray,
 		jintArray,
 		jintArray,
@@ -74,6 +90,9 @@ namespace algo4j_frontstar {
 			to = t;
 		}
 
+		/**
+		 * used for sorting
+		 */
 		inline auto operator<(const FrontStarNode &o) const -> const bool {
 			return value < o.value;
 		}

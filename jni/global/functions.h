@@ -58,12 +58,14 @@ namespace algo4j_math {
 namespace algo4j_uset {
 	auto find(jint *, jint) -> jint;
 
+	auto init(jint *, jsize) -> void;
+
 	/// changed implementation into Java code
 	// void merge(jint *, jint, jint);
 }
 
 namespace algo4j_mem {
-	auto alloc(size_t) -> jlong;
+	auto alloc(jsize) -> jlong;
 
 	auto release(jlong) -> void;
 }

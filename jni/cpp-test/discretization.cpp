@@ -1,11 +1,13 @@
 
-#include "../util/SequenceUtils.h"
+#include "../util/SeqUtils.h"
 #include <iostream>
 
 #define size 11
 
 using std::cout;
 using std::endl;
+
+using algo4j_sort::quick_sort;
 
 jlong source[] = {
   10, 20, 30, 50, 40, 100, 70, 80, 90, 60, 11
@@ -18,7 +20,7 @@ auto main(int argc, const char *argv[]) -> int {
     pair[i].setValue(source[i], i);
   }
   cout << "set." << endl;
-  algo4j_sort::bubble_sort(pair, size);
+  quick_sort(pair, size);
   cout << "sort." << endl;
   for (auto i = 0, j = 0; i < size; ++i, ++j) {
     after[pair[i].second] = j;
