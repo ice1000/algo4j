@@ -1,9 +1,11 @@
 package org.algo4j.graph
 
 import org.algo4j.get
+import org.algo4j.set
 import org.algo4j.test.loop
 import org.algo4j.test.optional
 import org.algo4j.test.println
+import org.algo4j.util.SeqUtils
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -83,6 +85,11 @@ class AdjacentMatrixGraphTest {
 	@Test(timeout = 1000)
 	fun testDijkstra() {
 		val graph = AdjacentMatrixGraph(10)
+		graph[1, 2] = Pair(2, -1)
+		graph[2, 3] = Pair(0, 1)
+		graph.dijkstra(1).apply {
+			SeqUtils.toString(this)
+		}
 	}
 
 	companion object Initializer {

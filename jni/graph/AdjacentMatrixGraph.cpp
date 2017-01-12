@@ -50,6 +50,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 	int min;
 	auto u = 0;
 	memset(v, false, sizeof(v));
+	__new(Int, dis, len);
 	int begin = source * len;
 	for (auto i = 0; i < len; ++i) {
 		dis[i] = origin[begin + i];
@@ -64,58 +65,59 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 		}
 		v[u] = true;
 		for (auto j = 0; j < len; ++j) {
-			if (!v[j] and dis[j] > dis[u] + map[u][j]) {
-				dis[j] = dis[u] + map[u][j];
+			if (!v[j] and dis[j] > dis[u] + __mtrx(origin, u, j)) {
+				dis[j] = dis[u] + __mtrx(origin, u, j);
 			}
 		}
 	}
 	delete v;
-	__set(Int, ret, len);
-	delete ret;
+	__set(Int, dis, len);
+	delete dis;
 	__JNI__FUNCTION__CLEAN__
+	return _dis;
 }
 
-int edmonds_karp(jint *G, jsize len, int s, int e) {
-	auto vis = new bool[len + 1]();
-	auto que = new jint[len + 1]();
-	auto fa = new jint[len + 1]();
-	int curFlow = 1 << 30, ans = 0;
-	do {
-		memset(vis, 0, sizeof(vis));
-		memset(fa, 0, sizeof(fa));
-		int head = 0, tail = 0, cur;
-		curFlow = 1 << 30;
-		que[tail++] = s;
-		vis[s] = true;
-		while (head < tail) {
-			cur = que[head++ % (len + 1)];
-			if (cur == e) break;
-			for (int i = 1; i <= n; i++)
-				if (G[cur * len + i] && !vis[i]) {
-					que[tail++ % n + 1] = i;
-					fa[i] = cur;
-					vis[i] = true;
-				}
-		}
-		cur = e;
-		while (fa[cur]) {
-			curFlow = min(G[fa[cur] * len + cur], curFlow);
-			cur = fa[cur];
-		}
-		cur = e;
-		while (fa[cur]) {
-			G[fa[cur] * len + cur] -= curFlow;
-			G[cur * len + fa[cur]] += curFlow;
-			cur = fa[cur];
-		}
-		if (curFlow == 1 << 30) curFlow = 0;
-		ans += curFlow;
-	} while (curFlow);
-	delete vis;
-	delete que;
-	delete fa;
-	return ans;
-}
+//int edmonds_karp(jint *G, jsize len, int s, int e) {
+//	auto vis = new bool[len + 1]();
+//	auto que = new jint[len + 1]();
+//	auto fa = new jint[len + 1]();
+//	int curFlow = 1 << 30, ans = 0;
+//	do {
+//		memset(vis, 0, sizeof(vis));
+//		memset(fa, 0, sizeof(fa));
+//		int head = 0, tail = 0, cur;
+//		curFlow = 1 << 30;
+//		que[tail++] = s;
+//		vis[s] = true;
+//		while (head < tail) {
+//			cur = que[head++ % (len + 1)];
+//			if (cur == e) break;
+//			for (int i = 1; i <= n; i++)
+//				if (G[cur * len + i] && !vis[i]) {
+//					que[tail++ % n + 1] = i;
+//					fa[i] = cur;
+//					vis[i] = true;
+//				}
+//		}
+//		cur = e;
+//		while (fa[cur]) {
+//			curFlow = min(G[fa[cur] * len + cur], curFlow);
+//			cur = fa[cur];
+//		}
+//		cur = e;
+//		while (fa[cur]) {
+//			G[fa[cur] * len + cur] -= curFlow;
+//			G[cur * len + fa[cur]] += curFlow;
+//			cur = fa[cur];
+//		}
+//		if (curFlow == 1 << 30) curFlow = 0;
+//		ans += curFlow;
+//	} while (curFlow);
+//	delete vis;
+//	delete que;
+//	delete fa;
+//	return ans;
+//}
 
 #undef __mtrx
 
