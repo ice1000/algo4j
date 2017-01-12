@@ -125,4 +125,74 @@ public final class Queue<T> implements
 			return hasNext() ? (E) context.data[cursor++ % context.maxLen] : null;
 		}
 	}
+
+	public final class IntQueue {
+		private final int[] data;
+		private final int maxLen;
+		private int begin;
+		private int end;
+
+		@Contract(pure = true)
+		public IntQueue() {
+			this(1000);
+		}
+
+		@Contract(pure = true)
+		public IntQueue(int maxLen) {
+			this.maxLen = maxLen;
+			data = new int[maxLen];
+			begin = 0;
+			end = 0;
+		}
+
+		private IntQueue(@NotNull int[] data, int begin, int end) {
+			this.data = data;
+			this.maxLen = data.length;
+			this.begin = begin;
+			this.end = end;
+		}
+
+		@Contract(pure = true)
+		public int size() {
+			return end - begin;
+		}
+
+		@Contract(pure = true)
+		public boolean empty() {
+			return size() <= 0;
+		}
+
+		/**
+		 * push an object
+		 *
+		 * @param obj object
+		 * @throws QueueException if queue overflow
+		 */
+		public synchronized void push(int obj) {
+			if (size() >= maxLen) {
+				throw QueueException.overflow();
+			} else {
+				data[end++ % maxLen] = obj;
+			}
+		}
+
+		@Override
+		@NotNull
+		@Contract(value = " -> !null", pure = true)
+		public IntQueue clone() {
+			return new IntQueue(data, begin, end);
+		}
+
+		@Nullable
+		public synchronized int pop() {
+			return empty() ? null : data[begin++ % maxLen];
+		}
+
+		@Nullable
+		@Contract(pure = true)
+		public int front() {
+			return empty() ? null : data[begin % maxLen];
+		}
+
+	}
 }
