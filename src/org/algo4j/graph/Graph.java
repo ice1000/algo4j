@@ -1,5 +1,6 @@
 package org.algo4j.graph;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
@@ -73,4 +74,15 @@ public interface Graph extends
 		);
 	}
 
+	/**
+	 * single source shortest path algorithm
+	 *
+	 * @param source source point
+	 * @return the shortest path to every other points
+	 * if invalid, the value is -1.
+	 * return[source] = 0
+	 */
+	@NotNull
+	@Contract(pure = true)
+	int[] shortestPath(int source);
 }

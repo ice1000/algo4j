@@ -54,8 +54,26 @@ public final class AdjacentMatrixGraph implements
 	}
 
 	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
+	public int[] dijkstra(int source) {
+		if (source < 0 || source >= length) throw GraphException.indexOutBound();
+		return dijkstra(source, matrix);
+	}
+
+	@NotNull
+	@Override
+	@Contract(value = "_ -> !null", pure = true)
+	public int[] shortestPath(int source) {
+		return dijkstra(source);
+	}
+
+	@NotNull
 	@Contract(pure = true)
 	private static native int[] floyd(@NotNull int[] origin);
+
+	@NotNull
+	@Contract(pure = true)
+	private static native int[] dijkstra(int source, @NotNull int[] origin);
 
 	/**
 	 * weak add

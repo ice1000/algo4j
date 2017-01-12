@@ -180,6 +180,13 @@ public final class FrontStarGraph implements
 		return ret;
 	}
 
+	@Override
+	@NotNull
+	@Contract(pure = true)
+	public int[] shortestPath(int source) {
+		return spfa(source);
+	}
+
 	/**
 	 * O(n) = n * m
 	 * Bellman-Ford algorithm
