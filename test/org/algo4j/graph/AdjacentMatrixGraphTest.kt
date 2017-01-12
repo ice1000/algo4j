@@ -79,6 +79,12 @@ class AdjacentMatrixGraphTest {
 		assertEquals(2, res[1, 5])
 	}
 
+	@TestOnly
+	@Test(timeout = 1000)
+	fun testDijkstra() {
+		val graph = AdjacentMatrixGraph(10)
+	}
+
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

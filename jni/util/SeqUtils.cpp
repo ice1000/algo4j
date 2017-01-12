@@ -391,7 +391,7 @@ auto len = __len(data); \
 __new(type, ret, len) \
 __get(type, ret); \
 for (auto i = 0; i < len; ++i) { \
-	ret[i] = data[i]; \
+    ret[i] = data[i]; \
 } \
 __release(type, data) \
 __release(type, ret) \
@@ -502,5 +502,6 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_SeqUtils_kmp___3B_3B(
 	__algo4j_arr_kmp(Byte);
 }
 
+#undef __algo4j_arr_kmp
 
 #pragma clang diagnostic pop
