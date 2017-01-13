@@ -173,7 +173,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_bellmanFord(
 	dis[source] = 0;
 	dis[0] = -1;
 	bool changed;
-	for (auto _ = 1; _ < node_count; ++_) {
+	for (auto _ = 0; _ < node_count; ++_) {
 		changed = false;
 		for (auto i = 0; i < edge_count; ++i) {
 			if (dis[departure[i]] < FrontStarGraph_INFINITY and
@@ -184,13 +184,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_bellmanFord(
 		}
 		if (!changed) break;
 	}
-//	delete &changed;
-	for (auto i = 0; i < edge_count; ++i) {
-		if (dis[target[i]] > dis[departure[i]] + value[i]) {
-			/// negative loop
-			memset(dis, -1, sizeof(decltype(dis[0])) * node_count);
-		}
-	}
+//	for (auto i = 0; i < edge_count; ++i) {
+//		if (dis[target[i]] > dis[departure[i]] + value[i]) {
+//			/// negative loop
+//			memset(dis, -1, sizeof(decltype(dis[0])) * node_count);
+//		}
+//	}
 	__set(Int, dis, node_count);
 	delete dis;
 	__JNI__FUNCTION__CLEAN__

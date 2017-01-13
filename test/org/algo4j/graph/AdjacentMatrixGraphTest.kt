@@ -84,11 +84,11 @@ class AdjacentMatrixGraphTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testDijkstra() {
-		val graph = AdjacentMatrixGraph(10)
+		val graph = AdjacentMatrixGraph(4)
 		graph[1, 2] = Pair(2, -1)
 		graph[2, 3] = Pair(0, 1)
 		graph.dijkstra(1).apply {
-			SeqUtils.toString(this)
+			SeqUtils.toString(this).println()
 		}
 	}
 

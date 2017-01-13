@@ -60,6 +60,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 	for (auto i = 0; i < len; ++i) {
 		dis[i] = origin[begin + i];
 	}
+	dis[source] = 0;
+	dis[0] = -1;
 	v[source] = true;
 	for (auto _ = 0; _ < len; ++_) {
 		min = AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE;
