@@ -23,15 +23,16 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_exgcdJni(
 		jclass,
 		jlong a,
 		jlong b) -> jlongArray {
-  jlong x, y;
-  auto c = exgcd(a, b, x, y);
-  auto ret = new jlong[3];
-  ret[0] = c;
-  ret[1] = x;
-  ret[2] = y;
-  auto arr = env->NewLongArray(3);
-  env->SetLongArrayRegion(arr, 0, 3, ret);
-  return arr;
+	jlong x, y;
+	auto c = exgcd(a, b, x, y);
+	auto ret = new jlong[3];
+	ret[0] = c;
+	ret[1] = x;
+	ret[2] = y;
+	auto arr = env->NewLongArray(3);
+	env->SetLongArrayRegion(arr, 0, 3, ret);
+	delete ret;
+	return arr;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_gcdStein(
@@ -39,7 +40,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_gcdStein(
 		jclass,
 		jlong a,
 		jlong b) -> jlong {
-  return gcd_stein(a, b);
+	return gcd_stein(a, b);
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_sqrtCarmark(
@@ -84,28 +85,28 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__D(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) -> jdouble {
-  return __abs__ice__;
+	return __abs__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__F(
 		JNIEnv *env,
 		jclass jc,
 		jfloat a) -> jfloat {
-  return __abs__ice__;
+	return __abs__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__I(
 		JNIEnv *env,
 		jclass jc,
 		jint a) -> jint {
-  return __abs__ice__;
+	return __abs__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_abs__J(
 		JNIEnv *env,
 		jclass jc,
 		jlong a) -> jlong {
-  return __abs__ice__;
+	return __abs__ice__;
 }
 
 #ifdef __max__ice__
@@ -119,7 +120,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__JJ(
 		jclass jc,
 		jlong a,
 		jlong b) -> jlong {
-  return __max__ice__;
+	return __max__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__II(
@@ -127,7 +128,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__II(
 		jclass jc,
 		jint a,
 		jint b) -> jint {
-  return __max__ice__;
+	return __max__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__FF(
@@ -135,7 +136,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__FF(
 		jclass jc,
 		jfloat a,
 		jfloat b) -> jfloat {
-  return __max__ice__;
+	return __max__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__DD(
@@ -143,7 +144,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_max__DD(
 		jclass jc,
 		jdouble a,
 		jdouble b) -> jdouble {
-  return __max__ice__;
+	return __max__ice__;
 }
 
 #ifdef __min__ice__
@@ -181,21 +182,21 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_min__DD(
 		jclass jc,
 		jdouble a,
 		jdouble b) -> jdouble {
-  return __min__ice__;
+	return __min__ice__;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_ln(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) -> jdouble {
-  return ln_ice(a);
+	return ln_ice(a);
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_lg(
 		JNIEnv *env,
 		jclass jc,
 		jdouble a) -> jdouble {
-  return lg_ice(a);
+	return lg_ice(a);
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(

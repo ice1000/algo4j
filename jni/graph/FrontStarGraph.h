@@ -68,7 +68,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_bellmanFord(
 		jint
 ) -> jintArray;
 
-namespace algo4j_frontstar {
+namespace algo4j_front_star {
 	class FrontStarNode {
 	public:
 		jint value;

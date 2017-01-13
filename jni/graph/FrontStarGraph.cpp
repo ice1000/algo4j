@@ -21,7 +21,7 @@ using algo4j_sort::merge_sort;
 using algo4j_uset::find;
 using algo4j_uset::init;
 
-using algo4j_frontstar::FrontStarNode;
+using algo4j_front_star::FrontStarNode;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 		JNIEnv *env,
