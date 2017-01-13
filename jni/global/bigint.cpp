@@ -2,6 +2,8 @@
 #include "bigint.h"
 #include "basics.hpp"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 using algo4j_util::swap;
 using algo4j_util::Single;
 using algo4j_int::BigInt;
@@ -112,7 +114,7 @@ auto algo4j_int::times(
 	auto buf = new jbyte[res_len]();
 	for (auto i = 0; i < a_len; ++i) a[i] -= '0';
 	for (auto i = 0; i < b_len; ++i) b[i] -= '0';
-	while (a_idx --> 0) {
+	while (a_idx-- > 0) {
 		if (!a[a_idx])
 			continue;
 		while (b_idx-- > 0) {
@@ -141,26 +143,26 @@ auto algo4j_int::divide(
 		jsize b_len
 ) -> BigInt * { return nullptr; }
 
-// auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
-// auto res_len = len;
-// auto buf = new jbyte[res_len]();
-// auto f_data = new jbyte[1]();
-// f_data[0] = '0';
-// auto f = new Single<BigInt>(new BigInt(f_data, 1));
-// for (int i = len - 1; i >= 0; --i) {
-// f->get()->times_10();
-// f->get()->data[0] = this->data[i];
-// while (*f->get() >= o) {
-// auto tmp = *f->get() - o;
-// f->set(&tmp);
-// ++buf[i];
-// printf("[%i, %i]", buf[i], i);
-// }
-// }
-// trim_string
-// delete f;
-// return *new BigInt(buf, res_len);
-// }
+//auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
+//	auto res_len = len;
+//	auto buf = new jbyte[res_len]();
+//	auto f_data = new jbyte[1]();
+//	f_data[0] = '0';
+//	auto f = new Single<BigInt>(new BigInt(f_data, 1));
+//	for (int i = len - 1; i >= 0; --i) {
+//		f->get()->times_10();
+//		f->get()->data[0] = this->data[i];
+//		while (*f->get() >= o) {
+//			auto tmp = *f->get() - o;
+//			f->set(&tmp);
+//			++buf[i];
+//			printf("[%i, %i]", buf[i], i);
+//		}
+//	}
+//	trim_string
+//	delete f;
+//	return *new BigInt(buf, res_len);
+//}
 
 namespace algo4j_int {
 
@@ -183,3 +185,5 @@ namespace algo4j_int {
 #undef check_less_than_0
 #undef trim_string
 
+
+#pragma clang diagnostic pop

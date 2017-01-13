@@ -5,8 +5,6 @@
 // 我不做大哥好多年 我不爱冰冷的床沿
 
 #include <math.h>
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 #include "functions.h"

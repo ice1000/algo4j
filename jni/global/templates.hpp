@@ -31,7 +31,8 @@ using std::ostream;
 #endif /// __lowbit
 
 namespace algo4j_bit {
-	constexpr auto lowbit(const long long int a) -> jlong {
+	template<typename T>
+	constexpr auto lowbit(const T a) -> jlong {
 		return __lowbit(a);
 	}
 
@@ -210,8 +211,11 @@ namespace algo4j_util {
 			} else {
 				j = next[j];
 			}
-			if (j == m)
-				++ans, i -= j - 1, j = -1;
+			if (j == m) {
+				++ans;
+				i -= j - 1;
+				j = -1;
+			}
 		}
 		delete next;
 		return ans;

@@ -60,8 +60,10 @@ namespace algo4j_uset {
 
 	auto init(jint *, jsize) -> void;
 
+/*
 	/// changed implementation into Java code
-	// void merge(jint *, jint, jint);
+	auto merge(jint *, jint, jint) -> void;
+*/
 }
 
 namespace algo4j_mem {
