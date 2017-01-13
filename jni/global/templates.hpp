@@ -86,15 +86,15 @@ namespace algo4j_util {
 
 		constexpr Pair(const T1 &f, const T2 &s) :
 				first(f),
-				second(s) { }
+				second(s) {}
 
 		constexpr explicit Pair(const T1 &o) :
 				first(o),
-				second(static_cast<T2>(o)) { }
+				second(static_cast<T2>(o)) {}
 
-		constexpr explicit Pair() : first(), second() { }
+		constexpr explicit Pair() : first(), second() {}
 
-		~Pair() { }
+		~Pair() {}
 
 		void setValue(const T1 &f, const T2 &s) {
 			first = f;
@@ -124,6 +124,18 @@ namespace algo4j_util {
 		constexpr auto operator!=(const Pair &o) const -> const bool {
 			return not(*this == o);
 		}
+
+		constexpr auto operator+(const Pair &o) const -> const Pair * {
+			return new Pair(first + o.first, second + o.second);
+		}
+
+		constexpr auto operator-(const Pair &o) const -> const Pair * {
+			return new Pair(first - o.first, second - o.second);
+		}
+
+//		constexpr auto operator*(const Pair &o) const -> const Pair * {
+//			return new Pair(first * o.first, second * o.second);
+//		}
 
 //		auto operator=(Pair &pair) -> Pair & {
 //			first = pair.first;

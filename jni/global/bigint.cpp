@@ -112,7 +112,7 @@ auto algo4j_int::times(
 	auto buf = new jbyte[res_len]();
 	for (auto i = 0; i < a_len; ++i) a[i] -= '0';
 	for (auto i = 0; i < b_len; ++i) b[i] -= '0';
-	while (a_idx-- > 0) {
+	while (a_idx --> 0) {
 		if (!a[a_idx])
 			continue;
 		while (b_idx-- > 0) {
@@ -165,15 +165,15 @@ auto algo4j_int::divide(
 namespace algo4j_int {
 
 	auto operator<<(ostream &os, const BigInt &o) -> ostream & {
-		for (auto i = 0; i < o.len; ++i) {
-			os << o.data[i];
+		for (auto _ = 0; _ < o.len; ++_) {
+			os << o.data[_];
 		}
 		return os;
 	}
 
 	auto operator>>(istream &is, BigInt &o) -> istream & {
-		for (auto i = 0; i < o.len; ++i) {
-			is >> o.data[i];
+		for (auto _ = 0; _ < o.len; ++_) {
+			is >> o.data[_];
 		}
 		return is;
 	}

@@ -6,7 +6,11 @@
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 using algo4j_math::sqrt_strict;
 
-#define __mtrx(a, x, y) a[x * len + y]
+#ifdef matrix
+#undef matrix
+#endif /// matrix
+
+#define matrix(a, x, y) a[x * len + y]
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_floyd(
 		JNIEnv *env,
@@ -16,7 +20,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_floyd(
 	// do not release.
 	__get(Int, origin);
 	auto lenSquare = __len(origin);
-	auto len = static_cast<int>(sqrt_strict(lenSquare));
+	auto len = static_cast<jsize>(sqrt_strict(lenSquare));
 	auto ret = new jint[lenSquare]();
 	__new(Int, ret, lenSquare);
 	for (auto i = 0; i < lenSquare; ++i) {
@@ -25,8 +29,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_floyd(
 	for (auto k = 0; k < len; ++k) {
 		for (auto i = 0; i < len; ++i) {
 			for (auto j = 0; j < len; ++j) {
-				if (__mtrx(ret, i, j) > __mtrx(ret, i, k) + __mtrx(ret, k, j)) {
-					__mtrx(ret, i, j) = __mtrx(ret, i, k) + __mtrx(ret, k, j);
+				if (matrix(ret, i, j) > matrix(ret, i, k) + matrix(ret, k, j)) {
+					matrix(ret, i, j) = matrix(ret, i, k) + matrix(ret, k, j);
 				}
 			}
 		}
@@ -42,14 +46,14 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 		jclass,
 		jint source,
 		jintArray _origin) -> jintArray {
-	auto len = static_cast<int>(sqrt_strict(__len(origin)));
+	auto len = static_cast<jsize>(sqrt_strict(__len(origin)));
 	auto dis = new jint[len]();
 	auto v = new bool[len]();
 	__JNI__FUNCTION__INIT__
 	// do not release.
 	__get(Int, origin);
 	jint min;
-	jsize min_index = 0;
+	auto min_index = 0;
 	memset(v, false, sizeof(v));
 	__new(Int, dis, len);
 	int begin = source * len;
@@ -60,7 +64,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 	for (auto _ = 0; _ < len; ++_) {
 		min = AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE;
 		for (auto i = 0; i < len; ++i) {
-			if (!v[i] and dis[i] < min) {
+			if (!v[i] and
+				min > dis[i]) {
 				min = dis[i];
 				min_index = i;
 			}
@@ -68,8 +73,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 		v[min_index] = true;
 		for (auto i = 0; i < len; ++i) {
 			if (!v[i] and
-				dis[i] > dis[min_index] + __mtrx(origin, min_index, i)) {
-				dis[i] = dis[min_index] + __mtrx(origin, min_index, i);
+				dis[i] > dis[min_index] + matrix(origin, min_index, i)) {
+				dis[i] = dis[min_index] + matrix(origin, min_index, i);
 			}
 		}
 	}
@@ -122,7 +127,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 //	return ans;
 //}
 
-#undef __mtrx
+#undef matrix
 
 
 #pragma clang diagnostic pop

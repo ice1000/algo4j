@@ -393,8 +393,8 @@ __get(type, ret); \
 for (auto i = 0; i < len; ++i) { \
     ret[i] = data[i]; \
 } \
-__release(type, data) \
-__release(type, ret) \
+__abort(type, data) \
+__abort(type, ret) \
 __JNI__FUNCTION__CLEAN__ \
 return _ret;
 
@@ -465,8 +465,8 @@ __get(type, b); \
 auto a_len = __len(a); \
 auto b_len = __len(b); \
 auto ret = kmp(b, b_len, a, a_len); \
-__release(type, a); \
-__release(type, b); \
+__abort(type, a); \
+__abort(type, b); \
 __JNI__FUNCTION__CLEAN__ \
 return ret;
 

@@ -3,6 +3,8 @@
 #include <jni.h>
 /* Header for class org_algo4j_graph_AdjacentMatrixGraph */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef _Included_org_algo4j_graph_AdjacentMatrixGraph
 #define _Included_org_algo4j_graph_AdjacentMatrixGraph
 
@@ -42,3 +44,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 
 #endif /// _Included_org_algo4j_graph_AdjacentMatrixGraph
 
+
+#pragma clang diagnostic pop
