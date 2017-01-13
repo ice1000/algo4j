@@ -13,6 +13,7 @@ set(
 
 set(
 		SOURCE_FILES
+		graph/AdjacentMatrixGraph.cpp
 		bit/BinaryIndexedTree.cpp
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
@@ -30,6 +31,7 @@ set(
 
 set(
 		SOURCE_HEADERS
+		graph/AdjacentMatrixGraph.h
 		bit/BinaryIndexedTree.h
 		graph/FrontStarGraph.h
 		math/Trigonometric.h

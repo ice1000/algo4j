@@ -1,8 +1,9 @@
 #include "AdjacentMatrixGraph.h"
 #include "../global/basics.hpp"
-#include "../global/functions.h"
 #include "../global/templates.hpp"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 using algo4j_math::sqrt_strict;
 
 #define __mtrx(a, x, y) a[x * len + y]
@@ -47,8 +48,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 	__JNI__FUNCTION__INIT__
 	// do not release.
 	__get(Int, origin);
-	int min;
-	auto u = 0;
+	jint min;
+	jsize min_index = 0;
 	memset(v, false, sizeof(v));
 	__new(Int, dis, len);
 	int begin = source * len;
@@ -56,17 +57,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 		dis[i] = origin[begin + i];
 	}
 	v[source] = true;
-	for (auto i = 0; i < len; ++i) {
-		min = org_algo4j_graph_AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE;
-		for (auto j = 0; j < len; ++j) {
-			if (!v[j] and dis[j] < dis[u]) {
-				u = j;
+	for (auto _ = 0; _ < len; ++_) {
+		min = AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE;
+		for (auto i = 0; i < len; ++i) {
+			if (!v[i] and dis[i] < min) {
+				min = dis[i];
+				min_index = i;
 			}
 		}
-		v[u] = true;
-		for (auto j = 0; j < len; ++j) {
-			if (!v[j] and dis[j] > dis[u] + __mtrx(origin, u, j)) {
-				dis[j] = dis[u] + __mtrx(origin, u, j);
+		v[min_index] = true;
+		for (auto i = 0; i < len; ++i) {
+			if (!v[i] and
+				dis[i] > dis[min_index] + __mtrx(origin, min_index, i)) {
+				dis[i] = dis[min_index] + __mtrx(origin, min_index, i);
 			}
 		}
 	}
@@ -121,3 +124,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 
 #undef __mtrx
 
+
+#pragma clang diagnostic pop

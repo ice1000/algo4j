@@ -86,8 +86,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times10(
 		JNIEnv *env,
 		jclass,
-		jbyteArray _a
-) -> jbyteArray {
+		jbyteArray _a) -> jbyteArray {
 	__JNI__FUNCTION__INIT__
 	__get(Byte, a);
 	auto a_len = __len(a);

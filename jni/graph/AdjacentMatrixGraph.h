@@ -10,8 +10,8 @@
 extern "C" {
 #endif /// __cplusplus
 
-#undef org_algo4j_graph_AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE
-#define org_algo4j_graph_AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE 2147483647L
+#undef AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE
+#define AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE 2147483647L
 
 /**
  * Class:     org_algo4j_graph_AdjacentMatrixGraph

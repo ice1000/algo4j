@@ -36,6 +36,10 @@ env->Set ## type ## ArrayRegion(_ ## name, 0, len, name);
 #define __len(name) \
 env->GetArrayLength(_ ## name)
 
+#ifdef _
+#undef _
+#endif /// _
+
 namespace algo4j_util {
 	template<typename T>
 	inline constexpr auto swap(T &a, T &b) -> void {

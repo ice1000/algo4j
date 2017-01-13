@@ -1,6 +1,6 @@
 ## Configuration files ##
 
-*.iml
+# *.iml
 .idea/
 jni/.idea/
 jni/.vscode/
