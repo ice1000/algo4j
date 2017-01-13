@@ -39,15 +39,15 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 	auto inq = new bool[node_count];
 	auto vis = new jint[node_count];
 	auto queue = new jint[edge_count];
-	jsize begin = 0, end = 0;
-	jint i, j;
+	auto begin = 0;
+	auto end = 0;
 	auto looped = false;
 	__get(Int, next);
 	__get(Int, head);
 	__get(Int, target);
 	__get(Int, value);
 	for (auto i = 0; i < node_count; ++i) {
-		dis[i] = org_algo4j_graph_FrontStarGraph_INFINITY;
+		dis[i] = FrontStarGraph_INFINITY;
 	}
 	dis[source] = 0;
 	dis[0] = -1;
@@ -55,12 +55,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_spfa(
 	memset(inq, false, sizeof(inq[0]) * node_count);
 	inq[source] = true;
 	queue[end++] = source;
-	while (begin < end and !looped) {
-		i = queue[begin++ % edge_count];
-		for (j = head[i]; ~j; j = next[j]) {
+	while (begin < end and not looped) {
+		auto i = queue[begin++ % edge_count];
+		for (auto j = head[i]; ~j; j = next[j]) {
 			if (dis[target[j]] > dis[i] + value[j]) {
 				dis[target[j]] = dis[i] + value[j];
-				if (!inq[target[j]]) {
+				if (not inq[target[j]]) {
 					inq[target[j]] = true;
 					queue[end++ % edge_count] = target[j];
 					if (++vis[target[j]] >= node_count) {
@@ -99,14 +99,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 		jint edge_count,
 		jint node_count) -> jintArray {
 	__JNI__FUNCTION__INIT__
-	auto looped = false;
 	__get(Int, next);
 	__get(Int, head);
 	__get(Int, target);
 	__get(Int, departure);
 	__get(Int, value);
-	auto uset = new jint[node_count]();
-	init(uset, node_count);
+	auto union_set = new jint[node_count]();
+	init(union_set, node_count);
 	auto depth = new jint[node_count]();
 	memset(depth, 0, node_count * sizeof(depth[0]));
 	auto edges = new FrontStarNode[edge_count]();
@@ -124,13 +123,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	auto ret = new jint[(node_count - 2) * 3]();
 	auto ret_idx = 0;
 	for (auto i = 0; i < edge_count; ++i) {
-		find_res_1 = find(uset, edges[i].from);
-		find_res_2 = find(uset, edges[i].to);
+		find_res_1 = find(union_set, edges[i].from);
+		find_res_2 = find(union_set, edges[i].to);
 		if (find_res_1 != find_res_2) {
 			if (depth[find_res_1] > depth[find_res_2]) {
-				uset[find_res_2] = find_res_1;
+				union_set[find_res_2] = find_res_1;
 			} else {
-				uset[find_res_1] = find_res_2;
+				union_set[find_res_1] = find_res_2;
 				if (depth[find_res_1] == depth[find_res_2])
 					++depth[find_res_1];
 			}
@@ -144,7 +143,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_kruskal(
 	__new(Int, ret, (node_count - 2) * 3);
 	__set(Int, ret, (node_count - 2) * 3);
 	delete depth;
-	delete uset;
+	delete union_set;
 	delete ret;
 //	delete &ret_idx, &find_res_1, &find_res_2;
 	delete[] edges;
@@ -169,25 +168,25 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_FrontStarGraph_bellmanFord(
 	__get(Int, target);
 	__get(Int, value);
 	for (auto i = 0; i < node_count; ++i) {
-		dis[i] = org_algo4j_graph_FrontStarGraph_INFINITY;
+		dis[i] = FrontStarGraph_INFINITY;
 	}
 	dis[source] = 0;
 	dis[0] = -1;
 	bool changed;
-	for (auto i = 1; i < node_count; ++i) {
+	for (auto _ = 1; _ < node_count; ++_) {
 		changed = false;
-		for (auto j = 0; j < edge_count; ++j) {
-			if (dis[departure[j]] < org_algo4j_graph_FrontStarGraph_INFINITY &&
-					dis[target[j]] > dis[departure[j]] + value[j]) {
-				dis[target[j]] = dis[departure[j]] + value[j];
+		for (auto i = 0; i < edge_count; ++i) {
+			if (dis[departure[i]] < FrontStarGraph_INFINITY and
+				dis[target[i]] > dis[departure[i]] + value[i]) {
+				dis[target[i]] = dis[departure[i]] + value[i];
 				changed = true;
 			}
 		}
 		if (!changed) break;
 	}
 //	delete &changed;
-	for (auto j = 0; j < edge_count; ++j) {
-		if (dis[target[j]] > dis[departure[j]] + value[j]) {
+	for (auto i = 0; i < edge_count; ++i) {
+		if (dis[target[i]] > dis[departure[i]] + value[i]) {
 			/// negative loop
 			memset(dis, -1, sizeof(decltype(dis[0])) * node_count);
 		}

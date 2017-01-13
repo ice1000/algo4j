@@ -8,8 +8,8 @@
 #ifndef _Included_org_algo4j_graph_FrontStarGraph
 #define _Included_org_algo4j_graph_FrontStarGraph
 
-#undef org_algo4j_graph_FrontStarGraph_INFINITY
-#define org_algo4j_graph_FrontStarGraph_INFINITY 2147483647L
+#undef FrontStarGraph_INFINITY
+#define FrontStarGraph_INFINITY 2147483647L
 
 #undef org_algo4j_graph_FrontStarGraph_INFINITY_FILLING
 #define org_algo4j_graph_FrontStarGraph_INFINITY_FILLING 127L

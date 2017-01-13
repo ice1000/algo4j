@@ -3,7 +3,6 @@
 //
 
 #include "Statistics.h"
-#include "../global/functions.h"
 #include "../global/templates.hpp"
 
 #pragma clang diagnostic push
