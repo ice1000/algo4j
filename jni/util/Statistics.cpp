@@ -13,12 +13,12 @@ using algo4j_util::abs;
 
 #define __algo4j_arr_min(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 auto min = data[0]; \
 for (auto i = 1; i < len; ++i) \
-	if (data[i] < min) min = data[i]; \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+    if (data[i] < min) min = data[i]; \
+__release(type, data); \
 __JNI__FUNCTION__CLEAN__ \
 return min;
 
@@ -54,12 +54,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_min___3D(
 
 #define __algo4j_arr_max(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 auto max = data[0]; \
 for (auto i = 1; i < len; ++i) \
-	if (data[i] > max) max = data[i]; \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+    if (data[i] > max) max = data[i]; \
+__release(type, data); \
 __JNI__FUNCTION__CLEAN__ \
 return max;
 
@@ -95,12 +95,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_max___3D(
 
 #define __algo4j_arr_sum(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 auto sum = data[0]; \
 for (auto i = 1; i < len; ++i) \
-	sum += data[i]; \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+    sum += data[i]; \
+__release(type, data); \
 __JNI__FUNCTION__CLEAN__ \
 return sum;
 
@@ -136,12 +136,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_sum___3D(
 
 #define __algo4j_arr_avg(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 jdouble avg = 0; \
 for (auto i = 0; i < len; ++i) \
-	avg += data[i] * 1.0 / len; \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+    avg += data[i] * 1.0 / len; \
+__release(type, data); \
 __JNI__FUNCTION__CLEAN__ \
 return avg;
 
@@ -177,15 +177,15 @@ JNIEXPORT auto JNICALL Java_org_algo4j_util_Statistics_avg___3D(
 
 #define __algo4j_arr_standard_division(type) \
 __JNI__FUNCTION__INIT__ \
-auto data = env->Get ## type ## ArrayElements(_data, option); \
-auto len = env->GetArrayLength(_data); \
+__get(type, data); \
+auto len = __len(data); \
 jdouble avg = 0; \
 jdouble div = 0; \
 for (auto i = 0; i < len; ++i) \
-	avg += data[i] * 1.0 / len; \
+    avg += data[i] * 1.0 / len; \
 for (auto i = 0; i < len; ++i) \
-	div += abs(data[i] - avg) / len; \
-env->Release ## type ## ArrayElements(_data, data, 0); \
+    div += abs(data[i] - avg) / len; \
+__release(type, data); \
 __JNI__FUNCTION__CLEAN__ \
 return div;
 

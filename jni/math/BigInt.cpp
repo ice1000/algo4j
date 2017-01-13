@@ -74,8 +74,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 	auto buf = times(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len);
 	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
-	env->ReleaseByteArrayElements(_a, a, JNI_ABORT);
-	env->ReleaseByteArrayElements(_b, b, JNI_ABORT);
+	__abort(Byte, a)
+	__abort(Byte, b)
 //	delete a;
 //	delete b;
 	__JNI__FUNCTION__CLEAN__

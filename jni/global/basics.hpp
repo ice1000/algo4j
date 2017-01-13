@@ -24,6 +24,9 @@ delete option;
 #define __release(type, name) \
 env->Release ## type ## ArrayElements(_ ## name, name, 0);
 
+#define __abort(type, name) \
+env->Release ## type ## ArrayElements(_ ## name, name, JNI_ABORT);
+
 #define __get(type, name) \
 auto name = env->Get ## type ## ArrayElements(_ ## name, option);
 
@@ -69,13 +72,13 @@ namespace algo4j_util {
 		T *value;
 
 		explicit Single(T *val) :
-				value(val) { }
+				value(val) {}
 
 		~Single() {
 			clear();
 		}
 
-		auto set(T * val) -> T * {
+		auto set(T *val) -> T * {
 			delete value;
 			return value = val;
 		}

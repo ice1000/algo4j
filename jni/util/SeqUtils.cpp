@@ -34,7 +34,7 @@ __JNI__FUNCTION__INIT__ \
 auto len = __len(data); \
 __get(type, data); \
 auto after = discretization(data, len); \
-env->Release ## type ## ArrayElements(_data, data, JNI_ABORT); \
+__abort(type, data); \
 env->Set ## type ## ArrayRegion(_data, 0, len, after); \
 __JNI__FUNCTION__CLEAN__ \
 delete after;
