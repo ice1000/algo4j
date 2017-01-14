@@ -11,9 +11,10 @@ file name|usage
 :---|---:
 jni|C++ codes
 code_drafts|something written but not used ATM
-jni.dll|jni library
+jni.dll(you should build it yourself)|jni library
 jni/cpp-test|C++ tests
 src|source
+extension|Kotlin extension library
 test|tests
 
 ## Overview
@@ -22,9 +23,10 @@ test|tests
 - [X] Trigonometric functions, including: sin, cos, tan, cot, sec, csc.
 - [X] Union set. including path compression and heuristic merge.
 - [X] Math utils, will be more powerful than java.lang.Math.
-- [X] Sequence utils, like sorts, discretization, kmp.
-- [X] Graph theory algorithms, like spfa, floyd, kruskal, dfs, etc.
+- [X] Sequence utils, like sorts, discretization, kmp, toString, etc.
+- [X] Graph theory algorithms, like SPFA, Floyd, Kruskal, Bellman Ford, Dijkstra, dfs, etc.
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
+- [X] Linear data structure, Stack and Queue.
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>
@@ -39,6 +41,7 @@ core tests|C++
 jni interface|Java
 java port tests|Kotlin
 code generation|Kotlin
+extension|Kotlin
 
 ## Contribution
 
