@@ -7,12 +7,12 @@ using namespace std;
 
 int n, H[MAX_HEAP_SIZE], heapsize;
 
-void min_heapify(int i)
+void min_heapify(int *H, int heapsize, int i)
 {
 	int smallest = i;
 	int lch = i << 1;
 	int rch = lch + 1;
-	
+
 	if (lch <= heapsize && H[smallest] > H[lch])
 	{
 		smallest = lch;
@@ -21,7 +21,7 @@ void min_heapify(int i)
 	{
 		smallest = rch;
 	}
-	
+
 	if (smallest != i)
 	{
 		int temp = H[smallest];
@@ -31,25 +31,25 @@ void min_heapify(int i)
 	}
 }
 
-void build_heap()
+void build_heap(int *heap)
 {
 	for (int i = heapsize >> 1; i >= 1; i--)
 	{
-		min_heapify(i);
+		min_heapify(heap, i);
 	}
 }
 
 void insert(int x)
 {
 	H[++heapsize] = x;
-	
+
 	int ch = heapsize, p = heapsize >> 1;
 	while (H[p] > H[ch] && p > 1)
 	{
 		int temp = H[p];
 		H[p] = H[ch];
 		H[ch] = temp;
-		
+
 		ch = p;
 		p = ch >> 1;
 	}
@@ -65,6 +65,6 @@ int main()
 		insert(x);
 	}
 	// Add more actions here.
-	
+
 	return 0;
 }
