@@ -28,7 +28,7 @@ operator fun BigInt.div(o: BigInt) =
 		divide(o)
 
 @Contract(pure = true)
-operator fun BigInt.mod(o: BigInt) =
+operator fun BigInt.rem(o: BigInt) =
 		mod(o)
 
 @Contract(pure = true)

@@ -58,7 +58,7 @@ class MathUtilsTest {
 	 * 2.5e-4ms per calc
 	 */
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 250)
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	fun sqrtCarmarkTime() {
 		val random = Random(System.currentTimeMillis())

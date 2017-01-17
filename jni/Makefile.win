@@ -7,9 +7,9 @@ WINDRES  = windres.exe
 RES      = jni_private.res
 OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o $(RES)
 LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o $(RES)
-LIBS     = -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
-INCS     = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = jni.dll
 CXXFLAGS = $(CXXINCS) -ansi -O2 -m64 -std=gnu++11 -DBUILDING_DLL=1
 CFLAGS   = $(INCS) -ansi -O2 -m64 -std=gnu++11 -DBUILDING_DLL=1

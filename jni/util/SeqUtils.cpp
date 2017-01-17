@@ -8,6 +8,7 @@
 
 using algo4j_util::discretization;
 using algo4j_util::kmp;
+using algo4j_util::copy;
 
 using algo4j_sort::insertion_sort;
 using algo4j_sort::merge_sort;
@@ -388,13 +389,10 @@ if (_data == NULL) return NULL; \
 __JNI__FUNCTION__INIT__ \
 __get(type, data); \
 auto len = __len(data); \
+auto ret = copy(data, len); \
 __new(type, ret, len) \
-__get(type, ret); \
-for (auto i = 0; i < len; ++i) { \
-    ret[i] = data[i]; \
-} \
 __abort(type, data) \
-__abort(type, ret) \
+__set(type, ret, len) \
 __JNI__FUNCTION__CLEAN__ \
 return _ret;
 

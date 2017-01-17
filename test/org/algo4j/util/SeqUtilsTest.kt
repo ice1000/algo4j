@@ -176,11 +176,13 @@ class SeqUtilsTest {
 			val arr2 = shuffledDoubleList.toDoubleArray()
 			assertArrayEquals(
 					StdArrays.copyOf(arr, arr.size),
-					SeqUtils.copy(arr))
+					SeqUtils.copy(arr)
+			)
 			assertArrayEquals(
 					StdArrays.copyOf(arr2, arr2.size),
 					SeqUtils.copy(arr2),
-					1e-15)
+					1e-15
+			)
 		}
 	}
 
