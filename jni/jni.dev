@@ -24,12 +24,12 @@ HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
-Folders=bit,global,graph,math,util,win
+Folders=bit,global,graph,linear,math,util,win
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=100000aag0000000000000000
-UnitCount=29
+UnitCount=30
 
 [VersionInfo]
 Major=1
@@ -334,6 +334,16 @@ BuildCmd=
 FileName=graph\AdjacentMatrixGraph.h
 CompileCpp=1
 Folder=graph
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit30]
+FileName=linear\Heap.h
+CompileCpp=1
+Folder=linear
 Compile=1
 Link=1
 Priority=1000

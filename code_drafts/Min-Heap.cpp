@@ -7,7 +7,7 @@ using namespace std;
 
 int n, H[MAX_HEAP_SIZE], heapsize;
 
-void min_heapify(int *H, int heapsize, int i)
+void min_heapify(int *H, int &heapsize, int i)
 {
 	int smallest = i;
 	int lch = i << 1;
@@ -27,7 +27,7 @@ void min_heapify(int *H, int heapsize, int i)
 		int temp = H[smallest];
 		H[smallest] = H[i];
 		H[i] = temp;
-		min_heapify(smallest);
+		min_heapify(H, heapsize, smallest);
 	}
 }
 
@@ -35,7 +35,7 @@ void build_heap(int *heap)
 {
 	for (int i = heapsize >> 1; i >= 1; i--)
 	{
-		min_heapify(heap, i);
+		min_heapify(heap, heapsize, i);
 	}
 }
 
