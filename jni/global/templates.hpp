@@ -79,14 +79,14 @@ namespace algo4j_bit {
 
 namespace algo4j_util {
 
-  template<typename T>
-  auto copy(T *data, jsize len) -> T * {
-    auto ret = new T[len]();
-    for (auto i = 0; i < len; ++i) {
-        ret[i] = data[i];
-    }
-    return ret;
-  }
+	template<typename T>
+	auto copy(T *data, jsize len) -> T * {
+		auto ret = new T[len]();
+		for (auto i = 0; i < len; ++i) {
+			ret[i] = data[i];
+		}
+		return ret;
+	}
 
 	template<typename T1, typename T2>
 	class Pair {
