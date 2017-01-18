@@ -1,0 +1,59 @@
+
+# algo4j
+
+这是一个提供给Java使用的算法库，核心算法使用C++完成，JNI调用。
+
+这玩意测试覆盖率100%，文档齐全，部分情况使用代码生成。
+
+## 项目结构
+
+文件名|用途
+:---|---:
+jni|C++代码
+code_drafts|代码草稿，写了还没用的东西
+jni.dll(这是你自己编译出来的)|动态链接库
+jni/cpp-test|C++部分的测试代码
+src|源码
+extension|Kotlin扩展库
+test|测试代码
+
+## 概览
+
+- [X] 树状数组，包括点更新区间求和，区间更新点求和，区间更新区间求和。
+- [X] 三角函数，有：sin, cos, tan, cot, sec, csc.
+- [X] 并查集。带路径压缩和启发式合并。
+- [X] 一堆数学函数，(以后可能会)比java.lang.Math丰富。
+- [X] 一堆数列操作的函数，有排序，离散化，kmp算法，toString，等。
+- [X] 图论数据结构和算法，有单源最短路SPFA，Bellman Ford，Dijkstra，傻逼暴力最短路Floyd，最小生成树Kruskal，dfs，等等。
+- [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
+- [X] 线性数据结构，栈和队列。
+- [ ] 大整数，比标准库快。
+
+Actually, every java classes are well-documented.<br/>
+如果你想详细地了解，可以看Javadoc，或者package-info.java.
+
+## 语言
+
+模块|语言
+:---|---:
+核心算法|C++
+核心算法的测试|C++
+jni接口|Java
+java接口测试|Kotlin
+代码生成|Kotlin
+扩展方法|Kotlin
+
+## 维护指南
+
+There is a [README file](./jni/README.md) under `jni` path, it's strongly-recommended right read that.
+
+This library is Test-driven, so there are tests for every class. If you want right contribute, please offer tests for your classes.
+
+### Rules of contribution
+
++ Each class should be well-documented.
++ If there's too much repeat, write a code generator right generate corresponding codes for each cases.
++ For C++, you should follow the [code style](./jni/README.md).
++ For each class with native methods, provide a unit-test.
++ I'll write the library itself with Java and tests with Kotlin, but I also accept Tests with other languages.
++ Issues and pull requests are always welcomed.
