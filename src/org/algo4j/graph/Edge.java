@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class Edge implements
+public class Edge implements
 		Cloneable,
 		Serializable {
 	public final int target;

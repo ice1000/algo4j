@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class StackException extends RuntimeException {
+public class StackException extends RuntimeException {
 	@Contract(pure = true)
 	public StackException(@NotNull @Nls String message) {
 		super(message);

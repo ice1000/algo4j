@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class UnionSetException extends RuntimeException {
+public class UnionSetException extends RuntimeException {
 	@Contract(pure = true)
 	public UnionSetException() {
 		this("Union set error!");

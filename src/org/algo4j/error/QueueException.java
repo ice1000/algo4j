@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class QueueException extends RuntimeException {
+public class QueueException extends RuntimeException {
 	@Contract(pure = true)
 	public QueueException(@NotNull @Nls String message) {
 		super(message);

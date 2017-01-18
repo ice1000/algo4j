@@ -19,7 +19,7 @@ import static org.algo4j.math.MathUtils.abs;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public final class BigInt implements
+public class BigInt implements
 		Comparable<BigInt>,
 		Cloneable,
 		Serializable {

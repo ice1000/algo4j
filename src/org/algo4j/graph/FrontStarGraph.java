@@ -20,7 +20,7 @@ import java.util.function.Function;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class FrontStarGraph implements
+public class FrontStarGraph implements
 		Graph,
 		Iterable<Edge> {
 	private final int[] next;

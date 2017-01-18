@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class DividedByZeroException extends ArithmeticException {
+public class DividedByZeroException extends ArithmeticException {
 	@Contract(pure = true)
 	public DividedByZeroException(@NotNull @Nls String msg) {
 		super(msg);

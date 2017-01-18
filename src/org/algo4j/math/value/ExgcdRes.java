@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public final class ExgcdRes implements
+public class ExgcdRes implements
 		Serializable,
 		Cloneable {
 	private final long c;

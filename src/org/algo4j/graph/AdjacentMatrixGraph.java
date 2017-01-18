@@ -16,7 +16,7 @@ import java.util.function.Consumer;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "SameParameterValue"})
-public final class AdjacentMatrixGraph implements
+public class AdjacentMatrixGraph implements
 		Graph,
 		Iterable<Edge> {
 

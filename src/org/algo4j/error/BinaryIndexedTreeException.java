@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings("unused")
-public final class BinaryIndexedTreeException extends RuntimeException {
+public class BinaryIndexedTreeException extends RuntimeException {
 	@Contract(pure = true)
 	public BinaryIndexedTreeException() {
 		this("Binary indexed tree error!");

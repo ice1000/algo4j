@@ -204,8 +204,7 @@ class SeqUtilsTest {
 			assertEquals(times, SeqUtils.kmp(van, "va"))
 			assertEquals(times, SeqUtils.kmp(van, "an"))
 			assertEquals(times, SeqUtils.kmp(van, "v"))
-			assertEquals(times, SeqUtils.kmp(van, str)
-			)
+			assertEquals(times, SeqUtils.kmp(van, str))
 		}
 	}
 

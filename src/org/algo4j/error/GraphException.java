@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public final class GraphException extends RuntimeException {
+public class GraphException extends RuntimeException {
 	@Contract(pure = true)
 	public GraphException() {
 		this("Front star graph error!");

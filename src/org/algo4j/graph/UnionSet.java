@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "CanBeFinal"})
-public final class UnionSet implements
+public class UnionSet implements
 		Serializable,
 		Cloneable {
 	private final int[] data;
@@ -87,6 +87,7 @@ public final class UnionSet implements
 
 	@Override
 	@Contract(value = " -> !null", pure = true)
+	@SuppressWarnings("MethodDoesntCallSuperMethod")
 	public UnionSet clone() {
 		return new UnionSet(data, depth);
 	}

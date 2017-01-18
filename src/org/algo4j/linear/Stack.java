@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  * @author ice1000
  */
 @SuppressWarnings("ALL")
-public final class Stack<T> implements
+public class Stack<T> implements
 		Container<T> {
 	private final Object[] data;
 	private final int maxLen;

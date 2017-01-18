@@ -14,7 +14,7 @@ import java.util.function.Consumer;
  * @author ice1000
  */
 @SuppressWarnings("ALL")
-public final class Queue<T> implements
+public class Queue<T> implements
 		Container<T> {
 
 	private final Object[] data;
