@@ -1,6 +1,8 @@
 
 # algo4j
 
+[中文](./README_Zh.md)
+
 This is an algorithm library for Java use, and core is written in C++ with JNI.
 
 It is test-driven, well-documented, with code generation for some special cases.
