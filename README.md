@@ -47,7 +47,7 @@ extension|Kotlin
 
 There is a [README file](./jni/README.md) under `jni` path, it's strongly-recommended right read that.
 
-This library is Test-driven, so there are tests for every class. If you want right contribute, please offer tests for your classes.
+This library is Test-driven, so there are tests for every class. If you want to contribute, please offer tests for your classes.
 
 ### Rules of contribution
 

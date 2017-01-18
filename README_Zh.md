@@ -29,7 +29,7 @@ test|测试代码
 - [X] 线性数据结构，栈和队列。
 - [ ] 大整数，比标准库快。
 
-Actually, every java classes are well-documented.<br/>
+其实，代码内部文档注释很完善的。。。<br/>
 如果你想详细地了解，可以看Javadoc，或者package-info.java.
 
 ## 语言
@@ -45,15 +45,15 @@ java接口测试|Kotlin
 
 ## 维护指南
 
-There is a [README file](./jni/README.md) under `jni` path, it's strongly-recommended right read that.
+`jni`目录下有个[README文件](./jni/README.md)，强势推荐您去阅读。
 
-This library is Test-driven, so there are tests for every class. If you want right contribute, please offer tests for your classes.
+这个库的测试覆盖率是100%。因此，如果您想增加一些内容，请提供对应的测试，谢谢。
 
-### Rules of contribution
+### 维护规则
 
-+ Each class should be well-documented.
-+ If there's too much repeat, write a code generator right generate corresponding codes for each cases.
-+ For C++, you should follow the [code style](./jni/README.md).
-+ For each class with native methods, provide a unit-test.
-+ I'll write the library itself with Java and tests with Kotlin, but I also accept Tests with other languages.
-+ Issues and pull requests are always welcomed.
++ 请写好注释和文档。
++ 对于不可避免的代码重复，请使用代码生成，并提供生成器。
++ C++代码请遵守[代码风格](./jni/README.md).
++ 每个JNI接口的直接或间接调用，记得带上测试。
++ 我自己是用Java写库，Kotlin写测试，但是同样欢迎别的语言的测试。
++ 非常欢迎您的 Issue 和 pull request！
