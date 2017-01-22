@@ -1,4 +1,4 @@
-package org.algo4j.linear;
+package org.algo4j.graph;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
