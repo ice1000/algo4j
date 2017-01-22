@@ -3,6 +3,7 @@ package org.algo4j.graph;
 import org.algo4j.error.UnionSetException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
 
@@ -30,6 +31,11 @@ public class UnionSet implements
 	private UnionSet(int[] data, int[] depth) {
 		this.data = data;
 		this.depth = depth;
+	}
+
+	@Contract(pure = true)
+	public int size() {
+		return data.length;
 	}
 
 	/**
@@ -91,4 +97,16 @@ public class UnionSet implements
 	public UnionSet clone() {
 		return new UnionSet(data, depth);
 	}
+
+	@Override
+	@Contract(value = "null -> false", pure = true)
+	public boolean equals(@Nullable Object obj) {
+		if (obj == null || !(obj instanceof UnionSet)) return false;
+		if (obj == this) return true;
+		UnionSet o = (UnionSet) obj;
+		if (o.size() != this.size()) return false;
+		for (int i = 0; i < this.size(); ++i) if (this.data[i] != o.data[i]) return false;
+		return true;
+	}
+
 }
