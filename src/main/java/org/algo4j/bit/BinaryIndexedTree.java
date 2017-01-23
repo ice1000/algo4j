@@ -22,7 +22,6 @@ public final class BinaryIndexedTree implements
 	private final long[] data;
 	public final int length;
 
-	@Contract(pure = true)
 	public BinaryIndexedTree(int length) {
 		this.length = length;
 		data = new long[length];

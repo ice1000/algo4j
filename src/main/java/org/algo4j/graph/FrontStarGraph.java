@@ -50,7 +50,6 @@ public class FrontStarGraph implements
 	 * @param edgeCount maximum number of edges.
 	 * @throws GraphException if numbers is zero or negative
 	 */
-	@Contract(pure = true)
 	public FrontStarGraph(int nodeCount, int edgeCount) {
 		if (nodeCount <= 0) throw new GraphException("node count cannot be zero or negative!");
 		if (edgeCount <= 0) throw new GraphException("edge count cannot be zero or negative!");
@@ -451,13 +450,11 @@ public class FrontStarGraph implements
 		private final FrontStarGraph context;
 		private int cursor = 0;
 
-		@Contract(pure = true)
 		public FrontStarItr(@NotNull FrontStarGraph context, int cursor) {
 			this.context = context;
 			this.cursor = cursor;
 		}
 
-		@Contract(pure = true)
 		public FrontStarItr(@NotNull FrontStarGraph context) {
 			this(context, 0);
 		}

@@ -22,12 +22,10 @@ public class Queue<T> implements
 	private int begin;
 	private int end;
 
-	@Contract(pure = true)
 	public Queue() {
 		this(1000);
 	}
 
-	@Contract(pure = true)
 	public Queue(int maxLen) {
 		this.maxLen = maxLen;
 		data = new Object[maxLen];
@@ -107,7 +105,6 @@ public class Queue<T> implements
 		private int cursor;
 		private Queue<E> context;
 
-		@Contract(pure = true)
 		public QueueItr(@NotNull Queue<E> queue) {
 			cursor = queue.begin;
 			context = queue;
@@ -132,12 +129,10 @@ public class Queue<T> implements
 		private int begin;
 		private int end;
 
-		@Contract(pure = true)
 		public IntQueue() {
 			this(1000);
 		}
 
-		@Contract(pure = true)
 		public IntQueue(int maxLen) {
 			this.maxLen = maxLen;
 			data = new int[maxLen];

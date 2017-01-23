@@ -19,7 +19,6 @@ public class UnionSet implements
 	private final int[] data;
 	private final int[] depth;
 
-	@Contract(pure = true)
 	public UnionSet(int length) {
 		++length;
 		data = new int[length];
@@ -27,7 +26,6 @@ public class UnionSet implements
 		depth = new int[length];
 	}
 
-	@Contract(pure = true)
 	private UnionSet(int[] data, int[] depth) {
 		this.data = data;
 		this.depth = depth;

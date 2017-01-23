@@ -11,12 +11,10 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class QueueException extends RuntimeException {
-	@Contract(pure = true)
 	public QueueException(@NotNull @Nls String message) {
 		super(message);
 	}
 
-	@Contract(pure = true)
 	public QueueException() {
 		this("Queue error!");
 	}

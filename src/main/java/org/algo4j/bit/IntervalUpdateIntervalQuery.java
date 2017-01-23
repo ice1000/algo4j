@@ -18,14 +18,12 @@ public final class IntervalUpdateIntervalQuery implements
 	private final BinaryIndexedTree bit2;
 	public final int length;
 
-	@Contract(pure = true)
 	public IntervalUpdateIntervalQuery(int length) {
 		this.length = length + 1;
 		bit1 = new BinaryIndexedTree(this.length);
 		bit2 = new BinaryIndexedTree(this.length);
 	}
 
-	@Contract(pure = true)
 	public IntervalUpdateIntervalQuery(@NotNull long... originValues) {
 		this(originValues.length);
 		long lastValue = 0;

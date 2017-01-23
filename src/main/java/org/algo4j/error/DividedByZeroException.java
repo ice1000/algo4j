@@ -12,12 +12,10 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class DividedByZeroException extends ArithmeticException {
-	@Contract(pure = true)
 	public DividedByZeroException(@NotNull @Nls String msg) {
 		super(msg);
 	}
 
-	@Contract(pure = true)
 	public DividedByZeroException() {
 		this("A number cannot be divided by zero");
 	}

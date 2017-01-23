@@ -11,12 +11,10 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings("unused")
 public class BinaryIndexedTreeException extends RuntimeException {
-	@Contract(pure = true)
 	public BinaryIndexedTreeException() {
 		this("Binary indexed tree error!");
 	}
 
-	@Contract(pure = true)
 	public BinaryIndexedTreeException(@NotNull @Nls String message) {
 		super(message);
 	}

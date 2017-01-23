@@ -23,7 +23,6 @@ public class AdjacentMatrixGraph implements
 	public final int length;
 	private final int[] matrix;
 
-	@Contract(pure = true)
 	public AdjacentMatrixGraph(int length) {
 		if (length <= 0) throw new GraphException("length cannot be zero or negative!");
 		this.length = length;
@@ -166,7 +165,6 @@ public class AdjacentMatrixGraph implements
 		private int cursorX = 0;
 		private int cursorY = 0;
 
-		@Contract(pure = true)
 		public AdjMatrixItr(
 				@NotNull AdjacentMatrixGraph context,
 				int cursorX,
@@ -176,7 +174,6 @@ public class AdjacentMatrixGraph implements
 			this.cursorY = cursorY;
 		}
 
-		@Contract(pure = true)
 		public AdjMatrixItr(@NotNull AdjacentMatrixGraph context) {
 			this(context, 0, 0);
 		}

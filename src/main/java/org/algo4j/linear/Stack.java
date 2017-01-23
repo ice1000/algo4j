@@ -20,7 +20,6 @@ public class Stack<T> implements
 	private final int maxLen;
 	private int cursor;
 
-	@Contract(pure = true)
 	public Stack() {
 		this(1000);
 	}
@@ -103,7 +102,6 @@ public class Stack<T> implements
 		private int cursor;
 		private Stack<E> context;
 
-		@Contract(pure = true)
 		public StackItr(@NotNull Stack<E> queue) {
 			cursor = 0;
 			context = queue;

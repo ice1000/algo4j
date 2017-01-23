@@ -1,6 +1,5 @@
 package org.algo4j.graph
 
-import org.algo4j.get
 import org.algo4j.test.loop
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals

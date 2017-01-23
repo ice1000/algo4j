@@ -11,12 +11,10 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class StackException extends RuntimeException {
-	@Contract(pure = true)
 	public StackException(@NotNull @Nls String message) {
 		super(message);
 	}
 
-	@Contract(pure = true)
 	public StackException() {
 		this("Stack error!");
 	}

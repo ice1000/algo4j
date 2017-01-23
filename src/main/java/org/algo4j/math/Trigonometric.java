@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Contract;
  */
 @SuppressWarnings("WeakerAccess")
 public final class Trigonometric {
-	@Contract(pure = true)
 	private Trigonometric() {
 	}
 

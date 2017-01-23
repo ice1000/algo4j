@@ -1,6 +1,5 @@
 package org.algo4j.util
 
-import org.algo4j.math.MathUtils
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
 import org.jetbrains.annotations.TestOnly

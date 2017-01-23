@@ -19,12 +19,10 @@ public class ExgcdRes implements
 	private final long x;
 	private final long y;
 
-	@Contract(pure = true)
 	public ExgcdRes(@NotNull long[] data) {
 		this(data[0], data[1], data[2]);
 	}
 
-	@Contract(pure = true)
 	public ExgcdRes(long c, long x, long y) {
 		this.c = c;
 		this.x = x;

@@ -32,7 +32,6 @@ public class BigInt implements
 	public static final BigInt TEN = new BigInt(10);
 	public static final BigInt NEGA_TEN = new BigInt(-10);
 
-	@Contract(pure = true)
 	public BigInt(@NotNull @NonNls String origin) {
 		boolean sigTemp;
 		if (origin.startsWith("-")) {
@@ -45,39 +44,33 @@ public class BigInt implements
 		sig = sigTemp;
 	}
 
-	@Contract(pure = true)
 	public BigInt(@NotNull byte[] origin, boolean sig) {
 		if (origin.length == 1 && origin[0] == '0') sig = true;
 		data = origin;
 		this.sig = sig;
 	}
 
-	@Contract(pure = true)
 	public BigInt(int origin) {
 		sig = origin >= 0;
 		data = Integer.toString(abs(origin)).getBytes();
 	}
 
-	@Contract(pure = true)
 	public BigInt(long origin) {
 		sig = origin >= 0;
 		data = Long.toString(abs(origin)).getBytes();
 	}
 
-	@Contract(pure = true)
 	public BigInt(short origin) {
 		sig = origin >= 0;
 		data = Long.toString(abs(origin)).getBytes();
 	}
 
-	@Contract(pure = true)
 	public BigInt(@Nullable BigInt anotherBigInt) {
 		if (anotherBigInt == null) anotherBigInt = ZERO;
 		sig = anotherBigInt.sig;
 		data = anotherBigInt.data;
 	}
 
-	@Contract(pure = true)
 	public BigInt(@Nullable BigInteger anotherBigInt) {
 		this(anotherBigInt != null ?
 				anotherBigInt.toString() :

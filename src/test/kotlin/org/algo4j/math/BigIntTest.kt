@@ -1,6 +1,5 @@
 package org.algo4j.math
 
-import org.algo4j.div
 import org.algo4j.test.loop
 import org.algo4j.test.test
 import org.jetbrains.annotations.TestOnly

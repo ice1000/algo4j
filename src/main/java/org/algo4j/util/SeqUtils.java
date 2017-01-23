@@ -12,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class SeqUtils {
-	@Contract(pure = true)
 	private SeqUtils() {
 	}
 

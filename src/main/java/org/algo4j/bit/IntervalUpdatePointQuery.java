@@ -17,7 +17,6 @@ public final class IntervalUpdatePointQuery implements
 	private final BinaryIndexedTree tree;
 	public final int length;
 
-	@Contract(pure = true)
 	public IntervalUpdatePointQuery(int length) {
 		this.length = length;
 		tree = new BinaryIndexedTree(length);

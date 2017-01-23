@@ -1,6 +1,5 @@
 package org.algo4j.math
 
-import org.algo4j.math.Constants.PLANK_CONSTANT
 import org.algo4j.test.println
 import org.jetbrains.annotations.TestOnly
 import org.junit.Test

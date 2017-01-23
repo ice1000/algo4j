@@ -19,14 +19,12 @@ public class Edge implements
 	public final int depart;
 	public final int value;
 
-	@Contract(pure = true)
 	public Edge(int target, int depart, int value) {
 		this.target = target;
 		this.depart = depart;
 		this.value = value;
 	}
 
-	@Contract(pure = true)
 	public Edge(int target, int depart) {
 		this(target, depart, 1);
 	}

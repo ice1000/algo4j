@@ -11,12 +11,10 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class UnionSetException extends RuntimeException {
-	@Contract(pure = true)
 	public UnionSetException() {
 		this("Union set error!");
 	}
 
-	@Contract(pure = true)
 	public UnionSetException(@NotNull @Nls String message) {
 		super(message);
 	}

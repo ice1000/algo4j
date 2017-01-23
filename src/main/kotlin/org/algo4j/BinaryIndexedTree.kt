@@ -34,7 +34,6 @@ operator fun IntervalUpdateIntervalQuery.get(left: Int, right: Int) =
 		query(left, right)
 
 class BinaryIndexedTreeAddingHolder
-@Contract(pure = false)
 internal constructor(
 		val tree: IntervalUpdatePointQuery,
 		val from: Int,

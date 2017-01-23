@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class Statistics {
-	@Contract(pure = true)
 	private Statistics() {
 	}
 

@@ -1,6 +1,5 @@
 package org.algo4j.win
 
-import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
