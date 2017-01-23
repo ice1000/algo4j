@@ -11,7 +11,7 @@ import org.junit.Test
  */
 class WinAPITest {
 	@TestOnly
-	@Test(timeout = 1000)
+//	@Test(timeout = 1000)
 	fun beep() {
 		WinAPI.beep(2333, 1)
 	}
@@ -21,7 +21,7 @@ class WinAPITest {
 		@BeforeClass
 		fun init() {
 			System.loadLibrary("jni")
-			Loader.load()
+//			Loader.load()
 		}
 	}
 }

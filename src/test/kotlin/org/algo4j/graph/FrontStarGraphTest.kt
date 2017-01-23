@@ -1,8 +1,12 @@
 package org.algo4j.graph
 
+import org.algo4j.error.GraphException
+import org.algo4j.get
+import org.algo4j.set
 import org.algo4j.test.forceRun
 import org.algo4j.test.loop
 import org.algo4j.test.optional
+import org.algo4j.util.SeqUtils
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.*
 import org.junit.BeforeClass

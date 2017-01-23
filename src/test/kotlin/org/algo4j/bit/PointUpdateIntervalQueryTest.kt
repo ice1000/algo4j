@@ -1,5 +1,7 @@
 package org.algo4j.bit
 
+import org.algo4j.get
+import org.algo4j.math.MathUtils.abs
 import org.algo4j.test.loop
 import org.algo4j.test.test
 import org.jetbrains.annotations.Contract
@@ -52,8 +54,8 @@ class PointUpdateIntervalQueryTest {
 				bit.add(index, value)
 			}
 			loop(10) {
-				var num1 = MathUtils.abs(rand.nextInt(max) - 2) + 2
-				var num2 = MathUtils.abs(rand.nextInt(max) - 2) + 2
+				var num1 = abs(rand.nextInt(max) - 2) + 2
+				var num2 = abs(rand.nextInt(max) - 2) + 2
 				if (num2 < num1) {
 					val tmp = num1
 					num1 = num2

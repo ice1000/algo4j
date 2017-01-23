@@ -1,5 +1,7 @@
 package org.algo4j.math
 
+import org.algo4j.math.Constants.ELEMENTARY_CHARGE
+import org.algo4j.math.Constants.PLANK_CONSTANT
 import org.algo4j.test.println
 import org.jetbrains.annotations.TestOnly
 import org.junit.Test
@@ -14,5 +16,6 @@ class ConstantsTest {
 	@Test(timeout = 10)
 	fun outputConstants() {
 		(1e35 * PLANK_CONSTANT).println()
+		(1e35 * ELEMENTARY_CHARGE).println()
 	}
 }

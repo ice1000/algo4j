@@ -4,9 +4,31 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'kotlin'
+//apply plugin: 'cpp'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+//model {
+//	components {
+//		algo4j(SharedLibraryBinarySpec) {
+//			sources {
+//				cpp {
+//					source {
+//						srcDir += "jni/bit"
+//						srcDir += "jni/global"
+//						srcDir += "jni/graph"
+//						srcDir += "jni/math"
+//						srcDir += "jni/util"
+//					}
+//				}
+//			}
+//		}
+//	}
+//}
+//
+//task moveJniLibrary {
+//}
 
 repositories {
 	jcenter()

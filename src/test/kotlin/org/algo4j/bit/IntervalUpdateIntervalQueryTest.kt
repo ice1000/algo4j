@@ -1,5 +1,6 @@
 package org.algo4j.bit
 
+import org.algo4j.math.MathUtils
 import org.algo4j.test.loop
 import org.algo4j.test.test
 import org.jetbrains.annotations.Contract

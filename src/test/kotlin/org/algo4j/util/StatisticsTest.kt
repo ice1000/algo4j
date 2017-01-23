@@ -1,7 +1,9 @@
 package org.algo4j.util
 
+import org.algo4j.math.MathUtils.*
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
+import org.algo4j.util.Statistics.*
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -20,7 +22,7 @@ class StatisticsTest {
 			val list = shuffledIntList
 			var sum = 0
 			list.forEach { sum += it }
-			assertEquals(sum, Statistics.sum(list.toIntArray()))
+			assertEquals(sum, sum(list.toIntArray()))
 		}
 	}
 
@@ -33,7 +35,7 @@ class StatisticsTest {
 			list.forEach { avg += it }
 			assertEquals(
 					avg / list.size,
-					Statistics.avg(list.toIntArray()), 1e-10)
+					avg(list.toIntArray()), 1e-10)
 		}
 	}
 
@@ -45,11 +47,11 @@ class StatisticsTest {
 			var min = list[0]
 			var max = list[0]
 			list.forEach {
-				min = MathUtils.min(min, it)
-				max = MathUtils.max(max, it)
+				min = min(min, it)
+				max = max(max, it)
 			}
-			assertEquals(max, Statistics.max(list.toIntArray()))
-			assertEquals(min, Statistics.min(list.toIntArray()))
+			assertEquals(max, max(list.toIntArray()))
+			assertEquals(min, min(list.toIntArray()))
 		}
 	}
 
@@ -62,10 +64,10 @@ class StatisticsTest {
 			list.forEach { avg += it }
 			avg /= list.size
 			var stdDiv = 0.0
-			list.forEach { stdDiv += MathUtils.abs(it - avg) }
+			list.forEach { stdDiv += abs(it - avg) }
 			assertEquals(
 					stdDiv / list.size,
-					Statistics.stdDiv(list.toIntArray()), 1e-12)
+					stdDiv(list.toIntArray()), 1e-12)
 		}
 	}
 
