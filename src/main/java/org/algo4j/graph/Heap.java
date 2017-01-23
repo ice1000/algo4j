@@ -1,5 +1,6 @@
 package org.algo4j.graph;
 
+import org.algo4j.error.HeapException;
 import org.algo4j.util.SeqUtils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -10,19 +11,41 @@ import org.jetbrains.annotations.Nullable;
  *
  * @author ice1000
  */
+@SuppressWarnings("WeakerAccess")
 public class Heap implements
 		Cloneable {
 	private final int[] data;
 	private final int length;
+	private int cursor;
 
 	public Heap(@NotNull int... data) {
 		this.data = data;
 		this.length = data.length;
+		this.cursor = length;
+	}
+
+	public Heap(int length) {
+		this.data = new int[length];
+		this.length = length;
+		this.cursor = 0;
 	}
 
 	@NotNull
-	@Contract("!null -> !null")
+	@Contract(value = "!null -> !null", pure = true)
 	private static native int[] makeHeap(@NotNull int[] origin);
+
+	@NotNull
+	@Contract(value = "!null, _, _ -> !null")
+	private static native int[] insert(
+			@NotNull int[] data,
+			int cursor,
+			int element
+	);
+
+	public void insert(int element) {
+		if (cursor >= length) throw HeapException.overflow();
+		insert(data, cursor++, element);
+	}
 
 	@NotNull
 	@Contract("_ -> !null")

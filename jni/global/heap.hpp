@@ -19,7 +19,7 @@ namespace algo4j_heap {
 	}
 
 	template<typename T>
-	auto min_heapify(T *heap, const jsize &heapsize, jsize i) -> void {
+	auto min_heapify(T *heap, const jsize heapsize, jsize i) -> void {
 		auto smallest = i;
 		auto lch = i << 1;
 		auto rch = lch + 1;
@@ -36,7 +36,7 @@ namespace algo4j_heap {
 	}
 
 	template<typename T>
-	auto make_heap(T *heap, const jsize &heapsize) -> void {
+	auto make_heap(T *heap, const jsize heapsize) -> void {
 		for (auto i = heapsize >> 1; i >= 1; --i)
 			min_heapify(heap, heapsize, i);
 	}

@@ -20,6 +20,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 		jintArray
 ) -> jintArray;
 
+/**
+ * Class:     org_algo4j_graph_Heap
+ * Method:    insert
+ * Signature: ([I)[I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint,
+		jint
+) -> jintArray;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

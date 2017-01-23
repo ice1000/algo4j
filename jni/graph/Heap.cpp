@@ -18,3 +18,13 @@ JNIEXPORT auto JNICALL Java_org_algo4j_linear_Heap_makeHeap(
 }
 
 
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint cursor,
+		jint element
+) -> jintArray {
+}
+
+
