@@ -1,0 +1,66 @@
+group 'org.algo4j'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+buildscript {
+	ext.kotlin_version = '1.0.6'
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		//noinspection DifferentKotlinGradleVersion
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	}
+}
+
+sourceSets {
+	main.kotlin.srcDirs += 'src/main/kotlin'
+	main.java.srcDirs += 'src/main/java'
+}
+
+dependencies {
+	compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
+	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+	testCompile 'junit:junit:4.11'
+	testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+}
+
+test {
+	filter {
+		// include specific method in any of the tests
+		// includeTestsMatching "*UiCheck"
+
+		//include all tests from package
+		includeTestsMatching "org.algo4j.*"
+
+		//include all integration tests
+		// includeTestsMatching "*IntegTest"
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		xml.destination "${buildDir}/reports/report.xml"
+		html.enabled true
+		html.destination "${buildDir}/reports/report_html"
+	}
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}

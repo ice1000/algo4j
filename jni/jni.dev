@@ -24,12 +24,12 @@ HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
-Folders=bit,global,graph,linear,math,util,win
+Folders=bit,global,graph,math,util,win
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=100000aag0000000000000000
-UnitCount=30
+UnitCount=31
 
 [VersionInfo]
 Major=1
@@ -340,10 +340,20 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit30]
-FileName=linear\Heap.h
+[Unit31]
+FileName=graph\Heap.h
 CompileCpp=1
-Folder=linear
+Folder=graph
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit30]
+FileName=graph\Heap.cpp
+CompileCpp=1
+Folder=graph
 Compile=1
 Link=1
 Priority=1000
