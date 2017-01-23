@@ -10,7 +10,6 @@ import org.junit.Test
 
  * @author ice1000
  */
-@TestOnly
 class WinAPITest {
 	@TestOnly
 	@Test(timeout = 1000)
@@ -18,7 +17,6 @@ class WinAPITest {
 		WinAPI.beep(2333, 1)
 	}
 
-	@TestOnly
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

@@ -15,7 +15,6 @@ import java.lang.Math as StdMath
 
  * @author ice1000
  */
-@TestOnly
 class MathUtilsTest {
 
 	@TestOnly
@@ -206,7 +205,6 @@ class MathUtilsTest {
 		}
 	}
 
-	@TestOnly
 	companion object Initializer {
 
 		@BeforeClass

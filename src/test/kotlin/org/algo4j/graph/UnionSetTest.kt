@@ -11,7 +11,6 @@ import org.junit.Test
 
  * @author algo4j
  */
-@TestOnly
 class UnionSetTest {
 
 	/**
@@ -32,7 +31,6 @@ class UnionSetTest {
 		assertFalse(set.isConnected(5, 6))
 	}
 
-	@TestOnly
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic

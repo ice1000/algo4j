@@ -18,7 +18,6 @@ import java.util.*
 
  * @author ice1000s
  */
-@TestOnly
 class FrontStarGraphTest {
 
 	/**

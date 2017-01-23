@@ -15,7 +15,6 @@ import java.util.*
 
  * @author ice1000
  */
-@TestOnly
 class IntervalUpdateIntervalQueryTest {
 
 	/**
@@ -67,12 +66,9 @@ class IntervalUpdateIntervalQueryTest {
 	/**
 	 * brute force implementation of binary indexed tree.
 	 */
-	@TestOnly
 	private inner class BruteForce
 	@TestOnly
-	@Contract(pure = true)
 	internal constructor(length: Int) {
-		@TestOnly
 		private val data = LongArray(length)
 
 		/**

@@ -10,7 +10,6 @@ import org.junit.Test
 
  * @author ice1000
  */
-@TestOnly
 class ConstantsTest {
 	@TestOnly
 	@Test(timeout = 10)

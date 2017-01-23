@@ -16,7 +16,6 @@ import java.util.*
 
  * @author ice1000
  */
-@TestOnly
 class IntervalUpdatePointQueryTest {
 
 	/**
@@ -68,10 +67,8 @@ class IntervalUpdatePointQueryTest {
 	/**
 	 * brute force implementation of binary indexed tree.
 	 */
-	@TestOnly
 	private inner class BruteForce
 	@TestOnly
-	@Contract(pure = true)
 	internal constructor(length: Int) {
 		private val data = LongArray(length)
 
@@ -96,7 +93,6 @@ class IntervalUpdatePointQueryTest {
 		internal operator fun get(index: Int) = query(index)
 	}
 
-	@TestOnly
 	companion object Initializer {
 
 		@BeforeClass

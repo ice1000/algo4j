@@ -14,7 +14,6 @@ import java.util.Arrays as StdArrays
  *
  * @author ice1000
  */
-@TestOnly
 class SeqUtilsTest {
 
 	@TestOnly
@@ -208,7 +207,6 @@ class SeqUtilsTest {
 		}
 	}
 
-	@TestOnly
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic

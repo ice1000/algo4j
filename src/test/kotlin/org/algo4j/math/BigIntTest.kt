@@ -16,7 +16,6 @@ import java.math.BigInteger as StdBigInt
 
  * @author ice1000
  */
-@TestOnly
 class BigIntTest {
 	@TestOnly
 	@Test
@@ -165,7 +164,6 @@ class BigIntTest {
 		}
 	}
 
-	@TestOnly
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

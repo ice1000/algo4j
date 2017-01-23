@@ -13,7 +13,6 @@ import org.junit.Test
 
  * @author ice1000
  */
-@TestOnly
 class StatisticsTest {
 	@TestOnly
 	@Test(timeout = 1000)
@@ -71,7 +70,6 @@ class StatisticsTest {
 		}
 	}
 
-	@TestOnly
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass
