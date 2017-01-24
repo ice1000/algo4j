@@ -12,6 +12,8 @@ jni/.vscode/
 *.def
 *.o
 *.exe
+.gradle/
+build/
 
 jni/cmake-build-debug/
 jni/build/
