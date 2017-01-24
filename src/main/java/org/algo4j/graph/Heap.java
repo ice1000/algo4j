@@ -53,6 +53,7 @@ public class Heap implements
 			int element
 	);
 
+	@SuppressWarnings("SameParameterValue")
 	private static native void minHeapify(
 			@NotNull int[] data,
 			int cursor,
