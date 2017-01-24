@@ -74,6 +74,12 @@ public class Heap implements
 		else insert(data, ++cursor, element);
 	}
 
+	public int peek() {
+		int ret = data[1];
+		minHeapify(data, cursor--, 1);
+		return ret;
+	}
+
 	@NotNull
 	@Contract("_ -> !null")
 	public static Heap make(int... origin) {

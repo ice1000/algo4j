@@ -1,3 +1,5 @@
+@file:JvmName("Extension")
+@file:JvmMultifileClass
 package org.algo4j
 
 import org.algo4j.graph.Heap

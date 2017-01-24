@@ -15,9 +15,9 @@ jni|C++ codes
 code_drafts|something written but not used ATM
 jni.dll(you should build it yourself)|jni library
 jni/cpp-test|C++ tests
-src|source
-extension|Kotlin extension library
-test|tests
+src/main/java|source(independent)
+src/main/kotlin|Kotlin extension library
+src/test|tests
 
 ## Overview
 
@@ -29,6 +29,7 @@ test|tests
 - [X] Graph theory algorithms, like SPFA, Floyd, Kruskal, Bellman Ford, Dijkstra, dfs, etc.
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
+- [ ] Minimum binary heap, support adding and extracting
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>

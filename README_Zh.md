@@ -13,9 +13,9 @@ jni|C++代码
 code_drafts|代码草稿，写了还没用的东西
 jni.dll(这是你自己编译出来的)|动态链接库
 jni/cpp-test|C++部分的测试代码
-src|源码
-extension|Kotlin扩展库
-test|测试代码
+src/main/java|源码
+src/main/kotlin|Kotlin扩展库
+src/test|测试代码
 
 ## 概览
 
@@ -27,6 +27,7 @@ test|测试代码
 - [X] 图论数据结构和算法，有单源最短路SPFA，Bellman Ford，Dijkstra，傻逼暴力最短路Floyd，最小生成树Kruskal，dfs，等等。
 - [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
 - [X] 线性数据结构，栈和队列。
+- [ ] 最小二叉堆，支持插入和取顶端
 - [ ] 大整数，比标准库快。
 
 其实，代码内部文档注释很完善的。。。<br/>
