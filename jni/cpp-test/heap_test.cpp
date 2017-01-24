@@ -16,8 +16,8 @@ int data[] = {
 auto main(const int argc, const char *argv[]) -> int {
 	make_heap(data, 6);
 	for (auto i = 1; i <= 6; ++i) {
-	  printf("%i ", data[i]);
-  }
+		printf("%i ", data[i]);
+	}
 	return 0;
 }
 
