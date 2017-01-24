@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * minimum binary heap
  * Created by ice1000 on 2017/1/18.
  *
  * @author ice1000
@@ -19,32 +20,52 @@ public class Heap implements
 	private int cursor;
 
 	public Heap(@NotNull int... data) {
-		this.data = data;
 		this.length = data.length;
-		this.cursor = length;
+		this.data = makeHeap(data);
+		this.cursor = length - 1;
 	}
 
 	public Heap(int length) {
-		this.data = new int[length];
+		this.data = new int[length + 1];
+		this.data[0] = -1;
 		this.length = length;
 		this.cursor = 0;
+	}
+
+	@Contract(pure = true)
+	public int getElementAt(int index) {
+		if (index <= 0 || index > size()) throw HeapException.overflow();
+		return data[index];
+	}
+
+	@Contract(pure = true)
+	public int size() {
+		return cursor;
 	}
 
 	@NotNull
 	@Contract(value = "!null -> !null", pure = true)
 	private static native int[] makeHeap(@NotNull int[] origin);
 
-	@NotNull
-	@Contract(value = "!null, _, _ -> !null")
-	private static native int[] insert(
+	private static native void insert(
 			@NotNull int[] data,
 			int cursor,
 			int element
 	);
 
+	@Contract(pure = true)
+	public boolean empty() {
+		return cursor <= 0;
+	}
+
 	public void insert(int element) {
-		if (cursor >= length) throw HeapException.overflow();
-		insert(data, cursor++, element);
+		if (cursor > length) throw HeapException.overflow();
+//		else if (empty()) {
+//			data[1] = element;
+//			++cursor;
+//		}
+//		else if (empty()) data[cursor++] = element;
+		else insert(data, ++cursor, element);
 	}
 
 	@NotNull

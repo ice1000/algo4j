@@ -66,5 +66,9 @@ int main()
 	}
 	// Add more actions here.
 
+	for (int i = 0; i <= n; i++)
+	{
+	  printf("%i ", H[i]);
+  }
 	return 0;
 }

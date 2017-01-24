@@ -23,7 +23,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 /**
  * Class:     org_algo4j_graph_Heap
  * Method:    insert
- * Signature: ([I)[I
+ * Signature: ([I)V
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
 		JNIEnv *,
@@ -31,7 +31,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
 		jintArray,
 		jint,
 		jint
-) -> jintArray;
+) -> void;
 
 #ifdef __cplusplus
 }

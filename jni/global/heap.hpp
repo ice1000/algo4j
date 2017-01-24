@@ -7,11 +7,14 @@
 using algo4j_util::swap;
 
 namespace algo4j_heap {
+	// should be called like this:
+	// insert(data, ++cursor, element);
 	template<typename T>
-	auto insert(T *heap, jsize &heapsize, T x) -> void {
-		heap[++heapsize] = x;
-		auto ch = heapsize, p = heapsize >> 1;
-		while (heap[p] > heap[ch] and p > 1) {
+	auto insert(T *heap, jsize heapsize, T &x) -> void {
+		heap[heapsize] = x;
+		auto ch = heapsize;
+    auto p = heapsize >> 1;
+		while (heap[p] > heap[ch] and p >= 1) {
 			swap(heap[p], heap[ch]);
 			ch = p;
 			p = ch >> 1;
