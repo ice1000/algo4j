@@ -33,6 +33,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
 		jint
 ) -> void;
 
+/**
+ * Class:     org_algo4j_graph_Heap
+ * Method:    minHeapify
+ * Signature: ([I)V
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_minHeapify(
+		JNIEnv *,
+		jclass,
+		jintArray,
+		jint,
+		jint
+) -> void;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

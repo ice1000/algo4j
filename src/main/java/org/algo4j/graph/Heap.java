@@ -53,6 +53,12 @@ public class Heap implements
 			int element
 	);
 
+	private static native void minHeapify(
+			@NotNull int[] data,
+			int cursor,
+			int index
+	);
+
 	@Contract(pure = true)
 	public boolean empty() {
 		return cursor <= 0;

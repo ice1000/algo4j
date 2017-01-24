@@ -6,6 +6,7 @@
 
 using algo4j_heap::make_heap;
 using algo4j_heap::insert;
+using algo4j_heap::min_heapify;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 		JNIEnv *env,
@@ -18,8 +19,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 	auto ret = new jint[len + 1];
 	ret[0] = -1;
 	for (auto i = 0; i < len; ++i) {
-    ret[i + 1] = data[i];
-  }
+		ret[i + 1] = data[i];
+	}
 	make_heap(ret, len);
 	__abort(Int, data);
 	__set(Int, ret, len);
@@ -33,11 +34,23 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
 		jclass,
 		jintArray _data,
 		jint cursor,
-		jint element
-) -> void {
+		jint element) -> void {
 	__JNI__FUNCTION__INIT__
 	__get(Int, data);
 	insert(data, cursor, element);
+	__release(Int, data);
+	__JNI__FUNCTION__CLEAN__
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_minHeapify(
+		JNIEnv *env,
+		jclass,
+		jintArray _data,
+		jint cursor,
+		jint index) -> void {
+	__JNI__FUNCTION__INIT__
+	__get(Int, data;
+	
 	__release(Int, data);
 	__JNI__FUNCTION__CLEAN__
 }

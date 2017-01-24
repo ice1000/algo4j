@@ -10,7 +10,7 @@ namespace algo4j_heap {
 	// should be called like this:
 	// insert(data, ++cursor, element);
 	template<typename T>
-	auto insert(T *heap, jsize heapsize, T &x) -> void {
+	inline auto insert(T *heap, jsize heapsize, T &x) -> void {
 		heap[heapsize] = x;
 		auto ch = heapsize;
     auto p = heapsize >> 1;
@@ -22,7 +22,7 @@ namespace algo4j_heap {
 	}
 
 	template<typename T>
-	auto min_heapify(T *heap, const jsize heapsize, jsize i) -> void {
+	inline auto min_heapify(T *heap, const jsize heapsize, jsize i) -> void {
 		auto smallest = i;
 		auto lch = i << 1;
 		auto rch = lch + 1;
@@ -39,13 +39,13 @@ namespace algo4j_heap {
 	}
 
 	template<typename T>
-	auto make_heap(T *heap, const jsize heapsize) -> void {
+	inline auto make_heap(T *heap, const jsize heapsize) -> void {
 		for (auto i = heapsize >> 1; i >= 1; --i)
 			min_heapify(heap, heapsize, i);
 	}
 
 	template<typename T>
-	auto extract_min(T *heap, jsize &heapsize) -> T {
+	inline auto extract_min(T *heap, jsize &heapsize) -> T {
 		auto res = heap[1];
 		heap[1] = heap[heapsize--];
 		min_heapify(heap, heapsize, 1);

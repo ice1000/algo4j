@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=100000aag0000000000000000
-UnitCount=31
+UnitCount=32
 
 [VersionInfo]
 Major=1
@@ -354,6 +354,16 @@ BuildCmd=
 FileName=graph\Heap.cpp
 CompileCpp=1
 Folder=graph
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit32]
+FileName=global\heap.hpp
+CompileCpp=1
+Folder=global
 Compile=1
 Link=1
 Priority=1000
