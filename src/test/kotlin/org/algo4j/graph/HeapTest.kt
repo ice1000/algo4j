@@ -3,7 +3,9 @@ package org.algo4j.graph
 import org.algo4j.get
 import org.algo4j.plusAssign
 import org.algo4j.test.optional
-import org.algo4j.test.println
+import org.algo4j.test.shuffledIntList
+import org.algo4j.test.test
+import org.algo4j.util.SeqUtils.sortMerge
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
@@ -20,7 +22,7 @@ class HeapTest {
 	@Test(timeout = 1000)
 	fun testMake() {
 		val heap = Heap.make(1000, 233, 33, 41, 25, 6, 7)
-		optional(true) {
+		optional(false) {
 			for (i in 1..heap.size()) {
 				println(heap[i])
 			}
@@ -40,27 +42,42 @@ class HeapTest {
 		heap += 6
 		heap += 7
 		val heap2 = Heap.make(1000, 233, 33, 41, 25, 6, 7)
-		(1..heap.size()).forEach {
-			// assertEquals(heap2[it], heap[it])
-			println(heap[it])
-		}
-		println("")
-		(1..heap2.size()).forEach {
-			println(heap2[it])
+		optional(false) {
+			(1..heap.size()).forEach {
+				// assertEquals(heap2[it], heap[it])
+				println(heap[it])
+			}
+			println("")
+			(1..heap2.size()).forEach {
+				println(heap2[it])
+			}
 		}
 	}
 
-	@Test
+
+	@Test(timeout = 1000)
 	fun testMinHeapify() {
 		val heap = Heap.make(100, 342, 432, 45, 4, 54, 65)
-		assertEquals(4, heap.peek().println())
-		assertEquals(45, heap.peek().println())
-		assertEquals(54, heap.peek().println())
-		assertEquals(65, heap.peek().println())
-		assertEquals(100, heap.peek().println())
-		assertEquals(342, heap.peek().println())
-		assertEquals(432, heap.peek().println())
+		assertEquals(4, heap.peek())
+		assertEquals(45, heap.peek())
+		assertEquals(54, heap.peek())
+		assertEquals(65, heap.peek())
+		assertEquals(100, heap.peek())
+		assertEquals(342, heap.peek())
+		assertEquals(432, heap.peek())
 		assertTrue { heap.empty() }
+	}
+
+	@Test(timeout = 4000)
+	fun testMinHeapifyStrong() {
+		test(400) {
+			val arr = shuffledIntList.toIntArray()
+			val heap = Heap.make(*arr)
+			sortMerge(arr)
+			(1..heap.size()).forEach {
+				assertEquals(arr[it - 1], heap.peek())
+			}
+		}
 	}
 
 	companion object {

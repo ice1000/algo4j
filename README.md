@@ -29,7 +29,7 @@ src/test|tests
 - [X] Graph theory algorithms, like SPFA, Floyd, Kruskal, Bellman Ford, Dijkstra, dfs, etc.
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
-- [ ] Minimum binary heap, support adding and extracting
+- [ ] Minimum binary heap(priority queue), support adding and extracting
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>
