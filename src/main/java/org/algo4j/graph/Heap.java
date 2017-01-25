@@ -77,14 +77,23 @@ public class Heap implements
 	}
 
 	public int peek() {
-		int ret = data[1];
+		int ret = front();
+		pop();
+		return ret;
+	}
+
+	public int front() {
+		return data[1];
+	}
+
+	public void pop() {
 		data[1] = data[cursor];
 		minHeapify(data, --cursor, 1);
-		return ret;
 	}
 
 	@NotNull
 	@Contract("_ -> !null")
+
 	public static Heap make(int... origin) {
 		return new Heap(origin);
 	}
