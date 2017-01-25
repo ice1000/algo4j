@@ -30,6 +30,34 @@ using std::ostream;
 #define __lowbit(x) ((x) & (-(x)))
 #endif /// __lowbit
 
+namespace algo4j_math {
+
+	template<typename T>
+	auto fast_plus(T a, T b, T m) -> T {
+		T ret = 0;
+		while (b) {
+			if (b bitand 1)
+				ret = (ret + a) % m;
+			b >>= 1;
+			a = (a << 1) % m;
+		}
+		return ret;
+	}
+
+	template<typename T>
+	auto fast_power(T a, T b, T m) -> T {
+		T ret = 1;
+		while (b) {
+			if (b bitand 1)
+				ret = fast_plus(ret, a, m);
+			b >>= 1;
+			a = fast_plus(a, a, m);
+		}
+		return ret;
+	}
+
+}
+
 namespace algo4j_bit {
 	template<typename T>
 	constexpr auto lowbit(const T a) -> jlong {

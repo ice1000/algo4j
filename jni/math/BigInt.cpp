@@ -15,11 +15,15 @@
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using algo4j_util::swap;
+
 using algo4j_int::compare;
 using algo4j_int::plus;
 using algo4j_int::minus;
 using algo4j_int::times;
 using algo4j_int::BigInt;
+
+using algo4j_math::fast_plus;
+using algo4j_math::fast_power;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 		JNIEnv *env,
@@ -34,8 +38,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 	auto buf = plus(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len);
 	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
-	__release(Byte, a);
-	__release(Byte, b);
+	__abort(Byte, a);
+	__abort(Byte, b);
 	delete buf;
 	__JNI__FUNCTION__CLEAN__
 	return _ret;
@@ -54,8 +58,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
 	auto buf = minus(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len);
 	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
-	__release(Byte, a);
-	__release(Byte, b);
+	__abort(Byte, a);
+	__abort(Byte, b);
 	__JNI__FUNCTION__CLEAN__
 	delete buf;
 	return _ret;
@@ -97,7 +101,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times10(
 	}
 	ret[a_len] = '0';
 	env->SetByteArrayRegion(_ret, 0, a_len + 1, ret);
-	__release(Byte, a);
+	__abort(Byte, a);
 	__JNI__FUNCTION__CLEAN__
 	delete ret;
 	return _ret;
@@ -120,6 +124,24 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_pow(
 	//
 }
 
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_fastPower(
+		JNIEnv *env,
+		jclass,
+		jbyteArray _a,
+		jint pow,
+		jint mod) -> jint {
+	__JNI__FUNCTION__INIT__
+	__get(Byte, a);
+	auto len = __len(a);
+	jint ret = 0;
+	for (auto i = 0; i < len; ++i) {
+		ret = (ret * 10 + a[i] - '0') % mod;
+	}
+	__abort(Byte, a);
+	__JNI__FUNCTION__CLEAN__
+	return fast_power(ret, pow, mod);
+}
+
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 		JNIEnv *env,
 		jclass,
@@ -131,8 +153,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 	auto a_len = __len(a);
 	auto b_len = __len(b);
 	auto ret = compare(a, b, a_len, b_len);
-	__release(Byte, a);
-	__release(Byte, b);
+	__abort(Byte, a);
+	__abort(Byte, b);
 	__JNI__FUNCTION__CLEAN__
 	if (ret > 0) ret = 1;
 	if (ret < 0) ret = -1;

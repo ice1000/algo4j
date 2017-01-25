@@ -42,10 +42,6 @@ namespace algo4j_math {
 
 	auto exgcd(const jlong, const jlong, jlong &, jlong &) -> jlong;
 
-	auto fast_plus(jlong, jlong, jlong) -> jlong;
-
-	auto fast_power(jlong, jlong, jlong) -> jlong;
-
 	auto ln_ice(const jdouble) -> jdouble;
 
 	auto lg_ice(const jdouble) -> jdouble;

@@ -82,6 +82,21 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_pow(
 		jint
 ) -> jbyteArray;
 
+
+/*
+ * Class:     org_algo4j_math_BigInt
+ * Method:    fastPower
+ * Signature: ([BII)I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_fastPower(
+		JNIEnv *,
+		jclass,
+		jbyteArray,
+		jint,
+		jint
+) -> jint;
+
+
 /**
  * Class:     org_algo4j_math_BigInt
  * Method:    compareTo

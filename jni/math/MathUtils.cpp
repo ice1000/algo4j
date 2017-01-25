@@ -3,6 +3,7 @@
 ///
 
 #include "MathUtils.h"
+#include "../global/templates.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

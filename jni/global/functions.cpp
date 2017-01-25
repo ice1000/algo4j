@@ -103,28 +103,6 @@ auto algo4j_math::lg_ice(const jdouble x) -> jdouble {
 	return log10(x);
 }
 
-auto algo4j_math::fast_plus(jlong a, jlong b, jlong m) -> jlong {
-	decltype(a) ret = 0;
-	while (b) {
-		if (b bitand 1)
-			ret = (ret + a) % m;
-		b >>= 1;
-		a = (a << 1) % m;
-	}
-	return ret;
-}
-
-auto algo4j_math::fast_power(jlong a, jlong b, jlong m) -> jlong {
-	decltype(a) ret = 1;
-	while (b) {
-		if (b bitand 1)
-			ret = fast_plus(ret, a, m);
-		b >>= 1;
-		a = fast_plus(a, a, m);
-	}
-	return ret;
-}
-
 auto algo4j_math::is_prime(const jlong num) -> bool {
 	if (num < 2)
 		return false;

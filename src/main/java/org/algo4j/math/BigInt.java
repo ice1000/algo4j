@@ -173,6 +173,18 @@ public class BigInt implements
 		return new BigInt(pow(data, pow), (pow & 1) == 1 && !sig);
 	}
 
+	/**
+	 * A fast algorithm to calculate (a ^ b) % m. O(2 * log(a) * log(b))
+	 *
+	 * @param pow power
+	 * @param mod mod
+	 * @return a ^ b % m
+	 */
+	@Contract(pure = true)
+	public int fastPower(int pow, int mod) {
+		return fastPower(data, pow, mod);
+	}
+
 	// TODO jni impl
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
@@ -203,6 +215,9 @@ public class BigInt implements
 	@NotNull
 	@Contract(value = "!null, _ -> !null", pure = true)
 	private static native byte[] pow(@NotNull byte[] a, int pow);
+
+	@Contract(pure = true)
+	public static native int fastPower(@NotNull byte[] a, int b, int mod);
 
 	@Contract(pure = true)
 	private static native int compareTo(@NotNull byte[] a, @NotNull byte[] b);
