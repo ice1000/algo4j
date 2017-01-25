@@ -103,7 +103,7 @@ public class FrontStarGraph implements
 	}
 
 	/**
-	 * add an edge to this front star graph.
+	 * add an edge to this top star graph.
 	 *
 	 * @param from begin position
 	 * @param to   end position
@@ -337,8 +337,8 @@ public class FrontStarGraph implements
 	 * This is Bellman-Ford with queue optimization
 	 *
 	 * @param source    start node id
-	 * @param next      front star graph edge
-	 * @param head      front star graph edge
+	 * @param next      top star graph edge
+	 * @param head      top star graph edge
 	 * @param target    edge target
 	 * @param value     edge value
 	 * @param edgeCount edges
@@ -378,8 +378,8 @@ public class FrontStarGraph implements
 	);
 
 	/**
-	 * @param next      front star graph edge
-	 * @param head      front star graph edge
+	 * @param next      top star graph edge
+	 * @param head      top star graph edge
 	 * @param target    edge target
 	 * @param value     edge value
 	 * @param edgeCount edges

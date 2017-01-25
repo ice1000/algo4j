@@ -22,7 +22,8 @@ public class Heap implements
 	public Heap(@NotNull int... data) {
 		this.length = data.length;
 		this.data = makeHeap(data);
-		this.cursor = length - 1;
+		this.data[0] = -1;
+		this.cursor = length;
 	}
 
 	public Heap(int length) {
@@ -77,7 +78,8 @@ public class Heap implements
 
 	public int peek() {
 		int ret = data[1];
-		minHeapify(data, cursor--, 1);
+		data[1] = data[cursor];
+		minHeapify(data, --cursor, 1);
 		return ret;
 	}
 

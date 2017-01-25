@@ -47,10 +47,35 @@ namespace algo4j_heap {
 	template<typename T>
 	inline auto extract_min(T *heap, jsize &heapsize) -> T {
 		auto res = heap[1];
-		heap[1] = heap[heapsize--];
-		min_heapify(heap, heapsize, 1);
+		heap[1] = heap[heapsize];
+		min_heapify(heap, --heapsize, 1);
 		return res;
 	}
+
+	template<typename T>
+	class heap {
+	private:
+		T *data;
+		jsize len;
+
+	public:
+		heap(jsize _len) : len(0) {
+			data = new T[_len + 1];
+		}
+
+		auto insert(const T &element) -> void {
+			insert(data, len, element);
+		}
+
+		auto min_heapify(jsize i = 1) -> void {
+			min_heapify(data, len, i);
+		}
+
+		auto extract_min() -> T {
+			if (len <= 0) return nullptr;
+			else return extract_min(data, len);
+		}
+	};
 }
 
 

@@ -46,6 +46,11 @@ public class AdjacentMatrixGraph implements
 		return new AdjacentMatrixGraph(SeqUtils.copy(matrix));
 	}
 
+	/**
+	 * O(n) = n^3
+	 *
+	 * @return adjacent matrix after floyd
+	 */
 	@NotNull
 	@Contract(value = " -> !null", pure = true)
 	public AdjacentMatrixGraph floyd() {

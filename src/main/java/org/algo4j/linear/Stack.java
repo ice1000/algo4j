@@ -52,7 +52,7 @@ public class Stack<T> implements
 	@Override
 	@Nullable
 	@Contract(pure = true)
-	public T front() {
+	public T top() {
 		return empty() ? null : (T) data[cursor - 1];
 	}
 

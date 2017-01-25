@@ -23,7 +23,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 	}
 	make_heap(ret, len);
 	__abort(Int, data);
-	__set(Int, ret, len);
+	__set(Int, ret, len + 1);
 	__JNI__FUNCTION__CLEAN__
 	return _ret;
 }
@@ -49,8 +49,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_minHeapify(
 		jint cursor,
 		jint index) -> void {
 	__JNI__FUNCTION__INIT__
-	__get(Int, data;
-	
+	__get(Int, data);
+	min_heapify(data, cursor, index);
 	__release(Int, data);
 	__JNI__FUNCTION__CLEAN__
 }

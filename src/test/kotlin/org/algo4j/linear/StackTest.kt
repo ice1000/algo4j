@@ -19,7 +19,7 @@ class StackTest {
 		stack.push(233)
 		stack.push(666)
 		stack.push(123)
-		assertEquals(123, stack.front())
+		assertEquals(123, stack.top())
 		assertEquals(123, stack.pop())
 		assertEquals(666, stack.pop())
 		assertEquals(233, stack.pop())

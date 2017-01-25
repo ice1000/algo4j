@@ -25,7 +25,7 @@ public interface Container<T> extends
 
 	@Nullable
 	@Contract(pure = true)
-	T front();
+	T top();
 
 	@Nullable
 	T pop();

@@ -19,7 +19,7 @@ class QueueTest {
 		queue.push(233)
 		queue.push(666)
 		queue.push(123)
-		assertEquals(233, queue.front())
+		assertEquals(233, queue.top())
 		assertEquals(233, queue.pop())
 		assertEquals(666, queue.pop())
 		assertEquals(123, queue.pop())

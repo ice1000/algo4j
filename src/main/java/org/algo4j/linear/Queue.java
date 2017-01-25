@@ -83,7 +83,7 @@ public class Queue<T> implements
 	@Override
 	@Nullable
 	@Contract(pure = true)
-	public T front() {
+	public T top() {
 		return empty() ? null : (T) data[begin % maxLen];
 	}
 
