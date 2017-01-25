@@ -128,6 +128,19 @@ public final class MathUtils {
 	public static native long fastPower(long a, long b, long mod);
 
 	/**
+	 * A fast algorithm to calculate (a ^ b) % m. O(2 * log(a) * log(b))
+	 *
+	 * @param a   base
+	 * @param b   power
+	 * @param mod mod
+	 * @return a ^ b % m
+	 */
+	@Contract(pure = true)
+	public static int fastPower(BigInt a, int b, int mod) {
+		return a.fastPower(b, mod);
+	}
+
+	/**
 	 * same as {@code java.lang.MathUtils.abs(double)}
 	 *
 	 * @return abstract value of a

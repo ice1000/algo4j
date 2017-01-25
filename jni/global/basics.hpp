@@ -16,7 +16,7 @@
 #define org_algo4j_util_Math_MAGIC_NUMBER 1597463007L
 
 #define __JNI__FUNCTION__INIT__ \
-auto option = new jboolean(false);
+auto option = new jboolean(JNI_FALSE);
 
 #define __JNI__FUNCTION__CLEAN__ \
 delete option;

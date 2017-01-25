@@ -1,8 +1,9 @@
 package org.algo4j.util;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import sun.reflect.CallerSensitive;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * To load the JNI library
@@ -12,25 +13,39 @@ import sun.reflect.CallerSensitive;
  */
 @SuppressWarnings("WeakerAccess")
 public final class Loader {
+	private static final String LIB_BIN = "/lib-bin/";
+	private final static String JNI_LIB_NAME = "jni";
+
+	/*
+	 * maybe it's already loaded, so there should be a check
+	 */
 	static {
-		load();
+		try {
+			System.loadLibrary(JNI_LIB_NAME);
+		} catch (UnsatisfiedLinkError e) {
+			loadFromJar();
+		}
 	}
 
-	public static final String JNI_LIB_NAME = "jni";
-	private static boolean loaded = false;
-
-	@CallerSensitive
-	public static void load() {
-		if (loaded) return;
-		loaded = true;
-		loadJni(JNI_LIB_NAME);
+	private static void loadFromJar() {
+		loadLib(JNI_LIB_NAME);
 	}
 
-	@CallerSensitive
-	@SuppressWarnings("SameParameterValue")
-	private static void loadJni(@NotNull @NonNls String __) {
-		if (loaded) return;
-		loaded = true;
-		System.loadLibrary(__);
+	/**
+	 * Puts library to temp dir and loads to memory
+	 */
+	private static void loadLib(String ___) {
+		String __ = ___ + ".dll";
+		try {
+			InputStream in = Loader.class.getResourceAsStream(LIB_BIN + __);
+			File fileOut = new File(__);
+			OutputStream out = new FileOutputStream(fileOut);
+			byte[] ____ = new byte[0xFFFF];
+			while (-1 != in.read(____)) out.write(____);
+			in.close();
+			out.close();
+			System.load(fileOut.toString());
+		} catch (Exception ignored) {
+		}
 	}
 }
