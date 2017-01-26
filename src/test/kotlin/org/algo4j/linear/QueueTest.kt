@@ -13,7 +13,7 @@ import org.junit.Test
  */
 class QueueTest {
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 1000)
 	fun test() {
 		val queue = Queue<Int>()
 		queue.push(233)

@@ -13,7 +13,7 @@ import org.junit.Test
  */
 class StackTest {
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 1000)
 	fun test() {
 		val stack = Stack<Int>()
 		stack.push(233)

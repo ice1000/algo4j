@@ -19,7 +19,7 @@ class UnionSetTest {
 	 * http://codevs.cn/problem/1073/
 	 */
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 1000)
 	fun test() {
 		val set = UnionSet(6)
 		set.merge(1, 2)

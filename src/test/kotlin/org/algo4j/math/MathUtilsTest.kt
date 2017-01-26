@@ -127,7 +127,7 @@ class MathUtilsTest {
 	 * min max value
 	 */
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 1000)
 	fun minMaxTest() {
 		val random = Random(System.currentTimeMillis())
 		test(1000) {

@@ -22,7 +22,7 @@ jboolean *option = NULL;
 delete option;
 
 #define __release(type, name) \
-env->Release ## type ## ArrayElements(_ ## name, name, 0);
+env->Release ## type ## ArrayElements(_ ## name, name, JNI_OK);
 
 #define __abort(type, name) \
 env->Release ## type ## ArrayElements(_ ## name, name, JNI_ABORT);
