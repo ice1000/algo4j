@@ -5,40 +5,50 @@ if exist *.o (
 	del /f /s /q *.o
 )
 
-cd bit
-if exist *.o (
-	del /f /s /q *.o
-)
+cd tree
+	if exist *.o (
+		del /f /s /q *.o
+	)
+	cd bit
+		if exist *.o (
+			del /f /s /q *.o
+		)
+	cd ..
+	cd heap
+		if exist *.o (
+			del /f /s /q *.o
+		)
+	cd ..
 cd ..
 
 cd global
-if exist *.o (
-	del /f /s /q *.o
-)
+	if exist *.o (
+		del /f /s /q *.o
+	)
 cd ..
 
 cd graph
-if exist *.o (
-	del /f /s /q *.o
-)
+	if exist *.o (
+		del /f /s /q *.o
+	)
 cd ..
 
 cd math
-if exist *.o (
-	del /f /s /q *.o
-)
+	if exist *.o (
+		del /f /s /q *.o
+	)
 cd ..
 
 cd util
-if exist *.o (
-	del /f /s /q *.o
-)
+	if exist *.o (
+		del /f /s /q *.o
+	)
 cd ..
 
 cd win
-if exist *.o (
-	del /f /s /q *.o
-)
+	if exist *.o (
+		del /f /s /q *.o
+	)
 cd ..
 
 REM if exist *.res (
