@@ -7,20 +7,23 @@ set(BUILD_USE_64BITS on)
 
 set(
 		SOURCE_TEMPLATES
+		global/basics.hpp
 		global/templates.hpp
 		global/sort.hpp
+		global/heap.hpp
 )
 
 set(
 		SOURCE_FILES
 		graph/AdjacentMatrixGraph.cpp
-		bit/BinaryIndexedTree.cpp
+		tree/bit/BinaryIndexedTree.cpp
+		tree/heap/Heap.cpp
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
 		global/functions.cpp
 		util/Statistics.cpp
 		math/MathUtils.cpp
-		graph/UnionSet.cpp
+		tree/UnionSet.cpp
 		global/winapi.cpp
 		global/bigint.cpp
 		global/basics.hpp
@@ -32,13 +35,14 @@ set(
 set(
 		SOURCE_HEADERS
 		graph/AdjacentMatrixGraph.h
-		bit/BinaryIndexedTree.h
+		tree/bit/BinaryIndexedTree.h
+		tree/heap/Heap.h
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
 		global/functions.h
 		util/Statistics.h
 		math/MathUtils.h
-		graph/UnionSet.h
+		tree/UnionSet.h
 		global/bigint.h
 		global/winapi.h
 		util/SeqUtils.h

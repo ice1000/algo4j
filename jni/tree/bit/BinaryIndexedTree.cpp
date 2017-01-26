@@ -3,8 +3,8 @@
 ///
 
 #include "BinaryIndexedTree.h"
-#include "../global/templates.hpp"
-#include "../global/basics.hpp"
+#include "../../global/templates.hpp"
+#include "../../global/basics.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -12,7 +12,7 @@
 
 using namespace algo4j_bit;
 
-JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_bit_BinaryIndexedTree_add(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,
@@ -26,7 +26,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_add(
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_algo4j_bit_BinaryIndexedTree_sum(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_bit_BinaryIndexedTree_sum(
 		JNIEnv *env,
 		jclass,
 		jlongArray _data,

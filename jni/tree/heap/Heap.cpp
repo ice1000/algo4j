@@ -1,14 +1,17 @@
 
 #include "Heap.h"
-#include "../global/functions.h"
-#include "../global/basics.hpp"
-#include "../global/heap.hpp"
+#include "../../global/functions.h"
+#include "../../global/basics.hpp"
+#include "../../global/heap.hpp"
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using algo4j_heap::make_heap;
 using algo4j_heap::insert;
 using algo4j_heap::min_heapify;
 
-JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_makeHeap(
 		JNIEnv *env,
 		jclass,
 		jintArray _data) -> jintArray {
@@ -29,7 +32,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_makeHeap(
 }
 
 
-JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_insert(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -42,7 +45,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_insert(
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_minHeapify(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_minHeapify(
 		JNIEnv *env,
 		jclass,
 		jintArray _data,
@@ -56,3 +59,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_Heap_minHeapify(
 }
 
 
+
+#pragma clang diagnostic pop
