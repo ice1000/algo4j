@@ -1,5 +1,5 @@
 
-#include "Heap.h"
+#include "MinHeap.h"
 #include "../../global/functions.h"
 #include "../../global/basics.hpp"
 #include "../../global/heap.hpp"
@@ -8,8 +8,8 @@
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using algo4j_heap::make_heap;
-using algo4j_heap::insert;
-using algo4j_heap::min_heapify;
+using algo4j_heap::heap_insert;
+using algo4j_heap::heap_adjust;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_makeHeap(
 		JNIEnv *env,
@@ -21,8 +21,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_makeHeap(
 	__new(Int, ret, len + 1);
 	auto ret = new jint[len + 1];
 	ret[0] = -1;
-	for (auto i = 0; i < len; ++i) {
-		ret[i + 1] = data[i];
+	for (auto _ = 0; _ < len; ++_) {
+		ret[_ + 1] = data[_];
 	}
 	make_heap(ret, len);
 	__abort(Int, data);
@@ -40,7 +40,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_insert(
 		jint element) -> void {
 	__JNI__FUNCTION__INIT__
 	__get(Int, data);
-	insert(data, cursor, element);
+	heap_insert(data, cursor, element);
 	__release(Int, data);
 	__JNI__FUNCTION__CLEAN__
 }
@@ -53,11 +53,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_minHeapify(
 		jint index) -> void {
 	__JNI__FUNCTION__INIT__
 	__get(Int, data);
-	min_heapify(data, cursor, index);
+	heap_adjust(data, cursor, index);
 	__release(Int, data);
 	__JNI__FUNCTION__CLEAN__
 }
-
 
 
 #pragma clang diagnostic pop

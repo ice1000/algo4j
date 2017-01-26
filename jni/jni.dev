@@ -24,7 +24,7 @@ HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
-Folders=bit,global,graph,math,util,win
+Folders=global,graph,math,tree,tree/bit,tree/heap,util,win
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
@@ -51,26 +51,6 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit2]
-FileName=bit\BinaryIndexedTree.h
-CompileCpp=1
-Folder=bit
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=global\functions.cpp
-CompileCpp=1
-Folder=global
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
 FileName=global\functions.h
 CompileCpp=1
 Folder=global
@@ -80,7 +60,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
+[Unit3]
 FileName=global\templates.hpp
 CompileCpp=1
 Folder=global
@@ -90,7 +70,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
+[Unit4]
 FileName=graph\FrontStarGraph.cpp
 CompileCpp=1
 Folder=graph
@@ -100,27 +80,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit8]
-FileName=graph\UnionSet.cpp
-CompileCpp=1
-Folder=graph
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit10]
-FileName=math\MathUtils.cpp
-CompileCpp=1
-Folder=math
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit7]
+[Unit5]
 FileName=graph\FrontStarGraph.h
 CompileCpp=1
 Folder=graph
@@ -130,18 +90,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
-FileName=graph\UnionSet.h
-CompileCpp=1
-Folder=graph
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit11]
-FileName=math\MathUtils.h
+[Unit6]
+FileName=math\MathUtils.cpp
 CompileCpp=1
 Folder=math
 Compile=1
@@ -150,17 +100,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit13]
-FileName=math\Trigonometric.h
-CompileCpp=1
-Folder=math
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit12]
+[Unit8]
 FileName=math\Trigonometric.cpp
 CompileCpp=1
 Folder=math
@@ -170,7 +110,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit14]
+[Unit10]
 FileName=global\basics.hpp
 CompileCpp=1
 Folder=global
@@ -180,7 +120,27 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
+[Unit7]
+FileName=math\MathUtils.h
+CompileCpp=1
+Folder=math
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=math\Trigonometric.h
+CompileCpp=1
+Folder=math
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
 FileName=global\sort.hpp
 CompileCpp=1
 Folder=global
@@ -190,27 +150,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit1]
-FileName=bit\BinaryIndexedTree.cpp
-CompileCpp=1
-Folder=bit
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit16]
-FileName=util\SeqUtils.cpp
-CompileCpp=1
-Folder=util
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit17]
+[Unit13]
 FileName=util\SeqUtils.h
 CompileCpp=1
 Folder=util
@@ -220,7 +160,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit18]
+[Unit12]
+FileName=util\SeqUtils.cpp
+CompileCpp=1
+Folder=util
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit14]
 FileName=util\Statistics.cpp
 CompileCpp=1
 Folder=util
@@ -230,7 +180,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit15]
 FileName=util\Statistics.h
 CompileCpp=1
 Folder=util
@@ -240,7 +190,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit1]
+FileName=global\functions.cpp
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
 FileName=math\BigInt.cpp
 CompileCpp=1
 Folder=math
@@ -250,7 +210,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
+[Unit17]
 FileName=math\BigInt.h
 CompileCpp=1
 Folder=math
@@ -260,7 +220,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit22]
+[Unit18]
 FileName=win\WinAPI.cpp
 CompileCpp=1
 Folder=win
@@ -270,7 +230,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit23]
+[Unit19]
 FileName=win\WinAPI.h
 CompileCpp=1
 Folder=win
@@ -280,7 +240,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit24]
+[Unit20]
 FileName=global\winapi.cpp
 CompileCpp=1
 Folder=global
@@ -290,7 +250,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit25]
+[Unit21]
 FileName=global\winapi.h
 CompileCpp=1
 Folder=global
@@ -300,7 +260,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit26]
+[Unit22]
 FileName=global\bigint.cpp
 CompileCpp=1
 Folder=global
@@ -310,7 +270,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit27]
+[Unit23]
 FileName=global\bigint.h
 CompileCpp=1
 Folder=global
@@ -320,7 +280,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit28]
+[Unit24]
 FileName=graph\AdjacentMatrixGraph.cpp
 CompileCpp=1
 Folder=graph
@@ -330,7 +290,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit29]
+[Unit25]
 FileName=graph\AdjacentMatrixGraph.h
 CompileCpp=1
 Folder=graph
@@ -340,10 +300,50 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit31]
-FileName=graph\Heap.h
+[Unit26]
+FileName=global\heap.hpp
 CompileCpp=1
-Folder=graph
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
+FileName=tree\UnionSet.cpp
+CompileCpp=1
+Folder=tree
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit28]
+FileName=tree\UnionSet.h
+CompileCpp=1
+Folder=tree
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit29]
+FileName=tree\bit\BinaryIndexedTree.cpp
+CompileCpp=1
+Folder=tree/bit
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit31]
+FileName=tree\heap\MinHeap.cpp
+CompileCpp=1
+Folder=tree/heap
 Compile=1
 Link=1
 Priority=1000
@@ -351,9 +351,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=graph\Heap.cpp
+FileName=tree\bit\BinaryIndexedTree.h
 CompileCpp=1
-Folder=graph
+Folder=tree/bit
 Compile=1
 Link=1
 Priority=1000
@@ -361,9 +361,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit32]
-FileName=global\heap.hpp
+FileName=tree\heap\MinHeap.h
 CompileCpp=1
-Folder=global
+Folder=tree/heap
 Compile=1
 Link=1
 Priority=1000

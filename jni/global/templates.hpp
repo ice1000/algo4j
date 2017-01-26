@@ -27,19 +27,21 @@ using std::ostream;
 #define __ALGO4J_TEMPLATES_HPP__
 
 #ifndef __lowbit
-#define __lowbit(x) ((x) & (-(x)))
+#define __lowbit(x) ((x) bitand (-(x)))
 #endif /// __lowbit
 
 namespace algo4j_math {
 
 	template<typename T>
-	auto fast_plus(T a, T b, T m) -> T {
+	auto fast_plus(T a, T b, T _) -> T {
 		T ret = 0;
 		while (b) {
 			if (b bitand 1)
-				ret = (ret + a) % m;
+				ret = (ret + a) % _;
 			b >>= 1;
-			a = (a << 1) % m;
+//			a <<= 1;
+//			a %= _;
+			a = (a << 1) % _;
 		}
 		return ret;
 	}
@@ -96,9 +98,9 @@ namespace algo4j_bit {
 		auto bit = new jlong[maxV]();
 		memset(bit, 0, sizeof(bit[0]) * maxV);
 		jlong ret = 0;
-		for (jsize i = 0; i < len; ++i) {
-			add(bit, static_cast<jsize>(len) + 1, arr[i], 1LL);
-			ret += i + 1 - sum(bit, arr[i]);
+		for (jsize _ = 0; _ < len; ++_) {
+			add(bit, static_cast<jsize>(len) + 1, arr[_], 1LL);
+			ret += _ + 1 - sum(bit, arr[_]);
 		}
 		delete bit;
 		return ret;
@@ -110,8 +112,8 @@ namespace algo4j_util {
 	template<typename T>
 	auto copy(T *data, jsize len) -> T * {
 		auto ret = new T[len]();
-		for (auto i = 0; i < len; ++i) {
-			ret[i] = data[i];
+		for (auto _ = 0; _ < len; ++_) {
+			ret[_] = data[_];
 		}
 		return ret;
 	}
@@ -200,13 +202,13 @@ namespace algo4j_util {
 			const jsize len) -> T * {
 		auto pair = new Pair<T, jint>[len]();
 		auto after = new T[len]();
-		for (auto i = 0; i < len; ++i)
-			pair[i].setValue(data[i], i);
+		for (auto _ = 0; _ < len; ++_)
+			pair[_].setValue(data[_], _);
 		merge_sort(pair, len);
-		for (auto i = 0, j = 0; i < len; ++i, ++j) {
-			after[pair[i].second] = j;
-			if ((i + 1 < len) and pair[i].first == pair[i + 1].first)
-				--j;
+		for (auto _ = 0, __ = 0; _ < len; ++_, ++__) {
+			after[pair[_].second] = __;
+			if ((_ + 1 < len) and pair[_].first == pair[_ + 1].first)
+				--__;
 		}
 		delete[] pair;
 		return after;

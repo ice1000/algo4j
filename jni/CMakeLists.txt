@@ -17,7 +17,7 @@ set(
 		SOURCE_FILES
 		graph/AdjacentMatrixGraph.cpp
 		tree/bit/BinaryIndexedTree.cpp
-		tree/heap/Heap.cpp
+		tree/heap/MinHeap.cpp
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
 		global/functions.cpp
@@ -36,7 +36,7 @@ set(
 		SOURCE_HEADERS
 		graph/AdjacentMatrixGraph.h
 		tree/bit/BinaryIndexedTree.h
-		tree/heap/Heap.h
+		tree/heap/MinHeap.h
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
 		global/functions.h

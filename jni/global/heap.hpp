@@ -10,10 +10,10 @@ namespace algo4j_heap {
 	// should be called like this:
 	// insert(data, ++cursor, element);
 	template<typename T>
-	inline auto insert(T *heap, jsize heapsize, T &x) -> void {
-		heap[heapsize] = x;
-		auto ch = heapsize;
-    auto p = heapsize >> 1;
+	inline auto heap_insert(T *heap, jsize len, T &_) -> void {
+		heap[len] = _;
+		auto ch = len;
+		auto p = len >> 1;
 		while (heap[p] > heap[ch] and p >= 1) {
 			swap(heap[p], heap[ch]);
 			ch = p;
@@ -22,33 +22,33 @@ namespace algo4j_heap {
 	}
 
 	template<typename T>
-	inline auto min_heapify(T *heap, const jsize heapsize, jsize i) -> void {
-		auto smallest = i;
-		auto lch = i << 1;
+	inline auto heap_adjust(T *heap, const jsize len, jsize _) -> void {
+		auto mini = _;
+		auto lch = _ << 1;
 		auto rch = lch + 1;
 
-		if (lch <= heapsize and heap[smallest] > heap[lch])
-			smallest = lch;
-		if (rch <= heapsize and heap[smallest] > heap[rch])
-			smallest = rch;
+		if (lch <= len and heap[mini] > heap[lch])
+			mini = lch;
+		if (rch <= len and heap[mini] > heap[rch])
+			mini = rch;
 
-		if (smallest != i) {
-			swap(heap[smallest], heap[i]);
-			min_heapify(heap, heapsize, smallest);
+		if (mini != _) {
+			swap(heap[mini], heap[_]);
+			heap_adjust(heap, len, mini);
 		}
 	}
 
 	template<typename T>
-	inline auto make_heap(T *heap, const jsize heapsize) -> void {
-		for (auto i = heapsize >> 1; i >= 1; --i)
-			min_heapify(heap, heapsize, i);
+	inline auto make_heap(T *heap, const jsize len) -> void {
+		for (auto _ = len >> 1; _ >= 1; --_)
+			heap_adjust(heap, len, _);
 	}
 
 	template<typename T>
-	inline auto extract_min(T *heap, jsize &heapsize) -> T {
+	inline auto heap_extract_min(T *heap, jsize &len) -> T {
 		auto res = heap[1];
-		heap[1] = heap[heapsize];
-		min_heapify(heap, --heapsize, 1);
+		heap[1] = heap[len];
+		heap_adjust(heap, --len, 1);
 		return res;
 	}
 
@@ -64,16 +64,17 @@ namespace algo4j_heap {
 		}
 
 		auto insert(const T &element) -> void {
-			insert(data, len, element);
+			heap_insert(data, len, element);
 		}
 
-		auto min_heapify(jsize i = 1) -> void {
-			min_heapify(data, len, i);
+		/// min_heapify
+		auto adjust(jsize i = 1) -> void {
+			heap_adjust(data, len, i);
 		}
 
-		auto extract_min() -> T {
+		auto extract_top() -> T {
 			if (len <= 0) return nullptr;
-			else return extract_min(data, len);
+			else return heap_extract_min(data, len);
 		}
 	};
 }

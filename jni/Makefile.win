@@ -5,8 +5,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
-OBJ      = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o graph/Heap.o $(RES)
-LINKOBJ  = bit/BinaryIndexedTree.o global/functions.o graph/FrontStarGraph.o graph/UnionSet.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o graph/Heap.o $(RES)
+OBJ      = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o $(RES)
+LINKOBJ  = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o $(RES)
 LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -27,17 +27,11 @@ clean: clean-custom
 $(BIN): $(LINKOBJ)
 	$(CPP) -shared $(LINKOBJ) -o $(BIN) $(LIBS) -Wl,--output-def,$(DEF),--out-implib,$(STATIC),--add-stdcall-alias
 
-bit/BinaryIndexedTree.o: bit/BinaryIndexedTree.cpp
-	$(CPP) -c bit/BinaryIndexedTree.cpp -o bit/BinaryIndexedTree.o $(CXXFLAGS)
-
 global/functions.o: global/functions.cpp
 	$(CPP) -c global/functions.cpp -o global/functions.o $(CXXFLAGS)
 
 graph/FrontStarGraph.o: graph/FrontStarGraph.cpp
 	$(CPP) -c graph/FrontStarGraph.cpp -o graph/FrontStarGraph.o $(CXXFLAGS)
-
-graph/UnionSet.o: graph/UnionSet.cpp
-	$(CPP) -c graph/UnionSet.cpp -o graph/UnionSet.o $(CXXFLAGS)
 
 math/MathUtils.o: math/MathUtils.cpp
 	$(CPP) -c math/MathUtils.cpp -o math/MathUtils.o $(CXXFLAGS)
@@ -66,8 +60,14 @@ global/bigint.o: global/bigint.cpp
 graph/AdjacentMatrixGraph.o: graph/AdjacentMatrixGraph.cpp
 	$(CPP) -c graph/AdjacentMatrixGraph.cpp -o graph/AdjacentMatrixGraph.o $(CXXFLAGS)
 
-graph/Heap.o: graph/Heap.cpp
-	$(CPP) -c graph/Heap.cpp -o graph/Heap.o $(CXXFLAGS)
+tree/UnionSet.o: tree/UnionSet.cpp
+	$(CPP) -c tree/UnionSet.cpp -o tree/UnionSet.o $(CXXFLAGS)
+
+tree/bit/BinaryIndexedTree.o: tree/bit/BinaryIndexedTree.cpp
+	$(CPP) -c tree/bit/BinaryIndexedTree.cpp -o tree/bit/BinaryIndexedTree.o $(CXXFLAGS)
+
+tree/heap/MinHeap.o: tree/heap/MinHeap.cpp
+	$(CPP) -c tree/heap/MinHeap.cpp -o tree/heap/MinHeap.o $(CXXFLAGS)
 
 jni_private.res: jni_private.rc 
 	$(WINDRES) -i jni_private.rc --input-format=rc -o jni_private.res -O coff 

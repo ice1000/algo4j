@@ -75,7 +75,7 @@ __JNI__FUNCTION__INIT__ \
 __get(type, data); \
 auto len = __len(data); \
 auto after = discretization(data, len); \
-for (auto i = 0; i < len; ++i) ++after[i]; \
+for (auto _ = 0; _ < len; ++_) ++after[_]; \
 auto ret = inversion(after, len, len + 1); \
 __release(type, data) \
 __JNI__FUNCTION__CLEAN__ \

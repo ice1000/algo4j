@@ -25,7 +25,7 @@ using std::ostream;
 auto algo4j_math::sqrt_carmack(jfloat x) -> jfloat {
 	auto x_half = 0.5F * x;
 	auto i = *(jint *) &x;
-	i = org_algo4j_util_Math_MAGIC_NUMBER - (i >> 1);
+	i = SQRT_MAGIC_NUMBER - (i >> 1);
 	x = *(jfloat *) &i;
 	x *= (1.5F - x_half * x * x);
 	x *= (1.5F - x_half * x * x);

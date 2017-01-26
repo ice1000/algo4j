@@ -134,8 +134,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_fastPower(
 	__get(Byte, a);
 	auto len = __len(a);
 	jint ret = 0;
-	for (auto i = 0; i < len; ++i) {
-		ret = (ret * 10 + a[i] - '0') % mod;
+	for (auto _ = 0; _ < len; ++_) {
+		ret = (ret * 10 + a[_] - '0') % mod;
 	}
 	__abort(Byte, a);
 	__JNI__FUNCTION__CLEAN__

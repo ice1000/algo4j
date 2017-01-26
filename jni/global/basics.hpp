@@ -12,11 +12,11 @@
 #endif /// __algo4j_memset
 
 /// 0x5F3759DF thank you Carmack
-#undef org_algo4j_util_Math_MAGIC_NUMBER
-#define org_algo4j_util_Math_MAGIC_NUMBER 1597463007L
+#undef SQRT_MAGIC_NUMBER
+#define SQRT_MAGIC_NUMBER 1597463007L
 
 #define __JNI__FUNCTION__INIT__ \
-auto option = new jboolean(JNI_FALSE);
+jboolean *option = NULL;
 
 #define __JNI__FUNCTION__CLEAN__ \
 delete option;
@@ -45,50 +45,52 @@ env->GetArrayLength(_ ## name)
 
 namespace algo4j_util {
 	template<typename T>
-	inline constexpr auto swap(T &a, T &b) -> void {
-		auto c = a;
-		a = b;
-		b = c;
+	inline constexpr auto swap(T &_1, T &_2) -> void {
+		auto _ = _1;
+		_1 = _2;
+		_2 = _;
 	}
 
 	template<typename T1, typename T2>
-	inline constexpr auto max(const T1 &a, const T2 &b) -> T1 {
-		return a < b ? b : a;
+	inline constexpr auto max(const T1 &_1, const T2 &_2) -> T1 {
+		return _1 < _2 ? _2 : _1;
 	}
 
 	template<typename T1, typename T2>
-	inline constexpr auto min(const T1 &a, const T2 &b) -> T1 {
-		return a > b ? a : b;
+	inline constexpr auto min(const T1 &_1, const T2 &_2) -> T1 {
+		return _1 > _2 ? _1 : _2;
 	}
 
 	template<typename T>
-	inline constexpr auto abs(const T &o) -> T {
-		return o < 0 ? -o : o;
+	inline constexpr auto abs(const T &_) -> T {
+		return _ < 0 ? -_ : _;
 	}
 
 	template<typename T>
 	class Single {
+	private:
+		T *_;
+
 	public:
-		T *value;
 
 		explicit Single(T *val) :
-				value(val) {}
+				_(val) {}
 
 		~Single() {
-			clear();
+//			clear();
 		}
 
 		auto set(T *val) -> T * {
-			delete value;
-			return value = val;
+			delete _;
+			return _ = val;
 		}
 
 		constexpr auto get() -> T * {
-			return value;
+			return _;
 		}
 
 		constexpr auto clear() -> void {
-			delete value;
+			delete _;
 		}
 	};
 
