@@ -1,6 +1,8 @@
 
 # algo4j
 
+[![](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+
 [中文](./README_Zh.md)
 
 This is an algorithm library for Java use, and core is written in C++ with JNI.

@@ -1,6 +1,10 @@
 
 # algo4j
 
+[![](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+
+[English](./README.md)
+
 这是一个提供给Java使用的算法库，核心算法使用C++完成，JNI调用。
 
 这玩意测试覆盖率100%，文档齐全，部分情况使用代码生成。
