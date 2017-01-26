@@ -2,6 +2,7 @@
 # algo4j
 
 [![](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+[![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
 
 [中文](./README_Zh.md)
 
