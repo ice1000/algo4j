@@ -1,4 +1,4 @@
-package org.algo4j.bit
+package org.algo4j.tree.bit
 
 import org.algo4j.get
 import org.algo4j.math.MathUtils.abs
@@ -16,25 +16,27 @@ import java.util.*
 
  * @author ice1000
  */
-class IntervalUpdatePointQueryTest {
+class PointUpdateIntervalQueryTest {
 
 	/**
-	 * discretizationTest
-	 * data: I make it myself
+	 * data from:
+	 * http://www.codevs.cn/problem/1080/
 	 */
 	@TestOnly
-	@Test(timeout = 100)
+	@Test(timeout = 200)
 	fun test() {
-		val tree = IntervalUpdatePointQuery(30)
-		tree[10, 20] += 5
-		tree[15, 25] += 15
-		assertEquals(20, tree[15])
-		assertEquals(20, tree[17])
-		assertEquals(20, tree[20])
-		assertEquals(20, tree[17])
-
-		tree.update(1, 15, 1)
-		assertEquals(6, tree[12])
+		val tree = BinaryIndexedTree(10)
+		tree.add(1, 4)
+		tree.add(2, 5)
+		tree.add(3, 6)
+		tree.add(4, 2)
+		tree.add(5, 1)
+		tree.add(6, 3)
+		tree.add(7, 4)
+		tree.add(3, 5)
+		assertEquals(14, tree[3, 5])
+		tree.add(1, 9)
+		assertEquals(22, tree[2, 6])
 	}
 
 	@TestOnly
@@ -42,9 +44,15 @@ class IntervalUpdatePointQueryTest {
 	fun strongTest() {
 		val max = 300
 		val bruteForce = BruteForce(max)
-		val bit = IntervalUpdatePointQuery(max)
+		val bit = BinaryIndexedTree(max)
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
+			loop(10) {
+				val index = rand.nextInt(max - 2) + 2
+				val value = rand.nextLong()
+				bruteForce.add(index, value)
+				bit.add(index, value)
+			}
 			loop(10) {
 				var num1 = abs(rand.nextInt(max) - 2) + 2
 				var num2 = abs(rand.nextInt(max) - 2) + 2
@@ -53,13 +61,7 @@ class IntervalUpdatePointQueryTest {
 					num1 = num2
 					num2 = tmp
 				}
-				val value = rand.nextLong()
-				bruteForce.update(num1, num2, value)
-				bit[num1, num2] += value
-			}
-			loop(10) {
-				val index = rand.nextInt(max - 2) + 2
-				assertEquals(bruteForce[index], bit[index])
+				assertEquals(bruteForce[num1, num2], bit[num1, num2])
 			}
 		}
 	}
@@ -73,28 +75,38 @@ class IntervalUpdatePointQueryTest {
 		private val data = LongArray(length)
 
 		/**
-		 * standard update operation
+		 * standard add operation
 		 */
 		@TestOnly
-		@Contract(pure = false)
-		internal fun update(from: Int, to: Int, value: Long) {
-			(from..to).forEach { data[it] += value }
+		fun add(index: Int, value: Long) {
+			data[index] += value
 		}
 
 		/**
-		 * standard query operation
+		 * standard sum operation
 		 */
 		@TestOnly
 		@Contract(pure = true)
-		internal fun query(index: Int) = data[index]
+		fun sum(from: Int, to: Int): Long {
+			var ret = 0L
+			(from..to).forEach { ret += data[it] }
+			return ret
+		}
 
 		@TestOnly
 		@Contract(pure = true)
-		internal operator fun get(index: Int) = query(index)
+		internal operator fun get(left: Int, right: Int) = sum(left, right)
+
+		@TestOnly
+		@Contract(pure = true)
+		internal operator fun get(index: Int) = sum(index)
+
+		@TestOnly
+		@Contract(pure = true)
+		internal fun sum(index: Int) = sum(1, index)
 	}
 
 	companion object Initializer {
-
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {

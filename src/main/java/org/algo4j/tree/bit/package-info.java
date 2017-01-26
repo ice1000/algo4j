@@ -20,4 +20,4 @@
  *
  * @author ice1000
  */
-package org.algo4j.bit;
+package org.algo4j.tree.bit;

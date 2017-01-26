@@ -1,4 +1,4 @@
-package org.algo4j.graph;
+package org.algo4j.tree;
 
 import org.algo4j.error.UnionSetException;
 import org.jetbrains.annotations.Contract;

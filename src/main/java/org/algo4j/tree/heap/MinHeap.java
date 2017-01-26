@@ -1,4 +1,4 @@
-package org.algo4j.graph;
+package org.algo4j.tree.heap;
 
 import org.algo4j.error.HeapException;
 import org.algo4j.util.SeqUtils;
@@ -13,20 +13,20 @@ import org.jetbrains.annotations.Nullable;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public class Heap implements
+public class MinHeap implements
 		Cloneable {
 	private final int[] data;
 	private final int length;
 	private int cursor;
 
-	public Heap(@NotNull int... data) {
+	public MinHeap(@NotNull int... data) {
 		this.length = data.length;
 		this.data = makeHeap(data);
 		this.data[0] = -1;
 		this.cursor = length;
 	}
 
-	public Heap(int length) {
+	public MinHeap(int length) {
 		this.data = new int[length + 1];
 		this.data[0] = -1;
 		this.length = length;
@@ -94,24 +94,24 @@ public class Heap implements
 	@NotNull
 	@Contract("_ -> !null")
 
-	public static Heap make(int... origin) {
-		return new Heap(origin);
+	public static MinHeap make(int... origin) {
+		return new MinHeap(origin);
 	}
 
 	@Override
 	@NotNull
 	@Contract(pure = true)
 	@SuppressWarnings("MethodDoesntCallSuperMethod")
-	public Heap clone() {
-		return new Heap(SeqUtils.copy(data));
+	public MinHeap clone() {
+		return new MinHeap(SeqUtils.copy(data));
 	}
 
 	@Override
 	@Contract(value = "null -> false", pure = true)
 	public boolean equals(@Nullable Object obj) {
-		if (obj == null || !(obj instanceof Heap)) return false;
+		if (obj == null || !(obj instanceof MinHeap)) return false;
 		if (obj == this) return true;
-		Heap o = (Heap) obj;
+		MinHeap o = (MinHeap) obj;
 		if (o.length != this.length) return false;
 		for (int i = 0; i < this.length; ++i) if (this.data[i] != o.data[i]) return false;
 		return true;

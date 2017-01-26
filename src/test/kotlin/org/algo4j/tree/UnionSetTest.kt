@@ -1,5 +1,6 @@
-package org.algo4j.graph
+package org.algo4j.tree
 
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -35,7 +36,7 @@ class UnionSetTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

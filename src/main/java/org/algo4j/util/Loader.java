@@ -14,7 +14,7 @@ import java.io.OutputStream;
 @SuppressWarnings("WeakerAccess")
 public final class Loader {
 	private static final String LIB_BIN = "/lib-bin/";
-	private final static String JNI_LIB_NAME = "jni";
+	public final static String JNI_LIB_NAME = "jni";
 
 	/*
 	 * maybe it's already loaded, so there should be a check

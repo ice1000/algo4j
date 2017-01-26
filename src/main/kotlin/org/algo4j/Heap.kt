@@ -2,7 +2,7 @@
 @file:JvmMultifileClass
 package org.algo4j
 
-import org.algo4j.graph.Heap
+import org.algo4j.tree.heap.MinHeap
 import org.jetbrains.annotations.Contract
 
 /**
@@ -12,8 +12,8 @@ import org.jetbrains.annotations.Contract
  */
 
 @Contract(pure = true)
-operator fun Heap.get(index: Int): Int =
+operator fun MinHeap.get(index: Int): Int =
 		getElementAt(index)
 
-operator fun Heap.plusAssign(value: Int) =
+operator fun MinHeap.plusAssign(value: Int) =
 		insert(value)

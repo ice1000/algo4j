@@ -228,7 +228,7 @@ class SeqUtilsTest {
 		@TestOnly
 		@JvmStatic
 		fun main(args: Array<String>) {
-			Loader.load()
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 			SeqUtilsTest().discretizationTest()
 		}
 	}

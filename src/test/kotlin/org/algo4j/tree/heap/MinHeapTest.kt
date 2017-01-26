@@ -1,10 +1,11 @@
-package org.algo4j.graph
+package org.algo4j.tree.heap
 
 import org.algo4j.get
 import org.algo4j.plusAssign
 import org.algo4j.test.optional
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
+import org.algo4j.tree.heap.MinHeap
 import org.algo4j.util.SeqUtils.sortMerge
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -17,11 +18,11 @@ import kotlin.test.assertTrue
  *
  * @author ice1000
  */
-class HeapTest {
+class MinHeapTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testMake() {
-		val heap = Heap.make(1000, 233, 33, 41, 25, 6, 7)
+		val heap = MinHeap.make(1000, 233, 33, 41, 25, 6, 7)
 		optional(false) {
 			for (i in 1..heap.size()) {
 				println(heap[i])
@@ -32,7 +33,7 @@ class HeapTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testInsert() {
-		val heap = Heap(100)
+		val heap = MinHeap(100)
 		assertTrue(heap.empty())
 		heap += 1000
 		heap += 233
@@ -41,7 +42,7 @@ class HeapTest {
 		heap += 25
 		heap += 6
 		heap += 7
-		val heap2 = Heap.make(1000, 233, 33, 41, 25, 6, 7)
+		val heap2 = MinHeap.make(1000, 233, 33, 41, 25, 6, 7)
 		optional(false) {
 			(1..heap.size()).forEach {
 				// assertEquals(heap2[it], heap[it])
@@ -57,7 +58,7 @@ class HeapTest {
 
 	@Test(timeout = 1000)
 	fun testMinHeapify() {
-		val heap = Heap.make(100, 342, 432, 45, 4, 54, 65)
+		val heap = MinHeap.make(100, 342, 432, 45, 4, 54, 65)
 		assertEquals(4, heap.peek())
 		assertEquals(45, heap.peek())
 		assertEquals(54, heap.peek())
@@ -72,7 +73,7 @@ class HeapTest {
 	fun testMinHeapifyStrong() {
 		test(400) {
 			val arr = shuffledIntList.toIntArray()
-			val heap = Heap.make(*arr)
+			val heap = MinHeap.make(*arr)
 			sortMerge(arr)
 			(1..heap.size()).forEach {
 				assertEquals(arr[it - 1], heap.peek())

@@ -8,7 +8,7 @@
  */
 package org.algo4j
 
-import org.algo4j.graph.UnionSet
+import org.algo4j.tree.UnionSet
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = false)

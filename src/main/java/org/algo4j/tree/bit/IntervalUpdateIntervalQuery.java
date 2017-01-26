@@ -1,4 +1,4 @@
-package org.algo4j.bit;
+package org.algo4j.tree.bit;
 
 import org.algo4j.error.BinaryIndexedTreeException;
 import org.jetbrains.annotations.Contract;

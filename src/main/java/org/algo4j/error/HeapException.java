@@ -14,12 +14,12 @@ public class HeapException extends RuntimeException {
 	}
 
 	public HeapException() {
-		this("Heap error!");
+		this("MinHeap error!");
 	}
 
 	@NotNull
 	@Contract(" -> !null")
 	public static HeapException overflow() {
-		return new HeapException("Heap overflow!");
+		return new HeapException("MinHeap overflow!");
 	}
 }

@@ -8,9 +8,9 @@
  */
 package org.algo4j
 
-import org.algo4j.bit.BinaryIndexedTree
-import org.algo4j.bit.IntervalUpdateIntervalQuery
-import org.algo4j.bit.IntervalUpdatePointQuery
+import org.algo4j.tree.bit.BinaryIndexedTree
+import org.algo4j.tree.bit.IntervalUpdateIntervalQuery
+import org.algo4j.tree.bit.IntervalUpdatePointQuery
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = true)
