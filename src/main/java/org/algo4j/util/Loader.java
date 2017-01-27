@@ -25,12 +25,8 @@ public final class Loader {
 		try {
 			System.loadLibrary(JNI_LIB_NAME);
 		} catch (UnsatisfiedLinkError e) {
-			loadFromJar();
+			loadLib(JNI_LIB_NAME);
 		}
-	}
-
-	private static void loadFromJar() {
-		loadLib(JNI_LIB_NAME);
 	}
 
 	/**

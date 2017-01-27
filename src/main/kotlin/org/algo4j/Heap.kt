@@ -16,4 +16,4 @@ operator fun MinHeap.get(index: Int): Int =
 		getElementAt(index)
 
 operator fun MinHeap.plusAssign(value: Int) =
-		insert(value)
+		push(value)

@@ -15,15 +15,14 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("WeakerAccess")
 public class MinHeap implements
 		Cloneable {
-	private final int[] data;
+	protected final int[] data;
 	private final int length;
 	private int cursor;
 
-	public MinHeap(@NotNull int... data) {
+	protected MinHeap(@NotNull int... data) {
 		this.length = data.length;
-		this.data = makeHeap(data);
-		this.data[0] = -1;
-		this.cursor = length;
+		this.data = data;
+		this.cursor = data.length;
 	}
 
 	public MinHeap(int length) {
@@ -46,9 +45,9 @@ public class MinHeap implements
 
 	@NotNull
 	@Contract(value = "!null -> !null", pure = true)
-	private static native int[] makeHeap(@NotNull int[] origin);
+	protected static native int[] makeHeap(@NotNull int[] origin);
 
-	private static native void insert(
+	private static native void push(
 			@NotNull int[] data,
 			int cursor,
 			int element
@@ -66,23 +65,23 @@ public class MinHeap implements
 		return cursor <= 0;
 	}
 
-	public void insert(int element) {
+	public void push(int element) {
 		if (cursor > length) throw HeapException.overflow();
 //		else if (empty()) {
 //			data[1] = element;
 //			++cursor;
 //		}
 //		else if (empty()) data[cursor++] = element;
-		else insert(data, ++cursor, element);
+		else push(data, ++cursor, element);
 	}
 
 	public int peek() {
-		int ret = front();
+		int ret = top();
 		pop();
 		return ret;
 	}
 
-	public int front() {
+	public int top() {
 		return data[1];
 	}
 
@@ -93,9 +92,8 @@ public class MinHeap implements
 
 	@NotNull
 	@Contract("_ -> !null")
-
 	public static MinHeap make(int... origin) {
-		return new MinHeap(origin);
+		return new MinHeap(makeHeap(origin));
 	}
 
 	@Override
