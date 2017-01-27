@@ -1,5 +1,6 @@
 @file:JvmName("Extension")
 @file:JvmMultifileClass
+
 package org.algo4j
 
 import org.algo4j.tree.heap.MinHeap
@@ -15,5 +16,13 @@ import org.jetbrains.annotations.Contract
 operator fun MinHeap.get(index: Int): Int =
 		getElementAt(index)
 
+@Contract(pure = false)
 operator fun MinHeap.plusAssign(value: Int) =
 		push(value)
+
+/**
+ * functional plus
+ */
+@Contract(pure = true)
+operator fun MinHeap.plus(value: Int) = clone().apply { plusAssign(value) }
+
