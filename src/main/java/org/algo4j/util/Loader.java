@@ -13,13 +13,15 @@ import java.io.OutputStream;
  */
 @SuppressWarnings("WeakerAccess")
 public final class Loader {
-	private static final String LIB_BIN = "/lib-bin/";
-	public final static String JNI_LIB_NAME = "jni";
+	private static final String LIB_BIN;
+	public final static String JNI_LIB_NAME;
 
 	/*
 	 * maybe it's already loaded, so there should be a check
 	 */
 	static {
+		LIB_BIN = "/lib-bin/";
+		JNI_LIB_NAME = "jni";
 		try {
 			System.loadLibrary(JNI_LIB_NAME);
 		} catch (UnsatisfiedLinkError e) {

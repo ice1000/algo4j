@@ -1,0 +1,18 @@
+---
+engines:
+  fixme:
+    enabled: true
+ratings:
+  paths:
+    - "src/main/java/org/alog4j/**/*"
+    - "src/main/kotlin/org/alog4j/**/*"
+    - "src/test/kotlin/org/alog4j/**/*"
+    - "jni/**/*"
+    - "**.gradle"
+    - "**.java"
+    - "**.cpp"
+    - "**.hpp"
+    - "**.bat"
+    - "**.kt"
+    - "**.h"
+exclude_paths: []
