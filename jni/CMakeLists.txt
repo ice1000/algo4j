@@ -21,6 +21,7 @@ set(
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
 		global/functions.cpp
+		global/trie.cpp
 		util/Statistics.cpp
 		math/MathUtils.cpp
 		tree/UnionSet.cpp
@@ -40,6 +41,7 @@ set(
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
 		global/functions.h
+		global/trie.h
 		util/Statistics.h
 		math/MathUtils.h
 		tree/UnionSet.h
