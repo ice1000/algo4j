@@ -52,7 +52,7 @@ public class IntQueue implements IntContainer {
 	 * @throws QueueException if queue overflow
 	 */
 	@Override
-	public synchronized void push(int obj) {
+	public void push(int obj) {
 		if (size() >= maxLen) {
 			throw QueueException.overflow();
 		} else {
@@ -68,7 +68,7 @@ public class IntQueue implements IntContainer {
 	}
 
 	@Override
-	public synchronized void pop() {
+	public void pop() {
 		if (!empty()) ++begin;
 		else throw QueueException.overflow();
 	}

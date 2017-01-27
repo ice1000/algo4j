@@ -87,11 +87,11 @@ public class AdjacentMatrixGraph implements
 	 * @param val  value from pos1 to pos2
 	 */
 	@Override
-	public synchronized void addEdge(int from, int to, int val) {
+	public void addEdge(int from, int to, int val) {
 		addEdge(from, to, val, false);
 	}
 
-	public synchronized void overwriteEdge(int from, int to, int val) {
+	public void overwriteEdge(int from, int to, int val) {
 		addEdge(from, to, val, true);
 	}
 
@@ -106,7 +106,7 @@ public class AdjacentMatrixGraph implements
 	 *              the minimum of current value and given value.
 	 * @throws GraphException if index out of bound
 	 */
-	public synchronized void addEdge(int from, int to, int val, boolean force) {
+	public void addEdge(int from, int to, int val, boolean force) {
 		if (from < 0 || to < 0 || from >= length || to >= length)
 			throw GraphException.numberInvalid();
 		if (force || val < matrix[from * length + to])
@@ -191,7 +191,7 @@ public class AdjacentMatrixGraph implements
 
 		@Override
 		@Nullable
-		public synchronized Edge next() {
+		public Edge next() {
 			if (!hasNext()) return null;
 			Edge edge = new Edge(
 					cursorX,
@@ -210,7 +210,7 @@ public class AdjacentMatrixGraph implements
 		}
 
 		@Override
-		public synchronized void remove() {
+		public void remove() {
 			context.addEdge(
 					cursorX,
 					cursorY,

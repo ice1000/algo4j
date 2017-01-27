@@ -5,6 +5,7 @@ import org.algo4j.set
 import org.algo4j.test.loop
 import org.algo4j.test.optional
 import org.algo4j.test.println
+import org.algo4j.util.Loader
 import org.algo4j.util.SeqUtils
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
@@ -97,7 +98,7 @@ class AdjacentMatrixGraphTest {
 		@BeforeClass
 		fun loadJniLib() {
 //			Loader.load()
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

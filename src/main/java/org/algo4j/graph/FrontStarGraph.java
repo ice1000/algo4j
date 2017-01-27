@@ -111,7 +111,7 @@ public class FrontStarGraph implements
 	 * @throws GraphException if index is out of bound
 	 */
 	@Override
-	public synchronized void addEdge(int from, int to, int val) {
+	public void addEdge(int from, int to, int val) {
 		if (from <= 0 || to <= 0 || from > nodeCount || to > nodeCount)
 			throw GraphException.numberInvalid();
 		if (addingEdgeIndex >= edgeCount)
@@ -467,7 +467,7 @@ public class FrontStarGraph implements
 
 		@Override
 		@Nullable
-		public synchronized Edge next() {
+		public Edge next() {
 			if (!hasNext()) return null;
 			Edge edge = new Edge(
 					context.target[cursor],
@@ -480,7 +480,7 @@ public class FrontStarGraph implements
 
 		@Override
 		@Deprecated
-		public synchronized void remove() {
+		public void remove() {
 			throw GraphException.cannotRemove();
 		}
 	}

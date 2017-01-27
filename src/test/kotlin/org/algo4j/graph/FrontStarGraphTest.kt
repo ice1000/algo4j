@@ -6,6 +6,7 @@ import org.algo4j.set
 import org.algo4j.test.forceRun
 import org.algo4j.test.loop
 import org.algo4j.test.optional
+import org.algo4j.util.Loader
 import org.algo4j.util.SeqUtils
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.*
@@ -169,7 +170,7 @@ class FrontStarGraphTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

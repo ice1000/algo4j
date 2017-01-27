@@ -59,7 +59,7 @@ public class Queue<T> implements
 	 * @throws QueueException if queue overflow
 	 */
 	@Override
-	public synchronized void push(@NotNull T obj) {
+	public void push(@NotNull T obj) {
 		if (size() >= maxLen) {
 			throw QueueException.overflow();
 		} else {
@@ -76,7 +76,7 @@ public class Queue<T> implements
 
 	@Override
 	@Nullable
-	public synchronized T pop() {
+	public T pop() {
 		return empty() ? null : (T) data[begin++ % maxLen];
 	}
 
@@ -118,7 +118,7 @@ public class Queue<T> implements
 
 		@Nullable
 		@Override
-		public synchronized E next() {
+		public E next() {
 			return hasNext() ? (E) context.data[cursor++ % context.maxLen] : null;
 		}
 	}

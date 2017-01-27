@@ -1,6 +1,7 @@
 package org.algo4j.math
 
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.Test
@@ -17,7 +18,7 @@ class TrigonometricTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 

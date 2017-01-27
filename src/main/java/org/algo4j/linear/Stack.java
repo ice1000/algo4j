@@ -58,7 +58,7 @@ public class Stack<T> implements
 
 	@Override
 	@Nullable
-	public synchronized T pop() {
+	public T pop() {
 		return empty() ? null : (T) data[--cursor];
 	}
 
@@ -69,7 +69,7 @@ public class Stack<T> implements
 	 * @throws StackException if stack overflow
 	 */
 	@Override
-	public synchronized void push(@NotNull T obj) {
+	public void push(@NotNull T obj) {
 		if (cursor > maxLen) {
 			throw StackException.overflow();
 		} else {
@@ -115,7 +115,7 @@ public class Stack<T> implements
 
 		@Nullable
 		@Override
-		public synchronized E next() {
+		public E next() {
 			return hasNext() ? (E) context.data[cursor++] : null;
 		}
 	}

@@ -39,7 +39,7 @@ public final class BinaryIndexedTree implements
 	 * @param index position to add value
 	 * @param value value to add
 	 */
-	public synchronized void add(int index, long value) {
+	public void add(int index, long value) {
 		if (index > length || index < 0) throw BinaryIndexedTreeException.indexOutBound();
 		add(data, length, index, value);
 	}

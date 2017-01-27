@@ -1,6 +1,7 @@
 package org.algo4j.math
 
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.*
 import org.junit.BeforeClass
@@ -210,7 +211,7 @@ class MathUtilsTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package org.algo4j.linear
 
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -31,7 +32,7 @@ class StackTest {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

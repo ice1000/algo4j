@@ -3,6 +3,7 @@ package org.algo4j.math
 import org.algo4j.div
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -169,7 +170,7 @@ class BigIntTest {
 		@BeforeClass
 		fun init() {
 			Random(System.currentTimeMillis())
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }
