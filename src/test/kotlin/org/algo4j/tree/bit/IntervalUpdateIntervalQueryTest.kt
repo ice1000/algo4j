@@ -3,6 +3,7 @@ package org.algo4j.tree.bit
 import org.algo4j.math.MathUtils
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.Contract
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
@@ -100,7 +101,7 @@ class IntervalUpdateIntervalQueryTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

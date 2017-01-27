@@ -1,5 +1,6 @@
 package org.algo4j.win
 
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
@@ -20,7 +21,7 @@ class WinAPITest {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 //			Loader.load()
 		}
 	}

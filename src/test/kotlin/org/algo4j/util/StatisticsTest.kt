@@ -75,7 +75,7 @@ class StatisticsTest {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 }

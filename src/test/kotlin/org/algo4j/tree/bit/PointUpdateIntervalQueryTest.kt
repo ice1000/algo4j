@@ -4,6 +4,7 @@ import org.algo4j.get
 import org.algo4j.math.MathUtils.abs
 import org.algo4j.test.loop
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.jetbrains.annotations.Contract
 import org.jetbrains.annotations.TestOnly
 import org.junit.Assert.assertEquals
@@ -110,7 +111,7 @@ class PointUpdateIntervalQueryTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 		}
 	}
 
