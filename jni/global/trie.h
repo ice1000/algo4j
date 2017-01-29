@@ -6,29 +6,43 @@
 #define __ALGO4J_TRIE_H__
 
 #include <jni.h>
+#include <string.h>
 #include "basics.hpp"
 
 namespace algo4j_trie {
 
+	typedef Node *node_ptr;
+
 	struct Node {
 	private:
 		// alpha bet and space
-		Node *next[27];
-		typedef Node *node_ptr;
+		node_ptr next[27];
 	public:
 		bool hasElement;
 
-		Node() : hasElement(false) {}
+		explicit Node();
 
-		auto setNext(char sym, Node *newNode) -> void {
-			if (sym == ' ') next[26] = newNode;
-			else next[sym - 'a'] = newNode;
-		}
+		~Node();
+
+		constexpr auto setNext(char sym, node_ptr newNode = new Node()) -> void;
+
+		constexpr auto get(char sym) -> node_ptr;
 	};
 
-	auto make_node() -> Node * {
-		return new Node();
-	}
+	constexpr auto make_node() -> Node *;
+
+	struct Trie {
+	private:
+		node_ptr head;
+	public:
+		explicit Trie();
+
+		~Trie();
+
+		auto insert(char *word) -> void;
+
+		auto exist(char *word) -> bool;
+	};
 }
 
 #endif //__ALGO4J_TRIE_H__
