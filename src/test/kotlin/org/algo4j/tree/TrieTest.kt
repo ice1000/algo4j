@@ -1,5 +1,6 @@
 package org.algo4j.tree
 
+import org.algo4j.plusAssign
 import org.algo4j.test.optional
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
@@ -18,12 +19,12 @@ class TrieTest {
 	@Test(timeout = 1000)
 	fun testInsert() {
 		val trie = Trie()
-		assertFalse { trie.contains("boy next door") }
-		trie.insert("boy next door")
-		assertTrue { trie.contains("boy next door") }
-		assertFalse { trie.contains("the deep dark fantasy") }
-		assertFalse { trie.contains("boy next doors") }
-		assertFalse { trie.contains("boy next doo") }
+		assertFalse { "boy next door" in trie }
+		trie += "boy next door"
+		assertTrue { "boy next door" in trie }
+		assertFalse { "the deep dark fantasy" in trie }
+		assertFalse { "boy next doors" in trie }
+		assertFalse { "boy next doo" in trie }
 		trie.finalize()
 	}
 
@@ -33,7 +34,7 @@ class TrieTest {
 		optional(false) {
 			val trie = Trie()
 			assertFalse { trie.containsPrefix("ass we") }
-			trie.insert("ass we can")
+			trie += "ass we can"
 			assertTrue { trie.containsPrefix("ass we") }
 			trie.finalize()
 		}
@@ -43,11 +44,11 @@ class TrieTest {
 	@Test(timeout = 1000)
 	fun testRemove() {
 		val trie = Trie()
-		assertFalse { trie.contains("my name is van") }
+		assertFalse { "my name is van" in trie }
 		trie.insert("my name is van")
-		assertTrue { trie.contains("my name is van") }
+		assertTrue { "my name is van" in trie }
 		trie.remove("my name is van")
-		assertFalse { trie.contains("my name is van") }
+		assertFalse { "my name is van" in trie }
 		trie.finalize()
 	}
 
