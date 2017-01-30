@@ -1,5 +1,6 @@
 package org.algo4j.tree
 
+import org.algo4j.test.optional
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -23,15 +24,19 @@ class TrieTest {
 		assertFalse { trie.contains("the deep dark fantasy") }
 		assertFalse { trie.contains("boy next doors") }
 		assertFalse { trie.contains("boy next doo") }
+		trie.finalize()
 	}
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContainsPrefix() {
-		val trie = Trie()
-		assertFalse { trie.containsPrefix("boy next") }
-		trie.insert("boy next door")
-		assertTrue { trie.containsPrefix("boy next") }
+		optional(false) {
+			val trie = Trie()
+			assertFalse { trie.containsPrefix("ass we") }
+			trie.insert("ass we can")
+			assertTrue { trie.containsPrefix("ass we") }
+			trie.finalize()
+		}
 	}
 
 	@TestOnly
@@ -43,6 +48,7 @@ class TrieTest {
 		assertTrue { trie.contains("my name is van") }
 		trie.remove("my name is van")
 		assertFalse { trie.contains("my name is van") }
+		trie.finalize()
 	}
 
 	companion object {
