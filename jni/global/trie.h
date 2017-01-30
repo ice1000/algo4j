@@ -34,13 +34,13 @@ namespace algo4j_trie {
 
 		~Trie();
 
-		auto insert(const jbyte *word) -> void;
+		auto insert(const jbyte *word, const jsize len) -> void;
 
-		auto remove(const jbyte *word) -> void;
+		auto remove(const jbyte *word, const jsize len) -> void;
 
-		auto exist(const jbyte *word) -> bool;
+		auto exist(const jbyte *word, const jsize len) -> bool;
 
-		auto existPrefix(const jbyte *word) -> bool;
+		auto existPrefix(const jbyte *word, const jsize len) -> bool;
 
 		auto getHead() const -> Node *;
 	};

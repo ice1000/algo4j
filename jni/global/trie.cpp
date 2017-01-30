@@ -10,14 +10,14 @@ using algo4j_trie::Node;
 using algo4j_trie::Trie;
 
 #define __goto_end_force(word) \
-for (auto _ = 0; word[_]; ++_) { \
+for (auto _ = 0; _ < len; ++_) { \
     if (now->getNext(word[_]) == nullptr) \
         now->setNext(word[_], new Node()); \
     now = now->getNext(word[_]); \
 }
 
 #define __goto_end_weak(word) \
-for (auto _ = 0; word[_]; ++_) { \
+for (auto _ = 0; _ < len; ++_) { \
     if (now->getNext(word[_]) == nullptr) \
         return false; \
     now = now->getNext(word[_]); \
@@ -40,19 +40,19 @@ algo4j_trie::Trie::~Trie() {
 	delete head;
 }
 
-auto algo4j_trie::Trie::insert(const jbyte *word) -> void {
+auto algo4j_trie::Trie::insert(const jbyte *word, const jsize len) -> void {
 	Node *now = head;
 	__goto_end_force(word);
 	now->hasElement = true;
 }
 
-auto algo4j_trie::Trie::exist(const jbyte *word) -> bool {
+auto algo4j_trie::Trie::exist(const jbyte *word, const jsize len) -> bool {
 	Node *now = head;
 	__goto_end_weak(word);
 	return now->hasElement;
 }
 
-auto algo4j_trie::Trie::existPrefix(const jbyte *word) -> bool {
+auto algo4j_trie::Trie::existPrefix(const jbyte *word, const jsize len) -> bool {
 	Node *now = head;
 	__goto_end_weak(word);
 	return true;
@@ -62,7 +62,7 @@ auto Trie::getHead() const -> Node * {
 	return head;
 }
 
-auto Trie::remove(const jbyte *word) -> void {
+auto Trie::remove(const jbyte *word, const jsize len) -> void {
 	Node *now = head;
 	__goto_end_force(word);
 	now->hasElement = false;
