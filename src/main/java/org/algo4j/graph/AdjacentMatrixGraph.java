@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 /**
@@ -24,7 +25,8 @@ public class AdjacentMatrixGraph implements
 	private final int[] matrix;
 
 	public AdjacentMatrixGraph(int length) {
-		if (length <= 0) throw new GraphException("length cannot be zero or negative!");
+		if (length <= 0)
+			throw new GraphException("length cannot be zero or negative!");
 		this.length = length;
 		matrix = new int[length * length];
 		for (int i = 0; i < matrix.length; i++) {
@@ -36,7 +38,7 @@ public class AdjacentMatrixGraph implements
 
 	private AdjacentMatrixGraph(@NotNull int[] matrix) {
 		this.matrix = matrix;
-		this.length = ((int) MathUtils.sqrt(matrix.length));
+		this.length = (int) MathUtils.sqrt(matrix.length);
 	}
 
 	@Override
@@ -60,7 +62,8 @@ public class AdjacentMatrixGraph implements
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public int[] dijkstra(int source) {
-		if (source < 0 || source >= length) throw GraphException.indexOutBound();
+		if (source < 0 || source >= length)
+			throw GraphException.indexOutBound();
 		return dijkstra(source, matrix);
 	}
 
@@ -192,7 +195,8 @@ public class AdjacentMatrixGraph implements
 		@Override
 		@Nullable
 		public Edge next() {
-			if (!hasNext()) return null;
+			if (!hasNext())
+				throw new NoSuchElementException();
 			Edge edge = new Edge(
 					cursorX,
 					cursorY,

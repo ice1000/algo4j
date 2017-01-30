@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 /**
@@ -119,7 +120,10 @@ public class Queue<T> implements
 		@Nullable
 		@Override
 		public E next() {
-			return hasNext() ? (E) context.data[cursor++ % context.maxLen] : null;
+			if (hasNext())
+				return (E) context.data[cursor++ % context.maxLen];
+			else
+				throw new NoSuchElementException();
 		}
 	}
 

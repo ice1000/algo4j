@@ -6,9 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by ice1000 on 2017/1/27.
+ *
+ * @author ice1000
  */
-
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class IntQueue implements IntContainer {
 	private final int[] data;
 	private final int maxLen;

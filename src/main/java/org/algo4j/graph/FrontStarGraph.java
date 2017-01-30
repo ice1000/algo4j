@@ -51,16 +51,17 @@ public class FrontStarGraph implements
 	 * @throws GraphException if numbers is zero or negative
 	 */
 	public FrontStarGraph(int nodeCount, int edgeCount) {
-		if (nodeCount <= 0) throw new GraphException("node count cannot be zero or negative!");
-		if (edgeCount <= 0) throw new GraphException("edge count cannot be zero or negative!");
-		++nodeCount;
-		this.nodeCount = nodeCount;
+		if (nodeCount <= 0)
+			throw new GraphException("node count cannot be zero or negative!");
+		if (edgeCount <= 0)
+			throw new GraphException("edge count cannot be zero or negative!");
+		this.nodeCount = nodeCount + 1;
 		this.edgeCount = edgeCount;
 		target = new int[edgeCount];
 		depart = new int[edgeCount];
 		value = new int[edgeCount];
 		next = new int[edgeCount];
-		head = new int[nodeCount];
+		head = new int[this.nodeCount];
 		maximumNodeNumber = 0;
 		addingEdgeIndex = 0;
 		Arrays.fill(next, -1);
@@ -140,7 +141,8 @@ public class FrontStarGraph implements
 			throw GraphException.numberInvalid();
 		List<Integer> edges = new ArrayList<>(nodeCount >> 1);
 		for (int i = head[p1]; i != -1; i = next[i])
-			if (target[i] == p2) edges.add(value[i]);
+			if (target[i] == p2)
+				edges.add(value[i]);
 		int[] ret = new int[edges.size()];
 		for (int i = 0; i < ret.length; ++i)
 			ret[i] = edges.get(ret.length - i - 1);
@@ -468,7 +470,8 @@ public class FrontStarGraph implements
 		@Override
 		@Nullable
 		public Edge next() {
-			if (!hasNext()) return null;
+			if (!hasNext())
+				throw new NoSuchElementException();
 			Edge edge = new Edge(
 					context.target[cursor],
 					context.depart[cursor],
@@ -478,6 +481,11 @@ public class FrontStarGraph implements
 			return edge;
 		}
 
+		/**
+		 * this graph doesn't support removing an edge.
+		 *
+		 * @deprecated it doesn't support this operation
+		 */
 		@Override
 		@Deprecated
 		public void remove() {
