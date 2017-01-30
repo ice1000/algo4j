@@ -70,7 +70,9 @@ public class Trie {
 
 	/**
 	 * this will release the memory!
-	 * because {@link Trie} has came across the GC system of JVM
+	 * because {@link Trie} has get around
+	 * the GC system of JVM, so you have to
+	 * release the memory manually.
 	 */
 	public void delete() {
 		deleteTrie(triePointer);
