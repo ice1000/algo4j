@@ -12,6 +12,8 @@ jni/.vscode/
 *.def
 *.o
 *.exe
+*.gch
+
 .gradle/
 build/
 
@@ -38,3 +40,4 @@ lib/
 code_drafts/.vscode/
 jni/jni32.ico
 jni/jni32.layout
+jni/cmake-build-release/
