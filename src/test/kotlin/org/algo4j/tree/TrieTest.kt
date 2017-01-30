@@ -25,7 +25,7 @@ class TrieTest {
 		assertFalse { "the deep dark fantasy" in trie }
 		assertFalse { "boy next doors" in trie }
 		assertFalse { "boy next doo" in trie }
-		trie.finalize()
+		trie.delete()
 	}
 
 	@TestOnly
@@ -36,7 +36,7 @@ class TrieTest {
 			assertFalse { trie.containsPrefix("ass we") }
 			trie += "ass we can"
 			assertTrue { trie.containsPrefix("ass we") }
-			trie.finalize()
+			trie.delete()
 		}
 	}
 
@@ -49,7 +49,7 @@ class TrieTest {
 		assertTrue { "my name is van" in trie }
 		trie.remove("my name is van")
 		assertFalse { "my name is van" in trie }
-		trie.finalize()
+		trie.delete()
 	}
 
 	companion object {

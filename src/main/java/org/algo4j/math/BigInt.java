@@ -37,15 +37,18 @@ public class BigInt implements
 		if (origin.startsWith("-")) {
 			sigTemp = false;
 			origin = origin.substring(1);
-		} else sigTemp = true;
+		} else
+			sigTemp = true;
 		byte[] ori = origin.getBytes();
-		if (ori.length == 1 && ori[0] == '0') sigTemp = true;
+		if (ori.length == 1 && ori[0] == '0')
+			sigTemp = true;
 		data = ori;
 		sig = sigTemp;
 	}
 
 	public BigInt(@NotNull byte[] origin, boolean sig) {
-		if (origin.length == 1 && origin[0] == '0') sig = true;
+		if (origin.length == 1 && origin[0] == '0')
+			sig = true;
 		data = origin;
 		this.sig = sig;
 	}
@@ -66,7 +69,8 @@ public class BigInt implements
 	}
 
 	public BigInt(@Nullable BigInt anotherBigInt) {
-		if (anotherBigInt == null) anotherBigInt = ZERO;
+		if (anotherBigInt == null)
+			anotherBigInt = ZERO;
 		sig = anotherBigInt.sig;
 		data = anotherBigInt.data;
 	}
@@ -118,9 +122,14 @@ public class BigInt implements
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public BigInt times(@NotNull BigInt anotherBigInt) {
-		if (TEN.equals(anotherBigInt)) return timesTen();
-		else if (NEGA_TEN.equals(anotherBigInt)) return timesTen(!sig);
-		else return new BigInt(times(data, anotherBigInt.data), sig == anotherBigInt.sig);
+		if (TEN.equals(anotherBigInt))
+			return timesTen();
+		else if (NEGA_TEN.equals(anotherBigInt))
+			return timesTen(!sig);
+		else return new BigInt(
+				times(data, anotherBigInt.data),
+					sig == anotherBigInt.sig
+			);
 	}
 
 	/**
@@ -264,7 +273,8 @@ public class BigInt implements
 	public int compareTo(@NotNull BigInt o) {
 		if (this.sig == o.sig)
 			return compareTo(this.data, o.data) * (sig ? 1 : -1);
-		if (this.sig) return 1;
+		if (this.sig)
+			return 1;
 		else return -1;
 	}
 }

@@ -54,6 +54,14 @@ public class ExgcdRes implements
 	}
 
 	@Override
+	public int hashCode() {
+		int result = (int) (c ^ (c >>> 32));
+		result = 31 * result + (int) (x ^ (x >>> 32));
+		result = 31 * result + (int) (y ^ (y >>> 32));
+		return result;
+	}
+
+	@Override
 	@NotNull
 	@Contract(value = " -> !null", pure = true)
 	public ExgcdRes clone() {

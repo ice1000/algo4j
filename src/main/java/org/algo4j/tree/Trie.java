@@ -68,8 +68,11 @@ public class Trie {
 		return containsPrefix(triePointer, word);
 	}
 
-	@Override
-	public void finalize() {
+	/**
+	 * this will release the memory!
+	 * because {@link Trie} has came across the GC system of JVM
+	 */
+	public void delete() {
 		deleteTrie(triePointer);
 	}
 }

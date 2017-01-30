@@ -90,6 +90,7 @@ public final class MathUtils {
 	 * This is not so strict, for instance sqrt(100) will be 10.000036239624023.
 	 *
 	 * @return square root of a
+	 * @deprecated it's much slower than {@link MathUtils#sqrt(double)}
 	 */
 	@Deprecated
 	@Contract(pure = true)
