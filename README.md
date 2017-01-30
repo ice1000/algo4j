@@ -37,6 +37,8 @@ src/test|tests
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
 - [X] Trie tree, supports 26 smaller letters and spaces.
+- [ ] Segment Tree, multi-implementations.
+- [ ] Durable Segment Tree, multi-implementations.
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>
