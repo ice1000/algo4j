@@ -1,5 +1,9 @@
 package org.algo4j.tree;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by ice1000 on 2017/1/30.
  *
@@ -11,37 +15,60 @@ public class Trie {
 
 	private static native long createTrie();
 
+	private static native long deleteTrie(long triePointer);
+
 	public Trie() {
 		triePointer = createTrie();
 	}
 
-	private native void insert(long ptr, byte[] word);
+	private native void insert(long ptr, @NotNull byte[] word);
 
-	public void insert(String word) {
+	public void insert(@NotNull @NonNls String word) {
 		insert(word.getBytes());
 	}
 
-	public void insert(byte[] word) {
+	public void insert(@NotNull byte[] word) {
 		insert(triePointer, word);
 	}
 
-	private native void remove(long ptr, byte[] word);
+	private native void remove(long ptr, @NotNull byte[] word);
 
-	public void remove(String word) {
-		insert(word.getBytes());
+	public void remove(@NotNull @NonNls String word) {
+		remove(word.getBytes());
 	}
 
-	public void remove(byte[] word) {
-		insert(triePointer, word);
+	public void remove(@NotNull byte[] word) {
+		remove(triePointer, word);
 	}
 
-	private native boolean contains(long ptr, byte[] word);
+	@Contract(pure = true)
+	private native boolean contains(long ptr, @NotNull byte[] word);
 
-	private boolean contains(String word) {
+	@Contract(pure = true)
+	public boolean contains(@NotNull @NonNls String word) {
 		return contains(word.getBytes());
 	}
 
-	private boolean contains(byte[] word) {
+	@Contract(pure = true)
+	public boolean contains(@NotNull byte[] word) {
 		return contains(triePointer, word);
+	}
+
+	@Contract(pure = true)
+	private native boolean containsPrefix(long ptr, @NotNull byte[] word);
+
+	@Contract(pure = true)
+	public boolean containsPrefix(@NotNull @NonNls String word) {
+		return containsPrefix(word.getBytes());
+	}
+
+	@Contract(pure = true)
+	public boolean containsPrefix(@NotNull byte[] word) {
+		return containsPrefix(triePointer, word);
+	}
+
+	@Override
+	public void finalize() {
+		deleteTrie(triePointer);
 	}
 }

@@ -6,8 +6,6 @@
 #define __ALGO4J_TRIE_H__
 
 #include <jni.h>
-#include <string.h>
-#include "basics.hpp"
 
 namespace algo4j_trie {
 
@@ -22,9 +20,9 @@ namespace algo4j_trie {
 
 		~Node();
 
-		auto setNext(char, Node *) -> void;
+		auto setNext(jbyte, Node *) -> void;
 
-		auto getNext(char) -> Node *;
+		auto getNext(jbyte) -> Node *;
 	};
 
 	struct Trie {
@@ -36,21 +34,13 @@ namespace algo4j_trie {
 
 		~Trie();
 
-		auto insert(const char *word) -> void;
+		auto insert(const jbyte *word) -> void;
 
-		auto remove(const char *word) -> void;
+		auto remove(const jbyte *word) -> void;
 
-		auto exist(const char *word) -> bool;
+		auto exist(const jbyte *word) -> bool;
 
-		auto existPrefixi(const char *word) -> bool {
-			Node *now = head;
-			for (auto _ = 0; word[_]; ++_) {
-				if (now->getNext(word[_]) == nullptr)
-					return false;
-				now = now->getNext(word[_]);
-			}
-			return true;
-		}
+		auto existPrefix(const jbyte *word) -> bool;
 
 		auto getHead() const -> Node *;
 	};

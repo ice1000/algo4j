@@ -15,27 +15,42 @@ auto main(const int argc, const char *argv[]) -> int {
 	printf("%p\n", node->getNext('a'));
 	auto trie = new Trie();
 	puts(
-			trie->exist("van")
+			trie->exist((jbyte*)"van van")
 			? "true"
 			: "false"
 	);
-	printf("%p\n", trie->getHead()->getNext('v'));
-	trie->insert("van");
-	printf("%p\n", trie->getHead()->getNext('v'));
-	printf("%p\n", trie->getHead()->getNext('v')->getNext('a'));
-	printf("%p\n", trie->getHead()->getNext('v')->getNext('a')->getNext('n'));
+	trie->insert((jbyte*)"van van");
 	puts(
-			trie->exist("van")
+			trie->exist((jbyte*)"van van")
+			? "true"
+			: "false"
+	);
+//	printf("%p\n", trie->getHead()->getNext('v'));
+//	printf("%p\n", trie->getHead()->getNext('v')->getNext('a'));
+//	printf("%p\n", trie->getHead()->getNext('v')->getNext('a')->getNext('n'));
+	puts(
+			trie->exist((jbyte*)"van van")
 			? "true"
 			: "false"
 	);
 	puts(
-			trie->exist("vand")
+			trie->exist((jbyte*)"van vand")
 			? "true"
 			: "false"
 	);
 	puts(
-			trie->exist("va")
+			trie->exist((jbyte*)"van va")
+			? "true"
+			: "false"
+	);
+	puts(
+			trie->existPrefix((jbyte*)"van")
+			? "true"
+			: "false"
+	);
+	trie->remove((jbyte*)"van van");
+	puts(
+			trie->exist((jbyte*)"van van")
 			? "true"
 			: "false"
 	);
