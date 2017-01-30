@@ -4,46 +4,64 @@
 
 #include "trie.h"
 
-using algo4j_trie::node_ptr;
+using algo4j_trie::Node;
+using algo4j_trie::Trie;
 
-algo4j_trie::Node::Node() : hasElement(false) { }
+#define __goto_end_force(word) \
+for (auto _ = 0; word[_]; ++_) { \
+    if (now->getNext(word[_]) == nullptr) \
+        now->setNext(word[_], new Node()); \
+    now = now->getNext(word[_]); \
+}
+
+#define __goto_end_weak(word) \
+for (auto _ = 0; word[_]; ++_) { \
+    if (now->getNext(word[_]) == nullptr) \
+        return false; \
+    now = now->getNext(word[_]); \
+}
+
+algo4j_trie::Node::Node() : hasElement(false) {
+	for (auto _ = 0; _ < (sizeof(next) / sizeof(next[0])); ++_) {
+		next[0] = nullptr;
+	}
+}
 
 algo4j_trie::Node::~Node() {
-	delete[] next;
 }
 
-auto algo4j_trie::make_node() -> node_ptr {
-	return new Node();
-}
-
-algo4j_trie::Trie::Trie() : head(make_node()) { }
+algo4j_trie::Trie::Trie() : head(new Node()) { }
 
 algo4j_trie::Trie::~Trie() {
 	delete head;
 }
 
-auto algo4j_trie::Trie::insert(char *word) -> void {
-	node_ptr now = head;
-	for (auto _ = 0; word[_]; ++_) {
-		if (now->get(word[_]) == nullptr)
-			now->setNext(word[_]);
-		now = now->get(word[_]);
-	}
+auto algo4j_trie::Trie::insert(const char *word) -> void {
+	Node *now = head;
+	__goto_end_force(word);
+	now->hasElement = true;
 }
 
-auto algo4j_trie::Trie::exist(char *word) -> bool {
-	node_ptr now = head;
-	for (auto _ = 0; word[_]; ++_) {
-		if (now->get(word[_]) == nullptr)
-			return false;
-	}
-	return true;
+auto algo4j_trie::Trie::exist(const char *word) -> bool {
+	Node *now = head;
+	__goto_end_weak(word);
+	return now->hasElement;
 }
 
-auto algo4j_trie::Node::setNext(char sym, node_ptr newNode) -> void {
+auto Trie::getHead() const -> Node * {
+	return head;
+}
+
+auto Trie::remove(const char *word) -> void {
+	Node *now = head;
+	__goto_end_force(word);
+	now->hasElement = false;
+}
+
+auto algo4j_trie::Node::setNext(char sym, Node *newNode) -> void {
 	next[sym == ' ' ? 26 : sym - 'a'] = newNode;
 }
 
-auto algo4j_trie::Node::get(char sym) -> node_ptr {
-	return next[sym == '0' ? 26 : sym - 'a'];
+auto algo4j_trie::Node::getNext(char sym) -> Node * {
+	return next[sym == ' ' ? 26 : sym - 'a'];
 }

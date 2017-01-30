@@ -11,12 +11,10 @@
 
 namespace algo4j_trie {
 
-	typedef Node *node_ptr;
-
 	struct Node {
 	private:
 		// alpha bet and space
-		node_ptr next[27];
+		Node *next[27];
 	public:
 		bool hasElement;
 
@@ -24,24 +22,37 @@ namespace algo4j_trie {
 
 		~Node();
 
-		constexpr auto setNext(char sym, node_ptr newNode = new Node()) -> void;
+		auto setNext(char, Node *) -> void;
 
-		constexpr auto get(char sym) -> node_ptr;
+		auto getNext(char) -> Node *;
 	};
-
-	constexpr auto make_node() -> Node *;
 
 	struct Trie {
 	private:
-		node_ptr head;
+		// header
+		Node *head;
 	public:
 		explicit Trie();
 
 		~Trie();
 
-		auto insert(char *word) -> void;
+		auto insert(const char *word) -> void;
 
-		auto exist(char *word) -> bool;
+		auto remove(const char *word) -> void;
+
+		auto exist(const char *word) -> bool;
+
+		auto existPrefixi(const char *word) -> bool {
+			Node *now = head;
+			for (auto _ = 0; word[_]; ++_) {
+				if (now->getNext(word[_]) == nullptr)
+					return false;
+				now = now->getNext(word[_]);
+			}
+			return true;
+		}
+
+		auto getHead() const -> Node *;
 	};
 }
 
