@@ -1,5 +1,7 @@
 ---
 engines:
+  todo:
+    enabled: true
   fixme:
     enabled: true
 ratings:
