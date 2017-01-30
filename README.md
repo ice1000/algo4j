@@ -36,6 +36,7 @@ src/test|tests
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
+- [X] Trie tree, supports 26 smaller letters and spaces.
 - [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>

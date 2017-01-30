@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * Trie tree, supporting smaller case letters and space.
  * Created by ice1000 on 2017/1/30.
  *
  * @author ice1000
