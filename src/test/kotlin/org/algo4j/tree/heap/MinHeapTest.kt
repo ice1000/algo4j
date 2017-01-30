@@ -5,7 +5,6 @@ import org.algo4j.plusAssign
 import org.algo4j.test.optional
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
-import org.algo4j.tree.heap.MinHeap
 import org.algo4j.util.SeqUtils.sortMerge
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -74,6 +73,10 @@ class MinHeapTest {
 		test(400) {
 			val arr = shuffledIntList.toIntArray()
 			val heap = MinHeap.make(*arr)
+			optional(false) {
+				println(arr.size)
+				println(heap.size())
+			}
 			sortMerge(arr)
 			(1..heap.size()).forEach {
 				assertEquals(arr[it - 1], heap.peek())

@@ -40,14 +40,14 @@ public class MinHeap implements
 
 	@Contract(pure = true)
 	public int size() {
-		return cursor;
+		return cursor - 1;
 	}
 
 	@NotNull
 	@Contract(value = "!null -> !null", pure = true)
 	protected static native int[] makeHeap(@NotNull int[] origin);
 
-	private static native void push(
+	private static native void insert(
 			@NotNull int[] data,
 			int cursor,
 			int element
@@ -62,7 +62,7 @@ public class MinHeap implements
 
 	@Contract(pure = true)
 	public boolean empty() {
-		return cursor <= 0;
+		return cursor <= 1;
 	}
 
 	public void push(int element) {
@@ -72,12 +72,13 @@ public class MinHeap implements
 //			++cursor;
 //		}
 //		else if (empty()) data[cursor++] = element;
-		else push(data, ++cursor, element);
+		else insert(data, ++cursor, element);
 	}
 
 	public int peek() {
-		int ret = top();
-		pop();
+		int ret = data[1];
+		data[1] = data[cursor - 1];
+		minHeapify(data, --cursor, 1);
 		return ret;
 	}
 
