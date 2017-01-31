@@ -33,5 +33,5 @@ public interface Heap extends Cloneable {
 
 	@NotNull
 	@Contract(pure = true)
-	MinHeap clone();
+	Heap clone();
 }

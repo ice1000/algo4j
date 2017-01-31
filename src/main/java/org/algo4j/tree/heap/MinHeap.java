@@ -19,7 +19,7 @@ public class MinHeap implements
 	private final int length;
 	private int cursor;
 
-	protected MinHeap(@NotNull int... data) {
+	private MinHeap(@NotNull int... data) {
 		this.length = data.length;
 		this.data = data;
 		this.cursor = data.length;
@@ -47,7 +47,7 @@ public class MinHeap implements
 
 	@NotNull
 	@Contract(value = "!null -> !null", pure = true)
-	protected static native int[] makeHeap(@NotNull int[] origin);
+	private static native int[] makeHeap(@NotNull int[] origin);
 
 	private static native void insert(
 			@NotNull int[] data,
