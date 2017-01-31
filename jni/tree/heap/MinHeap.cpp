@@ -1,6 +1,5 @@
 
 #include "MinHeap.h"
-#include "../../global/functions.h"
 #include "../../global/basics.hpp"
 #include "../../global/heap.hpp"
 

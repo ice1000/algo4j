@@ -114,6 +114,9 @@ namespace algo4j_heap {
 	}
 }
 
+#undef __make_heap
+#undef __heap_extract_top
+#undef __heap_class
 
 #endif /// __ALGO4J_HEAP_HPP__
 
