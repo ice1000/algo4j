@@ -13,7 +13,7 @@ extern "C" {
 #endif /// __cplusplus
 
 /**
- * Class:     org_algo4j_tree_heap_Heap
+ * Class:     org_algo4j_tree_heap_MinHeap
  * Method:    makeHeap
  * Signature: ([I)[I
  */
@@ -24,7 +24,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_makeHeap(
 ) -> jintArray;
 
 /**
- * Class:     org_algo4j_tree_heap_Heap
+ * Class:     org_algo4j_tree_heap_MinHeap
  * Method:    insert
  * Signature: ([III)V
  */
@@ -37,7 +37,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_insert(
 ) -> void;
 
 /**
- * Class:     org_algo4j_tree_heap_Heap
+ * Class:     org_algo4j_tree_heap_MinHeap
  * Method:    minHeapify
  * Signature: ([III)V
  */

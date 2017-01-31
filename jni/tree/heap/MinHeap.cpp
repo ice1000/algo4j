@@ -7,9 +7,9 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-using algo4j_heap::make_heap;
-using algo4j_heap::heap_insert;
-using algo4j_heap::heap_adjust;
+using algo4j_heap::min::make_heap;
+using algo4j_heap::min::heap_insert;
+using algo4j_heap::min::heap_adjust;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_heap_MinHeap_makeHeap(
 		JNIEnv *env,

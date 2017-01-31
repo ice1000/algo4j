@@ -18,10 +18,12 @@ set(
 		graph/AdjacentMatrixGraph.cpp
 		tree/bit/BinaryIndexedTree.cpp
 		tree/heap/MinHeap.cpp
+		tree/heap/MaxHeap.cpp
 		graph/FrontStarGraph.cpp
 		math/Trigonometric.cpp
 		global/functions.cpp
 		global/trie.cpp
+		tree/Trie.cpp
 		util/Statistics.cpp
 		math/MathUtils.cpp
 		tree/UnionSet.cpp
@@ -38,10 +40,12 @@ set(
 		graph/AdjacentMatrixGraph.h
 		tree/bit/BinaryIndexedTree.h
 		tree/heap/MinHeap.h
+		tree/heap/MaxHeap.h
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
 		global/functions.h
 		global/trie.h
+		tree/Trie.h
 		util/Statistics.h
 		math/MathUtils.h
 		tree/UnionSet.h

@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-using algo4j_heap::insert;
+using algo4j_heap::min::heap_insert;
 
 
 auto main(const int argc, const char *argv[]) -> int {
@@ -18,7 +18,7 @@ auto main(const int argc, const char *argv[]) -> int {
 	for (auto i = 0; i < n; ++i) {
 		int in;
 		scanf("%i", &in);
-		insert(data, ++len, in);
+		heap_insert(data, ++len, in);
 	}
 	for (auto i = 1; i <= n; ++i) {
 		printf("%i ", data[i]);
