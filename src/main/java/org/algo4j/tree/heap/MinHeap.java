@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @SuppressWarnings("WeakerAccess")
 public class MinHeap implements
-		Cloneable {
+		Heap {
 	protected final int[] data;
 	private final int length;
 	private int cursor;
@@ -32,12 +32,14 @@ public class MinHeap implements
 		this.cursor = 0;
 	}
 
+	@Override
 	@Contract(pure = true)
 	public int getElementAt(int index) {
 		if (index <= 0 || index > size()) throw HeapException.overflow();
 		return data[index];
 	}
 
+	@Override
 	@Contract(pure = true)
 	public int size() {
 		return cursor - 1;
@@ -60,11 +62,13 @@ public class MinHeap implements
 			int index
 	);
 
+	@Override
 	@Contract(pure = true)
 	public boolean empty() {
 		return cursor <= 1;
 	}
 
+	@Override
 	public void push(int element) {
 		if (cursor > length) throw HeapException.overflow();
 //		else if (empty()) {
@@ -75,19 +79,14 @@ public class MinHeap implements
 		else insert(data, ++cursor, element);
 	}
 
-	public int peek() {
-		int ret = data[1];
-		data[1] = data[cursor - 1];
-		minHeapify(data, --cursor, 1);
-		return ret;
-	}
-
+	@Override
 	public int top() {
 		return data[1];
 	}
 
+	@Override
 	public void pop() {
-		data[1] = data[cursor];
+		data[1] = data[size()];
 		minHeapify(data, --cursor, 1);
 	}
 
