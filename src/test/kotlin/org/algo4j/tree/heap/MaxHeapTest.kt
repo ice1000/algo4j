@@ -2,7 +2,10 @@ package org.algo4j.tree.heap
 
 import org.algo4j.get
 import org.algo4j.test.optional
+import org.algo4j.test.shuffledIntList
+import org.algo4j.test.test
 import org.algo4j.util.Loader
+import org.algo4j.util.SeqUtils.sortMerge
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
@@ -19,7 +22,7 @@ class MaxHeapTest {
 	@Test(timeout = 1000)
 	fun testMake() {
 		val heap = MaxHeap.make(1000, 233, 33, 41, 25, 6, 7)
-		optional(true) {
+		optional(false) {
 			for (i in 1..heap.size()) {
 				println(heap[i])
 			}
@@ -38,6 +41,26 @@ class MaxHeapTest {
 		assertEquals(4, heap.peek())
 		assertTrue { heap.empty() }
 	}
+
+	@Test(timeout = 4000)
+	fun testMinHeapifyStrong() {
+		test(400) {
+			val arr = shuffledIntList.toIntArray()
+			val heap = MaxHeap.make(*arr)
+			optional(false) {
+				println(arr.size)
+				println(heap.size())
+			}
+			sortMerge(arr)
+			(1..heap.size()).forEach {
+				assertEquals(
+						arr[arr.size - it],
+						heap.peek()
+				)
+			}
+		}
+	}
+
 
 	companion object Initializer {
 		@JvmStatic

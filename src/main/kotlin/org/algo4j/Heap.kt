@@ -25,7 +25,8 @@ operator fun MinHeap.plusAssign(value: Int) =
  * functional plus
  */
 @Contract(pure = true)
-operator fun MinHeap.plus(value: Int) = clone().apply { plusAssign(value) }
+operator fun MinHeap.plus(value: Int) =
+		clone().apply { plusAssign(value) }
 
 
 @Contract(pure = true)
@@ -40,5 +41,6 @@ operator fun MaxHeap.plusAssign(value: Int) =
  * functional plus
  */
 @Contract(pure = true)
-operator fun MaxHeap.plus(value: Int) = clone().apply { plusAssign(value) }
+operator fun MaxHeap.plus(value: Int) =
+		clone().apply { plusAssign(value) }
 
