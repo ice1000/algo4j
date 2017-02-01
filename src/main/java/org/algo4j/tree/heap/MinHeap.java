@@ -110,8 +110,8 @@ public class MinHeap implements
 		if (obj == null || !(obj instanceof MinHeap)) return false;
 		if (obj == this) return true;
 		MinHeap o = (MinHeap) obj;
-		if (o.length != this.length) return false;
-		for (int i = 0; i < this.length; ++i) if (this.data[i] != o.data[i]) return false;
+		if (o.size() != this.size()) return false;
+		for (int i = 1; i <= this.size(); ++i) if (this.data[i] != o.data[i]) return false;
 		return true;
 	}
 }

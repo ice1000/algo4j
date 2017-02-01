@@ -110,8 +110,8 @@ public class MaxHeap implements
 		if (obj == null || !(obj instanceof MaxHeap)) return false;
 		if (obj == this) return true;
 		MaxHeap o = (MaxHeap) obj;
-		if (o.length != this.length) return false;
-		for (int i = 0; i < this.length; ++i) if (this.data[i] != o.data[i]) return false;
+		if (o.size() != this.size()) return false;
+		for (int i = 1; i <= this.size(); ++i) if (this.data[i] != o.data[i]) return false;
 		return true;
 	}
 }
