@@ -11,6 +11,7 @@ import org.junit.Test
 import java.lang.SuppressWarnings
 import java.lang.System
 import java.util.*
+import kotlin.io.println
 import java.lang.Math as StdMath
 
 /**
@@ -211,18 +212,17 @@ class MathUtilsTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testFib() {
+		val mod = 23333
 		val fib = RollingArray<Int>(3)
 		fib[1] = 1
 		fib[2] = 1
-		test(1000) {
-			assertEquals(fib[it + 2], fib(it + 2, 2333333))
-			fib[it + 3] = (fib[it + 1] + fib[it + 2]) % 2333333;
+		test(60) {
+			fib[it + 2] = (fib[it] as Int + fib[it + 1] as Int) % mod
+			assertEquals(fib[it + 2] as Int, fib(it + 2, mod))
 		}
 	}
 
-	companion
-
-	object Initializer {
+	companion object Initializer {
 
 		@BeforeClass
 		@JvmStatic
