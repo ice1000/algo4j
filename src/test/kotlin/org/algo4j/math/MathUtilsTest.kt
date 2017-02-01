@@ -212,13 +212,13 @@ class MathUtilsTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testFib() {
-		val mod = 23333
-		val fib = RollingArray<Int>(3)
+		val mod = 23333L
+		val fib = RollingArray<Long>(3)
 		fib[1] = 1
 		fib[2] = 1
-		test(60) {
-			fib[it + 2] = (fib[it] as Int + fib[it + 1] as Int) % mod
-			assertEquals(fib[it + 2] as Int, fib(it + 2, mod))
+		test(80) {
+			fib[it + 2] = (fib[it] as Long + fib[it + 1] as Long) % mod
+			assertEquals(fib[it + 2], fib(it + 2L, mod))
 		}
 	}
 

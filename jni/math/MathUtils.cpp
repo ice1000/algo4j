@@ -217,8 +217,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fib(
 		JNIEnv *env,
 		jclass,
-		jint _,
-		jint mod) -> jint {
+		jlong _,
+		jlong mod) -> jlong {
 	return fib_matrix(_, mod);
 }
 

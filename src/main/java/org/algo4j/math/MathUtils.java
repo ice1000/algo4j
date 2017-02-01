@@ -284,7 +284,7 @@ public final class MathUtils {
 	 * @return fib[n] % mod
 	 */
 	@Contract(pure = true)
-	public static native int fib(int n, int mod);
+	public static native long fib(long n, long mod);
 
 	/**
 	 * get the (n-th element) of the fibonacci sequence
@@ -293,7 +293,7 @@ public final class MathUtils {
 	 * @return fib[n]
 	 */
 	@Contract(pure = true)
-	public static int fib(int n) {
-		return fib(n, -1);
+	public static long fib(long n) {
+		return fib(n, -1L);
 	}
 }

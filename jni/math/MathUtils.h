@@ -283,14 +283,14 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 /**
  * Class:     org_algo4j_math_MathUtils
  * Method:    fib
- * Signature: (II)I
+ * Signature: (JJ)J
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fib(
 		JNIEnv *,
 		jclass,
-		jint,
-		jint
-) -> jint;
+		jlong,
+		jlong
+) -> jlong;
 
 #ifdef __cplusplus
 }
