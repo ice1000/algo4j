@@ -5,8 +5,8 @@ CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
 RES      = jni_private.res
-OBJ      = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o $(RES)
-LINKOBJ  = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o $(RES)
+OBJ      = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o global/matrix.o $(RES)
+LINKOBJ  = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o global/matrix.o $(RES)
 LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -77,6 +77,9 @@ tree/Trie.o: tree/Trie.cpp
 
 tree/heap/MaxHeap.o: tree/heap/MaxHeap.cpp
 	$(CPP) -c tree/heap/MaxHeap.cpp -o tree/heap/MaxHeap.o $(CXXFLAGS)
+
+global/matrix.o: global/matrix.cpp
+	$(CPP) -c global/matrix.cpp -o global/matrix.o $(CXXFLAGS)
 
 jni_private.res: jni_private.rc 
 	$(WINDRES) -i jni_private.rc --input-format=rc -o jni_private.res -O coff 

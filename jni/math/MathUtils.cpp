@@ -4,7 +4,7 @@
 
 #include "MathUtils.h"
 #include "../global/templates.hpp"
-#include "../global/matrix.hpp"
+#include "../global/matrix.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"

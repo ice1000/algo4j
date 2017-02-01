@@ -2,8 +2,8 @@
 // Created by ice1000 at 2016/11
 //
 
-#include <ostream>
-#include <istream>
+//#include <ostream>
+//#include <istream>
 #include <string.h>
 
 #include "sort.hpp"
@@ -16,8 +16,8 @@ using algo4j_util::min;
 using algo4j_util::max;
 using algo4j_util::swap;
 
-using std::istream;
-using std::ostream;
+//using std::istream;
+//using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
@@ -182,16 +182,16 @@ namespace algo4j_util {
 //			second = pair.second;
 //			return *this;
 //		}
-
-		friend auto operator<<(ostream &os, const Pair &pair) -> ostream & {
-			os << "first: " << pair.first << " second: " << pair.second;
-			return os;
-		}
-
-		friend auto operator>>(istream &is, Pair &pair) -> istream & {
-			is >> pair.first >> pair.second;
-			return is;
-		}
+//
+//		friend auto operator<<(ostream &os, const Pair &pair) -> ostream & {
+//			os << "first: " << pair.first << " second: " << pair.second;
+//			return os;
+//		}
+//
+//		friend auto operator>>(istream &is, Pair &pair) -> istream & {
+//			is >> pair.first >> pair.second;
+//			return is;
+//		}
 	};
 
 	/// 离散化
