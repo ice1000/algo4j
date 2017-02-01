@@ -19,13 +19,22 @@ public interface Container<T> extends
 	int size();
 
 	@Contract(pure = true)
-	boolean empty();
+	default boolean empty() {
+		return size() <= 0;
+	}
 
 	void push(@NotNull T obj);
 
 	@Nullable
 	@Contract(pure = true)
 	T top();
+
+	@Nullable
+	@Contract(pure = true)
+	T get(int index);
+
+	@Contract(pure = false)
+	void set(int index, @Nullable T element);
 
 	void pop();
 

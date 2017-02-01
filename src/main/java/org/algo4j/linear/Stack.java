@@ -44,10 +44,16 @@ public class Stack<T> implements
 		return cursor;
 	}
 
+	@Nullable
 	@Override
-	@Contract(pure = true)
-	public boolean empty() {
-		return size() <= 0;
+	public T get(int index) {
+		return (empty() || index >= size()) ? null : (T) data[index];
+	}
+
+	@Override
+	public void set(int index, @Nullable T element) {
+		if (empty() || index >= size()) throw StackException.overflow();
+		data[index] = element;
 	}
 
 	@Override
@@ -70,7 +76,7 @@ public class Stack<T> implements
 	 */
 	@Override
 	public void push(@NotNull T obj) {
-		if (cursor > maxLen) {
+		if (cursor >= maxLen) {
 			throw StackException.overflow();
 		} else {
 			data[cursor++] = obj;

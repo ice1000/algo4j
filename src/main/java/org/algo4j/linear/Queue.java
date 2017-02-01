@@ -47,10 +47,19 @@ public class Queue<T> implements
 		return end - begin;
 	}
 
+	@Nullable
 	@Override
-	@Contract(pure = true)
-	public boolean empty() {
-		return size() <= 0;
+	public T get(int index) {
+		return (empty() || index >= size()) ? null : (T) data[(begin + index) % maxLen];
+	}
+
+	@Nullable
+	@Override
+	public void set(int index, T element) {
+		if (empty() || index >= size()) {
+			throw QueueException.overflow();
+		}
+		data[index] = element;
 	}
 
 	/**
