@@ -1,5 +1,7 @@
 package org.algo4j.math
 
+import org.algo4j.linear.RollingArray
+import org.algo4j.math.MathUtils.*
 import org.algo4j.test.test
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
@@ -25,7 +27,7 @@ class MathUtilsTest {
 		test(10000) {
 			val a: Long = rand.nextInt(23333333).toLong()
 			val b: Long = rand.nextInt(23333333).toLong()
-			assertEquals(MathUtils.gcdStein(a, b), MathUtils.gcd(a, b))
+			assertEquals(gcdStein(a, b), gcd(a, b))
 		}
 	}
 
@@ -36,8 +38,8 @@ class MathUtilsTest {
 		test(1000) {
 			val a: Long = rand.nextInt(23333333).toLong()
 			val b: Long = rand.nextInt(23333333).toLong()
-			val res = MathUtils.exgcd(a, b)
-			assertEquals(MathUtils.gcd(a, b), res.x * a + res.y * b)
+			val res = exgcd(a, b)
+			assertEquals(gcd(a, b), res.x * a + res.y * b)
 		}
 	}
 
@@ -50,7 +52,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		test(1000000) {
 			@Suppress("DEPRECATION")
-			MathUtils.sqrt(random.nextDouble() * 10000)
+			(sqrt(random.nextDouble() * 10000))
 		}
 	}
 
@@ -64,7 +66,7 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		test(1000000) {
 			@Suppress("DEPRECATION")
-			MathUtils.sqrtCarmark(random.nextDouble() * 10000)
+			(sqrtCarmark(random.nextDouble() * 10000))
 		}
 	}
 
@@ -75,14 +77,14 @@ class MathUtilsTest {
 		val random = Random(System.currentTimeMillis())
 		val testNumber = random.nextDouble() * 10000
 		@Suppress("DEPRECATION")
-		println(MathUtils.sqrtCarmark(testNumber))
-		println(MathUtils.sqrt(testNumber))
+		println(sqrtCarmark(testNumber))
+		println(sqrt(testNumber))
 		println(StdMath.sqrt(testNumber))
 		test(5000) {
 			val temp = random.nextDouble()
 			@Suppress("DEPRECATION")
-			assertTrue(MathUtils.abs(MathUtils.sqrtCarmark(temp) - StdMath.sqrt(temp)) < 1e-5)
-			assertTrue(MathUtils.abs(MathUtils.sqrt(temp) - StdMath.sqrt(temp)) < 1e-10)
+			assertTrue(abs(sqrtCarmark(temp) - StdMath.sqrt(temp)) < 1e-5)
+			assertTrue(abs(sqrt(temp) - StdMath.sqrt(temp)) < 1e-10)
 		}
 	}
 
@@ -99,10 +101,10 @@ class MathUtilsTest {
 	@TestOnly
 	@Test(timeout = 100)
 	fun fastPlusPowerTest() {
-		assertEquals(24, MathUtils.fastPower(2, 10, 1000))
-		assertEquals(12, MathUtils.fastPower(2, 9, 100))
-		assertEquals(4, MathUtils.fastPower(2, 10, 10))
-		assertEquals(289, MathUtils.fastPlus(233, 233, 1000))
+		assertEquals(24, fastPower(2, 10, 1000))
+		assertEquals(12, fastPower(2, 9, 100))
+		assertEquals(4, fastPower(2, 10, 10))
+		assertEquals(289, fastPlus(233, 233, 1000))
 	}
 
 	/**
@@ -117,10 +119,10 @@ class MathUtilsTest {
 			val aDouble = random.nextDouble()
 			val aLong = random.nextLong()
 			val aFloat = random.nextFloat()
-			assertEquals(MathUtils.abs(anInt).toLong(), MathUtils.abs(anInt).toLong())
-			assertEquals(MathUtils.abs(aLong), MathUtils.abs(aLong))
-			assertEquals(MathUtils.abs(aDouble), MathUtils.abs(aDouble), 1e-15)
-			assertEquals(MathUtils.abs(aFloat).toDouble(), MathUtils.abs(aFloat).toDouble(), 1e-15)
+			assertEquals(abs(anInt).toLong(), abs(anInt).toLong())
+			assertEquals(abs(aLong), abs(aLong))
+			assertEquals(abs(aDouble), abs(aDouble), 1e-15)
+			assertEquals(abs(aFloat).toDouble(), abs(aFloat).toDouble(), 1e-15)
 		}
 	}
 
@@ -141,28 +143,28 @@ class MathUtilsTest {
 			val aFloat = random.nextFloat()
 			val aFloat2 = random.nextFloat()
 			assertEquals(
-					MathUtils.min(anInt, anInt2),
+					min(anInt, anInt2),
 					StdMath.min(anInt, anInt2))
 			assertEquals(
-					MathUtils.min(aLong, aLong2),
+					min(aLong, aLong2),
 					StdMath.min(aLong, aLong2))
 			assertEquals(
-					MathUtils.min(aDouble, aDouble2),
+					min(aDouble, aDouble2),
 					StdMath.min(aDouble, aDouble2), 1e-15)
 			assertEquals(
-					MathUtils.min(aFloat, aFloat2),
+					min(aFloat, aFloat2),
 					StdMath.min(aFloat, aFloat2), 1e-10F)
 			assertEquals(
-					MathUtils.max(anInt, anInt2),
+					max(anInt, anInt2),
 					StdMath.max(anInt, anInt2))
 			assertEquals(
-					MathUtils.max(aLong, aLong2),
+					max(aLong, aLong2),
 					StdMath.max(aLong, aLong2))
 			assertEquals(
-					MathUtils.max(aDouble, aDouble2),
+					max(aDouble, aDouble2),
 					StdMath.max(aDouble, aDouble2), 1e-15)
 			assertEquals(
-					MathUtils.max(aFloat, aFloat2),
+					max(aFloat, aFloat2),
 					StdMath.max(aFloat, aFloat2), 1e-10F)
 		}
 	}
@@ -174,10 +176,10 @@ class MathUtilsTest {
 		test(5000) {
 			val temp = random.nextDouble()
 			assertEquals(
-					MathUtils.ln(temp),
+					ln(temp),
 					StdMath.log(temp), 1e-15)
 			assertEquals(
-					MathUtils.lg(temp),
+					lg(temp),
 					StdMath.log10(temp), 1e-15)
 		}
 	}
@@ -194,19 +196,33 @@ class MathUtilsTest {
 				73L, 79L, 83L, 89L,
 				97L, 101L)
 		(0L..102L).forEach { i ->
-			if (primes.contains(i)) assertTrue(MathUtils.isPrime(i))
-			else assertFalse(MathUtils.isPrime(i))
+			if (primes.contains(i)) assertTrue(isPrime(i))
+			else assertFalse(isPrime(i))
 		}
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
-			assertFalse(MathUtils.isPrime(
-					((MathUtils.abs(rand.nextInt(100)) + 2) *
-							(MathUtils.abs(rand.nextInt(100)) + 2)).toLong()
+			assertFalse(isPrime(
+					((abs(rand.nextInt(100)) + 2) *
+							(abs(rand.nextInt(100)) + 2)).toLong()
 			))
 		}
 	}
 
-	companion object Initializer {
+	@TestOnly
+	@Test(timeout = 1000)
+	fun testFib() {
+		val fib = RollingArray<Int>(3)
+		fib[1] = 1
+		fib[2] = 1
+		test(1000) {
+			assertEquals(fib[it + 2], fib(it + 2, 2333333))
+			fib[it + 3] = (fib[it + 1] + fib[it + 2]) % 2333333;
+		}
+	}
+
+	companion
+
+	object Initializer {
 
 		@BeforeClass
 		@JvmStatic

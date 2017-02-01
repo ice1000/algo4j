@@ -275,4 +275,25 @@ public final class MathUtils {
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public static native long[] getPrimes(int count);
+
+	/**
+	 * get the (n-th element) % mod of the fibonacci sequence
+	 *
+	 * @param n   index
+	 * @param mod mod
+	 * @return fib[n] % mod
+	 */
+	@Contract(pure = true)
+	public static native int fib(int n, int mod);
+
+	/**
+	 * get the (n-th element) of the fibonacci sequence
+	 *
+	 * @param n index
+	 * @return fib[n]
+	 */
+	@Contract(pure = true)
+	public static int fib(int n) {
+		return fib(n, -1);
+	}
 }

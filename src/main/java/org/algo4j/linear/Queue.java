@@ -76,9 +76,8 @@ public class Queue<T> implements
 	}
 
 	@Override
-	@Nullable
-	public T pop() {
-		return empty() ? null : (T) data[begin++ % maxLen];
+	public void pop() {
+		++begin;
 	}
 
 	@Override

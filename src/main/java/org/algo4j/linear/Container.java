@@ -27,8 +27,14 @@ public interface Container<T> extends
 	@Contract(pure = true)
 	T top();
 
+	void pop();
+
 	@Nullable
-	T pop();
+	default T peek() {
+		T ret = top();
+		pop();
+		return ret;
+	}
 
 	@Contract(pure = true)
 	Container<T> clone();

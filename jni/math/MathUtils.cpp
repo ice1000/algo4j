@@ -4,12 +4,15 @@
 
 #include "MathUtils.h"
 #include "../global/templates.hpp"
+#include "../global/matrix.hpp"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using namespace algo4j_math;
+
+using algo4j_matrix::fib_matrix;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_gcd(
 		JNIEnv *env,
@@ -210,5 +213,14 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 #undef __abs__ice__
 #undef __max__ice__
 #undef __min__ice__
+
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fib(
+		JNIEnv *env,
+		jclass,
+		jint _,
+		jint mod) -> jint {
+	return fib_matrix(_, mod);
+}
+
 
 #pragma clang diagnostic pop

@@ -58,9 +58,8 @@ public class Stack<T> implements
 	}
 
 	@Override
-	@Nullable
-	public T pop() {
-		return empty() ? null : (T) data[--cursor];
+	public void pop() {
+		--cursor;
 	}
 
 	/**

@@ -9,7 +9,7 @@
 
 namespace algo4j_trie {
 
-	struct Node {
+	class Node {
 	private:
 		// alpha bet and space
 		Node *next[27];
@@ -25,7 +25,7 @@ namespace algo4j_trie {
 		auto getNext(jbyte) -> Node *;
 	};
 
-	struct Trie {
+	class Trie {
 	private:
 		// header
 		Node *head;
