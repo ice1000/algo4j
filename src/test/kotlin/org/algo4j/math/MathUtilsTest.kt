@@ -214,7 +214,7 @@ class MathUtilsTest {
 	fun testFibVeryStrong() {
 		val mod = 100000L
 		val fib = RollingArray<Long>(3)
-		fib[1] = 1
+		fib[1] = 1L
 		fib[2] = 1
 		test(700) {
 			fib[it + 2] = (fib[it] as Long + fib[it + 1] as Long) % mod
