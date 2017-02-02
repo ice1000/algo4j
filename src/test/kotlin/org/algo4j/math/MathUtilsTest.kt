@@ -203,20 +203,20 @@ class MathUtilsTest {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
 			assertFalse(isPrime(
-					((abs(rand.nextInt(100)) + 2) *
-							(abs(rand.nextInt(100)) + 2)).toLong()
+					((abs(rand.nextInt(100)) + 2L) *
+							(abs(rand.nextInt(100)) + 2L))
 			))
 		}
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
-	fun testFib() {
-		val mod = 23333L
+	@Test(timeout = 5000)
+	fun testFibVeryStrong() {
+		val mod = 100000L
 		val fib = RollingArray<Long>(3)
 		fib[1] = 1
 		fib[2] = 1
-		test(80) {
+		test(700) {
 			fib[it + 2] = (fib[it] as Long + fib[it + 1] as Long) % mod
 			assertEquals(fib[it + 2], fib(it + 2L, mod))
 		}

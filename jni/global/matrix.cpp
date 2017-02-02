@@ -17,12 +17,12 @@ algo4j_matrix::Matrix22::Matrix22(jlong aa, jlong b, jlong c, jlong d) {
 
 auto algo4j_matrix::mul(Matrix22 &x, Matrix22 &y, jlong mod) -> Matrix22 {
 	auto res = *new Matrix22();
-	int sum;
+	decltype(mod) sum;
 	for(auto i = 0; i < 2; ++i)
 		for(auto j = 0; j < 2; ++j) {
 			sum = 0;
 			for(auto k = 0; k < 2; ++k) {
-				if (mod > -1) sum += x.a[i][k] * y.a[k][j];
+				if (mod <= -1) sum += x.a[i][k] * y.a[k][j];
 				else {
 					sum += fast_plus(x.a[i][k], y.a[k][j], mod);
 					sum %= mod;
@@ -34,13 +34,21 @@ auto algo4j_matrix::mul(Matrix22 &x, Matrix22 &y, jlong mod) -> Matrix22 {
 	return x;
 }
 
-auto algo4j_matrix::pow(Matrix22 &x, jlong e, jlong mod) -> Matrix22 {
-	if(e == 1) return x;
-	if(not e) return *new Matrix22(1, 0, 0, 1);
-	auto temp = pow(x, e >> 1);
-	auto ans = mul(temp, temp, mod);
-	delete &temp;
-	if(e bitand 1) ans = mul(ans, x, mod);
+auto algo4j_matrix::pow(Matrix22 &origin, jlong k, jlong mod) -> Matrix22 {
+	auto ans = *new Matrix22(1, 0, 0, 1);
+	auto p = origin;
+	while (k) {
+		if (k & 1) {
+			auto new_ans = mul(ans, p, mod);
+			delete &ans;
+			ans = new_ans;
+			--k;
+		}
+		k >>= 1;
+		auto new_p = mul(p, p, mod);
+		delete &p;
+		p = new_p;
+	}
 	return ans;
 }
 
@@ -49,7 +57,7 @@ auto algo4j_matrix::fib_matrix(jlong n, jlong mod) -> jlong {
 	auto ans = pow(base, n - 1, mod);
 	auto ret = ans.a[0][0];
 	delete &base;
-	delete &ans;
+//	delete &ans;
 	return ret;
 }
 
