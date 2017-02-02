@@ -83,6 +83,7 @@ if exist cmake-build-debug (
 	rd /s /q cmake-build-debug
 )
 
+
 if exist ./cpp-test (
 	cd ./cpp-test
 	call clean.bat

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Created by ice1000 on 2017/2/1.
@@ -67,6 +68,33 @@ public class RollingArray<T> implements Container<T> {
 
 	@Override
 	public Iterator iterator() {
-		return null;
+		return new RollingArrItr<>(this);
+	}
+
+	public class RollingArrItr<E> implements Iterator<E> {
+		private int cursor;
+		private final RollingArray<E> arr;
+
+		public RollingArrItr(@NotNull RollingArray<E> arr) {
+			this.arr = arr;
+			cursor = 0;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return true;
+		}
+
+		@Nullable
+		@Override
+		public E next() {
+			if (!hasNext()) throw new NoSuchElementException();
+			return arr.get(cursor++);
+		}
+
+		@Override
+		public void remove() {
+			arr.set(cursor++, null);
+		}
 	}
 }
