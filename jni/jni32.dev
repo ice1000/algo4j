@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=100000a1g0000000000010000
-UnitCount=36
+UnitCount=38
 
 [VersionInfo]
 Major=1
@@ -402,6 +402,26 @@ BuildCmd=
 
 [Unit36]
 FileName=global\trie.h
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit37]
+FileName=global\matrix.cpp
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit38]
+FileName=global\matrix.h
 CompileCpp=1
 Folder=global
 Compile=1
