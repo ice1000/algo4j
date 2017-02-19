@@ -15,8 +15,8 @@ using algo4j_util::min;
 using algo4j_util::swap;
 using algo4j_util::abs;
 
-using std::istream;
-using std::ostream;
+//using std::istream;
+//using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"

@@ -166,19 +166,19 @@ auto algo4j_int::divide(
 
 namespace algo4j_int {
 
-	auto operator<<(ostream &os, const BigInt &o) -> ostream & {
-		for (auto _ = 0; _ < o.len; ++_) {
-			os << o.data[_];
-		}
-		return os;
-	}
-
-	auto operator>>(istream &is, BigInt &o) -> istream & {
-		for (auto _ = 0; _ < o.len; ++_) {
-			is >> o.data[_];
-		}
-		return is;
-	}
+//	auto operator<<(ostream &os, const BigInt &o) -> ostream & {
+//		for (auto _ = 0; _ < o.len; ++_) {
+//			os << o.data[_];
+//		}
+//		return os;
+//	}
+//
+//	auto operator>>(istream &is, BigInt &o) -> istream & {
+//		for (auto _ = 0; _ < o.len; ++_) {
+//			is >> o.data[_];
+//		}
+//		return is;
+//	}
 }
 
 #undef check_more_than_9

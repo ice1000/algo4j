@@ -4,10 +4,10 @@
 
 #include <jni.h>
 
-#include <iostream>
-
-using std::istream;
-using std::ostream;
+//#include <iostream>
+//
+//using std::istream;
+//using std::ostream;
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"

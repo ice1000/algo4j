@@ -4,13 +4,13 @@
 
 #include <jni.h>
 
-#include <iostream>
+//#include <iostream>
 
 #ifndef __BIG_INT_H__
 #define __BIG_INT_H__
 
-using std::istream;
-using std::ostream;
+//using std::istream;
+//using std::ostream;
 
 namespace algo4j_int {
 	class BigInt {
@@ -20,9 +20,9 @@ namespace algo4j_int {
 
 		explicit BigInt(jbyte *_data, jsize _len);
 
-		friend auto operator<<(ostream &os, const BigInt &o) -> ostream &;
-
-		friend auto operator>>(istream &is, BigInt &o) -> istream &;
+//		friend auto operator<<(ostream &os, const BigInt &o) -> ostream &;
+//
+//		friend auto operator>>(istream &is, BigInt &o) -> istream &;
 	};
 
 	auto compare(
