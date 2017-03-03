@@ -21,9 +21,11 @@ class QueueTest {
 		queue.push(666)
 		queue.push(123)
 		assertEquals(233, queue.top())
-		assertEquals(233, queue.pop())
-		assertEquals(666, queue.pop())
-		assertEquals(123, queue.pop())
+		queue.pop()
+		assertEquals(666, queue.top())
+		queue.pop()
+		assertEquals(123, queue.top())
+		queue.pop()
 		assertTrue(queue.empty())
 	}
 

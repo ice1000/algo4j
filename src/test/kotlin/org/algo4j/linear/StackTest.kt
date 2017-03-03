@@ -21,9 +21,11 @@ class StackTest {
 		stack.push(666)
 		stack.push(123)
 		assertEquals(123, stack.top())
-		assertEquals(123, stack.pop())
-		assertEquals(666, stack.pop())
-		assertEquals(233, stack.pop())
+		stack.pop()
+		assertEquals(666, stack.top())
+		stack.pop()
+		assertEquals(233, stack.top())
+		stack.pop()
 		assertTrue(stack.empty())
 	}
 

@@ -212,7 +212,7 @@ class MathUtilsTest {
 	@TestOnly
 	@Test(timeout = 5000)
 	fun testFibVeryStrong() {
-		val mod = 100000L
+		val mod = 10007L
 		val fib = RollingArray<Long>(3)
 		fib[1] = 1L
 		fib[2] = 1L
