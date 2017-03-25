@@ -165,15 +165,15 @@ namespace algo4j_util {
 			return not(*this == o);
 		}
 
-		constexpr auto operator+(const Pair &o) const -> const Pair * {
+		auto operator+(const Pair &o) const -> const Pair * {
 			return new Pair(first + o.first, second + o.second);
 		}
 
-		constexpr auto operator-(const Pair &o) const -> const Pair * {
+		auto operator-(const Pair &o) const -> const Pair * {
 			return new Pair(first - o.first, second - o.second);
 		}
 
-//		constexpr auto operator*(const Pair &o) const -> const Pair * {
+//		auto operator*(const Pair &o) const -> const Pair * {
 //			return new Pair(first * o.first, second * o.second);
 //		}
 

@@ -1,0 +1,15 @@
+name:algo4j
+ign:.idea
+ign:.git
+ign:.gradle
+ign:gradle
+ign:build
+ign-sfx:dll
+ign-sfx:exe
+ign-sfx:o
+ign-sfx:jar
+ign-sfx:class
+idt-line-1:50
+idt-line-2:3
+idt-line-3:2
+idt-ls-1:50

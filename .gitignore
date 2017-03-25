@@ -32,7 +32,6 @@ lib/
 ## Logs ##
 
 *.log
-*.txt
 
 ## added by plugin ##
 
