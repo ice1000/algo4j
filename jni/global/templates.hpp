@@ -62,7 +62,7 @@ namespace algo4j_math {
 
 namespace algo4j_bit {
 	template<typename T>
-	constexpr auto lowbit(const T a) -> jlong {
+	constexpr auto lowbit(const T a) -> T {
 		return __lowbit(a);
 	}
 
@@ -124,15 +124,15 @@ namespace algo4j_util {
 		T1 first;
 		T2 second;
 
-		constexpr Pair(const T1 &f, const T2 &s) :
+		Pair(const T1 &f, const T2 &s) :
 				first(f),
 				second(s) {}
 
-		constexpr explicit Pair(const T1 &o) :
+		explicit Pair(const T1 &o) :
 				first(o),
 				second(static_cast<T2>(o)) {}
 
-		constexpr explicit Pair() : first(), second() {}
+		explicit Pair() : first(), second() {}
 
 		~Pair() {}
 

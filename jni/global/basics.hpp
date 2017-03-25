@@ -45,7 +45,7 @@ env->GetArrayLength(_ ## name)
 
 namespace algo4j_util {
 	template<typename T>
-	inline constexpr auto swap(T &_1, T &_2) -> void {
+	inline auto swap(T &_1, T &_2) -> void {
 		auto _ = _1;
 		_1 = _2;
 		_2 = _;
@@ -85,11 +85,11 @@ namespace algo4j_util {
 			return _ = val;
 		}
 
-		constexpr auto get() -> T * {
+		auto get() -> T * {
 			return _;
 		}
 
-		constexpr auto clear() -> void {
+		auto clear() -> void {
 			delete _;
 		}
 	};
