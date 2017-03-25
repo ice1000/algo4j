@@ -27,12 +27,3 @@ operator fun Trie.minusAssign(word: String) =
 operator fun Trie.minusAssign(word: ByteArray) =
 		remove(word)
 
-@Contract(pure = true)
-operator fun Trie.contains(word: String) =
-		contains(word)
-
-@Contract(pure = true)
-operator fun Trie.contains(word: ByteArray) =
-		contains(word)
-
-

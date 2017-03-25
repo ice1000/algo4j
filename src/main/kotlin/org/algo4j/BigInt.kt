@@ -12,25 +12,9 @@ import org.algo4j.math.BigInt
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = true)
-operator fun BigInt.plus(o: BigInt) =
-		plus(o)
-
-@Contract(pure = true)
-operator fun BigInt.minus(o: BigInt) =
-		minus(o)
-
-@Contract(pure = true)
-operator fun BigInt.times(o: BigInt) =
-		times(o)
-
-@Contract(pure = true)
 operator fun BigInt.div(o: BigInt) =
 		divide(o)
 
 @Contract(pure = true)
-operator fun BigInt.mod(o: BigInt) =
+operator fun BigInt.rem(o: BigInt) =
 		mod(o)
-
-@Contract(pure = true)
-operator fun BigInt.compareTo(o: BigInt) =
-		compareTo(o)
