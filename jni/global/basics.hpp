@@ -44,6 +44,9 @@ env->GetArrayLength(_ ## name)
 #endif /// _
 
 namespace algo4j_util {
+	template<class T>
+	using ptr_to = T*;
+
 	template<typename T>
 	inline auto swap(T &_1, T &_2) -> void {
 		auto _ = _1;

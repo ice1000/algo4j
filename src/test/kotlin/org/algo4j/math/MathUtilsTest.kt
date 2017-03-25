@@ -210,13 +210,13 @@ class MathUtilsTest {
 	}
 
 	@TestOnly
-//	@Test(timeout = 5000)
+	@Test(timeout = 5000)
 	fun testFibVeryStrong() {
 		val mod = 10007L
 		val fib = RollingArray<Long>(3)
 		fib[1] = 1L
 		fib[2] = 1L
-		test(300) {
+		test(1200) {
 			fib[it + 2] = (fib[it] as Long + fib[it + 1] as Long) % mod
 			assertEquals(fib[it + 2], fib(it + 2L, mod))
 		}
@@ -226,8 +226,7 @@ class MathUtilsTest {
 
 		@BeforeClass
 		@JvmStatic
-		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun loadJniLibrary() =
+				System.loadLibrary(Loader.JNI_LIB_NAME)
 	}
 }

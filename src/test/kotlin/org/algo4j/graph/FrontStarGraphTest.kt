@@ -82,9 +82,21 @@ class FrontStarGraphTest {
 			graph.addEdge(from, to, value)
 		}
 		optional(false) {
-			graph.spfa(1).map { println(it); return@map it }.toIntArray()
+			graph
+					.spfa(1)
+					.map {
+						println(it);
+						return@map it
+					}
+					.toIntArray()
 			println("")
-			graph.bellmanFord(1).map { println(it); return@map it }.toIntArray()
+			graph
+					.bellmanFord(1)
+					.map {
+						println(it);
+						return@map it
+					}
+					.toIntArray()
 		}
 		for (i in 2..98) {
 			optional(false) {
@@ -159,7 +171,7 @@ class FrontStarGraphTest {
 		graph[1, 4] = 5
 		graph[4, 1] = 5
 		var count = 0
-		graph.dfs(1, 0, { edge, last ->
+		graph.dfs(1, 0, { _, last ->
 			count++
 			return@dfs last + 1
 		})
@@ -169,8 +181,6 @@ class FrontStarGraphTest {
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
-		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun loadJniLibrary() = System.loadLibrary(Loader.JNI_LIB_NAME)
 	}
 }

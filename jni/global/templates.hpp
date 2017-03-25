@@ -124,7 +124,7 @@ namespace algo4j_util {
 		T1 first;
 		T2 second;
 
-		Pair(const T1 &f, const T2 &s) :
+		constexpr Pair(const T1 &f, const T2 &s) :
 				first(f),
 				second(s) {}
 
