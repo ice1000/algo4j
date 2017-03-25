@@ -216,7 +216,7 @@ class MathUtilsTest {
 		val fib = RollingArray<Long>(3)
 		fib[1] = 1L
 		fib[2] = 1L
-		test(1200) {
+		test(3000) {
 			fib[it + 2] = (fib[it] as Long + fib[it + 1] as Long) % mod
 			assertEquals(fib[it + 2], fib(it + 2L, mod))
 		}
