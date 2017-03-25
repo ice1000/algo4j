@@ -27,12 +27,10 @@ set(
 		util/Statistics.cpp
 		math/MathUtils.cpp
 		tree/UnionSet.cpp
-		global/winapi.cpp
 		global/bigint.cpp
 		global/basics.hpp
 		util/SeqUtils.cpp
 		math/BigInt.cpp
-		win/WinAPI.cpp
 )
 
 set(
@@ -50,13 +48,12 @@ set(
 		math/MathUtils.h
 		tree/UnionSet.h
 		global/bigint.h
-		global/winapi.h
 		util/SeqUtils.h
 		math/BigInt.h
-		win/WinAPI.h
 )
 
 # add_executable(jni ${SOURCE_FILES})
+
 add_library(
 		jni
 		SHARED
