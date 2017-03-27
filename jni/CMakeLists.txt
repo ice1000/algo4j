@@ -30,6 +30,7 @@ set(
 		global/bigint.cpp
 		global/basics.hpp
 		util/SeqUtils.cpp
+		global/matrix.cpp
 		math/BigInt.cpp
 )
 
@@ -48,6 +49,7 @@ set(
 		math/MathUtils.h
 		tree/UnionSet.h
 		global/bigint.h
+		global/matrix.h
 		util/SeqUtils.h
 		math/BigInt.h
 )
