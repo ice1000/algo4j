@@ -3,8 +3,6 @@
 //
 
 #include "trie.h"
-#include <string.h>
-#include "basics.hpp"
 
 using algo4j_trie::Node;
 using algo4j_trie::Trie;
@@ -34,7 +32,7 @@ algo4j_trie::Node::Node() : hasElement(false) {
 algo4j_trie::Node::~Node() {
 }
 
-algo4j_trie::Trie::Trie() : head(new Node()) { }
+algo4j_trie::Trie::Trie() : head(new Node()) {}
 
 algo4j_trie::Trie::~Trie() {
 	delete head;

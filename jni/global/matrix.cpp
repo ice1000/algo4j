@@ -41,16 +41,16 @@ auto algo4j_matrix::Matrix22Pool::create() -> ptr_to<Matrix22> {
 }
 
 auto algo4j_matrix::magic_function(jlong x) -> jlong {
-	return log(x + 1) * 3 + 4;
+	return static_cast<jlong>(log(x + 1) * 3 + 4);
 }
 
 auto algo4j_matrix::mul(Matrix22Pool &pool, Matrix22 &x, Matrix22 &y, jlong mod) -> Matrix22 {
 	auto res = *pool.create();
 	decltype(mod) sum;
-	for(auto i = 0; i < 2; ++i)
-		for(auto j = 0; j < 2; ++j) {
+	for (auto i = 0; i < 2; ++i)
+		for (auto j = 0; j < 2; ++j) {
 			sum = 0;
-			for(auto k = 0; k < 2; ++k) {
+			for (auto k = 0; k < 2; ++k) {
 				if (mod <= -1) sum += x.a[i][k] * y.a[k][j];
 				else {
 					sum += fast_plus(x.a[i][k], y.a[k][j], mod);
@@ -80,7 +80,7 @@ auto algo4j_matrix::pow(Matrix22Pool &pool, Matrix22 &origin, jlong k, jlong mod
 }
 
 auto algo4j_matrix::fib_matrix(jlong n, jlong mod) -> jlong {
-	auto pool = new Matrix22Pool(magic_function(n));
+	auto pool = new Matrix22Pool((jsize) magic_function(n));
 	auto base = *pool->create(1, 1, 1, 0);
 	auto ans = pow(*pool, base, n - 1, mod);
 	auto ret = ans.a[0][0];

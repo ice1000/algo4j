@@ -21,6 +21,7 @@ namespace algo4j_matrix {
 		auto create(jlong, jlong, jlong, jlong) -> ptr_to<Matrix22>;
 
 		auto create() -> ptr_to<Matrix22>;
+
 	private:
 
 		Matrix22 **pool;
@@ -46,10 +47,8 @@ namespace algo4j_matrix {
 
 	auto fib_matrix(jlong n, jlong = -1) -> jlong;
 
-	auto magic_function(jlong) -> jlong; 
+	auto magic_function(jlong) -> jlong;
 }
-
-
 
 
 #endif /// __ALGO4J_MATRIX_H__
