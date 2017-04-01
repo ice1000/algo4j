@@ -4,32 +4,11 @@ version '0.0.1-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'maven'
-//apply plugin: 'jacoco'
 //apply plugin: 'cpp'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-//model {
-//	components {
-//		algo4j(SharedLibraryBinarySpec) {
-//			sources {
-//				cpp {
-//					source {
-//						srcDir += "jni/bit"
-//						srcDir += "jni/global"
-//						srcDir += "jni/graph"
-//						srcDir += "jni/math"
-//						srcDir += "jni/util"
-//					}
-//				}
-//			}
-//		}
-//	}
-//}
-//
-//task moveJniLibrary {
-//}
 
 repositories {
 	jcenter()
@@ -55,50 +34,14 @@ sourceSets {
 }
 
 dependencies {
-	compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
+	compile group: 'org.jetbrains', name: 'annotations', version: '15.0'
 	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-	testCompile 'junit:junit:4.11'
+	testCompile 'junit:junit:4.12'
 	testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
-
-//test {
-//	filter {
-//		// include specific method in any of the tests
-//		// includeTestsMatching "*UiCheck"
-//
-//		//include all tests from package
-//		includeTestsMatching "org.algo4j.*"
-//
-//		//include all integration tests
-//		// includeTestsMatching "*IntegTest"
-//	}
-//}
-//
-//jacocoTestReport {
-//	reports {
-//		xml.enabled true
-//		xml.destination "${buildDir}/reports/report.xml"
-//		html.enabled true
-//		html.destination "${buildDir}/reports/report_html"
-//	}
-//}
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-//task sourcesJar(type: Jar, dependsOn: classes) {
-//	classifier = 'sources'
-//	from sourceSets.main.allSource
-//}
-//
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//	classifier = 'javadoc'
-//	from javadoc.destinationDir
-//}
-//
-//artifacts {
-//	archives sourcesJar
-//	archives javadocJar
-//}

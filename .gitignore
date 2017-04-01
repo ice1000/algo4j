@@ -40,3 +40,5 @@ code_drafts/.vscode/
 jni/jni32.ico
 jni/jni32.layout
 jni/cmake-build-release/
+jni/cmake-build-debug/
+jni/CMakeFiles/
