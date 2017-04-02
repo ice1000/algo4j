@@ -19,7 +19,7 @@ ObjectOutput=
 LogOutput=./log
 LogOutputEnabled=1
 OverrideOutput=1
-OverrideOutputName=jni.dll
+OverrideOutputName=libjni.dll
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
@@ -28,7 +28,7 @@ Folders=global,graph,math,tree,tree/bit,tree/heap,util,win
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
-CompilerSettings=100000a1g0000000000010000
+CompilerSettings=100000c1g0000000000010000
 UnitCount=38
 
 [VersionInfo]

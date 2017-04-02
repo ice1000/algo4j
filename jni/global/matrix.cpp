@@ -15,11 +15,15 @@ algo4j_matrix::Matrix22::~Matrix22() {
 algo4j_matrix::Matrix22::Matrix22() {
 }
 
-algo4j_matrix::Matrix22::Matrix22(jlong aa, jlong b, jlong c, jlong d) {
-	a[0][0] = aa;
-	a[0][1] = b;
-	a[1][0] = c;
-	a[1][1] = d;
+algo4j_matrix::Matrix22::Matrix22(
+		jlong ___,
+		jlong ____,
+		jlong _____,
+		jlong ______) {
+	a[0][0] = ___;
+	a[0][1] = ____;
+	a[1][0] = _____;
+	a[1][1] = ______;
 }
 
 algo4j_matrix::Matrix22Pool::~Matrix22Pool() {
@@ -46,18 +50,18 @@ auto algo4j_matrix::magic_function(jlong x) -> jlong {
 
 auto algo4j_matrix::mul(Matrix22Pool &pool, Matrix22 &x, Matrix22 &y, jlong mod) -> Matrix22 {
 	auto res = *pool.create();
-	decltype(mod) sum;
-	for (auto i = 0; i < 2; ++i)
-		for (auto j = 0; j < 2; ++j) {
-			sum = 0;
-			for (auto k = 0; k < 2; ++k) {
-				if (mod <= -1) sum += x.a[i][k] * y.a[k][j];
+	decltype(mod) _____;
+	for (auto __ = 0; __ < 2; ++__)
+		for (auto ___ = 0; ___ < 2; ++___) {
+			_____ = 0;
+			for (auto ____ = 0; ____ < 2; ++____) {
+				if (mod <= -1) _____ += x.a[__][____] * y.a[____][___];
 				else {
-					sum += fast_plus(x.a[i][k], y.a[k][j], mod);
-					sum %= mod;
+					_____ += fast_plus(x.a[__][____], y.a[____][___], mod);
+					_____ %= mod;
 				}
 			}
-			res.a[i][j] = sum;
+			res.a[__][___] = _____;
 		}
 	x = res;
 	return x;
@@ -67,7 +71,7 @@ auto algo4j_matrix::pow(Matrix22Pool &pool, Matrix22 &origin, jlong k, jlong mod
 	auto ans = *pool.create(1, 0, 0, 1);
 	auto p = origin;
 	while (k) {
-		if (k & 1) {
+		if (k bitand 1) {
 			auto new_ans = mul(pool, ans, p, mod);
 			ans = new_ans;
 			--k;

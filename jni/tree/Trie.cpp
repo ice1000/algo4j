@@ -5,6 +5,9 @@
 
 #include <stdio.h>
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 using algo4j_trie::Trie;
 using algo4j_trie::Node;
 
@@ -76,3 +79,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_containsPrefix(
 }
 
 
+
+#pragma clang diagnostic pop

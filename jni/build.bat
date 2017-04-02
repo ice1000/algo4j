@@ -2,7 +2,7 @@
 
 title Compiling jni library
 
-mingw32-make -f Makefile.win all
+mingw32-make -f "Makefile.win" all
 
 echo ================================================
 echo ================================================

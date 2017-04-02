@@ -57,26 +57,26 @@ JNIEXPORT auto JNICALL Java_org_algo4j_graph_AdjacentMatrixGraph_dijkstra(
 	memset(v, false, sizeof(v));
 	__new(Int, dis, len);
 	int begin = source * len;
-	for (auto i = 0; i < len; ++i) {
-		dis[i] = origin[begin + i];
+	for (auto _ = 0; _ < len; ++_) {
+		dis[_] = origin[begin + _];
 	}
 	dis[source] = 0;
 	dis[0] = -1;
 	v[source] = true;
 	for (auto _ = 0; _ < len; ++_) {
 		min = AdjacentMatrixGraph_ORIGINAL_FILLING_VALUE;
-		for (auto i = 0; i < len; ++i) {
-			if (!v[i] and
-				min > dis[i]) {
-				min = dis[i];
-				min_index = i;
+		for (auto __ = 0; __ < len; ++__) {
+			if (!v[__] and
+				min > dis[__]) {
+				min = dis[__];
+				min_index = __;
 			}
 		}
 		v[min_index] = true;
-		for (auto i = 0; i < len; ++i) {
-			if (!v[i] and
-				dis[i] > dis[min_index] + matrix(origin, min_index, i)) {
-				dis[i] = dis[min_index] + matrix(origin, min_index, i);
+		for (auto __ = 0; __ < len; ++__) {
+			if (!v[__] and
+				dis[__] > dis[min_index] + matrix(origin, min_index, __)) {
+				dis[__] = dis[min_index] + matrix(origin, min_index, __);
 			}
 		}
 	}

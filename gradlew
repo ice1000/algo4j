@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+#### Modified by ice1000 ####
+
+cmake build jni
+mv ./jni/libjni.* ./
+
+#### Modified end ####
+
 ##############################################################################
 ##
 ##  Gradle start up script for UN*X

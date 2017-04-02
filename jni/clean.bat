@@ -1,8 +1,18 @@
 @echo off
 title cleaning jni library
 
+cmake --build . --target clean -- -j 8
+
 if exist *.o (
 	del /f /s /q *.o
+)
+
+if exist *.cmake (
+	del /f /s /q *.cmake
+)
+
+if exist CMakeCache.txt (
+	del /f /s /q CMakeCache.txt
 )
 
 cd tree
@@ -108,11 +118,15 @@ if exist ../out (
 	cd ./jni
 )
 
-if exist ./jni.dll (
+if exist jni.dll (
 	move jni.dll ../
 )
 
-if exist ./jni32.dll (
+if exist libjni.dll (
+	move libjni.dll ../
+)
+
+if exist jni32.dll (
 	move jni32.dll ../
 )
 

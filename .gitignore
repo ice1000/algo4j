@@ -17,7 +17,12 @@ jni/.vscode/
 .gradle/
 build/
 
+jni/cmake-build-release/
 jni/cmake-build-debug/
+jni/CMakeFiles/
+jni/CMakeCache.txt
+jni/cmake_install.cmake
+jni/jni.cbp
 jni/build/
 out/
 
@@ -39,6 +44,3 @@ lib/
 code_drafts/.vscode/
 jni/jni32.ico
 jni/jni32.layout
-jni/cmake-build-release/
-jni/cmake-build-debug/
-jni/CMakeFiles/

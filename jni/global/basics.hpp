@@ -48,20 +48,20 @@ namespace algo4j_util {
 	using ptr_to = T*;
 
 	template<typename T>
-	inline auto swap(T &_1, T &_2) -> void {
-		auto _ = _1;
-		_1 = _2;
-		_2 = _;
+	inline auto swap(T &___, T &__) -> void {
+		auto _ = ___;
+		___ = __;
+		__ = _;
 	}
 
 	template<typename T1, typename T2>
-	inline constexpr auto max(const T1 &_1, const T2 &_2) -> T1 {
-		return _1 < _2 ? _2 : _1;
+	inline constexpr auto max(const T1 &__, const T2 &___) -> T1 {
+		return __ < ___ ? ___ : __;
 	}
 
 	template<typename T1, typename T2>
-	inline constexpr auto min(const T1 &_1, const T2 &_2) -> T1 {
-		return _1 > _2 ? _1 : _2;
+	inline constexpr auto min(const T1 &__, const T2 &___) -> T1 {
+		return __ > ___ ? __ : ___;
 	}
 
 	template<typename T>
@@ -83,9 +83,9 @@ namespace algo4j_util {
 //			clear();
 		}
 
-		auto set(T *val) -> T * {
+		auto set(T *__) -> T * {
 			delete _;
-			return _ = val;
+			return _ = __;
 		}
 
 		auto get() -> T * {

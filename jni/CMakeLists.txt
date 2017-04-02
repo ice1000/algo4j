@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.6)
+set(OUTPUT_VARIABLE "${}")
+cmake_minimum_required(VERSION 3.7)
 project(jni)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
 set(BUILD_USE_64BITS on)
 
 set(

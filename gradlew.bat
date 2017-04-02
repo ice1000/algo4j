@@ -1,4 +1,12 @@
 @if "%DEBUG%" == "" @echo off
+
+@rem #### Modified by ice1000 ####
+
+cmake build jni
+move ./jni/libjni.* ./
+
+@rem #### Modified end ####
+
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows
