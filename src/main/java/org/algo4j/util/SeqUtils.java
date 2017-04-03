@@ -5,6 +5,11 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by ice1000 on 2016/11/18.
  *
@@ -65,52 +70,6 @@ public final class SeqUtils {
 	 */
 	@Contract(pure = true)
 	public static native long inversion(@NotNull double[] data);
-
-	public static void sortQuickPartial(
-			@NotNull int[] data,
-			int left,
-			int right) {
-		if (left >= right) return;
-		int i = left;
-		int j = right;
-		int temp = data[left];
-		while (i < j) {
-			while ((i < j) && (temp < data[j] || temp == data[j])) --j;
-			while ((i < j) && !(temp < data[i])) ++i;
-			if (i < j) {
-				int tmp = data[i];
-				data[i] = data[j];
-				data[j] = tmp;
-			}
-		}
-		data[left] = data[i];
-		data[i] = temp;
-		sortQuickPartial(data, left, i - 1);
-		sortQuickPartial(data, i + 1, right);
-	}
-
-	public static void sortQuickPartial(
-			@NotNull double[] data,
-			int left,
-			int right) {
-		if (left >= right) return;
-		int i = left;
-		int j = right;
-		double temp = data[left];
-		while (i < j) {
-			while ((i < j) && (temp < data[j] || temp == data[j])) --j;
-			while ((i < j) && !(temp < data[i])) ++i;
-			if (i < j) {
-				double tmp = data[i];
-				data[i] = data[j];
-				data[j] = tmp;
-			}
-		}
-		data[left] = data[i];
-		data[i] = temp;
-		sortQuickPartial(data, left, i - 1);
-		sortQuickPartial(data, i + 1, right);
-	}
 
 	/**
 	 * O(len) = len ^ 2
@@ -484,4 +443,95 @@ public final class SeqUtils {
 		);
 	}
 
+	public static class MultiThreadingQuickSorter {
+		private final int flag;
+		private final float[] array;
+
+		public MultiThreadingQuickSorter(float[] array, int flag) {
+			this.array = array;
+			this.flag = flag;
+		}
+
+		public MultiThreadingQuickSorter(float[] array) {
+			this(array, array.length / 1_000);
+		}
+
+		@SuppressWarnings("WeakerAccess")
+		public void forkJoinSort() {
+			ForkJoinPool forkJoinPool = new ForkJoinPool();
+			forkJoinPool.submit(new SortTask(array, flag));
+			forkJoinPool.shutdown();
+			try {
+				forkJoinPool.awaitTermination(10_000, TimeUnit.SECONDS);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		@SuppressWarnings("WeakerAccess")
+		public void checkSort() {
+			int num = array.length - 2;
+			for (int i = 0; i < num; i++)
+				if (array[i] > array[i + 1])
+					throw new RuntimeException(array[i] + ">" + array[i + 1]);
+		}
+
+		private class SortTask extends RecursiveAction {
+			private final float[] array;
+			private final int start;
+			private final int end;
+			private final int flag;
+
+			SortTask(float[] array, int flag) {
+				this(array, 0, array.length - 1, flag);
+			}
+
+			private SortTask(float[] array, int start, int end, int flag) {
+				this.array = array;
+				this.start = start;
+				this.end = end;
+				this.flag = flag;
+			}
+
+			@Override
+			protected void compute() {
+				if (end - start < flag) {
+					Arrays.sort(array, start, end + 1);
+				} else {
+					int pivot = partition(array, start, end);
+					if (start < pivot - 1) new SortTask(array, start, pivot - 1, flag).fork();
+					if (pivot + 1 < end) new SortTask(array, pivot + 1, end, flag).fork();
+				}
+			}
+
+			private int partition(float[] array, int start, int end) {
+				int i = start;
+				int j = end;
+				if (j - i > 2) {
+					if ((array[i] < array[j - i] && array[j - i] < array[j])
+							|| (array[j] < array[j - i] && array[j - i] < array[i])) {
+						float t = array[i];
+						array[i] = array[j - i];
+						array[j - i] = t;
+					} else {
+						if ((array[i] < array[j] && array[j] < array[j - i])
+								|| (array[j - i] < array[j] && array[j] < array[i])) {
+							float t = array[i];
+							array[i] = array[j];
+							array[j] = t;
+						}
+					}
+				}
+				float pivot = array[i];
+				while (i < j) {
+					while (i < j && array[j] > pivot) j--;
+					if (i < j) array[i++] = array[j];
+					while (i < j && array[i] < pivot) i++;
+					if (i < j) array[j--] = array[i];
+				}
+				array[i] = pivot;
+				return i;
+			}
+		}
+	}
 }
