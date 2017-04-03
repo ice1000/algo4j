@@ -2,6 +2,8 @@ package org.algo4j.util;
 
 import org.junit.Test;
 
+import static org.algo4j.util.ParallelQuickSorters.*;
+
 public class MultiThreadingQuickSorterTest {
 	@Test(timeout = 1000)
 	public void test() {
@@ -9,7 +11,7 @@ public class MultiThreadingQuickSorterTest {
 			int[] a = new int[]{
 					4, 233, 4, 3, 324, 423, 432, 432, 2, 432, 4, 32, 42442, 43, 234243, 43, 2, 4, 324, 23
 			};
-			SeqUtils.MultiThreadingQuickSorterInt main = new SeqUtils.MultiThreadingQuickSorterInt(a);
+			MultiThreadingQuickSorterInt main = new MultiThreadingQuickSorterInt(a);
 			main.forkJoinSort();
 			int num = a.length - 2;
 			for (int j = 0; j < num; ++j)

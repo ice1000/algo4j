@@ -151,18 +151,6 @@ class SeqUtilsTest {
 		SeqUtils.sortQuick(strongIntArray.toIntArray())
 	}
 
-	@TestOnly
-	@Test(timeout = 10000)
-	fun sortQuickMultiThreading() {
-//		val arr = strongIntArray.toIntArray()
-//		val equ = arr.copy() ?: intArrayOf()
-//		equ.sort()
-//		SeqUtils.sortQuickPartial(arr)
-//		Thread.sleep(4000)
-//		arr.forEachIndexed { index, i -> println("$index\t: $i") }
-//		assertArrayEquals(equ, arr)
-	}
-
 	/**
 	 * 复制测试
 	 */
