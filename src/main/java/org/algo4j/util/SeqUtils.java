@@ -66,6 +66,60 @@ public final class SeqUtils {
 	@Contract(pure = true)
 	public static native long inversion(@NotNull double[] data);
 
+	public static void sortQuickMultiThreading(@NotNull int[] data) {
+		sortQuickMultiThreading(data, 0, data.length - 1);
+	}
+
+	private static void sortQuickMultiThreading(
+			@NotNull int[] data,
+			int left,
+			int right) {
+		if (left >= right) return;
+		int i = left;
+		int j = right;
+		int temp = data[left];
+		while (i < j) {
+			while ((i < j) && (temp < data[j] || temp == data[j])) --j;
+			while ((i < j) && !(temp < data[i])) ++i;
+			if (i < j) {
+				int tmp = data[i];
+				data[i] = data[j];
+				data[j] = tmp;
+			}
+		}
+		data[left] = data[i];
+		data[i] = temp;
+		sortQuickMultiThreading(data, left, i - 1);
+		sortQuickMultiThreading(data, i + 1, right);
+	}
+
+	public static void sortQuickMultiThreading(@NotNull double[] data) {
+		sortQuickMultiThreading(data, 0, data.length - 1);
+	}
+
+	private static void sortQuickMultiThreading(
+			@NotNull double[] data,
+			int left,
+			int right) {
+		if (left >= right) return;
+		int i = left;
+		int j = right;
+		double temp = data[left];
+		while (i < j) {
+			while ((i < j) && (temp < data[j] || temp == data[j])) --j;
+			while ((i < j) && !(temp < data[i])) ++i;
+			if (i < j) {
+				double tmp = data[i];
+				data[i] = data[j];
+				data[j] = tmp;
+			}
+		}
+		data[left] = data[i];
+		data[i] = temp;
+		sortQuickMultiThreading(data, left, i - 1);
+		sortQuickMultiThreading(data, i + 1, right);
+	}
+
 	/**
 	 * O(len) = len ^ 2
 	 * bubble sort

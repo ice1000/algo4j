@@ -2,8 +2,8 @@
 
 @rem #### Modified by ice1000 ####
 
-cmake build jni
-move ./jni/libjni.* ./
+@rem cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
+@rem move ./jni/libjni.* ./
 
 @rem #### Modified end ####
 

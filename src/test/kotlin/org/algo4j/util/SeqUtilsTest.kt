@@ -51,7 +51,7 @@ class SeqUtilsTest {
 	}
 
 	@TestOnly
-	@JvmOverloads
+//	@JvmOverloads
 	fun sortTest(
 			sortInt: (IntArray) -> Unit,
 			sortDouble: (DoubleArray) -> Unit,
@@ -151,6 +151,16 @@ class SeqUtilsTest {
 		SeqUtils.sortQuick(strongIntArray.toIntArray())
 	}
 
+	@TestOnly
+	@Test(timeout = 1000)
+	fun sortQuickMultiThreading() {
+		sortTest(
+				SeqUtils::sortQuickMultiThreading,
+				SeqUtils::sortQuickMultiThreading,
+				2000
+		)
+	}
+
 	/**
 	 * 复制测试
 	 */
@@ -211,7 +221,7 @@ class SeqUtilsTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary("jni")
+			System.loadLibrary(Loader.JNI_LIB_NAME)
 			randomArray = strongIntArray
 		}
 

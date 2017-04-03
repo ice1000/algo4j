@@ -2,8 +2,8 @@
 
 #### Modified by ice1000 ####
 
-cmake build jni
-mv ./jni/libjni.* ./
+## cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
+## mv ./jni/libjni.* ./
 
 #### Modified end ####
 
