@@ -51,7 +51,7 @@ class SeqUtilsTest {
 	}
 
 	@TestOnly
-//	@JvmOverloads
+			//	@JvmOverloads
 	fun sortTest(
 			sortInt: (IntArray) -> Unit,
 			sortDouble: (DoubleArray) -> Unit,
@@ -152,13 +152,15 @@ class SeqUtilsTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 10000)
 	fun sortQuickMultiThreading() {
-		sortTest(
-				SeqUtils::sortQuickMultiThreading,
-				SeqUtils::sortQuickMultiThreading,
-				2000
-		)
+//		val arr = strongIntArray.toIntArray()
+//		val equ = arr.copy() ?: intArrayOf()
+//		equ.sort()
+//		SeqUtils.sortQuickPartial(arr)
+//		Thread.sleep(4000)
+//		arr.forEachIndexed { index, i -> println("$index\t: $i") }
+//		assertArrayEquals(equ, arr)
 	}
 
 	/**

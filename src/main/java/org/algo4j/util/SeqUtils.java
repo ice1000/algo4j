@@ -66,11 +66,7 @@ public final class SeqUtils {
 	@Contract(pure = true)
 	public static native long inversion(@NotNull double[] data);
 
-	public static void sortQuickMultiThreading(@NotNull int[] data) {
-		sortQuickMultiThreading(data, 0, data.length - 1);
-	}
-
-	private static void sortQuickMultiThreading(
+	public static void sortQuickPartial(
 			@NotNull int[] data,
 			int left,
 			int right) {
@@ -89,15 +85,11 @@ public final class SeqUtils {
 		}
 		data[left] = data[i];
 		data[i] = temp;
-		sortQuickMultiThreading(data, left, i - 1);
-		sortQuickMultiThreading(data, i + 1, right);
+		sortQuickPartial(data, left, i - 1);
+		sortQuickPartial(data, i + 1, right);
 	}
 
-	public static void sortQuickMultiThreading(@NotNull double[] data) {
-		sortQuickMultiThreading(data, 0, data.length - 1);
-	}
-
-	private static void sortQuickMultiThreading(
+	public static void sortQuickPartial(
 			@NotNull double[] data,
 			int left,
 			int right) {
@@ -116,8 +108,8 @@ public final class SeqUtils {
 		}
 		data[left] = data[i];
 		data[i] = temp;
-		sortQuickMultiThreading(data, left, i - 1);
-		sortQuickMultiThreading(data, i + 1, right);
+		sortQuickPartial(data, left, i - 1);
+		sortQuickPartial(data, i + 1, right);
 	}
 
 	/**
