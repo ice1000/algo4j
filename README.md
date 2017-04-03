@@ -1,10 +1,10 @@
 
 # algo4j
 
-[![](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+[![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
 [![Code Climate](https://codeclimate.com/github/ice1000/algo4j/badges/gpa.svg)](https://codeclimate.com/github/ice1000/algo4j)
-[![Dependency Status](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a)
+[![Dependency Status](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a/badge.svg?style=square)](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a)
 
 <br/>
 
@@ -38,6 +38,7 @@ src/test|tests
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
 - [X] Trie tree, supports 26 smaller letters and spaces.
+- [X] Multi-threading quick sort implementation.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.
 - [ ] Big Integer, faster than java.math.BigInteger.
