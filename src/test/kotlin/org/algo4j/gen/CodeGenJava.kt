@@ -47,17 +47,18 @@ fun gen1() {
 
 fun gen2() {
 	listOf("int", "float", "double", "long").forEach { typename ->
+		val deepDarkFantasy = typename.run { this[0].toUpperCase() + substring(1) }
 		"""
-	public static class MultiThreadingQuickSorter {
+	public static class MultiThreadingQuickSorter$deepDarkFantasy {
 		private final int flag;
 		private final $typename[] array;
 
-		public MultiThreadingQuickSorter($typename[] array, int flag) {
+		public MultiThreadingQuickSorter$deepDarkFantasy($typename[] array, int flag) {
 			this.array = array;
 			this.flag = flag;
 		}
 
-		public MultiThreadingQuickSorter($typename[] array) {
+		public MultiThreadingQuickSorter$deepDarkFantasy($typename[] array) {
 			this(array, array.length / 1_000);
 		}
 
