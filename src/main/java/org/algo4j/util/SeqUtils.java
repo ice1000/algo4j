@@ -458,7 +458,7 @@ public final class SeqUtils {
 
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
-			forkJoinPool.submit(new SortTask(array, flag));
+			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
 			forkJoinPool.shutdown();
 			try {
 				forkJoinPool.awaitTermination(10_000, TimeUnit.SECONDS);
@@ -467,22 +467,11 @@ public final class SeqUtils {
 			}
 		}
 
-		public void checkSort() {
-			int num = array.length - 2;
-			for (int i = 0; i < num; i++)
-				if (array[i] > array[i + 1])
-					throw new RuntimeException(array[i] + ">" + array[i + 1]);
-		}
-
 		private class SortTask extends RecursiveAction {
 			private final int[] array;
 			private final int start;
 			private final int end;
 			private final int flag;
-
-			SortTask(int[] array, int flag) {
-				this(array, 0, array.length - 1, flag);
-			}
 
 			private SortTask(int[] array, int start, int end, int flag) {
 				this.array = array;
@@ -549,7 +538,7 @@ public final class SeqUtils {
 
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
-			forkJoinPool.submit(new SortTask(array, flag));
+			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
 			forkJoinPool.shutdown();
 			try {
 				forkJoinPool.awaitTermination(10_000, TimeUnit.SECONDS);
@@ -558,22 +547,11 @@ public final class SeqUtils {
 			}
 		}
 
-		public void checkSort() {
-			int num = array.length - 2;
-			for (int i = 0; i < num; i++)
-				if (array[i] > array[i + 1])
-					throw new RuntimeException(array[i] + ">" + array[i + 1]);
-		}
-
 		private class SortTask extends RecursiveAction {
 			private final float[] array;
 			private final int start;
 			private final int end;
 			private final int flag;
-
-			SortTask(float[] array, int flag) {
-				this(array, 0, array.length - 1, flag);
-			}
 
 			private SortTask(float[] array, int start, int end, int flag) {
 				this.array = array;
@@ -640,7 +618,7 @@ public final class SeqUtils {
 
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
-			forkJoinPool.submit(new SortTask(array, flag));
+			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
 			forkJoinPool.shutdown();
 			try {
 				forkJoinPool.awaitTermination(10_000, TimeUnit.SECONDS);
@@ -649,22 +627,11 @@ public final class SeqUtils {
 			}
 		}
 
-		public void checkSort() {
-			int num = array.length - 2;
-			for (int i = 0; i < num; i++)
-				if (array[i] > array[i + 1])
-					throw new RuntimeException(array[i] + ">" + array[i + 1]);
-		}
-
 		private class SortTask extends RecursiveAction {
 			private final double[] array;
 			private final int start;
 			private final int end;
 			private final int flag;
-
-			SortTask(double[] array, int flag) {
-				this(array, 0, array.length - 1, flag);
-			}
 
 			private SortTask(double[] array, int start, int end, int flag) {
 				this.array = array;
@@ -731,7 +698,7 @@ public final class SeqUtils {
 
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
-			forkJoinPool.submit(new SortTask(array, flag));
+			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
 			forkJoinPool.shutdown();
 			try {
 				forkJoinPool.awaitTermination(10_000, TimeUnit.SECONDS);
@@ -740,22 +707,11 @@ public final class SeqUtils {
 			}
 		}
 
-		public void checkSort() {
-			int num = array.length - 2;
-			for (int i = 0; i < num; i++)
-				if (array[i] > array[i + 1])
-					throw new RuntimeException(array[i] + ">" + array[i + 1]);
-		}
-
 		private class SortTask extends RecursiveAction {
 			private final long[] array;
 			private final int start;
 			private final int end;
 			private final int flag;
-
-			SortTask(long[] array, int flag) {
-				this(array, 0, array.length - 1, flag);
-			}
 
 			private SortTask(long[] array, int start, int end, int flag) {
 				this.array = array;
