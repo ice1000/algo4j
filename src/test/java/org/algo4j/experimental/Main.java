@@ -11,24 +11,27 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
-	private static final int flag = 300_0000;
-	private static final int[] array;
-	private static final AtomicInteger ThreadCount = new AtomicInteger(100);
+	private final int flag;
+	private final int[] array;
+	private final AtomicInteger threadCount;
 
-	static {
-		array = new int[2000_0000];
+	public Main(int flag, int len) {
+		this.flag = flag;
+		array = new int[len];
+		Random random = new Random(System.currentTimeMillis());
+		for (int i = 0; i < array.length; ++i) array[i] = random.nextInt();
+		threadCount = new AtomicInteger(100);
 	}
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException {
-		Random random = new Random(System.currentTimeMillis());
-		for (int i = 0; i < array.length; ++i) array[i] = random.nextInt();
-		forkJoinSort();
-		checkSort();
+		Main main = new Main(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+		main.forkJoinSort();
+		main.checkSort();
 	}
 
 	@SuppressWarnings("WeakerAccess")
-	public static void forkJoinSort() {
+	public void forkJoinSort() {
 		long beginTime = System.currentTimeMillis();
 		ForkJoinPool forkJoinPool = new ForkJoinPool();
 		forkJoinPool.submit(new SortTask(array));
@@ -43,7 +46,7 @@ public class Main {
 	}
 
 
-	public static void sort() {
+	public void sort() {
 		long beginTime = System.currentTimeMillis();
 		sort(array, 0, array.length - 1);
 		long endTime = System.currentTimeMillis();
@@ -51,7 +54,7 @@ public class Main {
 	}
 
 	@SuppressWarnings("WeakerAccess")
-	public static void checkSort() {
+	public void checkSort() {
 		long beginTime = System.currentTimeMillis();
 		boolean flag = true;
 		int num = array.length - 2;
@@ -66,7 +69,7 @@ public class Main {
 		System.out.println("check sort file " + flag + ":" + (endTime - beginTime) + "ms");
 	}
 
-	public static void sort(final int a[], final int low, final int high) {
+	public void sort(final int a[], final int low, final int high) {
 		if (high - low < flag) {
 			Arrays.sort(a, low, high + 1);
 			return;
@@ -99,16 +102,16 @@ public class Main {
 		List<Thread> threads = new ArrayList<>();
 		final int imm = i - 1;
 		if (low < imm) {
-			if (Main.ThreadCount.get() > 0 && imm - low > flag) {
+			if (threadCount.get() > 0 && imm - low > flag) {
 				Thread t = new Thread() {
 					{
-						Main.ThreadCount.decrementAndGet();
+						threadCount.decrementAndGet();
 					}
 
 					@Override
 					public void run() {
 						sort(a, low, imm);
-						Main.ThreadCount.addAndGet(1);
+						threadCount.addAndGet(1);
 					}
 				};
 				t.start();
@@ -117,16 +120,16 @@ public class Main {
 		}
 		final int ipp = i + 1;
 		if (high > ipp) {
-			if (Main.ThreadCount.get() > 0 && high - ipp > flag) {
+			if (threadCount.get() > 0 && high - ipp > flag) {
 				Thread t = new Thread() {
 					{
-						Main.ThreadCount.decrementAndGet();
+						threadCount.decrementAndGet();
 					}
 
 					@Override
 					public void run() {
 						sort(a, ipp, high);
-						Main.ThreadCount.addAndGet(1);
+						threadCount.addAndGet(1);
 					}
 				};
 				t.start();
