@@ -16,3 +16,11 @@ script:
   - "./gradlew build"
 before_install:
   - chmod a+x gradlew
+addons:
+  apt:
+    sources:
+      # cmake 3.2.3 / doxygen 1.8.3
+      - george-edison55-precise-backports
+    packages:
+      - cmake
+      - cmake-data
