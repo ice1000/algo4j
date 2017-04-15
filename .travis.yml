@@ -17,8 +17,7 @@ script:
 # cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
   - "cmake jni"
   - "cmake --build . --target all -- -j 8"
-  - "ls"
-  - "./gradlew check --info"
+  - "./gradlew check"
 
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi

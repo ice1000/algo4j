@@ -2,5 +2,7 @@ environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
 
 build_script:
-
+  - cmake jni
+  - cmake --build . --target all -- -j 8
+  - gradlew check
 
