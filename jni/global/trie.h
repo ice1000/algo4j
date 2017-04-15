@@ -12,7 +12,7 @@ namespace algo4j_trie {
 	class Node {
 	private:
 		// alpha bet and space
-		Node *next[137];
+		Node *next[96];
 	public:
 		bool hasElement;
 
