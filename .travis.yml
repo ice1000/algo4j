@@ -10,7 +10,7 @@ jdk:
   - oraclejdk8
 script:
 # cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
-  - "cmake -DCMAKE_BUILD_TYPE= -G \"CodeBlocks - MinGW Makefiles\" jni"
+  - "cmake jni"
   - "cmake --build . --target all -- -j 8"
   - "./gradlew check"
   - "./gradlew build"
