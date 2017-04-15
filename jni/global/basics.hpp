@@ -2,7 +2,7 @@
 // Created by ice1000
 //
 
-#include <jni.h>
+#include "jni.h"
 
 #ifndef __ALGO4J_BASICS_HPP__
 #define __ALGO4J_BASICS_HPP__

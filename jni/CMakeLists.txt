@@ -4,6 +4,14 @@ cmake_minimum_required(VERSION 3.2)
 
 project(jni)
 
+find_package(Java REQUIRED)
+find_package(JNI REQUIRED)
+
+if (JNI_FOUND)
+	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+endif()
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(BUILD_USE_64BITS on)
 
@@ -57,6 +65,8 @@ set(
 )
 
 # add_executable(jni ${SOURCE_FILES})
+
+include_directories(${JNI_INCLUDE_DIRS})
 
 add_library(
 		jni

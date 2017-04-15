@@ -5,7 +5,7 @@
 #ifndef __ALGO4J_TRIE_H__
 #define __ALGO4J_TRIE_H__
 
-#include <jni.h>
+#include "jni.h"
 
 namespace algo4j_trie {
 

@@ -2,7 +2,7 @@
 /// Created by ice1000 on 2016/11/16.
 ///
 
-#include <jni.h>
+#include "jni.h"
 
 //#include <iostream>
 //
