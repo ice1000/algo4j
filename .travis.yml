@@ -17,12 +17,12 @@ script:
 # cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
   - "cmake jni"
   - "cmake --build . --target all -- -j 8"
-  - "if exist libjni.dll (copy libjni.dll jni.dll)"
-  - "./gradlew check"
-  - "./gradlew build"
+  - "ls"
+  - "./gradlew check --info"
 
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
+  - if [ "$CC" = "gcc" ]; then export CC="gcc-5"; fi
 
 before_install:
   - chmod a+x gradlew
