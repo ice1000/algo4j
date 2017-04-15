@@ -99,7 +99,7 @@ namespace algo4j_bit {
 		memset(bit, 0, sizeof(bit[0]) * maxV);
 		jlong ret = 0;
 		for (jsize _ = 0; _ < len; ++_) {
-			add(bit, static_cast<jsize>(len) + 1, arr[_], 1LL);
+			add(bit, static_cast<jsize>(len) + 1, arr[_], 1);
 			ret += _ + 1 - sum(bit, arr[_]);
 		}
 		delete bit;

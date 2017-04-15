@@ -21,22 +21,21 @@ script:
   - "./gradlew build"
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
 
 before_install:
   - chmod a+x gradlew
-  - sudo apt-get update -qq
 
 addons:
   apt:
     sources:
       # cmake 3.2.3 / doxygen 1.8.3
       - george-edison55-precise-backports
-      # gcc 4.8
+      # gcc 5
       - ubuntu-toolchain-r-test
     packages:
-      - gcc-4.8
-      - g++-4.8
+      - gcc-5
+      - g++-5
       - cmake
       - cmake-data
 
