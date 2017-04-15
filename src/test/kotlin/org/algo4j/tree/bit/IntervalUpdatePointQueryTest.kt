@@ -98,9 +98,7 @@ class IntervalUpdatePointQueryTest {
 
 		@BeforeClass
 		@JvmStatic
-		fun loadJniLibrary() {
-			Loader.loadJni()
-		}
+		fun loadJniLibrary() = Loader.loadJni()
 	}
 
 }
