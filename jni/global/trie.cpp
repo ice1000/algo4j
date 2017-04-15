@@ -21,7 +21,7 @@ for (auto _ = 0; _ < len; ++_) { \
     now = now->getNext(word[_]); \
 }
 
-#define __index(sym) (sym == ' ' ? 26 : sym - 'a')
+#define __index(sym) sym - 40
 
 algo4j_trie::Node::Node() : hasElement(false) {
 	for (auto _ = 0; _ < (sizeof(next) / sizeof(next[0])); ++_) {
