@@ -33,7 +33,7 @@ algo4j_trie::Node::Node() : hasElement(false) {
 
 algo4j_trie::Node::~Node() {
 	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
-		delete next[_];
+		if (next[_] != nullptr) delete next[_];
 	}
 	delete next;
 }
