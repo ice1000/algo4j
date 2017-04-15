@@ -27,19 +27,22 @@ public final class Loader {
 
 	@NotNull
 	@Contract(pure = true)
-	private static String getJniPath(@NonNls @NotNull String fileName) {
+	private static String libraryName(@NonNls @NotNull String libName) {
+		String ___ = System.getProperty("os.name");
+		String fileName;
+		if (___.contains("Linux"))
+			fileName = "lib" + libName + ".so";
+		else if (___.contains("Windows"))
+			fileName = libName + ".dll";
+		else if (___.contains("OSX"))
+			fileName = "lib" + libName + ".dylib";
+		else fileName = libName;
 		return new File(fileName).getAbsolutePath();
 	}
 
 	public static void loadJni() {
 		if (!loaded) {
-			String ___ = System.getProperty("os.name");
-			if (___.contains("Linux"))
-				System.load(getJniPath("lib" + JNI_LIB_NAME + ".so"));
-			else if (___.contains("Windows"))
-				System.load(getJniPath(JNI_LIB_NAME + ".dll"));
-			else if (___.contains("OSX"))
-				System.load(getJniPath("lib" + JNI_LIB_NAME + ".dylib"));
+			System.load(libraryName(JNI_LIB_NAME));
 			loaded = true;
 		}
 	}
