@@ -1,7 +1,6 @@
 package org.algo4j.tree
 
 import org.algo4j.plusAssign
-import org.algo4j.test.optional
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -31,13 +30,11 @@ class TrieTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContainsPrefix() {
-		optional(true) {
-			val trie = Trie()
-			assertFalse { trie.containsPrefix("ass we") }
-			trie += "ass we can"
-			assertTrue { trie.containsPrefix("ass we") }
-			trie.delete()
-		}
+		val trie = Trie()
+		assertFalse { trie.containsPrefix("ass we") }
+		trie += "ass we can"
+		assertTrue { trie.containsPrefix("ass we") }
+		trie.delete()
 	}
 
 	@TestOnly

@@ -126,3 +126,5 @@ Thumbs.db
 *.exe
 
 
+jni/jni.h
+jni.h

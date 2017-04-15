@@ -3,7 +3,7 @@
 //
 
 #include "trie.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 using algo4j_trie::Node;
 using algo4j_trie::Trie;
@@ -25,15 +25,20 @@ for (auto _ = 0; _ < len; ++_) { \
 #define __index(sym) ((sym) - 32)
 
 algo4j_trie::Node::Node() : hasElement(false) {
-	for (auto _ = 0; _ < (sizeof(next) / sizeof(next[0])); ++_) {
-		next[0] = nullptr;
+	next = new ptr_to<Node>[TRIE_NODE_SIZE];
+	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
+		next[_] = nullptr;
 	}
 }
 
 algo4j_trie::Node::~Node() {
+	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
+		delete next[_];
+	}
+	delete next;
 }
 
-algo4j_trie::Trie::Trie() : head(new Node[96]()) {}
+algo4j_trie::Trie::Trie() : head(new Node()) { }
 
 algo4j_trie::Trie::~Trie() {
 	delete head;
@@ -68,12 +73,12 @@ auto Trie::remove(const jbyte *word, const jsize len) -> void {
 }
 
 auto algo4j_trie::Node::setNext(jbyte sym, Node *newNode) -> void {
-	printf("%d\n", __index(sym));
+//	printf("%d\n", __index(sym));
 	next[__index(sym)] = newNode;
 }
 
 auto algo4j_trie::Node::getNext(jbyte sym) -> Node * {
-	printf("%d\n", __index(sym));
+//	printf("%d\n", __index(sym));
 	return next[__index(sym)];
 }
 

@@ -8,6 +8,8 @@
 #include "jni.h"
 #include "basics.hpp"
 
+#define TRIE_NODE_SIZE 96
+
 using algo4j_util::ptr_to;
 
 namespace algo4j_trie {
@@ -30,7 +32,7 @@ namespace algo4j_trie {
 	class Trie {
 	private:
 		// header
-		Node *head;
+		ptr_to<Node> head;
 	public:
 		explicit Trie();
 
