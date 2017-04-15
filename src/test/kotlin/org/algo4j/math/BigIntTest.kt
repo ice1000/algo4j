@@ -168,9 +168,6 @@ class BigIntTest {
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass
-		fun init() {
-			Random(System.currentTimeMillis())
-			Loader.loadJni()
-		}
+		fun init() = Loader.loadJni()
 	}
 }

@@ -65,8 +65,6 @@ class MaxHeapTest {
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass
-		fun init() {
-			Loader.loadJni()
-		}
+		fun init() = Loader.loadJni()
 	}
 }
