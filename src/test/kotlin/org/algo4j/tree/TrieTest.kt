@@ -1,7 +1,6 @@
 package org.algo4j.tree
 
 import org.algo4j.plusAssign
-import org.algo4j.test.optional
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -31,13 +30,21 @@ class TrieTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContainsPrefix() {
-		optional(false) {
-			val trie = Trie()
-			assertFalse { trie.containsPrefix("ass we") }
-			trie += "ass we can"
-			assertTrue { trie.containsPrefix("ass we") }
-			trie.delete()
-		}
+		val trie = Trie()
+		assertFalse { trie.containsPrefix("ass we") }
+		trie += "ass we can"
+		assertTrue { trie.containsPrefix("ass we") }
+		trie.delete()
+	}
+
+	@TestOnly
+	@Test(timeout = 1000)
+	fun testContains() {
+		val trie = Trie()
+		assertFalse { trie.contains(" My Name Is Van []") }
+		trie += " My Name Is Van []"
+		assertTrue { trie.contains(" My Name Is Van []") }
+		trie.delete()
 	}
 
 	@TestOnly
@@ -56,8 +63,6 @@ class TrieTest {
 		@TestOnly
 		@JvmStatic
 		@BeforeClass
-		fun init() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun init() = Loader.loadJni()
 	}
 }

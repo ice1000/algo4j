@@ -6,13 +6,17 @@
 #define __ALGO4J_TRIE_H__
 
 #include "jni.h"
+#include "basics.hpp"
+
+#define TRIE_NODE_SIZE 96
+
+using algo4j_util::ptr_to;
 
 namespace algo4j_trie {
 
 	class Node {
 	private:
-		// alpha bet and space
-		Node *next[27];
+		ptr_to<Node> *next;
 	public:
 		bool hasElement;
 
@@ -28,7 +32,7 @@ namespace algo4j_trie {
 	class Trie {
 	private:
 		// header
-		Node *head;
+		ptr_to<Node> head;
 	public:
 		explicit Trie();
 

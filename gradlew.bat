@@ -1,12 +1,5 @@
 @if "%DEBUG%" == "" @echo off
 
-@rem #### Modified by ice1000 ####
-
-@rem cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
-@rem move ./jni/libjni.* ./
-
-@rem #### Modified end ####
-
 @rem ##########################################################################
 @rem
 @rem  Gradle startup script for Windows

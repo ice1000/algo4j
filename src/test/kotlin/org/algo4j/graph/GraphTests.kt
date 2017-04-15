@@ -84,8 +84,6 @@ class GraphTests {
 		@JvmStatic
 		@BeforeClass
 		@TestOnly
-		fun init() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun init() = Loader.loadJni()
 	}
 }

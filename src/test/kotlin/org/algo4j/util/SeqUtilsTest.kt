@@ -211,7 +211,7 @@ class SeqUtilsTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 			randomArray = strongIntArray
 		}
 
@@ -228,7 +228,7 @@ class SeqUtilsTest {
 		@TestOnly
 		@JvmStatic
 		fun main(args: Array<String>) {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 			SeqUtilsTest().discretizationTest()
 		}
 	}

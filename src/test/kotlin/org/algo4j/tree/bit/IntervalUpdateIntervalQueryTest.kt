@@ -100,8 +100,6 @@ class IntervalUpdateIntervalQueryTest {
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
-		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun loadJniLibrary() = Loader.loadJni()
 	}
 }

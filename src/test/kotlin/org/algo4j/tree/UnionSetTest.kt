@@ -35,8 +35,6 @@ class UnionSetTest {
 	companion object Initializer {
 		@BeforeClass
 		@JvmStatic
-		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
-		}
+		fun init() = Loader.loadJni()
 	}
 }

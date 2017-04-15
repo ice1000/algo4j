@@ -5,6 +5,7 @@ import org.algo4j.plusAssign
 import org.algo4j.test.optional
 import org.algo4j.test.shuffledIntList
 import org.algo4j.test.test
+import org.algo4j.util.Loader
 import org.algo4j.util.SeqUtils.sortMerge
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
@@ -84,11 +85,9 @@ class MinHeapTest {
 		}
 	}
 
-	companion object {
+	companion object Init {
 		@JvmStatic
 		@BeforeClass
-		fun init() {
-			System.loadLibrary("jni")
-		}
+		fun init() = Loader.loadJni()
 	}
 }
