@@ -53,6 +53,7 @@ jni/jni32.layout
 CMakeCache.txt
 CMakeFiles
 
+*.cbp
 *.cmake
 *~
 *.autosave
