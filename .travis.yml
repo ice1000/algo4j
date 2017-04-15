@@ -17,6 +17,7 @@ script:
 # cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
   - "cmake jni"
   - "cmake --build . --target all -- -j 8"
+  - "if exist libjni.dll (copy libjni.dll jni.dll)"
   - "./gradlew check"
   - "./gradlew build"
 

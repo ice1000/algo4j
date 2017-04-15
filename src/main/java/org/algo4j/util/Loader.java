@@ -21,7 +21,7 @@ public final class Loader {
 	 */
 	static {
 		LIB_BIN = "/lib-bin/";
-		JNI_LIB_NAME = "libjni";
+		JNI_LIB_NAME = "jni";
 		try {
 			System.loadLibrary(JNI_LIB_NAME);
 		} catch (UnsatisfiedLinkError e) {
