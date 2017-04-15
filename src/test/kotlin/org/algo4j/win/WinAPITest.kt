@@ -3,7 +3,6 @@ package org.algo4j.win
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
-import org.junit.Test
 
 /**
  * Created by ice1000 on 2016/12/18.
@@ -21,7 +20,7 @@ class WinAPITest {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 //			Loader.load()
 		}
 	}

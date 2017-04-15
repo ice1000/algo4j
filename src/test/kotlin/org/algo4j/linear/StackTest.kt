@@ -33,6 +33,6 @@ class StackTest {
 		@TestOnly
 		@JvmStatic
 		@BeforeClass
-		fun init() = System.loadLibrary(Loader.JNI_LIB_NAME)
+		fun init() = Loader.loadJni()
 	}
 }

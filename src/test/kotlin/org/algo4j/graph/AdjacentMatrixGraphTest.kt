@@ -98,7 +98,7 @@ class AdjacentMatrixGraphTest {
 		@BeforeClass
 		fun loadJniLib() {
 //			Loader.load()
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 		}
 	}
 }

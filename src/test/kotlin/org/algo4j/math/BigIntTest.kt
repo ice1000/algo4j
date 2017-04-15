@@ -170,7 +170,7 @@ class BigIntTest {
 		@BeforeClass
 		fun init() {
 			Random(System.currentTimeMillis())
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 		}
 	}
 }

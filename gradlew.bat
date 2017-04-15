@@ -1,10 +1,10 @@
 @if "%DEBUG%" == "" @echo off
 
-#### Modified by ice1000 ####
+@rem #### Modified by ice1000 ####
 
 copy libjni.dll jni.dll
 
-#### Modified end ####
+@rem #### Modified end ####
 
 @rem ##########################################################################
 @rem

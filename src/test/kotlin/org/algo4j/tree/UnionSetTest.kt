@@ -36,7 +36,7 @@ class UnionSetTest {
 		@BeforeClass
 		@JvmStatic
 		fun loadJniLibrary() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 		}
 	}
 }

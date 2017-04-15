@@ -1,5 +1,9 @@
 package org.algo4j.util;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -23,7 +27,7 @@ public final class Loader {
 		LIB_BIN = "/lib-bin/";
 		JNI_LIB_NAME = "jni";
 		try {
-			System.loadLibrary(JNI_LIB_NAME);
+			loadJni();
 		} catch (UnsatisfiedLinkError e) {
 			loadLib(JNI_LIB_NAME);
 		}
@@ -31,6 +35,7 @@ public final class Loader {
 
 	/**
 	 * Puts library to temp dir and loads to memory
+	 * for windows only
 	 */
 	private static void loadLib(String ___) {
 		String __ = ___ + ".dll";
@@ -45,5 +50,22 @@ public final class Loader {
 			System.load(fileOut.toString());
 		} catch (Exception ignored) {
 		}
+	}
+
+	@NotNull
+	@Contract(pure = true)
+	private static String getJniPath(@NonNls @NotNull String fileName) {
+		return new File(fileName).getAbsolutePath();
+	}
+
+	public static void loadJni() {
+		System.loadLibrary(JNI_LIB_NAME);
+		String ___ = System.getProperty("os.name");
+		if (___.contains("Linux"))
+			System.load(getJniPath("lib" + JNI_LIB_NAME + ".so"));
+		else if (___.contains("Windows"))
+			System.load(getJniPath(JNI_LIB_NAME + ".dll"));
+		else if (___.contains("OSX"))
+			System.load(getJniPath(JNI_LIB_NAME + ".dylib"));
 	}
 }

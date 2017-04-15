@@ -66,7 +66,7 @@ class MaxHeapTest {
 		@JvmStatic
 		@BeforeClass
 		fun init() {
-			System.loadLibrary(Loader.JNI_LIB_NAME)
+			Loader.loadJni()
 		}
 	}
 }
