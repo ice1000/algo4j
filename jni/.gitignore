@@ -4,6 +4,7 @@
 CMakeCache.txt
 CMakeFiles
 
+*.cmake
 *~
 *.autosave
 *.a
