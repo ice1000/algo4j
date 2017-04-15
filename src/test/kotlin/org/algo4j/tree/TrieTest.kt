@@ -25,19 +25,29 @@ class TrieTest {
 		assertFalse { "the deep dark fantasy" in trie }
 		assertFalse { "boy next doors" in trie }
 		assertFalse { "boy next doo" in trie }
-//		trie.delete()
+		trie.delete()
 	}
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContainsPrefix() {
-		optional(false) {
+		optional(true) {
 			val trie = Trie()
 			assertFalse { trie.containsPrefix("ass we") }
 			trie += "ass we can"
 			assertTrue { trie.containsPrefix("ass we") }
-//			trie.delete()
+			trie.delete()
 		}
+	}
+
+	@TestOnly
+	@Test(timeout = 1000)
+	fun testContains() {
+		val trie = Trie()
+		assertFalse { trie.contains(" My Name Is Van []") }
+		trie += " My Name Is Van []"
+		assertTrue { trie.contains(" My Name Is Van []") }
+		trie.delete()
 	}
 
 	@TestOnly
@@ -49,7 +59,7 @@ class TrieTest {
 		assertTrue { "my name is van" in trie }
 		trie.remove("my name is van")
 		assertFalse { "my name is van" in trie }
-//		trie.delete()
+		trie.delete()
 	}
 
 	companion object {

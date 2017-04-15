@@ -3,6 +3,7 @@
 //
 
 #include "trie.h"
+#include <stdio.h>
 
 using algo4j_trie::Node;
 using algo4j_trie::Trie;
@@ -32,7 +33,7 @@ algo4j_trie::Node::Node() : hasElement(false) {
 algo4j_trie::Node::~Node() {
 }
 
-algo4j_trie::Trie::Trie() : head(new Node()) {}
+algo4j_trie::Trie::Trie() : head(new Node[96]()) {}
 
 algo4j_trie::Trie::~Trie() {
 	delete head;
@@ -67,10 +68,12 @@ auto Trie::remove(const jbyte *word, const jsize len) -> void {
 }
 
 auto algo4j_trie::Node::setNext(jbyte sym, Node *newNode) -> void {
+	printf("%d\n", __index(sym));
 	next[__index(sym)] = newNode;
 }
 
 auto algo4j_trie::Node::getNext(jbyte sym) -> Node * {
+	printf("%d\n", __index(sym));
 	return next[__index(sym)];
 }
 
