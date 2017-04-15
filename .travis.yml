@@ -1,10 +1,16 @@
 sudo: required
 language: java
 language: kotlin
+language: cpp
+compiler:
+  - gcc
+os:
+  - linux
 jdk:
-- oraclejdk8
+  - oraclejdk8
 script:
-- "./gradlew check"
-- "./gradlew build"
+  - "cmake -DCMAKE_BUILD_TYPE= -G \"CodeBlocks - MinGW Makefiles\" jni"
+  - "./gradlew check"
+  - "./gradlew build"
 before_install:
-- chmod a+x gradlew
+  - chmod a+x gradlew
