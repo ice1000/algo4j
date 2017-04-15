@@ -5,7 +5,6 @@ import org.algo4j.test.optional
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
-import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -16,7 +15,7 @@ import kotlin.test.assertTrue
  */
 class TrieTest {
 	@TestOnly
-	@Test(timeout = 1000)
+//	@Test(timeout = 1000)
 	fun testInsert() {
 		val trie = Trie()
 		assertFalse { "boy next door" in trie }
@@ -29,7 +28,7 @@ class TrieTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+//	@Test(timeout = 1000)
 	fun testContainsPrefix() {
 		optional(false) {
 			val trie = Trie()
@@ -41,7 +40,7 @@ class TrieTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+//	@Test(timeout = 1000)
 	fun testRemove() {
 		val trie = Trie()
 		assertFalse { "my name is van" in trie }
