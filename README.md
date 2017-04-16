@@ -9,6 +9,7 @@ AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
 [![Dependency Status](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a/badge.svg?style=square)](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 <br/>
 
