@@ -6,6 +6,8 @@ environment:
   CMAKE_CC_COMPILER: C:\MinGW\bin\gcc.exe
 
 build_script:
+  - echo %CMAKE_CC_COMPILER%
+  - echo %CMAKE_CXX_COMPILER%
   - cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
   - cmake --build . --target all -- -j 8
   - gradlew check
