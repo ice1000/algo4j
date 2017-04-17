@@ -15,9 +15,9 @@ AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5
 
 [中文](./README_Zh.md)
 
-This is an algorithm library for Java use, and core is written in C++ with JNI.
+This is an algorithm library for Java, and the core is written in C++, linked with JNI.
 
-It is test-driven, well-documented, with code generation for some special cases.
+It is test-driven(really strong tests), well-documented, with code generation for some special cases.
 
 ## Project structure
 
@@ -25,11 +25,17 @@ file name|usage
 :---|---:
 jni|C++ codes
 code_drafts|something written but not used ATM
-jni.dll(you should build it yourself)|jni library
+libjni.dll/libjni.so/libjni.dylib|jni library
 jni/cpp-test|C++ tests
 src/main/java|source(independent)
 src/main/kotlin|Kotlin extension library
 src/test|tests
+
+The `jni library` above is not included in the repo,
+please build it yourself, or:
+
++ For Windows, download the newest version in [AppVeyor's artifact page](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts).
++ For Linux, download the newest version in [Travis' cache page]().
 
 ## Overview
 
@@ -42,7 +48,7 @@ src/test|tests
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
-- [X] Trie tree, supports 26 smaller letters and spaces.
+- [X] Trie tree, supports ASCII 40-127(upper and lower case letters, braces, digits, space, etc).
 - [X] Multi-threading quick sort implementation.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.

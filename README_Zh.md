@@ -25,7 +25,7 @@ AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5
 :---|---:
 jni|C++代码
 code_drafts|代码草稿，写了还没用的东西
-jni.dll(这是你自己编译出来的)|动态链接库
+libjni.dll/libjni.so/libjni.dylib|动态链接库
 jni/cpp-test|C++部分的测试代码
 src/main/java|源码
 src/main/kotlin|Kotlin扩展库
@@ -42,7 +42,7 @@ src/test|测试代码
 - [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
 - [X] 线性数据结构，栈和队列，还有对应的Int版。
 - [X] 最小二叉堆，支持插入和取顶端。
-- [X] 字典树，支持26个小写字母和空格。
+- [X] 字典树，支持ASCII的40到127的字符（空格，大小写字母，数字，括号等）。
 - [X] 多线程快速排序
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现

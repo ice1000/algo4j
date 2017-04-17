@@ -6,25 +6,31 @@ language: cpp
 
 compiler:
   - gcc
+#
 
 os:
   - linux
+#
 
 jdk:
   - oraclejdk8
+#
 
 script:
 # cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - MinGW Makefiles" jni
   - "cmake jni"
   - "cmake --build . --target all -- -j 8"
   - "./gradlew check"
+#
 
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
   - if [ "$CC" = "gcc" ]; then export CC="gcc-5"; fi
+#
 
 before_install:
   - chmod a+x gradlew
+#
 
 addons:
   apt:
@@ -38,5 +44,17 @@ addons:
       - g++-5
       - cmake
       - cmake-data
+#
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+#
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+#
 
 # end
