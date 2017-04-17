@@ -8,7 +8,7 @@
 #include "jni.h"
 #include "basics.hpp"
 
-#define TRIE_NODE_SIZE 86
+#define TRIE_NODE_SIZE 96
 
 using algo4j_util::ptr_to;
 

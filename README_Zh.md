@@ -31,6 +31,12 @@ src/main/java|源码
 src/main/kotlin|Kotlin扩展库
 src/test|测试代码
 
+上面说的`动态链接库`没有包含在仓库内，你可以选择自己编译它，或者：
+
++ Windows用户可以在[AppVeyor的artifact页面](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)下载最新版本的dll，或者去[GitHub的release](https://github.com/ice1000/algo4j/releases)下载。
++ Linux/OSX用户只能在[GitHub的release](https://github.com/ice1000/algo4j/releases)下载。
+
+
 ## 概览
 
 - [X] 树状数组，包括点更新区间求和，区间更新点求和，区间更新区间求和。
@@ -42,7 +48,7 @@ src/test|测试代码
 - [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
 - [X] 线性数据结构，栈和队列，还有对应的Int版。
 - [X] 最小二叉堆，支持插入和取顶端。
-- [X] 字典树，支持ASCII的40到127的字符（空格，大小写字母，数字，括号等）。
+- [X] 字典树，支持ASCII的32到127的字符（空格，大小写字母，数字，括号等）。
 - [X] 多线程快速排序
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现

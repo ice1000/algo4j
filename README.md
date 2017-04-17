@@ -34,8 +34,8 @@ src/test|tests
 The `jni library` above is not included in the repo,
 please build it yourself, or:
 
-+ For Windows, download the newest version in [AppVeyor's artifact page](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts).
-+ For Linux, download the newest version in [Travis' cache page]().
++ For Windows, download the newest version in [AppVeyor artifact page](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts), or [GitHub release page](https://github.com/ice1000/algo4j/releases).
++ For Linux/OSX, download the newest version in [GitHub release page](https://github.com/ice1000/algo4j/releases).
 
 ## Overview
 
@@ -48,7 +48,7 @@ please build it yourself, or:
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
-- [X] Trie tree, supports ASCII 40-127(upper and lower case letters, braces, digits, space, etc).
+- [X] Trie tree, supports ASCII 32-127(upper and lower case letters, braces, digits, space, etc).
 - [X] Multi-threading quick sort implementation.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.
