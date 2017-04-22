@@ -20,7 +20,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_createTrie(
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_deleteTrie(
 		JNIEnv *,
 		jclass,
-    jlong ptr) -> void {
+		jlong ptr) -> void {
 	delete (Trie *) ptr;
 }
 

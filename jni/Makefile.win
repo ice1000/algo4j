@@ -1,18 +1,17 @@
-# Project: jni
+# Project: jni32
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-RES      = jni_private.res
-OBJ      = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o global/matrix.o $(RES)
-LINKOBJ  = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o util/Statistics.o math/BigInt.o win/WinAPI.o global/winapi.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/bit/BinaryIndexedTree.o tree/heap/MinHeap.o global/trie.o tree/Trie.o tree/heap/MaxHeap.o global/matrix.o $(RES)
-LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m64
+OBJ      = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o global/winapi.o util/Statistics.o math/BigInt.o win/WinAPI.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/heap/MinHeap.o tree/bit/BinaryIndexedTree.o tree/Trie.o global/trie.o global/matrix.o
+LINKOBJ  = global/functions.o graph/FrontStarGraph.o math/MathUtils.o math/Trigonometric.o util/SeqUtils.o global/winapi.o util/Statistics.o math/BigInt.o win/WinAPI.o global/bigint.o graph/AdjacentMatrixGraph.o tree/UnionSet.o tree/heap/MinHeap.o tree/bit/BinaryIndexedTree.o tree/Trie.o global/trie.o global/matrix.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib32" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -mwindows
 INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = libjni.dll
-CXXFLAGS = $(CXXINCS) -ansi -O2 -m64 -std=gnu++11 -DBUILDING_DLL=1
-CFLAGS   = $(INCS) -ansi -O2 -m64 -std=gnu++11 -DBUILDING_DLL=1
+CXXFLAGS = $(CXXINCS) -ansi -Ofast -m32 -std=gnu++11 -mwindows -DBUILDING_DLL=1
+CFLAGS   = $(INCS) -ansi -Ofast -m32 -std=gnu++11 -mwindows -DBUILDING_DLL=1
 RM       = rm.exe -f
 DEF      = liblibjni.def
 STATIC   = liblibjni.a
@@ -42,6 +41,9 @@ math/Trigonometric.o: math/Trigonometric.cpp
 util/SeqUtils.o: util/SeqUtils.cpp
 	$(CPP) -c util/SeqUtils.cpp -o util/SeqUtils.o $(CXXFLAGS)
 
+global/winapi.o: global/winapi.cpp
+	$(CPP) -c global/winapi.cpp -o global/winapi.o $(CXXFLAGS)
+
 util/Statistics.o: util/Statistics.cpp
 	$(CPP) -c util/Statistics.cpp -o util/Statistics.o $(CXXFLAGS)
 
@@ -50,9 +52,6 @@ math/BigInt.o: math/BigInt.cpp
 
 win/WinAPI.o: win/WinAPI.cpp
 	$(CPP) -c win/WinAPI.cpp -o win/WinAPI.o $(CXXFLAGS)
-
-global/winapi.o: global/winapi.cpp
-	$(CPP) -c global/winapi.cpp -o global/winapi.o $(CXXFLAGS)
 
 global/bigint.o: global/bigint.cpp
 	$(CPP) -c global/bigint.cpp -o global/bigint.o $(CXXFLAGS)
@@ -63,24 +62,17 @@ graph/AdjacentMatrixGraph.o: graph/AdjacentMatrixGraph.cpp
 tree/UnionSet.o: tree/UnionSet.cpp
 	$(CPP) -c tree/UnionSet.cpp -o tree/UnionSet.o $(CXXFLAGS)
 
-tree/bit/BinaryIndexedTree.o: tree/bit/BinaryIndexedTree.cpp
-	$(CPP) -c tree/bit/BinaryIndexedTree.cpp -o tree/bit/BinaryIndexedTree.o $(CXXFLAGS)
-
 tree/heap/MinHeap.o: tree/heap/MinHeap.cpp
 	$(CPP) -c tree/heap/MinHeap.cpp -o tree/heap/MinHeap.o $(CXXFLAGS)
 
-global/trie.o: global/trie.cpp
-	$(CPP) -c global/trie.cpp -o global/trie.o $(CXXFLAGS)
+tree/bit/BinaryIndexedTree.o: tree/bit/BinaryIndexedTree.cpp
+	$(CPP) -c tree/bit/BinaryIndexedTree.cpp -o tree/bit/BinaryIndexedTree.o $(CXXFLAGS)
 
 tree/Trie.o: tree/Trie.cpp
 	$(CPP) -c tree/Trie.cpp -o tree/Trie.o $(CXXFLAGS)
 
-tree/heap/MaxHeap.o: tree/heap/MaxHeap.cpp
-	$(CPP) -c tree/heap/MaxHeap.cpp -o tree/heap/MaxHeap.o $(CXXFLAGS)
+global/trie.o: global/trie.cpp
+	$(CPP) -c global/trie.cpp -o global/trie.o $(CXXFLAGS)
 
 global/matrix.o: global/matrix.cpp
 	$(CPP) -c global/matrix.cpp -o global/matrix.o $(CXXFLAGS)
-
-jni_private.res: jni_private.rc 
-	$(WINDRES) -i jni_private.rc --input-format=rc -o jni_private.res -O coff 
-

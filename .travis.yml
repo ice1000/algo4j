@@ -9,7 +9,7 @@ jdk:
 script:
 - cmake jni
 - cmake --build . --target all -- -j 8
-- "./gradlew check"
+- "./gradlew check --info"
 install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
 - if [ "$CC" = "gcc" ]; then export CC="gcc-5"; fi
