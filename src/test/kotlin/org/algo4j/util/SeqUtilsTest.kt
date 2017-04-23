@@ -165,7 +165,7 @@ class SeqUtilsTest {
 	 * Java实现
 	 */
 	@TestOnly
-	@Test(timeout = 100000)
+	@Test(timeout = 10000)
 	fun veryStrongTestForkJoinSort() {
 		SeqUtils.sortForkJoin(strongIntArray.toIntArray())
 	}
@@ -175,7 +175,7 @@ class SeqUtilsTest {
 	 * Java实现
 	 */
 	@TestOnly
-	@Test(timeout = 100000)
+	@Test(timeout = 10000)
 	fun veryStrongTestJavaQuickSort() {
 		ParallelQuickSorter
 				.MultiThreadingQuickSorterInt(strongIntArray.toIntArray(), Integer.MAX_VALUE)

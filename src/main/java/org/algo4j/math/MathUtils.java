@@ -147,7 +147,9 @@ public final class MathUtils {
 	 * @return abstract value of a
 	 */
 	@Contract(pure = true)
-	public static native double abs(double a);
+	public static double abs(double a) {
+		return a > 0 ? a : -a;
+	}
 
 	/**
 	 * same as {@code java.lang.MathUtils.abs(float)}
@@ -155,7 +157,10 @@ public final class MathUtils {
 	 * @return abstract value of a
 	 */
 	@Contract(pure = true)
-	public static native float abs(float a);
+	public static float abs(float a) {
+		return a > 0 ? a : -a;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.abs(int)}
@@ -163,7 +168,10 @@ public final class MathUtils {
 	 * @return abstract value of a
 	 */
 	@Contract(pure = true)
-	public static native int abs(int a);
+	public static int abs(int a) {
+		return a > 0 ? a : -a;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.abs(long)}
@@ -171,7 +179,10 @@ public final class MathUtils {
 	 * @return abstract value of a
 	 */
 	@Contract(pure = true)
-	public static native long abs(long a);
+	public static long abs(long a) {
+		return a > 0 ? a : -a;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.max(long)}
@@ -179,7 +190,9 @@ public final class MathUtils {
 	 * @return the larger one of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native long max(long a, long b);
+	public static long max(long a, long b) {
+		return a > b ? a : b;
+	}
 
 	/**
 	 * same as {@code java.lang.MathUtils.max(int)}
@@ -187,7 +200,10 @@ public final class MathUtils {
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native int max(int a, int b);
+	public static int max(int a, int b) {
+		return a > b ? a : b;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.max(float)}
@@ -195,7 +211,10 @@ public final class MathUtils {
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native float max(float a, float b);
+	public static float max(float a, float b) {
+		return a > b ? a : b;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.max(double)}
@@ -203,7 +222,10 @@ public final class MathUtils {
 	 * @return the larger of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native double max(double a, double b);
+	public static double max(double a, double b) {
+		return a > b ? a : b;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.min(int)}
@@ -211,7 +233,9 @@ public final class MathUtils {
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native int min(int a, int b);
+	public static int min(int a, int b) {
+		return a < b ? a : b;
+	}
 
 	/**
 	 * same as {@code java.lang.MathUtils.min(long)}
@@ -219,7 +243,10 @@ public final class MathUtils {
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native long min(long a, long b);
+	public static long min(long a, long b) {
+		return a < b ? a : b;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.min(float)}
@@ -227,7 +254,9 @@ public final class MathUtils {
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native float min(float a, float b);
+	public static float min(float a, float b) {
+		return a < b ? a : b;
+	}
 
 	/**
 	 * same as {@code java.lang.MathUtils.min(double)}
@@ -235,7 +264,10 @@ public final class MathUtils {
 	 * @return the smaller of {@code a} and {@code b}.
 	 */
 	@Contract(pure = true)
-	public static native double min(double a, double b);
+	public static double min(double a, double b) {
+		return a < b ? a : b;
+	}
+
 
 	/**
 	 * same as {@code java.lang.MathUtils.log(double)}
