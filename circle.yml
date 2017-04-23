@@ -1,0 +1,24 @@
+machine:
+  java:
+    version: oraclejdk8
+#
+
+dependencies:
+  pre:
+    - chmod a+x gradlew
+    - cmake jni
+  override:
+    - ./gradlew dependencies
+    - cmake --build . --target all -- -j 8
+#
+
+test:
+  override:
+    - ./gradlew check --info
+#
+
+general:
+  artifacts:
+    - "libjni.dylib"
+    - "libjni.so"
+#
