@@ -97,7 +97,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 		JNIEnv *env,
 		jclass,
 		jlong _) -> jboolean {
-	return *new jboolean(is_prime(__abs__ice__));
+	return *new jboolean(is_prime(_ > 0 ? _ : -_));
 }
 
 #undef __abs__ice__
