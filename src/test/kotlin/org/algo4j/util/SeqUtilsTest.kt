@@ -133,11 +133,20 @@ class SeqUtilsTest {
 					2000
 			)
 
+	@TestOnly
+	@Test(timeout = 10000)
+	fun sortForkJoinTest() =
+			sortTest(
+					SeqUtils::sortForkJoin,
+					SeqUtils::sortForkJoin,
+					2000
+			)
+
 	/**
 	 * 大数据归并测试（归并吊打快排现场）
 	 */
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 10000)
 	fun veryStrongTestMergeSort() {
 		SeqUtils.sortMerge(strongIntArray.toIntArray())
 	}
@@ -146,7 +155,7 @@ class SeqUtilsTest {
 	 * 大数据快排测试（快排被归并吊打现场）
 	 */
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 10000)
 	fun veryStrongTestQuickSort() {
 		SeqUtils.sortQuick(strongIntArray.toIntArray())
 	}
@@ -155,7 +164,7 @@ class SeqUtilsTest {
 	 * 大数据多线程快排测试（无脑开的多线程吊打单线程现场）
 	 */
 	@TestOnly
-	@Test(timeout = 10000)
+	@Test(timeout = 100000)
 	fun veryStrongTestForkJoinSort() {
 		SeqUtils.sortForkJoin(strongIntArray.toIntArray())
 	}
