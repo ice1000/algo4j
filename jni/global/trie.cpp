@@ -24,18 +24,13 @@ for (auto _ = 0; _ < len; ++_) { \
 
 #define __index(sym) ((sym) - 32)
 
-algo4j_trie::Node::Node() : hasElement(false) {
-	next = new ptr_to<Node>[TRIE_NODE_SIZE];
-	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
-		next[_] = nullptr;
-	}
-}
+algo4j_trie::Node::Node() : hasElement(false), next(new ptr_to<Node>[TRIE_NODE_SIZE]{}) { }
 
 algo4j_trie::Node::~Node() {
 	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
-		if (next[_] != nullptr) delete next[_];
+		if (nullptr != next[_]) delete next[_];
 	}
-	delete next;
+	delete[] next;
 }
 
 algo4j_trie::Trie::Trie() : head(new Node()) { }

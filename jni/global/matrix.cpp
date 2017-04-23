@@ -8,7 +8,6 @@ using algo4j_matrix::Matrix22Pool;
 
 using algo4j_math::fast_plus;
 
-
 algo4j_matrix::Matrix22::~Matrix22() {
 }
 

@@ -1,4 +1,3 @@
-#include "jni.h"
 #include "basics.hpp"
 
 #ifndef __ALGO4J_HEAP_HPP__

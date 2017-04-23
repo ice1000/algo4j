@@ -38,7 +38,7 @@ set(
 		math/MathUtils.cpp
 		tree/UnionSet.cpp
 		global/bigint.cpp
-		global/basics.hpp
+		global/complex.cpp
 		util/SeqUtils.cpp
 		global/matrix.cpp
 		math/BigInt.cpp
@@ -56,6 +56,7 @@ set(
 		global/trie.h
 		tree/Trie.h
 		util/Statistics.h
+		global/complex.h
 		math/MathUtils.h
 		tree/UnionSet.h
 		global/bigint.h
