@@ -45,7 +45,7 @@ env->GetArrayLength(_ ## name)
 
 namespace algo4j_util {
 	template<class T>
-	using ptr_to = T*;
+	using ptr_to = T *;
 
 	template<typename T>
 	inline auto swap(T &___, T &__) -> void {
@@ -77,7 +77,7 @@ namespace algo4j_util {
 	public:
 
 		explicit Single(T *val) :
-				_(val) {}
+				_(val) { }
 
 		~Single() {
 //			clear();

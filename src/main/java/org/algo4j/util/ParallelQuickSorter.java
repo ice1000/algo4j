@@ -44,6 +44,31 @@ public interface ParallelQuickSorter {
 			}
 		}
 
+
+//		Arrays.sort is much faster
+//		private static void sortQuickInRange(
+//				@NotNull int[] data,
+//				int left,
+//				int right) {
+//			if (left >= right) return;
+//			int i = left;
+//			int j = right;
+//			int temp = data[left];
+//			while (i < j) {
+//				while ((i < j) && (temp < data[j] || temp == data[j])) --j;
+//				while ((i < j) && !(temp < data[i])) ++i;
+//				if (i < j) {
+//					int tmp = data[i];
+//					data[i] = data[j];
+//					data[j] = tmp;
+//				}
+//			}
+//			data[left] = data[i];
+//			data[i] = temp;
+//			sortQuickInRange(data, left, i - 1);
+//			sortQuickInRange(data, i + 1, right);
+//		}
+
 		private class SortTask extends RecursiveAction {
 			private final int[] array;
 			private final int start;
@@ -61,6 +86,8 @@ public interface ParallelQuickSorter {
 			protected void compute() {
 				if (end - start < flag) {
 					Arrays.sort(array, start, end + 1);
+//					Arrays.sort is much faster
+//					sortQuickInRange(array, start, end + 1);
 				} else {
 					int pivot = partition(array, start, end);
 					if (start < pivot - 1) new SortTask(array, start, pivot - 1, flag).fork();

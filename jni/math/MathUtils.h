@@ -12,12 +12,6 @@
 extern "C" {
 #endif /// __cplusplus
 
-#undef org_algo4j_math_MathUtils_E
-#define org_algo4j_math_MathUtils_E 2.718281828459045
-
-#undef org_algo4j_math_MathUtils_PI
-#define org_algo4j_math_MathUtils_PI 3.141592653589793
-
 /// 0x5F3759DF thank you Carmack
 #undef org_algo4j_math_MathUtils_MAGIC_NUMBER
 #define org_algo4j_math_MathUtils_MAGIC_NUMBER 1597463007L

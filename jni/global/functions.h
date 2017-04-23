@@ -20,6 +20,10 @@ extern "C" {
 #endif /// __cplusplus
 
 namespace algo4j_math {
+
+	constexpr jdouble PI = 3.14159265358979323846263383279502884197;
+	constexpr jdouble E = 2.718281828459045;
+
 	auto sin_ice(const jdouble) -> jdouble;
 
 	auto cos_ice(const jdouble) -> jdouble;
