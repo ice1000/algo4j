@@ -34,9 +34,9 @@ public final class Loader {
 			fileName = libName + ".so";
 		else if (___.contains("Windows"))
 			fileName = libName + ".dll";
-		else if (___.contains("OSX"))
+		else // if (___.contains("OSX"))
 			fileName = libName + ".dylib";
-		else fileName = libName;
+//		else fileName = libName;
 		return new File(fileName).getAbsolutePath();
 	}
 

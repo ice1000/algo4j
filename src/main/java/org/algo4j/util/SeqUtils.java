@@ -152,6 +152,22 @@ public final class SeqUtils {
 
 	public static native void sortCocktail(@NotNull double[] data);
 
+	public static void sortForkJoin(@NotNull int[] data) {
+		new ParallelQuickSorter.MultiThreadingQuickSorterInt(data).forkJoinSort();
+	}
+
+	public static void sortForkJoin(@NotNull long[] data) {
+		new ParallelQuickSorter.MultiThreadingQuickSorterLong(data).forkJoinSort();
+	}
+
+	public static void sortForkJoin(@NotNull float[] data) {
+		new ParallelQuickSorter.MultiThreadingQuickSorterFloat(data).forkJoinSort();
+	}
+
+	public static void sortForkJoin(@NotNull double[] data) {
+		new ParallelQuickSorter.MultiThreadingQuickSorterDouble(data).forkJoinSort();
+	}
+
 	/**
 	 * Returns a string representation of the contents of the specified array.
 	 */

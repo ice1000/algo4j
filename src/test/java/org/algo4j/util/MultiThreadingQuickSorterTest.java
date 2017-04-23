@@ -4,7 +4,7 @@ import org.jetbrains.annotations.TestOnly;
 import org.junit.Test;
 
 import static kotlin.test.AssertionsKt.assertTrue;
-import static org.algo4j.util.ParallelQuickSorters.*;
+import static org.algo4j.util.ParallelQuickSorter.*;
 
 public class MultiThreadingQuickSorterTest {
 	@TestOnly

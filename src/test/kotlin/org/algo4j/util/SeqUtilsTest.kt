@@ -152,6 +152,15 @@ class SeqUtilsTest {
 	}
 
 	/**
+	 * 大数据多线程快排测试（无脑开的多线程吊打单线程现场）
+	 */
+	@TestOnly
+	@Test(timeout = 10000)
+	fun veryStrongTestForkJoinSort() {
+		SeqUtils.sortForkJoin(strongIntArray.toIntArray())
+	}
+
+	/**
 	 * 复制测试
 	 */
 	@TestOnly

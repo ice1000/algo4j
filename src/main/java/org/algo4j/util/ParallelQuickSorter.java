@@ -12,9 +12,14 @@ import java.util.concurrent.TimeUnit;
  * @author ice1000
  */
 @SuppressWarnings("ALL")
-public class ParallelQuickSorters {
+public interface ParallelQuickSorter {
 
-	public static class MultiThreadingQuickSorterInt {
+	/**
+	 * start sorting
+	 */
+	void forkJoinSort();
+
+	public static class MultiThreadingQuickSorterInt implements ParallelQuickSorter {
 		private final int flag;
 		private final int[] array;
 
@@ -27,6 +32,7 @@ public class ParallelQuickSorters {
 			this(array, array.length / 1_000);
 		}
 
+		@Override
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
 			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
@@ -93,7 +99,7 @@ public class ParallelQuickSorters {
 		}
 	}
 
-	public static class MultiThreadingQuickSorterFloat {
+	public static class MultiThreadingQuickSorterFloat implements ParallelQuickSorter {
 		private final int flag;
 		private final float[] array;
 
@@ -106,6 +112,7 @@ public class ParallelQuickSorters {
 			this(array, array.length / 1_000);
 		}
 
+		@Override
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
 			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
@@ -172,8 +179,7 @@ public class ParallelQuickSorters {
 		}
 	}
 
-
-	public static class MultiThreadingQuickSorterDouble {
+	public static class MultiThreadingQuickSorterDouble implements ParallelQuickSorter {
 		private final int flag;
 		private final double[] array;
 
@@ -186,6 +192,7 @@ public class ParallelQuickSorters {
 			this(array, array.length / 1_000);
 		}
 
+		@Override
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
 			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
@@ -252,8 +259,7 @@ public class ParallelQuickSorters {
 		}
 	}
 
-
-	public static class MultiThreadingQuickSorterLong {
+	public static class MultiThreadingQuickSorterLong implements ParallelQuickSorter {
 		private final int flag;
 		private final long[] array;
 
@@ -266,6 +272,7 @@ public class ParallelQuickSorters {
 			this(array, array.length / 1_000);
 		}
 
+		@Override
 		public void forkJoinSort() {
 			ForkJoinPool forkJoinPool = new ForkJoinPool();
 			forkJoinPool.submit(new SortTask(array, 0, array.length - 1, flag));
