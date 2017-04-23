@@ -162,11 +162,24 @@ class SeqUtilsTest {
 
 	/**
 	 * 大数据多线程快排测试（无脑开的多线程吊打单线程现场）
+	 * Java实现
 	 */
 	@TestOnly
 	@Test(timeout = 100000)
 	fun veryStrongTestForkJoinSort() {
 		SeqUtils.sortForkJoin(strongIntArray.toIntArray())
+	}
+
+	/**
+	 * 大数据单线程快排测试
+	 * Java实现
+	 */
+	@TestOnly
+	@Test(timeout = 100000)
+	fun veryStrongTestJavaQuickSort() {
+		ParallelQuickSorter
+				.MultiThreadingQuickSorterInt(strongIntArray.toIntArray(), Integer.MAX_VALUE)
+				.forkJoinSort()
 	}
 
 	/**

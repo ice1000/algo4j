@@ -1,6 +1,5 @@
 package org.algo4j.util;
 
-import org.algo4j.math.MathUtils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -155,25 +154,25 @@ public final class SeqUtils {
 
 	public static void sortForkJoin(@NotNull int[] data) {
 		new ParallelQuickSorter
-				.MultiThreadingQuickSorterInt(data, MathUtils.max(data.length / 0xFF, 0xFF))
+				.MultiThreadingQuickSorterInt(data)
 				.forkJoinSort();
 	}
 
 	public static void sortForkJoin(@NotNull long[] data) {
 		new ParallelQuickSorter
-				.MultiThreadingQuickSorterLong(data, MathUtils.max(data.length / 0xFF, 0xFF))
+				.MultiThreadingQuickSorterLong(data)
 				.forkJoinSort();
 	}
 
 	public static void sortForkJoin(@NotNull float[] data) {
 		new ParallelQuickSorter
-				.MultiThreadingQuickSorterFloat(data, MathUtils.max(data.length / 0xFF, 0xFF))
+				.MultiThreadingQuickSorterFloat(data)
 				.forkJoinSort();
 	}
 
 	public static void sortForkJoin(@NotNull double[] data) {
 		new ParallelQuickSorter
-				.MultiThreadingQuickSorterDouble(data, MathUtils.max(data.length / 0xFF, 0xFF))
+				.MultiThreadingQuickSorterDouble(data)
 				.forkJoinSort();
 	}
 

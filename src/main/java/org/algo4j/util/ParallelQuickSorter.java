@@ -1,5 +1,8 @@
 package org.algo4j.util;
 
+import org.algo4j.math.MathUtils;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
@@ -23,13 +26,13 @@ public interface ParallelQuickSorter {
 		private final int flag;
 		private final int[] array;
 
-		public MultiThreadingQuickSorterInt(int[] array, int flag) {
+		public MultiThreadingQuickSorterInt(@NotNull int[] array, int flag) {
 			this.array = array;
 			this.flag = flag;
 		}
 
-		public MultiThreadingQuickSorterInt(int[] array) {
-			this(array, array.length / 1_000);
+		public MultiThreadingQuickSorterInt(@NotNull int[] array) {
+			this(array, MathUtils.max(array.length / 0xFF, 0xFF));
 		}
 
 		@Override
@@ -43,7 +46,6 @@ public interface ParallelQuickSorter {
 				e.printStackTrace();
 			}
 		}
-
 
 //		Arrays.sort is much faster
 //		private static void sortQuickInRange(
@@ -75,7 +77,7 @@ public interface ParallelQuickSorter {
 			private final int end;
 			private final int flag;
 
-			private SortTask(int[] array, int start, int end, int flag) {
+			private SortTask(@NotNull int[] array, int start, int end, int flag) {
 				this.array = array;
 				this.start = start;
 				this.end = end;
@@ -95,7 +97,7 @@ public interface ParallelQuickSorter {
 				}
 			}
 
-			private int partition(int[] array, int start, int end) {
+			private int partition(@NotNull int[] array, int start, int end) {
 				int i = start;
 				int j = end;
 				if (j - i > 2) {
@@ -130,13 +132,13 @@ public interface ParallelQuickSorter {
 		private final int flag;
 		private final float[] array;
 
-		public MultiThreadingQuickSorterFloat(float[] array, int flag) {
+		public MultiThreadingQuickSorterFloat(@NotNull float[] array, int flag) {
 			this.array = array;
 			this.flag = flag;
 		}
 
-		public MultiThreadingQuickSorterFloat(float[] array) {
-			this(array, array.length / 1_000);
+		public MultiThreadingQuickSorterFloat(@NotNull float[] array) {
+			this(array, MathUtils.max(array.length / 0xFF, 0xFF));
 		}
 
 		@Override
@@ -157,7 +159,7 @@ public interface ParallelQuickSorter {
 			private final int end;
 			private final int flag;
 
-			private SortTask(float[] array, int start, int end, int flag) {
+			private SortTask(@NotNull float[] array, int start, int end, int flag) {
 				this.array = array;
 				this.start = start;
 				this.end = end;
@@ -175,7 +177,7 @@ public interface ParallelQuickSorter {
 				}
 			}
 
-			private int partition(float[] array, int start, int end) {
+			private int partition(@NotNull float[] array, int start, int end) {
 				int i = start;
 				int j = end;
 				if (j - i > 2) {
@@ -210,13 +212,13 @@ public interface ParallelQuickSorter {
 		private final int flag;
 		private final double[] array;
 
-		public MultiThreadingQuickSorterDouble(double[] array, int flag) {
+		public MultiThreadingQuickSorterDouble(@NotNull double[] array, int flag) {
 			this.array = array;
 			this.flag = flag;
 		}
 
-		public MultiThreadingQuickSorterDouble(double[] array) {
-			this(array, array.length / 1_000);
+		public MultiThreadingQuickSorterDouble(@NotNull double[] array) {
+			this(array, MathUtils.max(array.length / 0xFF, 0xFF));
 		}
 
 		@Override
@@ -237,7 +239,7 @@ public interface ParallelQuickSorter {
 			private final int end;
 			private final int flag;
 
-			private SortTask(double[] array, int start, int end, int flag) {
+			private SortTask(@NotNull double[] array, int start, int end, int flag) {
 				this.array = array;
 				this.start = start;
 				this.end = end;
@@ -255,7 +257,7 @@ public interface ParallelQuickSorter {
 				}
 			}
 
-			private int partition(double[] array, int start, int end) {
+			private int partition(@NotNull double[] array, int start, int end) {
 				int i = start;
 				int j = end;
 				if (j - i > 2) {
@@ -290,13 +292,13 @@ public interface ParallelQuickSorter {
 		private final int flag;
 		private final long[] array;
 
-		public MultiThreadingQuickSorterLong(long[] array, int flag) {
+		public MultiThreadingQuickSorterLong(@NotNull long[] array, int flag) {
 			this.array = array;
 			this.flag = flag;
 		}
 
-		public MultiThreadingQuickSorterLong(long[] array) {
-			this(array, array.length / 1_000);
+		public MultiThreadingQuickSorterLong(@NotNull long[] array) {
+			this(array, MathUtils.max(array.length / 0xFF, 0xFF));
 		}
 
 		@Override
@@ -317,7 +319,7 @@ public interface ParallelQuickSorter {
 			private final int end;
 			private final int flag;
 
-			private SortTask(long[] array, int start, int end, int flag) {
+			private SortTask(@NotNull long[] array, int start, int end, int flag) {
 				this.array = array;
 				this.start = start;
 				this.end = end;
@@ -335,7 +337,7 @@ public interface ParallelQuickSorter {
 				}
 			}
 
-			private int partition(long[] array, int start, int end) {
+			private int partition(@NotNull long[] array, int start, int end) {
 				int i = start;
 				int j = end;
 				if (j - i > 2) {
