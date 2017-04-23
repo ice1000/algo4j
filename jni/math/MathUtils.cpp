@@ -100,10 +100,6 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_isPrime(
 	return *new jboolean(is_prime(_ > 0 ? _ : -_));
 }
 
-#undef __abs__ice__
-#undef __max__ice__
-#undef __min__ice__
-
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fib(
 		JNIEnv *env,
 		jclass,
