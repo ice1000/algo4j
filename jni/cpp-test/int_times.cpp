@@ -4,6 +4,7 @@
 
 #include "../global/complex.h"
 #include "../global/complex.cpp"
+#include <string.h>
 
 const int MAXN = 200010;
 complex x1[MAXN], x2[MAXN];
@@ -37,7 +38,7 @@ int main() {
 			sum[i] %= 10;
 		}
 		len = len1 + len2 - 1;
-		while (sum[len] <= 0 && len > 0)len--;
+		while (sum[len] <= 0 && len > 0) --len;
 		for (int i = len; i >= 0; i--)
 			printf("%c", sum[i] + '0');
 		printf("\n");

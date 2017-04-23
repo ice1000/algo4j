@@ -108,7 +108,7 @@ val strongIntArray: List<Int>
 				.toMutableList()
 				.append(shuffledIntList)
 				.append(shuffledIntList)
-		for (i in 1..50000) list.addAll(shuffledIntList)
+		for (i in 1..5000) list.addAll(shuffledIntList)
 		return list
 	}
 

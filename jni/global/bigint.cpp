@@ -1,6 +1,8 @@
 
 #include "bigint.h"
 #include "basics.hpp"
+#include "complex.h"
+#include "string.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"

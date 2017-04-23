@@ -19,6 +19,5 @@ test:
 
 general:
   artifacts:
-    - "libjni.dylib"
     - "libjni.so"
 #
