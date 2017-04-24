@@ -157,7 +157,7 @@ auto algo4j_int::times(
 	auto str2 = b;
 	auto len1 = a_len;
 	auto len2 = b_len;
-	while (len < len1 << 1 || len < len2 << 1) len <<= 1;
+	while (len < len1 << 1 or len < len2 << 1) len <<= 1;
 	auto sum = new jlong[len + 1];
 	complex x1[len];
 	complex x2[len];
@@ -182,13 +182,12 @@ auto algo4j_int::times(
 		sum[i] %= 10;
 	}
 	len = len1 + len2 - 1;
-	while (sum[len] <= 0 && len > 0) --len;
+	while (0 >= sum[len] and 0 < len) --len;
 	auto ret = new jbyte[len + 1];
 	auto j = 0;
-	for (auto __ = len; __ >= 0; --__, ++j)
+	for (auto __ = len; 0 <= __; --__, ++j)
 		ret[j] = (jbyte) (sum[__] + '0');
 	delete sum;
-	ret[j] = '\0';
 	return new BigInt(ret, ++len);
 }
 

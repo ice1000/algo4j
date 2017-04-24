@@ -71,7 +71,7 @@ class BigIntTest {
 			(int * StdBigInt(rand.nextInt(223333333).toString())).toString()
 			assertEquals(100000000000000, fuck)
 		}
-		loop(20) {
+		loop(50) {
 			val sb = StringBuilder(MathUtils.abs(rand.nextLong()).toString())
 			(0..200).forEach { sb.append(MathUtils.abs(rand.nextLong()).toString()) }
 			StdBigInt(sb.toString()) * StdBigInt(sb.toString())
@@ -137,7 +137,7 @@ class BigIntTest {
 					(val1 * val2).toString(),
 					(BigInt(val1) * BigInt(val2)).toString())
 		}
-		test(20) {
+		test(50) {
 			val sb = StringBuilder(MathUtils.abs(rand.nextLong()).toString())
 			(0..200).forEach { sb.append(MathUtils.abs(rand.nextLong()).toString()) }
 			BigInt(sb.toString()) * BigInt(sb.toString())
