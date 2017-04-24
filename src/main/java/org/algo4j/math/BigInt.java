@@ -126,10 +126,10 @@ public class BigInt implements
 			return timesTen();
 		else if (NEGA_TEN.equals(anotherBigInt))
 			return timesTen(!sig);
-		else return new BigInt(
-				times(data, anotherBigInt.data),
-					sig == anotherBigInt.sig
-			);
+		else if (data.length + anotherBigInt.data.length <= 1_000)
+			return new BigInt(timesBruteForce(data, anotherBigInt.data), sig == anotherBigInt.sig);
+		else
+			return new BigInt(times(data, anotherBigInt.data), sig == anotherBigInt.sig);
 	}
 
 	/**
@@ -208,6 +208,10 @@ public class BigInt implements
 	@NotNull
 	@Contract(value = "!null, !null -> !null", pure = true)
 	private static native byte[] times(@NotNull byte[] a, @NotNull byte[] b);
+
+	@NotNull
+	@Contract(value = "!null, !null -> !null", pure = true)
+	private static native byte[] timesBruteForce(@NotNull byte[] a, @NotNull byte[] b);
 
 	@NotNull
 	@Contract(value = "!null -> !null", pure = true)

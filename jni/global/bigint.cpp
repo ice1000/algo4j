@@ -1,5 +1,4 @@
 
-#include <c++/5.2.0/cstring>
 #include "bigint.h"
 #include "basics.hpp"
 #include "complex.h"
@@ -159,15 +158,15 @@ auto algo4j_int::times(
 	auto len1 = a_len;
 	auto len2 = b_len;
 	while (len < len1 << 1 || len < len2 << 1) len <<= 1;
-	auto sum = new jint[len];
+	auto sum = new jlong[len + 1];
 	complex x1[len];
 	complex x2[len];
-	for (auto i = 0; i < len1; ++i)
-		x1[i] = complex(str1[len1 - 1 - i] - '0');
-	for (auto i = len1; i < len; ++i)
-		x1[i] = complex();
-	for (auto i = 0; i < len2; ++i)
-		x2[i] = complex(str2[len2 - 1 - i] - '0');
+	for (auto __ = 0; __ < len1; ++__)
+		x1[__] = complex(str1[len1 - 1 - __] - '0');
+	for (auto __ = len1; __ < len; ++__)
+		x1[__] = complex();
+	for (auto __ = 0; __ < len2; ++__)
+		x2[__] = complex(str2[len2 - 1 - __] - '0');
 	for (auto i = len2; i < len; ++i)
 		x2[i] = complex();
 	// DFT
@@ -184,12 +183,12 @@ auto algo4j_int::times(
 	}
 	len = len1 + len2 - 1;
 	while (sum[len] <= 0 && len > 0) --len;
-	auto ret = new jbyte[len];
-	for (jsize __ = len, j = 0; __ >= 0; --__, ++j)
+	auto ret = new jbyte[len + 1];
+	auto j = 0;
+	for (auto __ = len; __ >= 0; --__, ++j)
 		ret[j] = (jbyte) (sum[__] + '0');
 	delete sum;
-//	delete x1;
-//	delete x2;
+	ret[j] = '\0';
 	return new BigInt(ret, ++len);
 }
 
