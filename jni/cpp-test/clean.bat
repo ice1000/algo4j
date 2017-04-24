@@ -1,6 +1,6 @@
 @echo off
 
-if exist *.exe (
+if get *.exe (
 	del /s /f /q *.exe
 )
 

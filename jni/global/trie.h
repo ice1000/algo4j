@@ -17,15 +17,15 @@ namespace algo4j_trie {
 	private:
 		ptr_to<Node> *next;
 	public:
-		bool hasElement;
+		jobject obj;
 
 		explicit Node();
 
 		~Node();
 
-		auto setNext(jbyte, Node *) -> void;
+		auto setNext(jbyte, ptr_to<Node>) -> void;
 
-		auto getNext(jbyte) -> Node *;
+		auto getNext(jbyte) -> ptr_to<Node>;
 	};
 
 	class Trie {
@@ -37,15 +37,11 @@ namespace algo4j_trie {
 
 		~Trie();
 
-		auto insert(const jbyte *, const jsize) -> void;
+		auto put(const jbyte *, const jsize, const jobject) -> void;
 
-		auto remove(const jbyte *, const jsize) -> void;
+		auto remove(const jbyte *, const jsize) -> jobject;
 
-		auto exist(const jbyte *, const jsize) -> bool;
-
-		auto existPrefix(const jbyte *, const jsize) -> bool;
-
-		auto getHead() const -> Node *;
+		auto get(const jbyte *, const jsize) -> jobject;
 	};
 }
 

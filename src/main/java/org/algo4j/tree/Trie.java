@@ -3,6 +3,7 @@ package org.algo4j.tree;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Trie tree, supporting smaller case letters and space.
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * @author ice1000
  */
 @SuppressWarnings("WeakerAccess")
-public class Trie {
+public class Trie<T> {
 	private long triePointer;
 
 	private static native long createTrie();
@@ -22,28 +23,32 @@ public class Trie {
 		triePointer = createTrie();
 	}
 
-	private native void insert(long ptr, @NotNull byte[] word);
+	private native void set(long ptr, @NotNull byte[] word, @NotNull T obj);
 
 	/**
-	 * insert a word.
+	 * set a word.
+	 * if obj is null, this will call the remove method.
 	 *
 	 * @param word the word.
+	 * @param obj  object to put
 	 */
-	public void insert(@NotNull @NonNls String word) {
-		insert(word.getBytes());
+	public void set(@NotNull @NonNls String word, @Nullable T obj) {
+		set(word.getBytes(), obj);
 	}
 
 	/**
 	 * #{@inheritDoc}
 	 */
-	public void insert(@NotNull byte[] word) {
-		insert(triePointer, word);
+	public void set(@NotNull byte[] word, @Nullable T obj) {
+		if (null != obj) set(triePointer, word, obj);
+		else remove(triePointer, word);
 	}
 
 	private native void remove(long ptr, @NotNull byte[] word);
 
 	/**
 	 * remove a word.
+	 * same as 'set(word, null)'
 	 *
 	 * @param word the word.
 	 */
@@ -58,57 +63,34 @@ public class Trie {
 		remove(triePointer, word);
 	}
 
+	@Nullable
 	@Contract(pure = true)
-	private native boolean contains(long ptr, @NotNull byte[] word);
+	private native T get(long ptr, @NotNull byte[] word);
 
 	/**
 	 * if the tree has the complete word: word.
 	 * example:
 	 * add 'ice1000'
-	 * then contains("ice") will return false.
-	 * then contains("ice1000") will return true.
+	 * then get("ice") will return false.
+	 * then get("ice1000") will return true.
 	 *
-	 * @param word a char sequence which contains smaller letters
+	 * @param word a char sequence which get smaller letters
 	 *             and spaces only.
 	 * @return true if the tree has the complete word: word.
 	 */
+	@Nullable
 	@Contract(pure = true)
-	public boolean contains(@NotNull @NonNls String word) {
-		return contains(word.getBytes());
+	public T get(@NotNull @NonNls String word) {
+		return get(word.getBytes());
 	}
 
 	/**
 	 * #{@inheritDoc}
 	 */
+	@Nullable
 	@Contract(pure = true)
-	public boolean contains(@NotNull byte[] word) {
-		return contains(triePointer, word);
-	}
-
-	@Contract(pure = true)
-	private native boolean containsPrefix(long ptr, @NotNull byte[] word);
-
-	/**
-	 * if the tree has the prefix: word.
-	 * example:
-	 * add 'ice1000'
-	 * then containsPrefix("ice") will return true.
-	 *
-	 * @param word a char sequence which contains smaller letters
-	 *             and spaces only.
-	 * @return true if the tree has the prefix: word.
-	 */
-	@Contract(pure = true)
-	public boolean containsPrefix(@NotNull @NonNls String word) {
-		return containsPrefix(word.getBytes());
-	}
-
-	/**
-	 * #{@inheritDoc}
-	 */
-	@Contract(pure = true)
-	public boolean containsPrefix(@NotNull byte[] word) {
-		return containsPrefix(triePointer, word);
+	public T get(@NotNull byte[] word) {
+		return get(triePointer, word);
 	}
 
 	/**

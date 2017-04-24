@@ -2,6 +2,8 @@
 #include "jni.h"
 /* Header for class org_algo4j_tree_Trie */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef _Included_org_algo4j_tree_Trie
 #define _Included_org_algo4j_tree_Trie
 
@@ -27,19 +29,20 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_createTrie(
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_deleteTrie(
 		JNIEnv *,
 		jclass,
-    jlong
+		jlong
 ) -> void;
 
 /**
  * Class:     org_algo4j_tree_Trie
  * Method:    insert
- * Signature: (J[B)V
+ * Signature: (J[BLjava/lang/Object;)V
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_insert(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_set(
 		JNIEnv *,
 		jobject,
 		jlong,
-		jbyteArray
+		jbyteArray,
+		jobject
 ) -> void;
 
 /**
@@ -57,26 +60,14 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_remove(
 /**
  * Class:     org_algo4j_tree_Trie
  * Method:    contains
- * Signature: (J[B)Z
+ * Signature: (J[B)Ljava/lang/Object;
  */
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_contains(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_get(
 		JNIEnv *,
 		jobject,
 		jlong,
 		jbyteArray
-) -> jboolean;
-
-/**
- * Class:     org_algo4j_tree_Trie
- * Method:    containsPrefix
- * Signature: (J[B)Z
- */
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_containsPrefix(
-		JNIEnv *,
-		jobject,
-		jlong,
-		jbyteArray
-) -> jboolean;
+) -> jobject;
 
 #ifdef __cplusplus
 }
@@ -84,3 +75,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_containsPrefix(
 
 #endif /// _Included_org_algo4j_tree_Trie
 
+
+#pragma clang diagnostic pop

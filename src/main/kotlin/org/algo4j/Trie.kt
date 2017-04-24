@@ -12,18 +12,9 @@ import org.algo4j.tree.Trie
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = false)
-operator fun Trie.plusAssign(word: String) =
-		insert(word)
+operator fun <T> Trie<T>.contains(word: String) =
+		null != get(word)
 
 @Contract(pure = false)
-operator fun Trie.plusAssign(word: ByteArray) =
-		insert(word)
-
-@Contract(pure = false)
-operator fun Trie.minusAssign(word: String) =
-		remove(word)
-
-@Contract(pure = false)
-operator fun Trie.minusAssign(word: ByteArray) =
-		remove(word)
-
+operator fun <T> Trie<T>.contains(word: ByteArray) =
+		null != get(word)

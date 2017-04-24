@@ -1,9 +1,6 @@
 
 #include "../global/trie.h"
-#include "../global/basics.hpp"
 #include "Trie.h"
-
-#include <stdio.h>
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -24,15 +21,17 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_deleteTrie(
 	delete (Trie *) ptr;
 }
 
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_insert(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_set(
 		JNIEnv *env,
 		jobject,
 		jlong ptr,
-		jbyteArray _word) -> void {
+		jbyteArray _word,
+		jobject _obj) -> void {
 	__JNI__FUNCTION__INIT__
 	auto trie = (Trie *) ptr;
 	__get(Byte, word);
-	trie->insert(word, __len(word));
+	auto obj = env->NewGlobalRef(_obj);
+	trie->put(word, __len(word), obj);
 	__abort(Byte, word);
 	__JNI__FUNCTION__CLEAN__
 }
@@ -45,39 +44,24 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_remove(
 	__JNI__FUNCTION__INIT__
 	auto trie = (Trie *) ptr;
 	__get(Byte, word);
-	trie->remove(word, __len(word));
+	auto ref = trie->remove(word, __len(word));
+	env->DeleteGlobalRef(ref);
 	__abort(Byte, word);
 	__JNI__FUNCTION__CLEAN__
 }
 
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_contains(
+JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_get(
 		JNIEnv *env,
 		jobject,
 		jlong ptr,
-		jbyteArray _word) -> jboolean {
+		jbyteArray _word) -> jobject {
 	__JNI__FUNCTION__INIT__
 	auto trie = (Trie *) ptr;
 	__get(Byte, word);
-	auto ret = trie->exist(word, __len(word));
+	auto ret = trie->get(word, __len(word));
 	__abort(Byte, word);
 	__JNI__FUNCTION__CLEAN__
-	return ret ? JNI_TRUE : JNI_FALSE;
+	return ret;
 }
-
-JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_containsPrefix(
-		JNIEnv *env,
-		jobject,
-		jlong ptr,
-		jbyteArray _word) -> jboolean {
-	__JNI__FUNCTION__INIT__
-	auto trie = (Trie *) ptr;
-	__get(Byte, word);
-	auto ret = trie->existPrefix(word, __len(word));
-	__abort(Byte, word);
-	__JNI__FUNCTION__CLEAN__
-	return ret ? JNI_TRUE : JNI_FALSE;
-}
-
-
 
 #pragma clang diagnostic pop

@@ -1,10 +1,11 @@
 package org.algo4j.tree
 
-import org.algo4j.plusAssign
+import org.algo4j.contains
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -17,9 +18,9 @@ class TrieTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testInsert() {
-		val trie = Trie()
+		val trie = Trie<Boolean>()
 		assertFalse { "boy next door" in trie }
-		trie += "boy next door"
+		trie["boy next door"] = true
 		assertTrue { "boy next door" in trie }
 		assertFalse { "the deep dark fantasy" in trie }
 		assertFalse { "boy next doors" in trie }
@@ -30,31 +31,35 @@ class TrieTest {
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContainsPrefix() {
-		val trie = Trie()
-		assertFalse { trie.containsPrefix("ass we") }
-		trie += "ass we can"
-		assertTrue { trie.containsPrefix("ass we") }
+		val trie = Trie<Int>()
+		assertFalse { "ass we" in trie }
+		trie["ass we can"] = 233
+		assertFalse { "ass we" in trie }
+		assertTrue { "ass we can" in trie }
+		assertEquals(233, trie["ass we can"])
 		trie.delete()
 	}
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testContains() {
-		val trie = Trie()
-		assertFalse { trie.contains(" My Name Is Van []") }
-		trie += " My Name Is Van []"
-		assertTrue { trie.contains(" My Name Is Van []") }
+		val trie = Trie<Any>()
+		assertFalse { " My Name Is Van []" in trie }
+		val obj = Any()
+		trie[" My Name Is Van []"] = obj
+		assertTrue { " My Name Is Van []" in trie }
+		assertEquals(obj, trie[" My Name Is Van []"])
 		trie.delete()
 	}
 
 	@TestOnly
 	@Test(timeout = 1000)
 	fun testRemove() {
-		val trie = Trie()
+		val trie = Trie<Int>()
 		assertFalse { "my name is van" in trie }
-		trie.insert("my name is van")
+		trie["my name is van"] = 1024
 		assertTrue { "my name is van" in trie }
-		trie.remove("my name is van")
+		trie["my name is van"] = null
 		assertFalse { "my name is van" in trie }
 		trie.delete()
 	}

@@ -10,21 +10,21 @@ using algo4j_trie::Trie;
 
 #define __goto_end_force(word) \
 for (auto _ = 0; _ < len; ++_) { \
-    if (now->getNext(word[_]) == nullptr) \
+    if (nullptr == now->getNext(word[_])) \
         now->setNext(word[_], new Node()); \
     now = now->getNext(word[_]); \
 }
 
-#define __goto_end_weak(word) \
+#define __goto_end_weak(word, value) \
 for (auto _ = 0; _ < len; ++_) { \
-    if (now->getNext(word[_]) == nullptr) \
-        return false; \
+      if (nullptr == now->getNext(word[_])) \
+        return value; \
     now = now->getNext(word[_]); \
 }
 
 #define __index(sym) ((sym) - 32)
 
-algo4j_trie::Node::Node() : hasElement(false), next(new ptr_to<Node>[TRIE_NODE_SIZE]{}) { }
+algo4j_trie::Node::Node() : obj(nullptr), next(new ptr_to<Node>[TRIE_NODE_SIZE]{}) { }
 
 algo4j_trie::Node::~Node() {
 	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
@@ -39,41 +39,31 @@ algo4j_trie::Trie::~Trie() {
 	delete head;
 }
 
-auto algo4j_trie::Trie::insert(const jbyte *word, const jsize len) -> void {
-	Node *now = head;
+auto algo4j_trie::Trie::put(const jbyte *word, const jsize len, const jobject obj) -> void {
+	auto now = head;
 	__goto_end_force(word);
-	now->hasElement = true;
+	now->obj = obj;
 }
 
-auto algo4j_trie::Trie::exist(const jbyte *word, const jsize len) -> bool {
-	Node *now = head;
-	__goto_end_weak(word);
-	return now->hasElement;
+auto algo4j_trie::Trie::get(const jbyte *word, const jsize len) -> jobject {
+	auto now = head;
+	__goto_end_weak(word, nullptr);
+	return now->obj;
 }
 
-auto algo4j_trie::Trie::existPrefix(const jbyte *word, const jsize len) -> bool {
-	Node *now = head;
-	__goto_end_weak(word);
-	return true;
-}
-
-auto Trie::getHead() const -> Node * {
-	return head;
-}
-
-auto Trie::remove(const jbyte *word, const jsize len) -> void {
-	Node *now = head;
+auto Trie::remove(const jbyte *word, const jsize len) -> jobject {
+	auto now = head;
 	__goto_end_force(word);
-	now->hasElement = false;
+	auto ret = now->obj;
+	now->obj = nullptr;
+	return ret;
 }
 
-auto algo4j_trie::Node::setNext(jbyte sym, Node *newNode) -> void {
-//	printf("%d\n", __index(sym));
+auto algo4j_trie::Node::setNext(jbyte sym, ptr_to<Node> newNode) -> void {
 	next[__index(sym)] = newNode;
 }
 
-auto algo4j_trie::Node::getNext(jbyte sym) -> Node * {
-//	printf("%d\n", __index(sym));
+auto algo4j_trie::Node::getNext(jbyte sym) -> ptr_to<Node> {
 	return next[__index(sym)];
 }
 
