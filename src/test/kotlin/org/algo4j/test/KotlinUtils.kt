@@ -3,7 +3,7 @@
  *
  * @author ice1000
  */
-@file:Suppress("unused")
+@file:Suppress("unused", "NOTHING_TO_INLINE")
 
 package org.algo4j.test
 
@@ -29,13 +29,13 @@ inline fun test(times: Int, block: (Int) -> Unit) {
 }
 
 @Contract(pure = true)
-fun <T> T.println(): T {
+inline fun <T> T.println(): T {
 	println(toString())
 	return this
 }
 
 @Contract(pure = true)
-fun <T> T.print(): T {
+inline fun <T> T.print(): T {
 	print(toString())
 	return this
 }
@@ -64,7 +64,7 @@ inline fun optional(run: Boolean, block: () -> Unit) {
 
 val shuffledDoubleList: List<Double>
 	@TestOnly
-	@Contract(pure = true)
+	@Contract(pure = false)
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -83,7 +83,7 @@ val shuffledDoubleList: List<Double>
 
 val shuffledIntList: List<Int>
 	@TestOnly
-	@Contract(pure = true)
+	@Contract(pure = false)
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
@@ -102,7 +102,7 @@ val shuffledIntList: List<Int>
 
 val strongIntArray: List<Int>
 	@TestOnly
-	@Contract(pure = true)
+	@Contract(pure = false)
 	get() {
 		val list = shuffledIntList
 				.toMutableList()

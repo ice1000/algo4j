@@ -3,6 +3,8 @@
 #include <stdio.h>
 /* Header for class org_algo4j_math_BigInt */
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef _Included_org_algo4j_math_BigInt
 #define _Included_org_algo4j_math_BigInt
 
@@ -28,6 +30,18 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
  * Signature: ([B[B)[B
  */
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
+		JNIEnv *,
+		jclass,
+		jbyteArray,
+		jbyteArray
+) -> jbyteArray;
+
+/**
+ * Class:     org_algo4j_math_BigInt
+ * Method:    timesBruteForce
+ * Signature: ([B[B)[B
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_timesBruteForce(
 		JNIEnv *,
 		jclass,
 		jbyteArray,
@@ -114,3 +128,5 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_compareTo(
 
 #endif /// _Included_org_algo4j_math_BigInt
 
+
+#pragma clang diagnostic pop

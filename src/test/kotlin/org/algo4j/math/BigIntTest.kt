@@ -61,7 +61,7 @@ class BigIntTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 50000)
 	fun stdTimesTest() {
 		val rand = Random(System.currentTimeMillis())
 		@Suppress("CanBeVal")
@@ -71,8 +71,11 @@ class BigIntTest {
 			(int * StdBigInt(rand.nextInt(223333333).toString())).toString()
 			assertEquals(100000000000000, fuck)
 		}
-		(StdBigInt("1111111111111111111111111111111111")
-				* StdBigInt("111111111111111111111111111111111")).toString()
+		loop(20) {
+			val sb = StringBuilder(MathUtils.abs(rand.nextLong()).toString())
+			(0..200).forEach { sb.append(MathUtils.abs(rand.nextLong()).toString()) }
+			StdBigInt(sb.toString()) * StdBigInt(sb.toString())
+		}
 	}
 
 	@TestOnly
@@ -123,7 +126,7 @@ class BigIntTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 50000)
 	fun timesTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
@@ -133,6 +136,11 @@ class BigIntTest {
 			assertEquals(
 					(val1 * val2).toString(),
 					(BigInt(val1) * BigInt(val2)).toString())
+		}
+		test(20) {
+			val sb = StringBuilder(MathUtils.abs(rand.nextLong()).toString())
+			(0..200).forEach { sb.append(MathUtils.abs(rand.nextLong()).toString()) }
+			BigInt(sb.toString()) * BigInt(sb.toString())
 		}
 	}
 

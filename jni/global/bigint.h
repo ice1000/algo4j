@@ -53,6 +53,13 @@ namespace algo4j_int {
 			jsize b_len
 	) -> BigInt *;
 
+	auto times_bf(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
+
 	auto divide(
 			jbyte *a,
 			jbyte *b,

@@ -47,5 +47,5 @@ auto ::algo4j_complex::fft(complex *y, jsize len, jsize on) -> void {
 			}
 		}
 	}
-	if (!~on) for (int i = 0; i < len; ++i) y[i].r /= len;
+	if (!~on) for (jsize i = 0; i < len; ++i) y[i].r /= len;
 }

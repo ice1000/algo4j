@@ -39,11 +39,15 @@ env->Set ## type ## ArrayRegion(_ ## name, 0, len, name);
 #define __len(name) \
 env->GetArrayLength(_ ## name)
 
-#ifdef _
 #undef _
-#endif /// _
 
-namespace algo4j_util {
+namespace algo4j_util {	
+	template <class T>
+	struct remove_reference { typedef T type; };
+
+	template <class T>
+	struct remove_reference<T&> { typedef T type; };
+
 	template<class T>
 	using ptr_to = T *;
 
