@@ -1,22 +1,14 @@
-## Configuration files ##
-
-# *.iml
 .idea/
 jni/.idea/
 jni/.vscode/
-
-## Compile output ##
-
 *.dll
 *.a
 *.def
 *.o
 *.exe
 *.gch
-
 .gradle/
 build/
-
 jni/cmake-build-release/
 jni/cmake-build-debug/
 jni/CMakeFiles/
@@ -25,42 +17,23 @@ jni/cmake_install.cmake
 jni/jni.cbp
 jni/build/
 out/
-
 Makefile.win
-
-## Unnecessary files ##
-
 jni/jni.layout
 *.res
 lib/
-
-## Logs ##
-
 *.log
-
-## added by plugin ##
-
 .vscode/
 code_drafts/.vscode/
 jni/jni32.ico
 jni/jni32.layout
-
-## jni ##
-
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
-
 CMakeCache.txt
 CMakeFiles
-
 *.cbp
 *.cmake
 *~
 *.autosave
-*.a
 *.core
 *.moc
-*.o
 *.obj
 *.orig
 *.rej
@@ -84,21 +57,12 @@ moc_*.cpp
 ui_*.h
 qrc_*.cpp
 Thumbs.db
-*.res
 *.rc
 /.qmake.cache
 /.qmake.stash
-
-# qtcreator generated files
 *.pro.user*
-
-# xemacs temporary files
 *.flc
-
-# Vim temporary files
 .*.swp
-
-# Visual Studio generated files
 *.ib_pdb_index
 *.idb
 *.ilk
@@ -112,19 +76,12 @@ Thumbs.db
 *.opensdf
 *.vcxproj
 *vcxproj.*
-
-# MinGW generated files
 *.Debug
 *.Release
-
-# Python byte code
 *.pyc
-
-# Binaries
-# --------
-*.dll
-*.exe
-
-
+*.dylib
+*.jnilib
 jni/jni.h
 jni.h
+jni/cpp-test/123.txt
+jni/cpp-test/321.txt

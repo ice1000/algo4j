@@ -13,12 +13,9 @@ int main(int argc, const char *argv[]) {
 	while (scanf("%s %s", a, b) == 2) {
 		size_t len1 = strlen(a);
 		size_t len2 = strlen(b);
-		auto data = times((jbyte *) a, (jbyte *) b, len1, len2);
-		for (int i = 0; i < data->len; ++i) {
-			putchar(data->data[i]);
-		}
-		delete data;
-		putchar('\n');
+		auto b1 = (jbyte *) b;
+		auto a1 = (jbyte *) a;
+		auto data = times(a1, b1, len1, len2);
 	}
 }
 

@@ -235,6 +235,7 @@ public class BigInt implements
 	@Contract(pure = true)
 	private static native int compareTo(@NotNull byte[] a, @NotNull byte[] b);
 
+	@SuppressWarnings("MethodDoesntCallSuperMethod")
 	@Override
 	@NotNull
 	@Contract(" -> !null")
