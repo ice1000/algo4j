@@ -1,28 +1,25 @@
 
 # algo4j
 
-CI|status
+Continuous Integration|Status
 :---|:---:
 Travis CI|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
 AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
 CodeShip|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
 CircleCI|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
 
-[![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)<br/>
-[![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)<br/>
-[![Dependency Status](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a/badge.svg?style=square)](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a)<br/>
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)<br/>
-[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=ready&title=Ready)](http://waffle.io/ice1000/algo4j)<br/>
-[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)<br/>
-
+[![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+[![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)
 
 <br/>
 
 [中文](./README_Zh.md)
 
-This is an algorithm library for Java, and the core is written in C++, linked with JNI.
+This is an algorithm library for Java, whose core is written in C++, linked with JNI.
 
-It is test-driven(really strong tests), well-documented, with code generation for some special cases.
+It is test-driven(also benchmarks), well-documented, with code generation for some special cases.
 
 ## Project structure
 
@@ -39,8 +36,9 @@ src/test|tests
 The `jni library` above is not included in the repo,
 please build it yourself, or:
 
-+ For Windows, download the newest version in [AppVeyor artifact page](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts), or [GitHub release page](https://github.com/ice1000/algo4j/releases).
-+ For Linux/OSX, download the newest version in [GitHub release page](https://github.com/ice1000/algo4j/releases).
++ General:[GitHub release](https://github.com/ice1000/algo4j/releases)
++ Windows only:[AppVeyor artifact](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)
++ Linux only:[CircleCI](https://circleci.com/gh/ice1000/algo4j) => latest build => artifact page.
 
 ## Overview
 
@@ -53,7 +51,7 @@ please build it yourself, or:
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
 - [X] Linear data structure, Stack and Queue.
 - [X] Minimum binary heap(priority queue), support adding and extracting.
-- [X] Trie tree, supports ASCII 32-127(upper and lower case letters, braces, digits, space, etc).
+- [X] Trie tree, whose key supports ASCII 32-127, as Trie<T> : Map<String, T>.
 - [X] Multi-threading quick sort implementation.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.

@@ -8,18 +8,16 @@ AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5
 CodeShip|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
 CircleCI|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
 
-[![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)<br/>
-[![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)<br/>
-[![Dependency Status](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a/badge.svg?style=square)](https://www.versioneye.com/user/projects/58df4c81d6c98d004652f35a)<br/>
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)<br/>
-[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=ready&title=Ready)](http://waffle.io/ice1000/algo4j)<br/>
-[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)<br/>
+[![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
+[![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)
 
 <br/>
 
 [English](./README.md)
 
-这是一个提供给Java使用的算法库，核心算法使用C++完成，JNI调用。
+这是一个提供给Java使用的算法库，核心算法使用C++完成（禁用STL），JNI调用。
 
 这玩意测试覆盖率100%，文档齐全，部分情况使用代码生成。
 
@@ -37,9 +35,9 @@ src/test|测试代码
 
 上面说的`动态链接库`没有包含在仓库内，你可以选择自己编译它，或者：
 
-+ Windows用户可以在[AppVeyor的artifact页面](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)下载最新版本的dll，或者去[GitHub的release](https://github.com/ice1000/algo4j/releases)下载。
-+ Linux/OSX用户只能在[GitHub的release](https://github.com/ice1000/algo4j/releases)下载。
-
++ 通用下载方案：[GitHub release](https://github.com/ice1000/algo4j/releases)
++ Windows：[AppVeyor artifact](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)
++ Linux：[CircleCI](https://circleci.com/gh/ice1000/algo4j)并转最新build的artifact界面
 
 ## 概览
 
@@ -52,7 +50,7 @@ src/test|测试代码
 - [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
 - [X] 线性数据结构，栈和队列，还有对应的Int版。
 - [X] 最小二叉堆，支持插入和取顶端。
-- [X] 字典树，支持ASCII的32到127的字符（空格，大小写字母，数字，括号等）。
+- [X] 字典树，支持ASCII的32到127的字符，Trie<T> : Map<String, T>。
 - [X] 多线程快速排序
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现
