@@ -159,8 +159,8 @@ class BigIntTest {
 		}
 	}
 
-	//	@TestOnly
-	//	@Test(timeout = 1000)
+	@TestOnly
+	@Test(timeout = 1000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {

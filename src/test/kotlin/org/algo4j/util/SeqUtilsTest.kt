@@ -251,7 +251,7 @@ class SeqUtilsTest {
 			@Contract(pure = true)
 			get
 
-		val bound = 2333
+		val bound = 666666
 			@TestOnly
 			@Contract(pure = true)
 			get

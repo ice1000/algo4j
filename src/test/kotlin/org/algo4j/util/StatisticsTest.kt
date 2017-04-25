@@ -35,7 +35,7 @@ class StatisticsTest {
 			list.forEach { avg += it }
 			assertEquals(
 					avg / list.size,
-					avg(list.toIntArray()), 1e-10)
+					avg(list.toIntArray()), 1e-3)
 		}
 	}
 
@@ -64,10 +64,10 @@ class StatisticsTest {
 			list.forEach { avg += it }
 			avg /= list.size
 			var stdDiv = 0.0
-			list.forEach { stdDiv += abs(it - avg) }
+			list.forEach { stdDiv += abs(it - avg) / list.size }
 			assertEquals(
-					stdDiv / list.size,
-					stdDiv(list.toIntArray()), 1e-12)
+					stdDiv,
+					stdDiv(list.toIntArray()), 1e-3)
 		}
 	}
 

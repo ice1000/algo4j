@@ -69,7 +69,7 @@ class TrieTest {
 		trie.clear()
 	}
 
-	companion object {
+	companion object Initializer {
 		@TestOnly
 		@JvmStatic
 		@BeforeClass
