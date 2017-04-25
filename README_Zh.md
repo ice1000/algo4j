@@ -54,7 +54,7 @@ src/test|测试代码
 - [X] 多线程快速排序
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现
-- [ ] 大整数(含快速幂)，比标准库java.math.BigInteger快。
+- [ ] 大整数(含快速幂)，大部分情况比标准库java.math.BigInteger快。
 
 其实，代码内部文档注释很完善的。。。<br/>
 如果你想详细地了解，可以看Javadoc，或者package-info.java.

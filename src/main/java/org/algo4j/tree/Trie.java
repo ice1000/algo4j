@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("WeakerAccess")
 public class Trie<T> {
 	private long triePointer;
+	private static final int NULL = 0;
 
 	private static native long createTrie();
 
@@ -23,32 +24,43 @@ public class Trie<T> {
 		triePointer = createTrie();
 	}
 
+	/**
+	 * get trie pointer safely
+	 * if you called clear, the pointer will be deleted, and it will be unsafe to call it again.
+	 * this method ensure the operation is safe.
+	 *
+	 * @return trie pointer
+	 */
+	private long safeTriePointer() {
+		return NULL != triePointer ? triePointer : (triePointer = createTrie());
+	}
+
 	private native void set(long ptr, @NotNull byte[] word, @NotNull T obj);
 
 	/**
-	 * set a word.
+	 * put a word.
 	 * if obj is null, this will call the remove method.
 	 *
 	 * @param word the word.
 	 * @param obj  object to put
 	 */
-	public void set(@NotNull @NonNls String word, @Nullable T obj) {
-		set(word.getBytes(), obj);
+	public void put(@NotNull @NonNls String word, @Nullable T obj) {
+		put(word.getBytes(), obj);
 	}
 
 	/**
 	 * #{@inheritDoc}
 	 */
-	public void set(@NotNull byte[] word, @Nullable T obj) {
-		if (null != obj) set(triePointer, word, obj);
-		else remove(triePointer, word);
+	public void put(@NotNull byte[] word, @Nullable T obj) {
+		if (null != obj) set(safeTriePointer(), word, obj);
+		else remove(safeTriePointer(), word);
 	}
 
 	private native void remove(long ptr, @NotNull byte[] word);
 
 	/**
 	 * remove a word.
-	 * same as 'set(word, null)'
+	 * same as 'put(word, null)'
 	 *
 	 * @param word the word.
 	 */
@@ -60,7 +72,7 @@ public class Trie<T> {
 	 * #{@inheritDoc}
 	 */
 	public void remove(@NotNull byte[] word) {
-		remove(triePointer, word);
+		remove(safeTriePointer(), word);
 	}
 
 	@Nullable
@@ -90,7 +102,7 @@ public class Trie<T> {
 	@Nullable
 	@Contract(pure = true)
 	public T get(@NotNull byte[] word) {
-		return get(triePointer, word);
+		return get(safeTriePointer(), word);
 	}
 
 	/**
@@ -99,7 +111,10 @@ public class Trie<T> {
 	 * the GC system of JVM, so you have to
 	 * release the memory manually.
 	 */
-	public void delete() {
-		deleteTrie(triePointer);
+	public void clear() {
+		if (NULL != triePointer) {
+			deleteTrie(triePointer);
+			triePointer = NULL;
+		}
 	}
 }

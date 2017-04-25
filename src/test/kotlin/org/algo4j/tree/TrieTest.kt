@@ -1,12 +1,14 @@
 package org.algo4j.tree
 
 import org.algo4j.contains
+import org.algo4j.set
 import org.algo4j.util.Loader
 import org.jetbrains.annotations.TestOnly
 import org.junit.BeforeClass
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
@@ -25,7 +27,7 @@ class TrieTest {
 		assertFalse { "the deep dark fantasy" in trie }
 		assertFalse { "boy next doors" in trie }
 		assertFalse { "boy next doo" in trie }
-		trie.delete()
+		trie.clear()
 	}
 
 	@TestOnly
@@ -37,7 +39,7 @@ class TrieTest {
 		assertFalse { "ass we" in trie }
 		assertTrue { "ass we can" in trie }
 		assertEquals(233, trie["ass we can"])
-		trie.delete()
+		trie.clear()
 	}
 
 	@TestOnly
@@ -49,7 +51,10 @@ class TrieTest {
 		trie[" My Name Is Van []"] = obj
 		assertTrue { " My Name Is Van []" in trie }
 		assertEquals(obj, trie[" My Name Is Van []"])
-		trie.delete()
+		trie.put(" My Name Is Van []", null)
+		assertNull(trie[" My Name Is Van []"])
+		assertFalse { " My Name Is Van []" in trie }
+		trie.clear()
 	}
 
 	@TestOnly
@@ -61,7 +66,7 @@ class TrieTest {
 		assertTrue { "my name is van" in trie }
 		trie["my name is van"] = null
 		assertFalse { "my name is van" in trie }
-		trie.delete()
+		trie.clear()
 	}
 
 	companion object {

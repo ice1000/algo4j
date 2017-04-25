@@ -18,3 +18,9 @@ operator fun <T> Trie<T>.contains(word: String) =
 @Contract(pure = false)
 operator fun <T> Trie<T>.contains(word: ByteArray) =
 		null != get(word)
+
+@Contract(pure = false)
+operator fun <T> Trie<T>.set(word: ByteArray, obj: T?) = put(word, obj)
+
+@Contract(pure = false)
+operator fun <T> Trie<T>.set(word: String, obj: T?) = put(word, obj)
