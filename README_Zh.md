@@ -53,7 +53,7 @@ src/test|测试代码
 - [X] 字典树，支持ASCII的32到127的字符，Trie<T> : Map<String, T>。
 - [X] 多线程快速排序
 - [X] 大整数快速幂
-- [ ] 大整数，大部分情况比标准库java.math.BigInteger快。
+- [X] 大整数加减乘除余，大部分情况比标准库java.math.BigInteger快。
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现
 

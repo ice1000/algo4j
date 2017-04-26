@@ -54,7 +54,7 @@ please build it yourself, or:
 - [X] Trie tree, whose key supports ASCII 32-127, as Trie<T> : Map<String, T>.
 - [X] Multi-threading quick sort implementation.
 - [X] Fast power for big integers.
-- [ ] Big Integer, faster than java.math.BigInteger.
+- [X] Big Integer(plus minus mul div rem), faster than java.math.BigInteger.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.
 
