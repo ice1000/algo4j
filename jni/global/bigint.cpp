@@ -44,8 +44,8 @@ auto algo4j_int::compare(
     jbyte *b,
     jsize a_len,
     jsize b_len) -> jint {
-  while (a_len > 0 and (a[0] > '9' or a[0] <= '0')) ++a, --a_len;
-  while (b_len > 0 and (b[0] > '9' or b[0] <= '0')) ++b, --b_len;
+	while (a_len > 0 and (a[0] > '9' or a[0] <= '0')) ++a, --a_len;
+	while (b_len > 0 and (b[0] > '9' or b[0] <= '0')) ++b, --b_len;
 	auto ret = static_cast<jint>(a_len - b_len);
 	if (!ret)
 		for (auto idx = 0; idx < a_len and not ret; ++idx)
@@ -211,6 +211,7 @@ auto algo4j_int::divide(
 			_res[++len3] = '\0';
 			_ret[i] = '0';
 			_ret[i + 1] = '\0';
+			BigInt *res = nullptr;
 //			printf("%s\n", _res);
 //			fflush(stdout);
 //			auto offset = 0;
@@ -220,13 +221,15 @@ auto algo4j_int::divide(
 //			while (compare(_res + offset, b, len3 - offset, b_len) >= 0) {
 			while (compare(_res, b, len3, b_len) >= 0) {
 //				auto res = minus(_res + offset, b, len3 - offset, b_len);
-				auto res = minus(_res, b, len3, b_len);
+				delete res;
+				res = minus(_res, b, len3, b_len);
 				delete _res;
 				_res = res->data;
 				len3 = res->len;
 				_res[len3] = '\0';
 				++_ret[i];
 			}
+			delete res;
 		}
 //		puts("%s\n");
 //		fflush(stdout);
