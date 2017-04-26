@@ -165,7 +165,7 @@ class BigIntTest {
 		val rand = Random(System.currentTimeMillis())
 		test(100) {
 			val val1 = rand.nextInt(66666) - 23333
-			val val2 = rand.nextInt(66666) - 23333
+			val val2 = rand.nextInt(666) - 233
 			if (0 == val2) return@test
 			println("$val1 $val2 -> ${val1 / val2}")
 			assertEquals(

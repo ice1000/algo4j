@@ -198,7 +198,7 @@ auto algo4j_int::divide(
 		jsize b_len
 ) -> BigInt * {
 	auto cmp_res = compare(a, b, a_len, b_len);
-	if (cmp_res < 0) return new BigInt((jbyte *) "0", 1);
+	if (0 > cmp_res) return new BigInt((jbyte *) "0", 1);
 	else if (not cmp_res) return new BigInt((jbyte *) "1", 1);
 	else {
 		auto len3 = 0;
@@ -209,45 +209,25 @@ auto algo4j_int::divide(
 			_res[++len3] = '\0';
 			_ret[i] = '0';
 			_ret[i + 1] = '\0';
-			while (compare(_res, b, len3, b_len) >= 0) {
+			while (true) {
+				printf("%d %d\n", len3, b_len);
+				if (not(compare(_res, b, len3, b_len) >= 0)) break;
 				auto res = minus(_res, b, len3, b_len);
 				delete _res;
 				_res = res->data;
 				len3 = res->len;
 				_res[len3] = '\0';
+				printf("%s\n", _res);
 				++_ret[i];
 			}
 		}
-		auto ret_len = a_len;
 		delete _res;
+		auto ret_len = a_len;
 		while (_ret[0] <= '0' or _ret[0] > '9') ++_ret, --ret_len;
-		if (not _ret[0]) return new BigInt((jbyte *) "0", 1);
-		freopen("out.txt", "w", stdout);
-		printf("%s\n", _ret);
+		if (0 >= ret_len) return new BigInt((jbyte *) "0", 1);
 		return new BigInt(_ret, ret_len);
 	}
 }
-
-//auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
-//	auto res_len = len;
-//	auto buf = new jbyte[res_len]();
-//	auto f_data = new jbyte[1]();
-//	f_data[0] = '0';
-//	auto f = new Single<BigInt>(new BigInt(f_data, 1));
-//	for (int i = len - 1; i >= 0; --i) {
-//		f->get()->times_10();
-//		f->get()->data[0] = this->data[i];
-//		while (*f->get() >= o) {
-//			auto tmp = *f->get() - o;
-//			f->set(&tmp);
-//			++buf[i];
-//			printf("[%i, %i]", buf[i], i);
-//		}
-//	}
-//	trim_string
-//	delete f;
-//	return *new BigInt(buf, res_len);
-//}
 
 namespace algo4j_int {
 

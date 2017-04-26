@@ -9,7 +9,6 @@
 
 #include "../global/templates.hpp"
 #include "../global/bigint.h"
-#include "../global/basics.hpp"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -144,8 +143,22 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__
-	// delete buf;
+	delete buf;
 	return _ret;
+}
+
+int main(int argc, const char *argv[]) {
+	auto a = new char[200000];
+	auto b = new char[200000];
+	while (2 == scanf("%s %s", a, b)) {
+		size_t len1 = strlen(a);
+		size_t len2 = strlen(b);
+		auto data = divide((jbyte *) a, (jbyte *) b, len1, len2);
+		for (int i = 0; i < data->len; ++i) {
+			putchar(data->data[i]);
+		}
+		putchar('\n');
+	}
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_pow(
