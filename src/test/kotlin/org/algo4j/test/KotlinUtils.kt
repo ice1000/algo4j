@@ -87,16 +87,16 @@ val shuffledIntList: List<Int>
 	get() {
 		val rand = Random(System.currentTimeMillis())
 		return listOf(
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound),
-				rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound), rand.nextInt(SeqUtilsTest.bound)
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND),
+				rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND), rand.nextInt(SeqUtilsTest.RAND_BOUND)
 		)
 	}
 

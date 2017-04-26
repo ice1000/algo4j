@@ -227,7 +227,7 @@ class SeqUtilsTest {
 				intArrayOf(3, 2, 3)))
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
-			val str = rand.nextInt(10000).toString()
+			val str = rand.nextInt(RAND_BOUND).toString()
 			val times = rand.nextInt(200)
 			val van = "${str}van".repeat(times)
 			assertEquals(times, SeqUtils.kmp(van, "van"))
@@ -251,7 +251,7 @@ class SeqUtilsTest {
 			@Contract(pure = true)
 			get
 
-		val bound = 666666
+		val RAND_BOUND = 666666
 			@TestOnly
 			@Contract(pure = true)
 			get

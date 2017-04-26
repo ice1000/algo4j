@@ -8,6 +8,10 @@ using namespace std;
 
 const int MAXN = 410;
 
+struct bign;
+
+ostream &operator<<(ostream &out, const bign &x);
+
 struct bign {
 	int len, s[MAXN];
 	bign() {
@@ -101,8 +105,9 @@ struct bign {
 		bign c, f = 0;
 		for (int i = len - 1; i >= 0; i--) {
 			f = f * 10;
-			f.s[0] = s[i];
+			f += s[i];
 			while (f >= b) {
+				cout<<f<<" "<<c.s[i]<<endl;
 				f -= b;
 				c.s[i]++;
 			}
@@ -183,16 +188,16 @@ int main() {
 		e = a * b;
 		f = a / b;
 		g = a % b;
-		cout << "a+b"
-		     << "=" << c << endl; // a += b
-		cout << "a-b"
-		     << "=" << d << endl; // a -= b;
-		cout << "a*b"
-		     << "=" << e << endl; // a *= b;
+//		cout << "a+b"
+//		     << "=" << c << endl; // a += b
+//		cout << "a-b"
+//		     << "=" << d << endl; // a -= b;
+//		cout << "a*b"
+//		     << "=" << e << endl; // a *= b;
 		cout << "a/b"
 		     << "=" << f << endl; // a /= b;
-		cout << "a%b"
-		     << "=" << g << endl; // a %= b;
+//		cout << "a%b"
+//		     << "=" << g << endl; // a %= b;
 		if (a != b)
 			printf("YES\n");
 		else
