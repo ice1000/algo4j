@@ -3,14 +3,13 @@
 
 持续集成|状态
 :---|:---:
-Travis CI(稳定)|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
-CircleCI(稳定)|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
-AppVeyor(开发)|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
-CodeShip(开发)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
+Travis CI(稳定分支)|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
+CircleCI(稳定分支)|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
+AppVeyor(开发分支)|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
+CodeShip(开发分支)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
 
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)
 
 <br/>
@@ -33,11 +32,13 @@ src/main/java|源码
 src/main/kotlin|Kotlin扩展库
 src/test|测试代码
 
-上面说的`动态链接库`没有包含在仓库内，你可以选择自己编译它，或者：
+上面说的`动态链接库`没有包含在仓库内，你可以选择自己编译它，或者直接下载：
 
 + 通用下载方案：[GitHub release](https://github.com/ice1000/algo4j/releases)
 + Windows：[AppVeyor artifact](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)
 + Linux：[CircleCI](https://circleci.com/gh/ice1000/algo4j)并转最新build的artifact界面
+
+下载后放在运行的工作目录即可。
 
 ## 概览
 

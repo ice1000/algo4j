@@ -10,7 +10,6 @@ CodeShip(dev)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec
 
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)
 
 <br/>
@@ -34,11 +33,13 @@ src/main/kotlin|Kotlin extension library
 src/test|tests
 
 The `jni library` above is not included in the repo,
-please build it yourself, or:
+please build it yourself, or download at:
 
-+ General:[GitHub release](https://github.com/ice1000/algo4j/releases)
-+ Windows only:[AppVeyor artifact](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)
-+ Linux only:[CircleCI](https://circleci.com/gh/ice1000/algo4j) => latest build => artifact page.
++ General: [GitHub release](https://github.com/ice1000/algo4j/releases)
++ Windows only: [AppVeyor artifact](https://ci.appveyor.com/project/ice1000/algo4j/build/artifacts)
++ Linux only: [CircleCI](https://circleci.com/gh/ice1000/algo4j) => latest build => artifact page.
+
+Put it to your working directory after download or build one.
 
 ## Overview
 
@@ -54,7 +55,7 @@ please build it yourself, or:
 - [X] Trie tree, whose key supports ASCII 32-127, as Trie<T> : Map<String, T>.
 - [X] Multi-threading quick sort implementation.
 - [X] Fast power for big integers.
-- [X] Big Integer(plus minus mul div rem), faster than java.math.BigInteger.
+- [X] Big Integer(plus minus mul div rem), faster(usually) than java.math.BigInteger.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.
 
