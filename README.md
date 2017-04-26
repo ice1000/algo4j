@@ -53,9 +53,10 @@ please build it yourself, or:
 - [X] Minimum binary heap(priority queue), support adding and extracting.
 - [X] Trie tree, whose key supports ASCII 32-127, as Trie<T> : Map<String, T>.
 - [X] Multi-threading quick sort implementation.
+- [X] Fast power for big integers.
+- [ ] Big Integer, faster than java.math.BigInteger.
 - [ ] Segment Tree, multi-implementations.
 - [ ] Durable Segment Tree, multi-implementations.
-- [ ] Big Integer, faster than java.math.BigInteger.
 
 Actually, every java classes are well-documented.<br/>
 For more information, see JavaDocs in each java file or package-info.java.

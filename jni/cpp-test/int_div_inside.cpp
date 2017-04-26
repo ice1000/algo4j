@@ -15,10 +15,10 @@ int main(int argc, const char *argv[]) {
 		size_t len1 = strlen(a);
 		size_t len2 = strlen(b);
 		auto data = divide((jbyte *) a, (jbyte *) b, len1, len2);
-		// printf("%s %d\n", data->data, data->len);
-		// for (int i = 0; i < data->len; ++i) {
-			// printf("%d ", data->data[i]);
-		// }
+		 printf("%s %d\n", data->data, data->len);
+		 for (int i = 0; i < data->len; ++i) {
+			 printf("%d ", data->data[i]);
+		 }
 		for (int i = 0; i < data->len; ++i) {
 			printf("%c", data->data[i]);
 		}

@@ -137,7 +137,7 @@ public final class MathUtils {
 	 * @return a ^ b % m
 	 */
 	@Contract(pure = true)
-	public static int fastPower(BigInt a, int b, int mod) {
+	public static int fastPower(@NotNull BigInt a, int b, int mod) {
 		return a.fastPower(b, mod);
 	}
 
