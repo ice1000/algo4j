@@ -16,7 +16,7 @@ repositories {
 }
 
 buildscript {
-	ext.kotlin_version = '1.1.1'
+	ext.kotlin_version = '1.1.2'
 
 	repositories {
 		mavenCentral()
@@ -31,6 +31,8 @@ buildscript {
 sourceSets {
 	main.kotlin.srcDirs += 'src/main/kotlin'
 	main.java.srcDirs += 'src/main/java'
+//	main.kotlin.testDirs += 'src/test/kotlin'
+//	main.java.testDirs += 'src/test/java'
 }
 
 dependencies {

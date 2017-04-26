@@ -196,7 +196,34 @@ auto algo4j_int::divide(
 		jbyte *b,
 		jsize a_len,
 		jsize b_len
-) -> BigInt * { return nullptr; }
+) -> BigInt * {
+	auto cmp_res = compare(a, b, a_len, b_len);
+	if (cmp_res < 0) return new BigInt((jbyte *) "0", 1);
+	else if (not cmp_res) return new BigInt((jbyte *) "1", 1);
+	else {
+		auto len3 = 0;
+		auto _res = new jbyte[a_len - b_len + 1]();
+		auto _ret = new jbyte[a_len - b_len + 1]();
+		for (auto i = 0; i < a_len; ++i) {
+			_res[len3] = a[i];
+			_res[++len3] = 0;
+			_ret[i] = '0';
+			_ret[i + 1] = 0;
+			while (compare(_res, b, len3, b_len) >= 0) {
+				auto res = minus(_res, b, len3, b_len);
+				delete _res;
+				_res = res->data;
+				len3 = res->len;
+				_res[len3] = 0;
+				++_ret[i];
+			}
+		}
+		auto ret_len = a_len;
+		delete _res;
+		while (_ret[0] <= '0' or _ret[0] > '9') ++_ret, --ret_len;
+		return new BigInt(_ret, ret_len);
+	}
+}
 
 //auto algo4j_int::BigInt::operator/(const BigInt &o) const -> BigInt & {
 //	auto res_len = len;

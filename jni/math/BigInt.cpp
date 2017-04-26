@@ -21,6 +21,7 @@ using algo4j_int::plus;
 using algo4j_int::minus;
 using algo4j_int::times_bf;
 using algo4j_int::times;
+using algo4j_int::divide;
 using algo4j_int::BigInt;
 
 using algo4j_math::fast_plus;
@@ -132,7 +133,19 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 		jclass,
 		jbyteArray _a,
 		jbyteArray _b) -> jbyteArray {
-	//
+	__JNI__FUNCTION__INIT__
+	__get(Byte, a);
+	__get(Byte, b);
+	auto a_len = __len(a);
+	auto b_len = __len(b);
+	auto buf = divide(a, b, a_len, b_len);
+	__new(Byte, ret, buf->len);
+	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__abort(Byte, a)
+	__abort(Byte, b)
+	__JNI__FUNCTION__CLEAN__
+	delete buf;
+	return _ret;
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_pow(
