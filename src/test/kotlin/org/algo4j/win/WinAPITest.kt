@@ -11,11 +11,66 @@ import org.junit.BeforeClass
  * @author ice1000
  */
 object WinAPITest {
+
+	/**
+	 * from http://blog.csdn.net/kevin1491/article/details/49837289
+	 * 小酒窝/长睫毛/迷人的无可救药
+	 */
 	@TestOnly
-	fun beep() {
-		WinAPI.beep(2333, 500)
-		WinAPI.beep(1233, 500)
-		WinAPI.beep(3500, 500)
+	fun beepXiaoJiuWo() {
+		listOf(Pair(659, 625),
+				Pair(659, 250), Pair(698, 500), Pair(659, 250), Pair(578, 250), Pair(578, 625), Pair(578, 250),
+				Pair(784, 500), Pair(578, 250), Pair(523, 250), Pair(523, 625), Pair(523, 250), Pair(880, 500),
+				Pair(784, 500), Pair(659, 625), Pair(698, 125), Pair(659, 125), Pair(578, 500), Pair(578, 500),
+				Pair(659, 625), Pair(659, 250), Pair(698, 500), Pair(784, 250), Pair(659, 250), Pair(784, 625),
+				Pair(784, 250), Pair(1175, 500), Pair(988, 250), Pair(1046, 250), Pair(1046, 1000), Pair(1046, 250),
+				Pair(988, 250), Pair(880, 250), Pair(988, 250), Pair(1046, 625), Pair(988, 250), Pair(1046, 1000),
+				Pair(1046, 250), Pair(988, 250), Pair(1046, 250), Pair(988, 250), Pair(1046, 500), Pair(659, 250),
+				Pair(784, 250), Pair(784, 1250), Pair(880, 250), Pair(988, 250), Pair(1046, 250), Pair(988, 250),
+				Pair(1046, 250), Pair(988, 250), Pair(1046, 500), Pair(1175, 500), Pair(1318, 500), Pair(1318, 1500),
+				Pair(880, 250), Pair(988, 250), Pair(1046, 250), Pair(988, 250), Pair(1046, 250), Pair(988, 250),
+				Pair(1046, 500), Pair(1318, 500), Pair(988, 250), Pair(880, 250), Pair(988, 250), Pair(880, 250),
+				Pair(988, 250), Pair(784, 250), Pair(784, 250), Pair(1046, 250), Pair(1046, 1000), Pair(1318, 375),
+				Pair(1397, 125), Pair(1397, 250), Pair(1318, 250), Pair(1175, 1000), Pair(0, 250), Pair(784, 250),
+				Pair(1046, 250), Pair(1175, 250), Pair(1318, 250), Pair(1046, 250), Pair(1046, 250), Pair(784, 250),
+				Pair(784, 500), Pair(784, 250), Pair(1318, 250), Pair(1175, 250), Pair(1318, 250), Pair(1175, 250),
+				Pair(1046, 250), Pair(784, 250), Pair(784, 250), Pair(880, 250), Pair(988, 250), Pair(1046, 250),
+				Pair(880, 250), Pair(880, 250), Pair(659, 250), Pair(659, 500), Pair(0, 250), Pair(988, 250),
+				Pair(1046, 250), Pair(988, 250), Pair(1046, 250), Pair(1175, 250), Pair(880, 250), Pair(784, 250),
+				Pair(784, 500), Pair(880, 500), Pair(784, 250), Pair(880, 250), Pair(988, 500), Pair(1318, 250),
+				Pair(1397, 250), Pair(1318, 250), Pair(1397, 250), Pair(1318, 250), Pair(1175, 250), Pair(1175, 250),
+				Pair(1046, 500), Pair(784, 250), Pair(784, 250), Pair(698, 250), Pair(698, 250), Pair(1046, 250),
+				Pair(1046, 250), Pair(1318, 250), Pair(1318, 250), Pair(1046, 250), Pair(1175, 1000), Pair(0, 250),
+				Pair(784, 250), Pair(1046, 250), Pair(1175, 250), Pair(1318, 250), Pair(1046, 250), Pair(1046, 250),
+				Pair(784, 250), Pair(784, 500), Pair(784, 250), Pair(1318, 250), Pair(1175, 250),
+				Pair(1318, 250), Pair(1175, 250), Pair(1046, 250), Pair(784, 250), Pair(784, 250),
+				Pair(880, 250), Pair(988, 250), Pair(1046, 250), Pair(880, 250), Pair(880, 250), Pair(659, 250),
+				Pair(659, 500), Pair(659, 250), Pair(988, 250), Pair(1046, 250), Pair(988, 250), Pair(1046, 250),
+				Pair(1175, 250), Pair(880, 250), Pair(784, 250),
+				Pair(784, 500), Pair(880, 250), Pair(988, 250), Pair(1046, 250), Pair(1175, 500), Pair(1318, 250),
+				Pair(1397, 250), Pair(1318, 250), Pair(1397, 250), Pair(1175, 250), Pair(1046, 250), Pair(1175, 250),
+				Pair(1046, 250), Pair(1046, 500), Pair(1175, 250), Pair(1046, 250), Pair(1175, 250), Pair(880, 250),
+				Pair(1046, 500), Pair(1175, 250), Pair(1046, 250), Pair(1046, 2000), Pair(1175, 250), Pair(1046, 250),
+				Pair(1175, 250), Pair(880, 250), Pair(988, 500), Pair(988, 250), Pair(1046, 250), Pair(1046, 2000))
+				.forEach { (freq, dur) -> WinAPI.beep(freq, dur) }
+	}
+
+	/**
+	 * from http://www.cnblogs.com/morewindows/archive/2011/08/15/2139544.html
+	 * 祝你生日快乐
+	 */
+	@TestOnly
+	fun beep2() {
+		listOf(392, 392, 440, 392, 523, 494,
+				392, 392, 440, 392, 587, 523,
+				392, 392, 784, 659, 523, 494, 440,
+				689, 689, 523, 587, 523
+		).zip(listOf(
+				375, 125, 500, 500, 500, 1000,
+				375, 125, 500, 500, 500, 1000,
+				375, 125, 500, 500, 500, 500, 1000,
+				375, 125, 500, 500, 500, 1000
+		)).forEach { (freq, dur) -> WinAPI.beep(freq, dur) }
 	}
 
 	@TestOnly
@@ -41,7 +96,8 @@ object WinAPITest {
 	@JvmStatic
 	fun main(args: Array<String>) {
 		init()
-		beep()
 		messageBoxA()
+		beep2()
+//		beepXiaoJiuWo()
 	}
 }
