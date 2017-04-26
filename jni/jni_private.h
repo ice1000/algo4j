@@ -12,7 +12,7 @@
 #define VER_BUILD	0
 #define COMPANY_NAME	""
 #define FILE_VERSION	"1.0.0.0"
-#define FILE_DESCRIPTION	"Developed using the Dev-C++ IDE"
+#define FILE_DESCRIPTION	"algo4j by ice1000"
 #define INTERNAL_NAME	""
 #define LEGAL_COPYRIGHT	""
 #define LEGAL_TRADEMARKS	""

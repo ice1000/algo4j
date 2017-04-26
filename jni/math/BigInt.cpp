@@ -140,6 +140,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	auto buf = divide(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len);
 	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	fflush(stdout);
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__
@@ -147,26 +148,12 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	return _ret;
 }
 
-int main(int argc, const char *argv[]) {
-	auto a = new char[200000];
-	auto b = new char[200000];
-	while (2 == scanf("%s %s", a, b)) {
-		size_t len1 = strlen(a);
-		size_t len2 = strlen(b);
-		auto data = divide((jbyte *) a, (jbyte *) b, len1, len2);
-		for (int i = 0; i < data->len; ++i) {
-			putchar(data->data[i]);
-		}
-		putchar('\n');
-	}
-}
-
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_pow(
 		JNIEnv *env,
 		jclass,
 		jbyteArray _a,
 		jint pow) -> jbyteArray {
-	//
+	// TODO
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_fastPower(

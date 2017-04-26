@@ -17,33 +17,35 @@ using algo4j_complex::change;
 using algo4j_complex::fft;
 
 #define check_less_than_0 \
-while (buf[res_idx] < '0') { \
-    buf[res_idx] += 10; \
-    --(buf[res_idx - 1]); \
-}
+	while (buf[res_idx] < '0') { \
+		buf[res_idx] += 10; \
+		--(buf[res_idx - 1]); \
+	}
 
 #define check_more_than_9 \
-while (buf[res_idx] > '9') { \
-    buf[res_idx] -= 10; \
-    ++buf[res_idx - 1]; \
-}
+	while (buf[res_idx] > '9') { \
+		buf[res_idx] -= 10; \
+		++buf[res_idx - 1]; \
+	}
 
 #define trim_string \
-while (res_len > 1 and (buf[0] <= '0' or buf[0] > '9')) { \
-    --res_len; \
-    ++buf; \
-} \
-while (res_len > 1 and (buf[res_len - 1] < '0' or buf[res_len - 1] > '9')) { \
-    --res_len; \
-}
+	while (res_len > 1 and (buf[0] <= '0' or buf[0] > '9')) { \
+		--res_len; \
+		++buf; \
+	} \
+	while (res_len > 1 and (buf[res_len - 1] < '0' or buf[res_len - 1] > '9')) { \
+		--res_len; \
+	}
 
 algo4j_int::BigInt::BigInt(jbyte *_data, jsize _len) : data(_data), len(_len) { }
 
 auto algo4j_int::compare(
-		const jbyte *a,
-		const jbyte *b,
-		const jsize a_len,
-		const jsize b_len) -> jint {
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len) -> jint {
+  while (a_len > 0 and (a[0] > '9' or a[0] <= '0')) ++a, --a_len;
+  while (b_len > 0 and (b[0] > '9' or b[0] <= '0')) ++b, --b_len;
 	auto ret = static_cast<jint>(a_len - b_len);
 	if (!ret)
 		for (auto idx = 0; idx < a_len and not ret; ++idx)
@@ -52,10 +54,10 @@ auto algo4j_int::compare(
 }
 
 auto algo4j_int::plus(
-		jbyte *a,
-		jbyte *b,
-		jsize a_len,
-		jsize b_len) -> BigInt * {
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -79,10 +81,10 @@ auto algo4j_int::plus(
 }
 
 auto algo4j_int::minus(
-		jbyte *a,
-		jbyte *b,
-		jsize a_len,
-		jsize b_len) -> BigInt * {
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -105,10 +107,10 @@ auto algo4j_int::minus(
 }
 
 auto algo4j_int::times_bf(
-		jbyte *a,
-		jbyte *b,
-		jsize a_len,
-		jsize b_len) -> BigInt * {
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len) -> BigInt * {
 	if ((a_len == 1 and a[0] == '0') or (b_len == 1 and b[0] == '0')) {
 		auto buf = new jbyte[1]();
 		buf[0] = '0';
@@ -143,10 +145,10 @@ auto algo4j_int::times_bf(
 }
 
 auto algo4j_int::times(
-		jbyte *a,
-		jbyte *b,
-		jsize a_len,
-		jsize b_len) -> BigInt * {
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len) -> BigInt * {
 	if ((a_len == 1 and a[0] == '0') or (b_len == 1 and b[0] == '0')) {
 		auto buf = new jbyte[1]();
 		buf[0] = '0';
@@ -192,24 +194,32 @@ auto algo4j_int::times(
 }
 
 auto algo4j_int::divide(
-		jbyte *a,
-		jbyte *b,
-		jsize a_len,
-		jsize b_len
+    jbyte *a,
+    jbyte *b,
+    jsize a_len,
+    jsize b_len
 ) -> BigInt * {
 	auto cmp_res = compare(a, b, a_len, b_len);
 	if (0 > cmp_res) return new BigInt((jbyte *) "0", 1);
 	else if (not cmp_res) return new BigInt((jbyte *) "1", 1);
 	else {
 		auto len3 = 0;
-		auto _res = new jbyte[a_len - b_len + 1]();
-		auto _ret = new jbyte[a_len - b_len + 1]();
+		auto _res = new jbyte[a_len-b_len+1]();
+		auto _ret = new jbyte[a_len-b_len+1]();
 		for (auto i = 0; i < a_len; ++i) {
 			_res[len3] = a[i];
 			_res[++len3] = '\0';
+			_ret[i] = '0';
 			_ret[i + 1] = '\0';
-			while (true) {
-				if (not(compare(_res, b, len3, b_len) >= 0)) break;
+//			printf("%s\n", _res);
+//			fflush(stdout);
+//			auto offset = 0;
+//			while (offset < a_len and (_res[offset] <= '0' or _res[offset] > '9')) ++offset;
+//			printf("=>%s\n", _res + offset);
+//			fflush(stdout);
+//			while (compare(_res + offset, b, len3 - offset, b_len) >= 0) {
+			while (compare(_res, b, len3, b_len) >= 0) {
+//				auto res = minus(_res + offset, b, len3 - offset, b_len);
 				auto res = minus(_res, b, len3, b_len);
 				delete _res;
 				_res = res->data;
@@ -217,10 +227,9 @@ auto algo4j_int::divide(
 				_res[len3] = '\0';
 				++_ret[i];
 			}
-			// magic
-			_ret[i] %= 10;
-			_ret[i] += '0';
 		}
+//		puts("%s\n");
+//		fflush(stdout);
 		delete _res;
 		auto ret_len = a_len;
 		while (_ret[0] <= '0' or _ret[0] > '9') ++_ret, --ret_len;

@@ -26,10 +26,10 @@ namespace algo4j_int {
 	};
 
 	auto compare(
-			const jbyte *a,
-			const jbyte *b,
-			const jsize a_len,
-			const jsize b_len
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
 	) -> jint;
 
 	auto plus(

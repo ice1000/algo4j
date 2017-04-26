@@ -160,10 +160,10 @@ class BigIntTest {
 	}
 
 	@TestOnly
-//	@Test(timeout = 1000)
+	@Test(timeout = 1000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
-		test(100) {
+		test(500) {
 			val val1 = rand.nextInt(66666) - 23333
 			val val2 = rand.nextInt(666) - 233
 			if (0 == val2) return@test
@@ -178,5 +178,11 @@ class BigIntTest {
 		@JvmStatic
 		@BeforeClass
 		fun init() = Loader.loadJni()
+
+		@JvmStatic
+		fun main(args: Array<String>) {
+			Loader.loadJni()
+			println("=>>" + (BigInt(1904) / BigInt(322)).toString())
+		}
 	}
 }
