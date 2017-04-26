@@ -3,10 +3,10 @@
 
 持续集成|状态
 :---|:---:
-Travis CI|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
-AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
-CodeShip|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
-CircleCI|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
+Travis CI(稳定)|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
+CircleCI(稳定)|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
+AppVeyor(开发)|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
+CodeShip(开发)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
 
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
@@ -53,7 +53,7 @@ src/test|测试代码
 - [X] 字典树，支持ASCII的32到127的字符，Trie<T> : Map<String, T>。
 - [X] 多线程快速排序
 - [X] 大整数快速幂
-- [ ] 大整数，大部分情况比标准库java.math.BigInteger快。
+- [X] 大整数加减乘除余，大部分情况比标准库java.math.BigInteger快。
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现
 
