@@ -207,19 +207,19 @@ auto algo4j_int::divide(
 		for (auto i = 0; i < a_len; ++i) {
 			_res[len3] = a[i];
 			_res[++len3] = '\0';
-			_ret[i] = '0';
 			_ret[i + 1] = '\0';
 			while (true) {
-				printf("%d %d\n", len3, b_len);
 				if (not(compare(_res, b, len3, b_len) >= 0)) break;
 				auto res = minus(_res, b, len3, b_len);
 				delete _res;
 				_res = res->data;
 				len3 = res->len;
 				_res[len3] = '\0';
-				printf("%s\n", _res);
 				++_ret[i];
 			}
+			// magic
+			_ret[i] %= 10;
+			_ret[i] += '0';
 		}
 		delete _res;
 		auto ret_len = a_len;

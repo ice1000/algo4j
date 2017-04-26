@@ -65,12 +65,12 @@ set(
 		math/BigInt.h
 )
 
-add_executable(
-		 jniexe
-		 ${SOURCE_FILES}
-		 ${SOURCE_HEADERS}
-		 ${SOURCE_TEMPLATES}
-)
+# add_executable(
+		 # jniexe
+		 # ${SOURCE_FILES}
+		 # ${SOURCE_HEADERS}
+		 # ${SOURCE_TEMPLATES}
+# )
 
 include_directories(${JNI_INCLUDE_DIRS})
 
