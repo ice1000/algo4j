@@ -181,7 +181,8 @@ class BigIntTest {
 		val rand = Random(System.currentTimeMillis())
 		test(500) {
 			val val1 = rand.nextInt(66666) - 23333
-			val val2 = rand.nextInt(666) - 233
+			val val2 = rand.nextInt(6666) - 2333
+			if (0 == val2) return@test
 			assertEquals(
 					(val1 % val2).toString(),
 					(BigInt(val1) % BigInt(val2)).toString())

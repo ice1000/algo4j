@@ -173,7 +173,7 @@ public class BigInt implements
 	@NotNull
 	@Contract(value = "_ -> !null", pure = true)
 	public BigInt rem(@NotNull BigInt anotherBigInt) {
-		if (ZERO.equals(anotherBigInt)) return clone();
+		if (ZERO.equals(anotherBigInt)) throw DividedByZeroException.fromNumber(this);
 		return new BigInt(rem(data, anotherBigInt.data), sig);
 	}
 
