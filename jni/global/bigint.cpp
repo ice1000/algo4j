@@ -9,6 +9,7 @@
 using algo4j_util::swap;
 using algo4j_util::Single;
 using algo4j_util::remove_reference;
+using algo4j_util::can_trim;
 
 using algo4j_int::BigInt;
 
@@ -16,48 +17,43 @@ using algo4j_complex::complex;
 using algo4j_complex::change;
 using algo4j_complex::fft;
 
-#define check_less_than_0 \
-	while (buf[res_idx] < '0') { \
-		buf[res_idx] += 10; \
-		--(buf[res_idx - 1]); \
-	}
+algo4j_int::BigInt::BigInt(jbyte *_data, jsize _len) :
+		data(_data),
+		len(_len),
+		offset(head_offset(data, len)) { }
 
-#define check_more_than_9 \
-	while (buf[res_idx] > '9') { \
-		buf[res_idx] -= 10; \
-		++buf[res_idx - 1]; \
-	}
+algo4j_int::BigInt::BigInt(const char *_data, jsize _len) :
+		data((jbyte *) _data),
+		len(_len),
+		offset(head_offset(data, len)) { }
 
-#define trim_string \
-	while (res_len > 1 and (buf[0] <= '0' or buf[0] > '9')) { \
-		--res_len; \
-		++buf; \
-	} \
-	while (res_len > 1 and (buf[res_len - 1] < '0' or buf[res_len - 1] > '9')) { \
-		--res_len; \
-	}
+auto BigInt::data_trim() -> jbyte * {
+	return data + offset;
+}
 
-algo4j_int::BigInt::BigInt(jbyte *_data, jsize _len) : data(_data), len(_len) { }
+auto BigInt::len_trim() -> jsize {
+	return len - offset;
+}
 
 auto algo4j_int::compare(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len) -> jint {
-	while (a_len > 0 and (a[0] > '9' or a[0] <= '0')) ++a, --a_len;
-	while (b_len > 0 and (b[0] > '9' or b[0] <= '0')) ++b, --b_len;
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> jint {
+	while (a_len > 0 and can_trim(a[0])) ++a, --a_len;
+	while (b_len > 0 and can_trim(b[0])) ++b, --b_len;
 	auto ret = static_cast<jint>(a_len - b_len);
-	if (!ret)
+	if (not ret)
 		for (auto idx = 0; idx < a_len and not ret; ++idx)
 			ret = a[idx] - b[idx];
 	return ret;
 }
 
 auto algo4j_int::plus(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len) -> BigInt * {
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -70,21 +66,27 @@ auto algo4j_int::plus(
 	auto res_idx = res_len;
 	while (b_idx > 0) {
 		buf[--res_idx] += a[--a_idx] + b[--b_idx] - '0';
-		check_more_than_9
+		while (buf[res_idx] > '9') {
+			buf[res_idx] -= 10;
+			++buf[res_idx - 1];
+		}
 	}
 	while (a_idx > 0) {
 		buf[--res_idx] += a[--a_idx];
-		check_more_than_9
+		while (buf[res_idx] > '9') {
+			buf[res_idx] -= 10;
+			++buf[res_idx - 1];
+		}
 	}
-	trim_string
+
 	return new BigInt(buf, res_len);
 }
 
 auto algo4j_int::minus(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len) -> BigInt * {
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if (a_len < b_len) {
 		swap(a, b);
 		swap(a_len, b_len);
@@ -96,21 +98,26 @@ auto algo4j_int::minus(
 	auto res_idx = res_len;
 	while (b_idx > 0) {
 		buf[--res_idx] += a[--a_idx] - b[--b_idx] + '0';
-		check_less_than_0
+		while (buf[res_idx] < '0') {
+			buf[res_idx] += 10;
+			--(buf[res_idx - 1]);
+		}
 	}
 	while (a_idx > 0) {
 		buf[--res_idx] += a[--a_idx];
-		check_less_than_0
+		while (buf[res_idx] < '0') {
+			buf[res_idx] += 10;
+			--(buf[res_idx - 1]);
+		}
 	}
-	trim_string
 	return new BigInt(buf, res_len);
 }
 
 auto algo4j_int::times_bf(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len) -> BigInt * {
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if ((a_len == 1 and a[0] == '0') or (b_len == 1 and b[0] == '0')) {
 		auto buf = new jbyte[1]();
 		buf[0] = '0';
@@ -140,15 +147,15 @@ auto algo4j_int::times_bf(
 		buf[res_idx] = static_cast<jbyte>(buf[res_idx] % 10 + '0');
 	}
 	buf[0] += '0';
-	trim_string
+
 	return new BigInt(buf, res_len);
 }
 
 auto algo4j_int::times(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len) -> BigInt * {
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
 	if ((a_len == 1 and a[0] == '0') or (b_len == 1 and b[0] == '0')) {
 		auto buf = new jbyte[1]();
 		buf[0] = '0';
@@ -161,8 +168,8 @@ auto algo4j_int::times(
 	auto len2 = b_len;
 	while (len < len1 << 1 or len < len2 << 1) len <<= 1;
 	auto sum = new jlong[len + 1];
-	complex x1[len];
-	complex x2[len];
+	auto x1 = new complex[len]();
+	auto x2 = new complex[len]();
 	for (auto __ = 0; __ < len1; ++__)
 		x1[__] = complex(str1[len1 - 1 - __] - '0');
 	for (auto __ = len1; __ < len; ++__)
@@ -194,71 +201,40 @@ auto algo4j_int::times(
 }
 
 auto algo4j_int::divide(
-    jbyte *a,
-    jbyte *b,
-    jsize a_len,
-    jsize b_len
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len
 ) -> BigInt * {
 	auto cmp_res = compare(a, b, a_len, b_len);
 	if (0 > cmp_res) return new BigInt((jbyte *) "0", 1);
 	else if (not cmp_res) return new BigInt((jbyte *) "1", 1);
 	else {
 		auto len3 = 0;
-		auto _res = new jbyte[a_len-b_len+1]();
-		auto _ret = new jbyte[a_len-b_len+1]();
+		auto _res = new jbyte[a_len - b_len + 1]();
+		auto _ret = new jbyte[a_len - b_len + 1]();
 		for (auto i = 0; i < a_len; ++i) {
 			_res[len3] = a[i];
 			_res[++len3] = '\0';
 			_ret[i] = '0';
 			_ret[i + 1] = '\0';
-//			printf("%s\n", _res);
-//			fflush(stdout);
-//			auto offset = 0;
-//			while (offset < a_len and (_res[offset] <= '0' or _res[offset] > '9')) ++offset;
-//			printf("=>%s\n", _res + offset);
-//			fflush(stdout);
-//			while (compare(_res + offset, b, len3 - offset, b_len) >= 0) {
 			while (compare(_res, b, len3, b_len) >= 0) {
-//				auto res = minus(_res + offset, b, len3 - offset, b_len);
 				auto res = minus(_res, b, len3, b_len);
-//				delete _res;
-				_res = res->data;
-				len3 = res->len;
+				_res = res->data_trim();
+				len3 = res->len_trim();
 				delete res;
 				_res[len3] = '\0';
 				++_ret[i];
 			}
 		}
-//		puts("%s\n");
-//		fflush(stdout);
-		delete _res;
-		auto ret_len = a_len;
-		while (_ret[0] <= '0' or _ret[0] > '9') ++_ret, --ret_len;
-		if (0 >= ret_len) return new BigInt((jbyte *) "0", 1);
-		return new BigInt(_ret, ret_len);
+		return new BigInt(_ret, a_len);
 	}
 }
 
-namespace algo4j_int {
-
-//	auto operator<<(ostream &os, const BigInt &o) -> ostream & {
-//		for (auto _ = 0; _ < o.len; ++_) {
-//			os << o.data[_];
-//		}
-//		return os;
-//	}
-//
-//	auto operator>>(istream &is, BigInt &o) -> istream & {
-//		for (auto _ = 0; _ < o.len; ++_) {
-//			is >> o.data[_];
-//		}
-//		return is;
-//	}
+inline auto algo4j_int::head_offset(jbyte *a, jsize len) -> jsize {
+	jsize ret = 0;
+	while (ret < len - 1 and (a[ret] <= '0' or a[ret] > '9')) ++ret;
+	return ret;
 }
-
-#undef check_more_than_9
-#undef check_less_than_0
-#undef trim_string
-
 
 #pragma clang diagnostic pop

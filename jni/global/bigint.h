@@ -4,8 +4,6 @@
 
 #include "jni.h"
 
-//#include <iostream>
-
 #ifndef __BIG_INT_H__
 #define __BIG_INT_H__
 
@@ -13,20 +11,33 @@
 //using std::ostream;
 
 namespace algo4j_int {
+	auto head_offset(
+			jbyte *a,
+			jsize len
+	) -> jsize;
+
 	class BigInt {
-	public:
+	private:
 		jbyte *data;
 		jsize len;
+		jsize offset;
 
+	public:
 		explicit BigInt(jbyte *_data, jsize _len);
-    BigInt(const BigInt&) = delete;
-    BigInt(BigInt&&) = delete;
-    BigInt& operator=(const BigInt&) = delete;
-    BigInt& operator=(BigInt&&) = delete;
 
-//		friend auto operator<<(ostream &os, const BigInt &o) -> ostream &;
-//
-//		friend auto operator>>(istream &is, BigInt &o) -> istream &;
+		explicit BigInt(const char *_data, jsize _len);
+
+		BigInt(const BigInt &) = delete;
+
+		BigInt(BigInt &&) = delete;
+
+		auto operator=(const BigInt &) -> BigInt & = delete;
+
+		auto operator=(BigInt &&) -> BigInt & = delete;
+
+		auto data_trim() -> jbyte *;
+
+		auto len_trim() -> jsize;
 	};
 
 	auto compare(
@@ -70,6 +81,7 @@ namespace algo4j_int {
 			jsize a_len,
 			jsize b_len
 	) -> BigInt *;
+
 }
 
 #endif /// __BIG_INT_H__

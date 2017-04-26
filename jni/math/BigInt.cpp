@@ -37,8 +37,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
 	auto a_len = __len(a);
 	auto b_len = __len(b);
 	auto buf = plus(a, b, a_len, b_len);
-	__new(Byte, ret, buf->len);
-	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a);
 	__abort(Byte, b);
 	delete buf;
@@ -57,8 +57,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_minus(
 	auto a_len = __len(a);
 	auto b_len = __len(b);
 	auto buf = minus(a, b, a_len, b_len);
-	__new(Byte, ret, buf->len);
-	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a);
 	__abort(Byte, b);
 	__JNI__FUNCTION__CLEAN__
@@ -77,8 +77,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times(
 	auto a_len = __len(a);
 	auto b_len = __len(b);
 	auto buf = times(a, b, a_len, b_len);
-	__new(Byte, ret, buf->len);
-	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__
@@ -97,8 +97,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_timesBruteForce(
 	auto a_len = __len(a);
 	auto b_len = __len(b);
 	auto buf = times_bf(a, b, a_len, b_len);
-	__new(Byte, ret, buf->len);
-	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__
@@ -137,9 +137,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	__get(Byte, b);
 	auto a_len = __len(a);
 	auto b_len = __len(b);
+//	printf("get: %s %d, %s %d", a, a_len, b, b_len);
 	auto buf = divide(a, b, a_len, b_len);
-	__new(Byte, ret, buf->len);
-	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__

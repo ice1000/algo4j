@@ -41,15 +41,29 @@ env->GetArrayLength(_ ## name)
 
 #undef _
 
-namespace algo4j_util {	
-	template <class T>
-	struct remove_reference { typedef T type; };
+namespace algo4j_util {
+	template<class T>
+	struct remove_reference {
+		typedef T type;
+	};
 
-	template <class T>
-	struct remove_reference<T&> { typedef T type; };
+	template<class T>
+	struct remove_reference<T &> {
+		typedef T type;
+	};
 
 	template<class T>
 	using ptr_to = T *;
+
+	template<typename T>
+	inline constexpr auto is_digit(T ch) -> bool {
+		return ch <= '9' or ch >= '0';
+	}
+
+	template<typename T>
+	inline constexpr auto can_trim(T ch) -> bool {
+		return ch > '9' or ch <= '0';
+	}
 
 	template<typename T>
 	inline auto swap(T &___, T &__) -> void {

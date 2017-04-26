@@ -160,14 +160,15 @@ class BigIntTest {
 	}
 
 	@TestOnly
-	@Test(timeout = 1000)
+	@Test(timeout = 2000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(500) {
 			val val1 = rand.nextInt(66666) - 23333
 			val val2 = rand.nextInt(666) - 233
 			if (0 == val2) return@test
-			println("$val1 $val2 -> ${val1 / val2}")
+//			println("$val1 $val2 -> ${val1 / val2}")
+//			println((BigInt(val1) / BigInt(val2)).toString())
 			assertEquals(
 					(val1 / val2).toString(),
 					(BigInt(val1) / BigInt(val2)).toString())

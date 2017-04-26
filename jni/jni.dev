@@ -22,14 +22,14 @@ OverrideOutput=1
 OverrideOutputName=libjni.dll
 HostApplication=
 UseCustomMakefile=0
-CustomMakefile=
+CustomMakefile=..\libjni.dll
 CommandLine=
 Folders=global,graph,math,tree,tree/bit,tree/heap,util,win
-IncludeVersionInfo=0
+IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=100000aag0000000000000000
-UnitCount=40
+UnitCount=42
 
 [VersionInfo]
 Major=1
@@ -40,7 +40,7 @@ LanguageID=1033
 CharsetID=1252
 CompanyName=
 FileVersion=1.0.0.0
-FileDescription=Developed using the Dev-C++ IDE
+FileDescription=algo4j by ice1000
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -442,6 +442,26 @@ BuildCmd=
 
 [Unit40]
 FileName=global\matrix.h
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit41]
+FileName=global\complex.cpp
+CompileCpp=1
+Folder=global
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit42]
+FileName=global\complex.h
 CompileCpp=1
 Folder=global
 Compile=1
