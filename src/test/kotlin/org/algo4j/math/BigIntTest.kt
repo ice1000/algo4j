@@ -111,8 +111,8 @@ class BigIntTest {
 	fun minusTest() {
 		val rand = Random(System.currentTimeMillis())
 		test(1000) {
-			val val1 = rand.nextInt(666666) - 1333333
-			val val2 = rand.nextInt(666666) - 1333333
+			val val1 = rand.nextInt(666666) - 333333
+			val val2 = rand.nextInt(666666) - 333333
 //			println("$val1, $val2")
 			assertEquals(
 					(val1 - val2).toString(),
@@ -160,12 +160,13 @@ class BigIntTest {
 	}
 
 	@TestOnly
-//	@Test(timeout = 1000)
+	@Test(timeout = 1000)
 	fun divideTest() {
 		val rand = Random(System.currentTimeMillis())
-		test(1000) {
+		test(100) {
 			val val1 = rand.nextInt(66666) - 23333
 			val val2 = rand.nextInt(66666) - 23333
+			if (0 == val2) return@test
 			println("$val1 $val2 -> ${val1 / val2}")
 			assertEquals(
 					(val1 / val2).toString(),

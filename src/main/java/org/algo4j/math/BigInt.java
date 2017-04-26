@@ -160,14 +160,7 @@ public class BigInt implements
 	@Contract(value = "_ -> !null", pure = true)
 	public BigInt divide(@NotNull BigInt anotherBigInt) {
 		if (ZERO.equals(anotherBigInt)) throw DividedByZeroException.fromNumber(this);
-		switch (compareTo(anotherBigInt)) {
-			case -1:
-				return ZERO;
-			case 0:
-				return ONE;
-			default:
-				return new BigInt(divide(data, anotherBigInt.data), sig == anotherBigInt.sig);
-		}
+		return new BigInt(divide(data, anotherBigInt.data), sig == anotherBigInt.sig);
 	}
 
 	/**

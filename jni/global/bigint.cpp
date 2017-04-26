@@ -206,21 +206,24 @@ auto algo4j_int::divide(
 		auto _ret = new jbyte[a_len - b_len + 1]();
 		for (auto i = 0; i < a_len; ++i) {
 			_res[len3] = a[i];
-			_res[++len3] = 0;
+			_res[++len3] = '\0';
 			_ret[i] = '0';
-			_ret[i + 1] = 0;
+			_ret[i + 1] = '\0';
 			while (compare(_res, b, len3, b_len) >= 0) {
 				auto res = minus(_res, b, len3, b_len);
 				delete _res;
 				_res = res->data;
 				len3 = res->len;
-				_res[len3] = 0;
+				_res[len3] = '\0';
 				++_ret[i];
 			}
 		}
 		auto ret_len = a_len;
 		delete _res;
 		while (_ret[0] <= '0' or _ret[0] > '9') ++_ret, --ret_len;
+		if (not _ret[0]) return new BigInt((jbyte *) "0", 1);
+		freopen("out.txt", "w", stdout);
+		printf("%s\n", _ret);
 		return new BigInt(_ret, ret_len);
 	}
 }

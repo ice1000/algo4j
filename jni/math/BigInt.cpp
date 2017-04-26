@@ -144,7 +144,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__
-	delete buf;
+	// delete buf;
 	return _ret;
 }
 
