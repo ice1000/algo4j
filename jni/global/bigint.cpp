@@ -211,7 +211,6 @@ auto algo4j_int::divide(
 			_res[++len3] = '\0';
 			_ret[i] = '0';
 			_ret[i + 1] = '\0';
-			BigInt *res = nullptr;
 //			printf("%s\n", _res);
 //			fflush(stdout);
 //			auto offset = 0;
@@ -221,15 +220,14 @@ auto algo4j_int::divide(
 //			while (compare(_res + offset, b, len3 - offset, b_len) >= 0) {
 			while (compare(_res, b, len3, b_len) >= 0) {
 //				auto res = minus(_res + offset, b, len3 - offset, b_len);
-				delete res;
-				res = minus(_res, b, len3, b_len);
-				delete _res;
+				auto res = minus(_res, b, len3, b_len);
+//				delete _res;
 				_res = res->data;
 				len3 = res->len;
+				delete res;
 				_res[len3] = '\0';
 				++_ret[i];
 			}
-			delete res;
 		}
 //		puts("%s\n");
 //		fflush(stdout);

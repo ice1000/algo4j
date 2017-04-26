@@ -19,6 +19,10 @@ namespace algo4j_int {
 		jsize len;
 
 		explicit BigInt(jbyte *_data, jsize _len);
+    BigInt(const BigInt&) = delete;
+    BigInt(BigInt&&) = delete;
+    BigInt& operator=(const BigInt&) = delete;
+    BigInt& operator=(BigInt&&) = delete;
 
 //		friend auto operator<<(ostream &os, const BigInt &o) -> ostream &;
 //

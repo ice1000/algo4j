@@ -140,7 +140,6 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	auto buf = divide(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len);
 	env->SetByteArrayRegion(_ret, 0, buf->len, buf->data);
-	fflush(stdout);
 	__abort(Byte, a)
 	__abort(Byte, b)
 	__JNI__FUNCTION__CLEAN__

@@ -182,7 +182,7 @@ class BigIntTest {
 		@JvmStatic
 		fun main(args: Array<String>) {
 			Loader.loadJni()
-			println("=>>" + (BigInt(1904) / BigInt(322)).toString())
+			println("=>>" + (BigInt(13945) / BigInt(-135)).toString())
 		}
 	}
 }
