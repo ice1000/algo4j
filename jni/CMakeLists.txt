@@ -8,9 +8,9 @@ find_package(Java REQUIRED)
 find_package(JNI REQUIRED)
 
 if (JNI_FOUND)
-	message (STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
-	message (STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
-endif()
+	message(STATUS "JNI_INCLUDE_DIRS=${JNI_INCLUDE_DIRS}")
+	message(STATUS "JNI_LIBRARIES=${JNI_LIBRARIES}")
+endif ()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(BUILD_USE_64BITS on)
@@ -66,20 +66,38 @@ set(
 )
 
 # add_executable(
-		 # jniexe
-		 # ${SOURCE_FILES}
-		 # ${SOURCE_HEADERS}
-		 # ${SOURCE_TEMPLATES}
+# jniexe
+# ${SOURCE_FILES}
+# ${SOURCE_HEADERS}
+# ${SOURCE_TEMPLATES}
 # )
+
+set(
+		WIN_API
+		win/WinApi.cpp
+		win/WinApi.h
+)
 
 include_directories(${JNI_INCLUDE_DIRS})
 
-add_library(
-		jni
-		SHARED
-		${SOURCE_FILES}
-		${SOURCE_TEMPLATES}
-		${SOURCE_HEADERS}
-)
+if (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	add_library(
+			jni
+			SHARED
+			${WIN_API}
+			${SOURCE_FILES}
+			${SOURCE_TEMPLATES}
+			${SOURCE_HEADERS}
+	)
+else ()
+	add_library(
+			jni
+			SHARED
+			${SOURCE_FILES}
+			${SOURCE_TEMPLATES}
+			${SOURCE_HEADERS}
+	)
+endif ()
+
 
 target_link_libraries(jni)
