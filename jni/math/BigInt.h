@@ -73,6 +73,18 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 
 /**
  * Class:     org_algo4j_math_BigInt
+ * Method:    rem
+ * Signature: ([B[B)[B
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_rem(
+		JNIEnv *env,
+		jclass,
+		jbyteArray _a,
+		jbyteArray _b
+) -> jbyteArray;
+
+/**
+ * Class:     org_algo4j_math_BigInt
  * Method:    minus
  * Signature: ([B[B)[B
  */

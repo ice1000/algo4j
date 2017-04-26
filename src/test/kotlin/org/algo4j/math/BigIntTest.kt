@@ -175,6 +175,19 @@ class BigIntTest {
 		}
 	}
 
+	@TestOnly
+	@Test(timeout = 2000)
+	fun remTest() {
+		val rand = Random(System.currentTimeMillis())
+		test(500) {
+			val val1 = rand.nextInt(66666) - 23333
+			val val2 = rand.nextInt(666) - 233
+			assertEquals(
+					(val1 % val2).toString(),
+					(BigInt(val1) % BigInt(val2)).toString())
+		}
+	}
+
 	companion object Initializer {
 		@JvmStatic
 		@BeforeClass

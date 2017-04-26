@@ -11,7 +11,7 @@
 //using std::ostream;
 
 namespace algo4j_int {
-	auto head_offset(
+	inline auto head_offset(
 			jbyte *a,
 			jsize len
 	) -> jsize;
@@ -76,6 +76,13 @@ namespace algo4j_int {
 	) -> BigInt *;
 
 	auto divide(
+			jbyte *a,
+			jbyte *b,
+			jsize a_len,
+			jsize b_len
+	) -> BigInt *;
+
+	auto rem(
 			jbyte *a,
 			jbyte *b,
 			jsize a_len,

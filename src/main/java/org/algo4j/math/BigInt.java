@@ -164,6 +164,20 @@ public class BigInt implements
 	}
 
 	/**
+	 * remainder
+	 *
+	 * @param anotherBigInt another big int
+	 * @return this % anotherBigInt
+	 * @throws DividedByZeroException if you passed ZERO to this method.
+	 */
+	@NotNull
+	@Contract(value = "_ -> !null", pure = true)
+	public BigInt rem(@NotNull BigInt anotherBigInt) {
+		if (ZERO.equals(anotherBigInt)) return clone();
+		return new BigInt(rem(data, anotherBigInt.data), sig);
+	}
+
+	/**
 	 * power
 	 *
 	 * @param pow exponent to which this BigInt is to be raised.
@@ -187,13 +201,6 @@ public class BigInt implements
 		return fastPower(data, pow, mod);
 	}
 
-	// TODO jni impl
-	@NotNull
-	@Contract(value = "_ -> !null", pure = true)
-	public BigInt mod(@NotNull BigInt anotherBigInt) {
-		return minus(anotherBigInt.times(divide(anotherBigInt)));
-	}
-
 	@NotNull
 	@Contract(value = "!null, !null -> !null", pure = true)
 	private static native byte[] plus(@NotNull byte[] a, @NotNull byte[] b);
@@ -213,6 +220,10 @@ public class BigInt implements
 	@NotNull
 	@Contract(value = "!null, !null -> !null", pure = true)
 	private static native byte[] divide(@NotNull byte[] a, @NotNull byte[] b);
+
+	@NotNull
+	@Contract(value = "!null, !null -> !null", pure = true)
+	private static native byte[] rem(@NotNull byte[] a, @NotNull byte[] b);
 
 	@NotNull
 	@Contract(value = "!null, !null -> !null", pure = true)

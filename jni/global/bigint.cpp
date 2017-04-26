@@ -237,4 +237,30 @@ inline auto algo4j_int::head_offset(jbyte *a, jsize len) -> jsize {
 	return ret;
 }
 
+auto algo4j_int::rem(
+		jbyte *a,
+		jbyte *b,
+		jsize a_len,
+		jsize b_len) -> BigInt * {
+	auto cmp_res = compare(a, b, a_len, b_len);
+	if (0 > cmp_res) return new BigInt(a, a_len);
+	else if (not cmp_res) return new BigInt((jbyte *) "0", 1);
+	else {
+		auto len3 = 0;
+		auto _res = new jbyte[a_len - b_len + 1]();
+		for (auto i = 0; i < a_len; ++i) {
+			_res[len3] = a[i];
+			_res[++len3] = '\0';
+			while (compare(_res, b, len3, b_len) >= 0) {
+				auto res = minus(_res, b, len3, b_len);
+				_res = res->data_trim();
+				len3 = res->len_trim();
+				delete res;
+				_res[len3] = '\0';
+			}
+		}
+		return new BigInt(_res, len3);
+	}
+}
+
 #pragma clang diagnostic pop

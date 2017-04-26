@@ -21,6 +21,7 @@ using algo4j_int::minus;
 using algo4j_int::times_bf;
 using algo4j_int::times;
 using algo4j_int::divide;
+using algo4j_int::rem;
 using algo4j_int::BigInt;
 
 using algo4j_math::fast_plus;
@@ -126,7 +127,6 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_times10(
 	return _ret;
 }
 
-
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 		JNIEnv *env,
 		jclass,
@@ -137,8 +137,27 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_divide(
 	__get(Byte, b);
 	auto a_len = __len(a);
 	auto b_len = __len(b);
-//	printf("get: %s %d, %s %d", a, a_len, b, b_len);
 	auto buf = divide(a, b, a_len, b_len);
+	__new(Byte, ret, buf->len_trim());
+	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
+	__abort(Byte, a)
+	__abort(Byte, b)
+	__JNI__FUNCTION__CLEAN__
+	delete buf;
+	return _ret;
+}
+
+JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_rem(
+		JNIEnv *env,
+		jclass,
+		jbyteArray _a,
+		jbyteArray _b) -> jbyteArray {
+	__JNI__FUNCTION__INIT__
+	__get(Byte, a);
+	__get(Byte, b);
+	auto a_len = __len(a);
+	auto b_len = __len(b);
+	auto buf = rem(a, b, a_len, b_len);
 	__new(Byte, ret, buf->len_trim());
 	env->SetByteArrayRegion(_ret, 0, buf->len_trim(), buf->data_trim());
 	__abort(Byte, a)
