@@ -30,10 +30,10 @@ buildscript {
 sourceSets {
 	main.kotlin.srcDirs += 'src/main/kotlin'
 	main.java.srcDirs += 'src/main/java'
-	main.kotlin.testDirs += 'src/test/kotlin'
-	main.java.testDirs += 'src/test/java'
-	main.kotlin.testDirs += 'demos'
-	main.java.testDirs += 'demos'
+	test.kotlin.srcDirs += 'src/test/kotlin'
+	test.java.srcDirs += 'src/test/java'
+	test.kotlin.srcDirs += 'demos'
+	test.java.srcDirs += 'demos'
 }
 
 dependencies {
