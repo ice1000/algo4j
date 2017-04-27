@@ -55,6 +55,44 @@ public final class WinAPI {
 		public static final int MB_MISCMASK = 0x0000C000;
 	}
 
+	public static class BeepUtils {
+		public static final int d1 = 262;
+		public static final int d1_ = 277;
+		public static final int d2 = 294;
+		public static final int d2_ = 311;
+		public static final int d3 = 330;
+		public static final int d4 = 349;
+		public static final int d5 = 392;
+		public static final int d5_ = 415;
+		public static final int d6 = 440;
+		public static final int d6_ = 466;
+		public static final int d7 = 494;
+		public static final int z1 = 523;
+		public static final int z1_ = 554;
+		public static final int z2 = 578;
+		public static final int z2_ = 622;
+		public static final int z3 = 659;
+		public static final int z4 = 698;
+		public static final int z4_ = 740;
+		public static final int z5 = 784;
+		public static final int z5_ = 831;
+		public static final int z6 = 880;
+		public static final int z6_ = 932;
+		public static final int z7 = 988;
+		public static final int g1 = 1046;
+		public static final int g1_ = 1109;
+		public static final int g2 = 1175;
+		public static final int g2_ = 1245;
+		public static final int g3 = 1318;
+		public static final int g4 = 1397;
+		public static final int g4_ = 1480;
+		public static final int g5 = 1568;
+		public static final int g5_ = 1661;
+		public static final int g6 = 1760;
+		public static final int g6_ = 1865;
+		public static final int g7 = 1976;
+	}
+
 	/**
 	 * beep
 	 * Win32API: Beep(DWORD, DWORD)
