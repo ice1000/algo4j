@@ -7,6 +7,11 @@
 //}
 #include <iostream>
 #include <windows.h>
+#include <conio.h>
+
+using std::cout;
+using std::endl;
+using std::cin;
 
 enum fy {
     d1 = 262,
@@ -46,13 +51,388 @@ enum fy {
     g7 = 1976,
     yaya = 0
 };
+// 356 56 568563 356 56 560896 356 56 56
+
+void beeping(int in, int dur) {
+	switch (in) {
+		case 1:
+			Beep(d1, dur);
+			break;
+		case 2:
+			Beep(d2, dur);
+			break;
+		case 3:
+			Beep(d3, dur);
+			break;
+		case 4:
+			Beep(d4, dur);
+			break;
+		case 5:
+			Beep(d5, dur);
+			break;
+		case 6:
+			Beep(d6, dur);
+			break;
+		case 7:
+			Beep(d7, dur);
+			break;
+		case 8:
+			Beep(z1, dur);
+			break;
+		case 9:
+			Beep(z2, dur);
+			break;
+		case 0:
+			Beep(z3, dur);
+			break;
+	}
+}
+void B(int a, int b) {
+	cout << "WinAPI.beep(" << a << ", " << b * 125 << ")" << endl;
+	// Beep(a, b * 125);
+}
+int main() {
+	cout << "// By ice1000" << endl;
+
+	B(d3,2);
+	B(d5,2);
+
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+
+	B(d6,2);
+	B(z1,2);
+	B(d5,2);
+	B(d6,2);
+	B(d3,2);
+	B(0 ,2);
+	B(d3,2);
+	B(d5,2);
+
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+	B(d6,2);
+
+	B(z3,2);
+	B(z1,2);
+	B(z2,2);
+	B(d6,2);
+	B(0 ,2);
+	B(d3,2);
+	B(d5,2);
+
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+	B(d6,2);
+	B(0 ,4);
+	B(d5,2);
+
+	B(d6,2);
+	B(z1,2);
+	B(d5,2);
+	B(d6,2);
+	B(d3,2);
+	B(d5,2);
+	B(d1,2);
+	B(d2,2);
+
+	B(d3,4);
+	B(z1,4);
+	B(d6,4);
+	B(z3,4);
+
+	B(z2,2);
+	B(z3,1);
+	B(z2,1);
+	B(z1,2);
+	B(z2,2);
+	B(d6,4);
+	B(0 ,4);
+
+	for (auto i = 0; i < 2; ++i) {
+		B(d6,4);
+		B(d6,4);
+		B(d6,4);
+		B(d6,1);
+		B(z1,1);
+		B(z2,1);
+		B(z3,1);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,2);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,4);
+		B(d6,1);
+		B(z1,1);
+		B(z2,1);
+		B(z3,1);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,2);
+		B(z4,2);
+		B(z4,2);
+		B(z3,2);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,4);
+		B(d6,1);
+		B(z1,1);
+		B(z2,1);
+		B(z3,1);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,2);
+
+		B(d6,4);
+		B(d6,4);
+		B(d6,4);
+		B(d6,1);
+		B(z1,1);
+		B(z2,1);
+		B(z3,1);
+
+		B(z6,6);
+		B(d5,2);
+		B(d5,2);
+		B(d6,2);
+		B(d6,4);
+
+		B(0 ,6);
+		B(d6,2);
+		B(d6,2);
+		B(d5,1);
+		B(d5,1);
+		B(d5,2);
+		B(d6,2);
+
+		B(d5,2);
+		B(d3,2);
+		B(d3,2);
+		B(d5,1);
+		B(d3,1);
+		B(d3,4);
+		B(0 ,4);
+
+		B(0 ,6);
+		B(d6,2);
+		B(d6,2);
+		B(d5,2);
+		B(d6,2);
+		B(d7,2);
+
+		B(z1,4);
+		B(d7,4);
+		B(d6,2);
+		B(d7,1);
+		B(d6,1);
+		B(d5,2);
+
+		B(0 ,6);
+		B(d6,2);
+		B(d6,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,1);
+		B(d5,1);
+
+		B(d5,2);
+		B(d3,2);
+		B(d3,2);
+		B(d5,1);
+		B(d3,1);
+		B(d3,4);
+		B(0 ,2);
+		B(d5,2);
+
+		B(d5,2);
+		B(d6,2);
+		B(0 ,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,2);
+		B(0 ,2);
+		B(d6,1);
+		B(d7,1);
+
+		B(z1,4);
+		B(z2,4);
+		B(d6,2);
+		B(d3,2);
+		B(d3,2);
+		B(d5,2);
+
+		B(d5,2);
+		B(d6,2);
+		B(0 ,2);
+		B(z3,2);
+		B(z2,4);
+		B(0 ,2);
+		B(d6,2);
+
+		B(0 ,2);
+		B(d6,2);
+		B(d6,2);
+		B(z3,2);
+		B(z2,4);
+		B(0 ,4);
+
+		B(0 ,2);
+		B(z2,2);
+		B(z2,2);
+		B(z1_,2);
+		B(z2,2);
+		B(z1,1);
+		B(d6,1);
+		B(d6,2);
+		B(d5,2);
+
+		B(d5,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,2);
+		B(d6,2);
+		B(d3,2);
+		B(d3,2);
+		B(d5,2);
+
+
+		B(d5,2);
+		B(d6,2);
+		B(0 ,2);
+		B(z3,2);
+		B(z2,4);
+		B(0 ,2);
+		B(d6,2);
+
+		B(0 ,2);
+		B(d6,2);
+		B(d6,2);
+		B(z3,2);
+		B(z2,4);
+		B(0 ,4);
+
+		B(0 ,2);
+		B(z2,2);
+		B(z2,2);
+		B(z1_,2);
+		B(z2,2);
+		B(z1,1);
+		B(d6,1);
+		B(d6,1);
+		B(d3,1);
+		B(d5,2);
+
+		B(d5,2);
+		B(d6,2);
+		B(d6,2);
+		B(d5,2);
+		B(d6,4);
+		B(0 ,2);
+		B(d3,1);
+		B(d5,1);
+
+		B(d6,2);
+		B(d6,2);
+		B(d6,2);
+		B(z3,2);
+		B(z3,4);
+		B(0 ,2);
+		B(d7,1);
+		B(z1,1);
+
+		B(z2,2);
+		B(z1,1);
+		B(z2,1);
+		B(z3,2);
+		B(d6,4);
+		B(0 ,2);
+		B(d5,1);
+		B(d5,1);
+
+		B(d6,4);
+		B(z3,3);
+		B(z3,1);
+		B(z2,2);
+		B(z1,2);
+		B(d6,2);
+		B(d5,2);
+
+		B(d6,3);
+		B(d6,1);
+		B(d6,2);
+		B(z1,2);
+		B(z2,4);
+		B(0 ,4);
+
+		B(d6,2);
+		B(d6,1);
+		B(d6,1);
+		B(d6,2);
+		B(d5,1);
+		B(d5,1);
+		B(d6,2);
+		B(z3,2);
+		B(0 ,2);
+		B(z1,2);
+
+		B(z2,2);
+		B(z1,1);
+		B(z2,1);
+		B(z3,2);
+		B(z3,4);
+		B(0 ,2);
+		B(d5,2);
+
+		B(d5,2);
+		B(z1,2);
+		B(0 ,2);
+		B(d5,2);
+		B(d6,2);
+		B(z3,2);
+		B(0 ,2);
+		B(z3,1);
+		B(z2,1);
+
+		B(z1,2);
+		B(d7,2);
+		B(d6,2);
+		B(d5,2);
+		B(d5,2);
+		B(d6,4);
+		B(0 ,2);
+	}
+
+	Sleep(300);
+	return 0;
+}
 
 struct yf {
 	enum fy s;
 	int t;
 };
 
-int main(int argc, char* argv[]) {
+int main2(int argc, char* argv[]) {
 	int n = 0;
 
 	struct yf a[1000]= {{z3,125},{z3,50},{z4,100},{z3,50},{z2,50}, //5
@@ -97,7 +477,7 @@ int main(int argc, char* argv[]) {
 
 	while(n--) {
 		Beep(atop->s,atop->t*5);
-		std::cout << "Pair(" << atop->s << ", " << atop->t*5 << ")," << std::endl;
+		cout << "Pair(" << atop->s << ", " << atop->t*5 << ")," << endl;
 		atop++;
 	}
 	return 0;

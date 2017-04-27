@@ -1,5 +1,5 @@
 group 'org.algo4j'
-version '1.0'
+version '1.0.5'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -8,7 +8,6 @@ apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
 
 repositories {
 	jcenter()
@@ -31,8 +30,10 @@ buildscript {
 sourceSets {
 	main.kotlin.srcDirs += 'src/main/kotlin'
 	main.java.srcDirs += 'src/main/java'
-//	main.kotlin.testDirs += 'src/test/kotlin'
-//	main.java.testDirs += 'src/test/java'
+	test.kotlin.srcDirs += 'src/test/kotlin'
+	test.java.srcDirs += 'src/test/java'
+	test.kotlin.srcDirs += 'demos'
+	test.java.srcDirs += 'demos'
 }
 
 dependencies {
