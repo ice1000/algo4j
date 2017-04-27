@@ -4,6 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * For Windows only
+ * Invoking windows api by C++
+ * <p>
+ * These functions are not available for non-windows systems.
+ * <p>
  * Created by ice1000 on 2016/12/18.
  *
  * @author ice1000
@@ -151,6 +155,7 @@ public final class WinAPI {
 	 *
 	 * @param frequency beeping frequency
 	 * @param duration  beeping duration
+	 * @see WinAPI.BeepUtils
 	 */
 	public static native boolean beep(int frequency, int duration);
 
@@ -158,21 +163,27 @@ public final class WinAPI {
 
 	/**
 	 * display a message box
+	 * Win32API: MessageBoxA(HWND, LPCSTR, LPCSTR, UINT)
 	 *
 	 * @param title   message box title
 	 * @param message message
+	 * @see WinAPI.MessageBoxType
 	 */
 	public static int messageBoxA(String title, String message, int type) {
 		return messageBoxA(title.getBytes(), message.getBytes(), type);
 	}
 
+	/** #{@inheritDoc} */
 	public static int messageBoxA(String title, String message) {
 		return messageBoxA(title.getBytes(), message.getBytes(), MessageBoxType.MB_ICONINFORMATION);
 	}
 
 	/**
 	 * get system power(battery) status
+	 * Win32API: GetSystemPowerStatus(LPSYSTEM_POWER_STATUS)
+	 *
 	 * @return your battery status
+	 * @see WinAPI.PowerStatus
 	 */
 	@NotNull
 	public static PowerStatus getSystemPowerStatus() {
