@@ -89,7 +89,7 @@ void beeping(int in, int dur) {
 }
 void B(int a, int b) {
 	cout << "WinAPI.beep(" << a << ", " << b * 125 << ")" << endl;
-	// Beep(a, b * 125);
+	 Beep(a, b * 125);
 }
 int main() {
 	cout << "// By ice1000" << endl;

@@ -37,6 +37,16 @@ JNIEXPORT auto JNICALL Java_org_algo4j_win_WinAPI_messageBoxA(
 		jint
 ) -> jint;
 
+/**
+ * Class:     org_algo4j_win_WinAPI
+ * Method:    getPowerStatus
+ * Signature: ()[I
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_win_WinAPI_getPowerStatus(
+		JNIEnv *,
+		jclass
+) -> jintArray;
+
 #ifdef __cplusplus
 }
 #endif /// __cplusplus

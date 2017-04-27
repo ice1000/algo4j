@@ -1,5 +1,7 @@
 package org.algo4j.win;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * For Windows only
  * Created by ice1000 on 2016/12/18.
@@ -55,6 +57,9 @@ public final class WinAPI {
 		public static final int MB_MISCMASK = 0x0000C000;
 	}
 
+	/**
+	 * music utils
+	 */
 	public static class BeepUtils {
 		public static final int d1 = 262;
 		public static final int d1_ = 277;
@@ -94,6 +99,53 @@ public final class WinAPI {
 	}
 
 	/**
+	 * power status
+	 */
+	public static class PowerStatus {
+		/**
+		 * 0: offline
+		 * 1: online
+		 * -1: unknown status
+		 */
+		public final int acLineStatus;
+
+		/**
+		 * 1: high (>= 66%)
+		 * 2: low (<= 33%)
+		 * 4: critical (<= 5%)
+		 * 8: charging
+		 * 128: no battery
+		 * -1: unknown
+		 */
+		public final int batteryFlag;
+
+		/**
+		 * -1: unknown
+		 * else: The percentage of battery charge remaining
+		 */
+		public final int batteryLifePercent;
+
+		/** seconds you can use from now */
+		public final int batteryLifeTime;
+
+		/** seconds you can use from full */
+		public final int batteryFullLifeTime;
+
+		public PowerStatus(
+				int acLineStatus,
+				int batteryFlag,
+				int batteryLifePercent,
+				int batteryLifeTime,
+				int batteryFullLifeTime) {
+			this.acLineStatus = acLineStatus;
+			this.batteryFlag = batteryFlag;
+			this.batteryLifePercent = batteryLifePercent;
+			this.batteryLifeTime = batteryLifeTime;
+			this.batteryFullLifeTime = batteryFullLifeTime;
+		}
+	}
+
+	/**
 	 * beep
 	 * Win32API: Beep(DWORD, DWORD)
 	 *
@@ -117,4 +169,17 @@ public final class WinAPI {
 	public static int messageBoxA(String title, String message) {
 		return messageBoxA(title.getBytes(), message.getBytes(), MessageBoxType.MB_ICONINFORMATION);
 	}
+
+	/**
+	 * get system power(battery) status
+	 * @return your battery status
+	 */
+	@NotNull
+	public static PowerStatus getSystemPowerStatus() {
+		int[] data = getPowerStatus();
+		return new PowerStatus(data[0], data[1], data[2], data[3], data[4]);
+	}
+
+	@NotNull
+	private static native int[] getPowerStatus();
 }

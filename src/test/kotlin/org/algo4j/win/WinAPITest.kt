@@ -93,9 +93,20 @@ object WinAPITest {
 		Loader.loadJni()
 	}
 
+	fun batteryStatus() {
+		WinAPI.getSystemPowerStatus().run {
+			println("电源状态: $acLineStatus ")
+			println("电池状态: $batteryFlag ")
+			println("电量百分比: $batteryLifePercent %")
+			println("剩余电量: $batteryLifeTime s")
+			println("总电量: $batteryFullLifeTime s")
+		}
+	}
+
 	@JvmStatic
 	fun main(args: Array<String>) {
 		init()
+		batteryStatus()
 		messageBoxA()
 		beep2()
 //		beepXiaoJiuWo()
