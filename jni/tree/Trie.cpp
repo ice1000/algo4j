@@ -8,6 +8,13 @@
 using algo4j_trie::Trie;
 using algo4j_trie::Node;
 
+// extern
+namespace algo4j_trie {
+	JNIEnv *deleter;
+}
+
+using algo4j_trie::deleter;
+
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_createTrie(
 		JNIEnv *,
 		jclass) -> jlong {
@@ -15,9 +22,10 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_createTrie(
 }
 
 JNIEXPORT auto JNICALL Java_org_algo4j_tree_Trie_deleteTrie(
-		JNIEnv *,
+		JNIEnv *env,
 		jclass,
 		jlong ptr) -> void {
+	deleter = env;
 	delete (Trie *) ptr;
 }
 

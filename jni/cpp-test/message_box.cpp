@@ -93,6 +93,7 @@ void B(int a, int b) {
 	cout << "WinAPI.beep(" << a << ", " << b * 125 << ");" << endl;
 	Beep(a, b * 125);
 }
+
 int main() {
 	cout << "// By ice1000" << endl;
 #ifndef preview

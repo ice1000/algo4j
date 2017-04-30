@@ -12,6 +12,7 @@
 using algo4j_util::ptr_to;
 
 namespace algo4j_trie {
+	extern ptr_to<JNIEnv> deleter;
 
 	class Node {
 	private:

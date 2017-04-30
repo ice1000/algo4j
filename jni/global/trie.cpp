@@ -27,6 +27,8 @@ for (auto _ = 0; _ < len; ++_) { \
 algo4j_trie::Node::Node() : obj(nullptr), next(new ptr_to<Node>[TRIE_NODE_SIZE]{}) { }
 
 algo4j_trie::Node::~Node() {
+	if (nullptr != deleter and nullptr != obj)
+		deleter->DeleteGlobalRef(obj);
 	for (auto _ = 0; _ < TRIE_NODE_SIZE; ++_) {
 		if (nullptr != next[_]) delete next[_];
 	}
