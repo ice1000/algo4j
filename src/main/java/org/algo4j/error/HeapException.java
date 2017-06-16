@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by ice1000 on 2017/1/24.
+ *
+ * @author ice1000
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class HeapException extends RuntimeException {

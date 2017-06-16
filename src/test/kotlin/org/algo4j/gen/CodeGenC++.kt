@@ -22,8 +22,7 @@ private fun exe(
 		methodName: String,
 		ret: String? = null,
 		retMark: String) {
-	deep.forEach { dark ->
-		val (type, mark) = dark
+	deep.forEach { (type, mark) ->
 		"""
 JNIEXPORT auto JNICALL Java_org_algo4j_${className}_${methodName}___3${mark}I(
 		JNIEnv *env,
@@ -38,8 +37,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_${className}_${methodName}___3${mark}I(
 	println()
 	println()
 	println()
-	deep.forEach { dark ->
-		val (type, mark) = dark
+	deep.forEach { (type, mark) ->
 		"""
 /**
  * Class:     org_algo4j_$className

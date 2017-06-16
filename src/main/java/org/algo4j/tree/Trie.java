@@ -18,7 +18,7 @@ public class Trie<T> {
 
 	private static native long createTrie();
 
-	private static native long deleteTrie(long triePointer);
+	private static native void deleteTrie(long triePointer);
 
 	public Trie() {
 		triePointer = createTrie();

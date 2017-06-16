@@ -66,6 +66,7 @@ public class RollingArray<T> implements Container<T> {
 		return new RollingArray<>((T[]) data.clone(), maxLen, index);
 	}
 
+	@NotNull
 	@Override
 	public Iterator iterator() {
 		return new RollingArrItr<>(this);

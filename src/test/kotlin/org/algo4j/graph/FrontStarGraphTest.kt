@@ -85,7 +85,7 @@ class FrontStarGraphTest {
 			graph
 					.spfa(1)
 					.map {
-						println(it);
+						println(it)
 						return@map it
 					}
 					.toIntArray()
@@ -93,7 +93,7 @@ class FrontStarGraphTest {
 			graph
 					.bellmanFord(1)
 					.map {
-						println(it);
+						println(it)
 						return@map it
 					}
 					.toIntArray()
