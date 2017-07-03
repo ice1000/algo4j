@@ -6,7 +6,7 @@
 using algo4j_matrix::Matrix22;
 using algo4j_matrix::Matrix22Pool;
 
-using algo4j_math::fast_plus;
+using algo4j_math::fast_mul;
 
 algo4j_matrix::Matrix22::~Matrix22() {
 }
@@ -56,7 +56,7 @@ auto algo4j_matrix::mul(Matrix22Pool &pool, Matrix22 &x, Matrix22 &y, jlong mod)
 			for (auto ____ = 0; ____ < 2; ++____) {
 				if (mod <= -1) _____ += x.a[__][____] * y.a[____][___];
 				else {
-					_____ += fast_plus(x.a[__][____], y.a[____][___], mod);
+					_____ += fast_mul(x.a[__][____], y.a[____][___], mod);
 					_____ %= mod;
 				}
 			}

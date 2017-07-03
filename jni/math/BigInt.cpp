@@ -24,7 +24,7 @@ using algo4j_int::divide;
 using algo4j_int::rem;
 using algo4j_int::BigInt;
 
-using algo4j_math::fast_plus;
+using algo4j_math::fast_mul;
 using algo4j_math::fast_power;
 
 JNIEXPORT auto JNICALL Java_org_algo4j_math_BigInt_plus(
