@@ -70,6 +70,15 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastPlus(
 	return fast_plus(a, b, m);
 }
 
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastMul(
+		JNIEnv *env,
+		jclass jc,
+		jlong a,
+		jlong b,
+		jlong m) -> jlong {
+	return fast_mul(a, b, m);
+}
+
 JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastPower(
 		JNIEnv *env,
 		jclass jc,

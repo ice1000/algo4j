@@ -33,15 +33,22 @@ using algo4j_util::swap;
 namespace algo4j_math {
 
 	template<typename T>
-	auto fast_plus(T a, T b, T _) -> T {
+	auto fast_plus(T a, T b, T m) -> T {
+		auto s = a + b;
+		if (s >= a and s >= b) return s % m;
+		if (a >= m and a > m - b) return fast_plus(a - m, b, m);
+		if (b >= m and b > m - a) return fast_plus(a, b - m, m);
+		return s;
+	}
+
+	template<typename T>
+	auto fast_mul(T a, T b, T _) -> T {
 		T ret = 0;
 		while (b) {
 			if (b bitand 1)
-				ret = (ret + a) % _;
+				ret = fast_plus(ret, a, _);
 			b >>= 1;
-//			a <<= 1;
-//			a %= _;
-			a = (a << 1) % _;
+			a = fast_plus(a, a, _);
 		}
 		return ret;
 	}
@@ -51,9 +58,9 @@ namespace algo4j_math {
 		T ret = 1;
 		while (b) {
 			if (b bitand 1)
-				ret = fast_plus(ret, a, m);
+				ret = fast_mul(ret, a, m);
 			b >>= 1;
-			a = fast_plus(a, a, m);
+			a = fast_mul(a, a, m);
 		}
 		return ret;
 	}

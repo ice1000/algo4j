@@ -106,7 +106,7 @@ class MathUtilsTest {
 		assertEquals(12, fastPower(2, 9, 100))
 		assertEquals(4, fastPower(2, 10, 10))
 		assertEquals(289, fastMul(233, 233, 1000))
-		assertEquals(3, fastPlus(233, 233, 10))
+		assertEquals(6, fastPlus(233, 233, 10))
 	}
 
 	/**

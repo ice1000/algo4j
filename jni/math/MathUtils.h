@@ -76,6 +76,31 @@ JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_sqrt(
 
 /**
  * Class:     org_algo4j_math_MathUtils
+ * Method:    fastMul
+ * Signature: (JJJ)J
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastMul(
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong,
+		jlong
+) -> jlong;
+
+/**
+ * Class:     org_algo4j_math_MathUtils
+ * Method:    fastPlus
+ * Signature: (JJJ)J
+ */
+JNIEXPORT auto JNICALL Java_org_algo4j_math_MathUtils_fastPlus(
+		JNIEnv *,
+		jclass,
+		jlong,
+		jlong,
+		jlong
+) -> jlong;
+/**
+ * Class:     org_algo4j_math_MathUtils
  * Method:    fastPlus
  * Signature: (JJJ)J
  */
