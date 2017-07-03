@@ -3,10 +3,10 @@
 
 持续集成|状态
 :---|:---:
-Travis CI(稳定分支)|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
-CircleCI(稳定分支)|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
-CodeShip(稳定分支)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
-AppVeyor(开发分支)|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
+Travis CI|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
+CircleCI|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
+CodeShip|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
+AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
 
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
@@ -45,21 +45,21 @@ src/test|测试代码
 - [X] 树状数组，包括点更新区间求和，区间更新点求和，区间更新区间求和。
 - [X] 三角函数，有：sin, cos, tan, cot, sec, csc.
 - [X] 并查集。带路径压缩和启发式合并。
-- [X] 一堆数学函数，(以后可能会)比java.lang.Math丰富。
-- [X] 一堆数列操作的函数，有(各种各样的)排序，离散化，求逆序数，kmp算法，toString，等。
-- [X] 图论数据结构和算法，有单源最短路SPFA，Bellman Ford，Dijkstra，傻逼暴力最短路Floyd，最小生成树Kruskal，dfs，等等。
-- [X] 一个只有Windows能用的Win32API接口，你可以调用一些类似'Beep'的东西。
-- [X] 线性数据结构，栈和队列，还有对应的Int版。
+- [X] 数学函数，快速幂系列，素数，斐波那契等。
+- [X] 数列操作的函数，有(各种各样的)排序，离散化，求逆序数，kmp 算法，toString，等。
+- [X] 图论数据结构和算法，有单源最短路 SPFA，Bellman Ford，Dijkstra，暴力最短路 Floyd，最小生成树 Kruskal，dfs，等等。
+- [X] 只有 Windows 能用的 Win32API 接口，你可以调用一些类似'Beep/BatteryStatus'的东西。
+- [X] 线性数据结构，栈和队列，还有对应的 Int 版。
 - [X] 最小二叉堆，支持插入和取顶端。
-- [X] 字典树，支持ASCII的32到127的字符，Trie<T> : Map<String, T>。
+- [X] 字典树，支持 ASCII 的 32 到 127 的字符，Trie<T> : Map<String, T>。
 - [X] 多线程快速排序
 - [X] 大整数快速幂
-- [X] 大整数加减乘除余，大部分情况比标准库java.math.BigInteger快。
+- [X] 大整数加减乘除余，部分情况比标准库 java.math.BigInteger 快。
 - [ ] 线段树，多种实现
 - [ ] 可持久化线段树(主席树)，多种实现
 
 其实，代码内部文档注释很完善的。。。<br/>
-如果你想详细地了解，可以看Javadoc，或者package-info.java.
+如果你想详细地了解，可以看 Javadoc，或者 package-info.java.
 
 ## 语言
 

@@ -3,10 +3,10 @@
 
 Continuous Integration|Status
 :---|:---:
-Travis CI(master)|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
-CircleCI(master)|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
-CodeShip(master)|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
-AppVeyor(dev)|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
+Travis CI|[![Build Status](https://travis-ci.org/ice1000/algo4j.svg?branch=master)](https://travis-ci.org/ice1000/algo4j)
+CircleCI|[![CircleCI](https://circleci.com/gh/ice1000/algo4j/tree/master.svg?style=svg)](https://circleci.com/gh/ice1000/algo4j/tree/master)
+CodeShip|[![CodeShip](https://codeship.com/projects/313a88d0-0990-0135-51ec-6af2f1d244f3/status?branch=master)](https://app.codeship.com/projects/214594)
+AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5irdr9q?svg=true)](https://ci.appveyor.com/project/ice1000/algo4j)
 
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
@@ -46,7 +46,7 @@ Put it to your working directory after download or build one.
 - [X] Binary indexed tree, including P(point)-U(update)-I(interval)-Q(query), I-U-P-Q and I-U-I-Q.
 - [X] Trigonometric functions, including: sin, cos, tan, cot, sec, csc.
 - [X] Union set. including path compression and heuristic merge.
-- [X] Math utils, will be more powerful than java.lang.Math.
+- [X] Math utils, including fast power series, primes, fibs, etc.
 - [X] Sequence utils, like sorts, discretization, kmp, toString, etc.
 - [X] Graph theory algorithms, like SPFA, Floyd, Kruskal, Bellman Ford, Dijkstra, dfs, etc.
 - [X] A Win32API interface for windows only, right call something like 'Beep'.
