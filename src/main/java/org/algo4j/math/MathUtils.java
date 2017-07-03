@@ -107,6 +107,17 @@ public final class MathUtils {
 	public static native double sqrt(double a);
 
 	/**
+	 * A fast algorithm to calculate (a + b) % m. O(1)
+	 *
+	 * @param a   param1
+	 * @param b   param2
+	 * @param mod mod
+	 * @return (a + b) % m
+	 */
+	@Contract(pure = true)
+	public static native long fastPlus(long a, long b, long mod);
+
+	/**
 	 * A fast algorithm to calculate (a * b) % m. O(log(b))
 	 *
 	 * @param a   param1
@@ -115,7 +126,7 @@ public final class MathUtils {
 	 * @return a * b % m
 	 */
 	@Contract(pure = true)
-	public static native long fastPlus(long a, long b, long mod);
+	public static native long fastMul(long a, long b, long mod);
 
 	/**
 	 * A fast algorithm to calculate (a ^ b) % m. O(2 * log(a) * log(b))

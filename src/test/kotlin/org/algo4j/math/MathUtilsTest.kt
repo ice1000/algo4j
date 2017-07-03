@@ -90,7 +90,7 @@ class MathUtilsTest {
 	}
 
 	/**
-	 * fast power and fast plus discretizationTest
+	 * fast power, fast mul and fast plus discretizationTest
 	 *
 	 *
 	 * data:
@@ -105,7 +105,8 @@ class MathUtilsTest {
 		assertEquals(24, fastPower(2, 10, 1000))
 		assertEquals(12, fastPower(2, 9, 100))
 		assertEquals(4, fastPower(2, 10, 10))
-		assertEquals(289, fastPlus(233, 233, 1000))
+		assertEquals(289, fastMul(233, 233, 1000))
+		assertEquals(3, fastPlus(233, 233, 10))
 	}
 
 	/**
