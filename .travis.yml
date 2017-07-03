@@ -1,9 +1,10 @@
 sudo: required
-language: java
+language: cpp
 compiler:
 - gcc
 os:
 - linux
+language: java
 jdk:
 - oraclejdk8
 script:
