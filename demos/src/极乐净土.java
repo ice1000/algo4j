@@ -8,6 +8,7 @@ import org.algo4j.win.WinAPI;
  *
  * @author ice1000
  */
+@SuppressWarnings("NonAsciiCharacters")
 public class 极乐净土 {
 	public static void main(String[] args) {
 		Loader.loadJni();

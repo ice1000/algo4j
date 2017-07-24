@@ -76,7 +76,7 @@ class PointUpdateIntervalQueryTest {
 		private val data = LongArray(length)
 
 		/**
-		 * standard add operation
+		 * standard accumulate operation
 		 */
 		@TestOnly
 		fun add(index: Int, value: Long) {

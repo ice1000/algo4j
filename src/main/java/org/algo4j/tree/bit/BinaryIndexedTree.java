@@ -34,10 +34,10 @@ public final class BinaryIndexedTree implements
 
 	/**
 	 * O(n) = log(n)
-	 * bit standard add function
+	 * bit standard accumulate function
 	 *
-	 * @param index position to add value
-	 * @param value value to add
+	 * @param index position to accumulate value
+	 * @param value value to accumulate
 	 */
 	public void add(int index, long value) {
 		if (index > length || index < 0) throw BinaryIndexedTreeException.indexOutBound();

@@ -18,7 +18,7 @@ public interface Graph extends
 	int ORIGINAL_FILLING_VALUE = Integer.MAX_VALUE >> 1;
 
 	/**
-	 * base add edge method
+	 * base accumulate edge method
 	 *
 	 * @param from pos1
 	 * @param to   pos2
@@ -27,7 +27,7 @@ public interface Graph extends
 	void addEdge(int from, int to, int val);
 
 	/**
-	 * add two edges
+	 * accumulate two edges
 	 * <p>
 	 * 前两个参数a, b是点 后面两个分别是a->b和b->a的距离
 	 *
@@ -42,7 +42,7 @@ public interface Graph extends
 	}
 
 	/**
-	 * add an edge
+	 * accumulate an edge
 	 *
 	 * @param edge the edge
 	 */
@@ -51,7 +51,7 @@ public interface Graph extends
 	}
 
 	/**
-	 * add two-direction edge
+	 * accumulate two-direction edge
 	 *
 	 * @param p1  position1
 	 * @param p2  position2
@@ -62,7 +62,7 @@ public interface Graph extends
 	}
 
 	/**
-	 * add an directionless edge
+	 * accumulate an directionless edge
 	 *
 	 * @param edge the edge
 	 */

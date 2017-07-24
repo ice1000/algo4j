@@ -17,6 +17,10 @@ import org.nd4j.linalg.ops.transforms.Transforms;
 public class Matrix {
 	private INDArray data;
 
+	public Matrix() {
+		this.data = Nd4j.create();
+	}
+
 	public Matrix(@NotNull int[][] data) {
 		this.data = Nd4j.create(MatrixCaster.cast(data));
 	}
@@ -39,32 +43,37 @@ public class Matrix {
 	}
 
 	@NotNull
-	public Matrix addEach(int n) {
+	public Matrix addEach(Number n) {
 		return new Matrix(data.add(n));
 	}
 
 	@NotNull
-	public Matrix multiplyEach(int n) {
+	public Matrix multiplyEach(Number n) {
 		return new Matrix(data.mul(n));
 	}
 
 	@NotNull
-	public Matrix minusEach(int n) {
+	public Matrix minusEach(Number n) {
 		return new Matrix(data.subi(n));
 	}
 
 	@NotNull
-	public Matrix divideEach(int n) {
+	public Matrix divideEach(Number n) {
 		return new Matrix(data.divi(n));
 	}
 
 	@NotNull
-	public Matrix add(@NotNull ColumnVector vector) {
+	public Matrix accumulate(@NotNull Matrix matrix) {
+		return new Matrix(data.add(matrix.nativeData()));
+	}
+
+	@NotNull
+	public Matrix accumulate(@NotNull ColumnVector vector) {
 		return new Matrix(data.add(vector.nativeData()));
 	}
 
 	@NotNull
-	public Matrix add(@NotNull RowVector vector) {
+	public Matrix accumulate(@NotNull RowVector vector) {
 		return new Matrix(data.add(vector.nativeData()));
 	}
 
@@ -76,6 +85,16 @@ public class Matrix {
 	@NotNull
 	public Matrix multiply(@NotNull RowVector vector) {
 		return new Matrix(data.mul(vector.nativeData()));
+	}
+
+	@NotNull
+	public Matrix multiply(@NotNull Matrix matrix) {
+		return new Matrix(data.mul(matrix.nativeData()));
+	}
+
+	@NotNull
+	public Matrix minus(@NotNull Matrix matrix) {
+		return new Matrix(data.sub(matrix.nativeData()));
 	}
 
 	@NotNull
@@ -99,12 +118,17 @@ public class Matrix {
 	}
 
 	@NotNull
+	public Matrix dot(@NotNull Matrix in) {
+		return new Matrix(data.mmul(in.nativeData()));
+	}
+
+	@NotNull
 	public Matrix sigmoid() {
 		return new Matrix(Transforms.sigmoid(data));
 	}
 
 	@NotNull
-	public Matrix tanh() {
+	public Matrix tan() {
 		return new Matrix(Transforms.tanh(data));
 	}
 
@@ -133,8 +157,30 @@ public class Matrix {
 		return new Matrix(data.reshape(rowN, columnN));
 	}
 
+	@NotNull
+	public Matrix negative() {
+		return new Matrix(data.neg());
+	}
+
+	@NotNull
+	public int[] shape() {
+		return data.shape();
+	}
+
+	public double sum() {
+		return (double) data.sumNumber();
+	}
+
 	public double get(int row, int column) {
 		return data.getDouble(row, column);
+	}
+
+	public int rowN() {
+		return data.rows();
+	}
+
+	public int columnN() {
+		return data.columns();
 	}
 
 	@NotNull

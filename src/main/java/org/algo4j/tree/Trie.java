@@ -82,7 +82,7 @@ public class Trie<T> {
 	/**
 	 * if the tree has the complete word: word.
 	 * example:
-	 * add 'ice1000'
+	 * accumulate 'ice1000'
 	 * then get("ice") will return false.
 	 * then get("ice1000") will return true.
 	 *

@@ -83,7 +83,7 @@ public class AdjacentMatrixGraph implements
 	private static native int[] dijkstra(int source, @NotNull int[] origin);
 
 	/**
-	 * weak add
+	 * weak accumulate
 	 *
 	 * @param from pos1
 	 * @param to   pos2
@@ -99,7 +99,7 @@ public class AdjacentMatrixGraph implements
 	}
 
 	/**
-	 * add an edge
+	 * accumulate an edge
 	 *
 	 * @param from  pos1
 	 * @param to    pos2

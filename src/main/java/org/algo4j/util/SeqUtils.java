@@ -1,9 +1,12 @@
 package org.algo4j.util;
 
+import org.algo4j.dl.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 /**
  * Created by ice1000 on 2016/11/18.
@@ -14,6 +17,66 @@ import org.jetbrains.annotations.Nullable;
 public final class SeqUtils {
 	private SeqUtils() {
 		throw new Error("do not instantiation me");
+	}
+
+	/**
+	 * shuffle a array randomly.
+	 *
+	 * @param data thr array to be shuffled.
+	 * @author Ray Eldath
+	 * @since 1.0.6
+	 */
+	public static <T> void shuffle(@NotNull T[] data) {
+		int L = data.length;
+
+		Random random = new Random();
+		Set<Integer> randomsSet = new HashSet<>();
+		while (randomsSet.size() == L)
+			randomsSet.add(random.nextInt());
+		Integer[] randoms;
+		randoms = randomsSet.toArray(new Integer[0]);
+
+		int n = 0, a, b;
+		for (int i = 0; i < L - 1; i++) {
+			a = randoms[i];
+			b = randoms[i + 1];
+			T t = data[a];
+			data[a] = data[b];
+			data[b] = t;
+		}
+	}
+
+	/**
+	 * zip two arrays to a tuple.
+	 *
+	 * @param x array of X in pair
+	 * @param y array of Y in pair
+	 * @return tuple
+	 * @author Ray ELdath
+	 * @since 1.0.6
+	 */
+	public static <X, Y> List<Pair<X, Y>> zip(@NotNull X[] x, @NotNull Y[] y) {
+		int xN = x.length, yN = y.length;
+		int N = xN > yN ? yN : xN;
+		List<Pair<X, Y>> r = new ArrayList<>();
+
+		for (int i = 0; i < N; i++)
+			r.add(new Pair<>(x[i], y[i]));
+		return r;
+	}
+
+	public static <T> T[] cut(@NotNull T[] in, int start, int end) {
+		return Arrays.copyOfRange(in, start, end);
+	}
+
+	public static <T> T[][] cut(@NotNull T[][] in, int start, int end) {
+		return Arrays.copyOfRange(in, start, end);
+	}
+
+	public static <T> List<T> toList(@NotNull T[] in) {
+		List<T> r = new ArrayList<>();
+		Collections.addAll(r, in);
+		return r;
 	}
 
 	/**

@@ -104,7 +104,7 @@ public class FrontStarGraph implements
 	}
 
 	/**
-	 * add an edge to this top star graph.
+	 * accumulate an edge to this top star graph.
 	 *
 	 * @param from begin position
 	 * @param to   end position
@@ -245,11 +245,11 @@ public class FrontStarGraph implements
 		);
 		FrontStarGraph graph = new FrontStarGraph(nodeCount, nodeCount - 1);
 		if (directionless) {
-			/// add directionless edges.
+			/// accumulate directionless edges.
 			for (int i = 0; i < kruskal.length; i += 3)
 				graph.addDirectionlessEdge(kruskal[i], kruskal[i + 1], kruskal[i + 2]);
 		} else {
-			/// add edges not directionless.
+			/// accumulate edges not directionless.
 			for (int i = 0; i < kruskal.length; i += 3)
 				graph.addEdge(kruskal[i], kruskal[i + 1], kruskal[i + 2]);
 		}
