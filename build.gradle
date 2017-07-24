@@ -6,6 +6,7 @@ apply plugin: 'kotlin'
 // apply plugin: 'maven'
 // apply plugin: 'cpp'
 
+String os = "windows" // TODO for different build, change here
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -19,7 +20,7 @@ buildscript {
 
 	repositories {
 		// mavenCentral()
-		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 	}
 
 	dependencies {
@@ -37,9 +38,32 @@ sourceSets {
 	test.java.srcDirs += 'demos'
 }
 
+switch (os) {
+	case 'windows':
+		os = 'windows-x86_64'
+		break
+	case 'linux':
+		os = 'linux-x86_64'
+		break
+	case 'linux-ppc64':
+		os = 'linux-ppc64'
+		break
+	case 'linux-ppc64le':
+		os = 'linux-ppc64le'
+		break
+	case 'macosx':
+		os = 'macosx-x86_64'
+		break
+	default:
+		throw new Exception('Unknown OS defined for -Plibnd4jOS parameter. ND4J will be unable to find platform-specific binaries and thus unable to run.')
+}
+
 dependencies {
 	compile group: 'org.jetbrains', name: 'annotations', version: '15.0'
 	compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	// https://mvnrepository.com/artifact/org.nd4j/nd4j-native
+	compile group: 'org.nd4j', name: 'nd4j-native', version: '0.8.0'
+	compile 'org.nd4j:nd4j-native:0.8.0:' + os
 
 	testCompile 'junit:junit:4.12'
 	testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"

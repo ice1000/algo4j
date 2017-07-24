@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Contract;
 @SuppressWarnings("WeakerAccess")
 public final class Trigonometric {
 	private Trigonometric() {
+		throw new Error("do not instantiation me");
 	}
 
 	/**

@@ -6,8 +6,11 @@ package org.algo4j.math;
  * @author ice1000
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
+
+//TODO 我认为将此类放入package-info中并限制访问权限更好。但如此Test可能无法运行。
 public final class Constants {
 	private Constants() {
+		throw new Error("do not instantiation me");
 	}
 
 	/** m * s^-1 */

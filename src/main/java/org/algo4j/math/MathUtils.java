@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 public final class MathUtils {
 
 	private MathUtils() {
+		throw new Error("do not instantiation me");
 	}
 
 	public static final double E = java.lang.Math.E;

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class SeqUtils {
 	private SeqUtils() {
+		throw new Error("do not instantiation me");
 	}
 
 	/**

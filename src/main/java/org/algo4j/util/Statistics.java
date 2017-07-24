@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public final class Statistics {
 	private Statistics() {
+		throw new Error("do not instantiation me");
 	}
 
 	@Contract(pure = true)

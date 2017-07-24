@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("WeakerAccess")
 public final class WinAPI {
 	private WinAPI() {
+		throw new Error("do not instantiation me");
 	}
 
 	/**
