@@ -1,6 +1,7 @@
 package org.algo4j.util;
 
 import org.algo4j.linear.Matrix;
+import org.jetbrains.annotations.NotNull;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
 public class MatrixCaster {
@@ -8,7 +9,8 @@ public class MatrixCaster {
 		throw new Error("do not instantiation me");
 	}
 
-	public static float[][] cast(int[][] in) {
+	@NotNull
+	public static float[][] cast(@NotNull int[][] in) {
 		int inL = in.length;
 		float[][] out = new float[inL][in[0].length];
 
@@ -21,7 +23,8 @@ public class MatrixCaster {
 		return out;
 	}
 
-	public static double[][] cast(Matrix inM) {
+	@NotNull
+	public static double[][] cast(@NotNull Matrix inM) {
 		INDArray in = inM.nativeData();
 		int l = in.length();
 		double[][] out = new double[l][in.size(0)];
