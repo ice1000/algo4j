@@ -1,6 +1,5 @@
 package org.algo4j.util;
 
-import org.algo4j.dl.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -44,25 +43,6 @@ public final class SeqUtils {
 			data[a] = data[b];
 			data[b] = t;
 		}
-	}
-
-	/**
-	 * zip two arrays to a tuple.
-	 *
-	 * @param x array of X in pair
-	 * @param y array of Y in pair
-	 * @return tuple
-	 * @author Ray ELdath
-	 * @since 1.0.6
-	 */
-	public static <X, Y> List<Pair<X, Y>> zip(@NotNull X[] x, @NotNull Y[] y) {
-		int xN = x.length, yN = y.length;
-		int N = xN > yN ? yN : xN;
-		List<Pair<X, Y>> r = new ArrayList<>();
-
-		for (int i = 0; i < N; i++)
-			r.add(new Pair<>(x[i], y[i]));
-		return r;
 	}
 
 	public static <T> T[] cut(@NotNull T[] in, int start, int end) {
