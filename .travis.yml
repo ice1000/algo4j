@@ -8,8 +8,7 @@ matrix:
       os:
        - linux
     - language: java
-      jdk:
-        - oraclejdk8
+      jdk: oraclejdk8
 
 script:
 - cmake jni
