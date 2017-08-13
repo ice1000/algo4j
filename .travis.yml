@@ -1,12 +1,16 @@
 sudo: required
-language: cpp
-compiler:
-- gcc
-os:
-- linux
-language: java
-jdk:
-- oraclejdk8
+
+matrix:
+  include:
+    - language: cpp
+      compiler:
+        - gcc
+      os:
+       - linux
+    - language: java
+      jdk:
+        - oraclejdk8
+
 script:
 - cmake jni
 - cmake --build . --target all -- -j 8
