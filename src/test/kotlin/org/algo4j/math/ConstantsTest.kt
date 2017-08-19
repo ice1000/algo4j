@@ -13,7 +13,7 @@ import org.junit.Test
  */
 class ConstantsTest {
 	@TestOnly
-	@Test(timeout = 10)
+	@Test(timeout = 100)
 	fun outputConstants() {
 		(1e35 * PLANK_CONSTANT).println()
 		(1e35 * ELEMENTARY_CHARGE).println()
