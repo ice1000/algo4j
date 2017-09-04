@@ -14,6 +14,10 @@ script:
 - cmake jni
 - cmake --build . --target all -- -j 8
 - "./gradlew check --info"
+- ./gradlew check
+- ./gradlew codeCoverageReport
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
 - if [ "$CC" = "gcc" ]; then export CC="gcc-5"; fi
@@ -37,12 +41,3 @@ cache:
   directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
-deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key:
-    secure: YMTRofGJAjWK635lXT8qEhbxbFKGQFkhO6d/9BFsFZDO7NAT4xXUHgwTDjTugRAiGL/JRongPfgEmThAGUZGQhoR5JzaQlyQPtgFJ0AUIKbh2rxfE2DU7INSSWAlgxM7qDUY5Hb1mu96UDPzGlRNC8IXwZH4v4Qeb7ll6bfoLog9jNnfdgdb2qEG/BK+MBktkLrH97m5OnbIPek0+hxqOKJT/M94McFd3doPpA+GkgEOtgCvxN2BPuWOn7dcDgiYRmPOtzzijxEPMKoTHzb7qK9LnIDLNU/riycjgQ9OXNVMTpLs3f+F07TjTunxjSdzzSzBKTPPXYDXHOoy4RTyrgTjhupC1aWrJr8/ooqtEgRt46HW7Z4vULSS/LtHZ++NWjr2IoHSAiCdK9jZN1dda/UZ/WP0wQVvJkG46vYWpMpgHjzGa4ESWdtLT07zRCRLP4y4LYPvJbMsayp49Pn66tVYtSRGuIf1exmKx6WTh3I/uu/uoHcOF3xa/SWnqEYTJB+iPeJp0KWXtxydNAwblzjX3Zx1LS1Pr1iyDhfovSMc3RRlzwSf8AAXFfjoYcYG86ZgcVIhmj3tApDD56XnF85La1yHndRdRWntIcVBvBeBmhiCswKEExnQC1x88BkVNlrV8ANz8g2mjEDoNBCxh0r81EcymdyzvpuyPashqf0=
-  file: libjni.so
-  on:
-    tags: true
-    repo: ice1000/algo4j
