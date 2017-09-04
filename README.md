@@ -11,6 +11,7 @@ AppVeyor|[![Build status](https://ci.appveyor.com/api/projects/status/atqp1d81m5
 [![JitPack](https://jitpack.io/v/ice1000/algo4j.svg)](https://jitpack.io/#ice1000/algo4j)
 [![Gitter](https://badges.gitter.im/ice1000/algo4j.svg)](https://gitter.im/ice1000/algo4j)
 [![Stories in Ready](https://badge.waffle.io/ice1000/algo4j.png?label=In%20Progress&title=In%20Progress)](http://waffle.io/ice1000/algo4j)
+[![codecov](https://codecov.io/gh/ice1000/algo4j/branch/master/graph/badge.svg)](https://codecov.io/gh/ice1000/algo4j)
 
 <br/>
 
