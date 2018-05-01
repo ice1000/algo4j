@@ -1,7 +1,5 @@
 package org.algo4j.util;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -14,7 +12,7 @@ import java.io.File;
  */
 @SuppressWarnings("WeakerAccess")
 public final class Loader {
-	public final static String JNI_LIB_NAME;
+	public final static @NotNull String JNI_LIB_NAME;
 	private static boolean loaded = false;
 
 	/*
@@ -25,24 +23,9 @@ public final class Loader {
 		loadJni();
 	}
 
-	@NotNull
-	@Contract(pure = true)
-	private static String libraryName(@NonNls @NotNull String libName) {
-		String ___ = System.getProperty("os.name");
-		String fileName;
-		if (___.contains("Linux"))
-			fileName = libName + ".so";
-		else if (___.contains("Windows"))
-			fileName = libName + ".dll";
-		else // if (___.contains("OSX"))
-			fileName = libName + ".dylib";
-//		else fileName = libName;
-		return new File(fileName).getAbsolutePath();
-	}
-
 	public static void loadJni() {
 		if (!loaded) {
-			System.load(libraryName(JNI_LIB_NAME));
+			System.load(new File(System.mapLibraryName(JNI_LIB_NAME)).getAbsolutePath());
 			loaded = true;
 		}
 	}

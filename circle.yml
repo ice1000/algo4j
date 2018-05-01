@@ -5,10 +5,9 @@ machine:
 
 dependencies:
   pre:
-    - chmod a+x gradlew
     - cmake jni
   override:
-    - ./gradlew dependencies
+    - bash gradlew dependencies
     - cmake --build . --target all -- -j 8
 #
 
@@ -17,7 +16,7 @@ test:
     - if [ -e ./gradlew ]; then ./gradlew jacocoTestReport;else gradle jacocoTestReport;fi
     - bash <(curl -s https://codecov.io/bash)
   override:
-    - ./gradlew check --info
+    - bash gradlew check --info
 #
 
 general:
