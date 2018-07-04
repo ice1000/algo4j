@@ -12,8 +12,8 @@ private: \
     T *data; \
     jsize len; \
 public: \
-    heap(jsize _len) : len(0) { data = new T[_len + 1]; } \
-    auto insert(const T &element) -> void { heap_insert(data, len, element); } \
+    heap(jsize _len) : len(1) { data = new T[_len + 1]; } \
+    auto insert(const T &element) -> void { heap_insert(data, len++, element); } \
     auto adjust(jsize i = 1) -> void { heap_adjust(data, len, i); } \
     auto extract_top() -> T { return len <= 0 ? nullptr : heap_extract_top(data, len); } \
 };
