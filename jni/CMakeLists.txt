@@ -42,7 +42,7 @@ set(
 		util/SeqUtils.cpp
 		global/matrix.cpp
 		math/BigInt.cpp
-)
+		tree/Segtree.cpp)
 
 set(
 		SOURCE_HEADERS
@@ -50,6 +50,7 @@ set(
 		tree/bit/BinaryIndexedTree.h
 		tree/heap/MinHeap.h
 		tree/heap/MaxHeap.h
+		tree/SEGTREE.H
 		graph/FrontStarGraph.h
 		math/Trigonometric.h
 		global/functions.h
@@ -63,7 +64,7 @@ set(
 		global/matrix.h
 		util/SeqUtils.h
 		math/BigInt.h
-)
+		global/segtree.h)
 
 # add_executable(
 # jniexe

@@ -45,6 +45,23 @@ public class NonRecursiveSegmentTreeTest {
 		assertEquals((int) seg.query(2, 5), 9);
 	}
 
+	@Test
+	public void testDefect() { /// probable defect (but wasn't actually existing)
+		NonRecursiveSegmentTree<Integer> seg = new NonRecursiveSegmentTree<>
+				(new Integer[]{5, 3, 2, 9, 7, 8, 10, 2, -1},
+						(BiFunction<Integer, Integer, Integer>) (a, b) -> a + b);
+		assertEquals((int) seg.query(2, 5), 26);
+		seg = new NonRecursiveSegmentTree<>
+				(new Integer[]{5, 3, 2, 9, 7, -3}, Comparator.naturalOrder());
+		assertEquals((int) seg.query(2, 5), 9);
+		seg = new NonRecursiveSegmentTree<>
+				(new Integer[]{5, 3, 2, 9, 7, 8, 6, 4, 6, 10, 25, 3, 7, -3, 5, 6, 10},
+						(BiFunction<Integer, Integer, Integer>) (a, b) -> a + b);
+		seg.set(1, 5);
+		seg.set(0, 7);
+		assertEquals((int) seg.query(0, 10), 89);
+	}
+
 
 	@Test
 	public void set() {
