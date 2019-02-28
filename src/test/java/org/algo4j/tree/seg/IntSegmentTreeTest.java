@@ -4,11 +4,13 @@ import org.algo4j.util.Loader;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Comparator;
-import java.util.function.BiFunction;
-
 import static org.junit.Assert.*;
 
+/**
+ * Created by Phosphorus15 on 2019/3/1.
+ *
+ * @author Phosphorus15
+ */
 public class IntSegmentTreeTest {
 
 	@Before

@@ -35,7 +35,7 @@ public class RecursiveSegmentTreeTest {
 		/*
 		 Minimum Recording
 		 */
-		SegmentTree<Integer> seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, Comparator.naturalOrder());
+		SegmentTree<Integer> seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, Comparator.reverseOrder());
 		seg.set(1, 2, 20);
 		assertEquals((int) seg.query(0, 2), 5);
 		assertEquals((int) seg.query(1, 3), 9);
@@ -45,7 +45,7 @@ public class RecursiveSegmentTreeTest {
 		seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, (BiFunction<Integer, Integer, Integer>) (a, b) -> a + b);
 		assertEquals((int) seg.query(0, 2), 10);
 		seg.set(1, 3, 5);
-		assertEquals((int) seg.query(1, 3), 14);
+		assertEquals((int) seg.query(1, 3), 15);
 	}
 
 }

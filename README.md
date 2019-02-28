@@ -58,7 +58,7 @@ Put it to your working directory after download or build one.
 - [X] Fast power for big integers.
 - [X] Big Integer(plus minus mul div rem), faster(usually) than java.math.BigInteger.
 - [X] Segment Tree, multi-implementations.
-- [ ] Durable Segment Tree, multi-implementations.
+- [X] Durable Segment Tree, multi-implementations.
 
 Actually, every java classes are well-documented.<br/>
 For more information, see JavaDocs in each java file or package-info.java.

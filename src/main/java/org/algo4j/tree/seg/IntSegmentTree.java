@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 /**
- * Non-Recursive Native Implementation, expected to be the fasted above all. custom comparator/updater not supported
+ * Non-Recursive native implementation, expected to be the fasted above all. custom comparator/updater not supported
  * <p>
  * Use it for INTENSE application
  * <p>
