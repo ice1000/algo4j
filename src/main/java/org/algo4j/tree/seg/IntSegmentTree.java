@@ -2,6 +2,8 @@ package org.algo4j.tree.seg;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+
 /**
  * Non-Recursive Native Implementation, expected to be the fasted above all. custom comparator/updater not supported
  * <p>
@@ -25,10 +27,12 @@ public class IntSegmentTree implements SegmentTree<Integer> {
 
 	private final int length;
 
+	@SuppressWarnings("all")
 	public IntSegmentTree(@NotNull int... data) {
 		this(Mode.SUM, data);
 	}
 
+	@SuppressWarnings("all")
 	public IntSegmentTree(Mode mode, @NotNull int... data) {
 		this.data = data;
 		length = data.length;

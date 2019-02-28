@@ -1,5 +1,7 @@
 package org.algo4j.tree.seg;
 
+import org.algo4j.util.Loader;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -7,27 +9,28 @@ import java.util.function.BiFunction;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Phosphorus15 on 2019/2/23.
- *
- * @author Phosphorus15
- */
-public class RecursiveSegmentTreeTest {
+public class IntSegmentTreeTest {
+
+	@Before
+	public void setupJNI() {
+		Loader.loadJni();
+	}
 
 	@Test
 	public void query() {
 		/*
 		 Minimum Recording
 		 */
-		SegmentTree<Integer> seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, Comparator.reverseOrder());
+		SegmentTree<Integer> seg = new IntSegmentTree(IntSegmentTree.Mode.MIN, 5, 3, 2, 9, 7, 8, 6, 4);
 		assertEquals((int) seg.query(0, 2), 2);
 		assertEquals((int) seg.query(1, 3), 2);
 		/*
 		 A Lambda Stands for `sum`
 		 */
-		seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, (BiFunction<Integer, Integer, Integer>) (a, b) -> a + b);
+		seg = new IntSegmentTree(5, 3, 2, 9, 7, 8, 6, 4);
 		assertEquals((int) seg.query(0, 2), 10);
 		assertEquals((int) seg.query(1, 3), 14);
+		assertEquals((int) seg.query(2, 6), 32);
 	}
 
 	@Test
@@ -35,17 +38,17 @@ public class RecursiveSegmentTreeTest {
 		/*
 		 Minimum Recording
 		 */
-		SegmentTree<Integer> seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, Comparator.naturalOrder());
+		SegmentTree<Integer> seg = new IntSegmentTree(IntSegmentTree.Mode.MIN, 5, 3, 2, 9, 7, 8, 6, 4);
 		seg.set(1, 2, 20);
 		assertEquals((int) seg.query(0, 2), 5);
 		assertEquals((int) seg.query(1, 3), 9);
 		/*
 		 A Lambda Stands for `sum`
 		 */
-		seg = new RecursiveSegmentTree<>(new Integer[]{5, 3, 2, 9, 7, 8}, (BiFunction<Integer, Integer, Integer>) (a, b) -> a + b);
+		seg = new IntSegmentTree(5, 3, 2, 9, 7, 8, 6, 4);
 		assertEquals((int) seg.query(0, 2), 10);
 		seg.set(1, 3, 5);
-		assertEquals((int) seg.query(1, 3), 14);
+		assertEquals((int) seg.query(1, 3), 15);
 	}
 
 }

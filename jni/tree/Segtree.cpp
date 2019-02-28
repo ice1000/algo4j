@@ -16,8 +16,8 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_seg_IntSegmentTree_set
     __get(Int, segments)
     for (jint i = l; i <= r; i++)
         SegtreeUtil::set(i, value, length, segments, mode);
-    // Macro release
-    __abort(Int, segments)
+    // Macro release - copying might happen
+    __release(Int, segments)
     __JNI__FUNCTION__CLEAN__
 }
 
@@ -34,7 +34,7 @@ JNIEXPORT auto JNICALL Java_org_algo4j_tree_seg_IntSegmentTree_makeSeg
     }
     // Macro release
     __abort(Int, data)
-    __abort(Int, segments)
+    __release(Int, segments)
     __JNI__FUNCTION__CLEAN__
 }
 

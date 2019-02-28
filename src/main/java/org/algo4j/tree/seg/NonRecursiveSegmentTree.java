@@ -61,7 +61,6 @@ public class NonRecursiveSegmentTree<T> implements SegmentTree<T> {
 		}
 		T ans = process.apply((T) data[r], (T) data[l]);
 		for (; (l ^ r) != 1; l >>= 1, r >>= 1) {
-			System.out.println(l + " " + r);
 			if ((l & 1) == 0 && l != 1) {
 				ans = process.apply(ans, (T) data[l ^ 1]);
 			}
