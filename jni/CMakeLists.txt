@@ -1,6 +1,6 @@
 ## build script
 
-cmake_minimum_required(VERSION 2.7)
+cmake_minimum_required(VERSION 2.8)
 
 project(jni)
 
@@ -42,7 +42,7 @@ set(
         util/SeqUtils.cpp
         global/matrix.cpp
         math/BigInt.cpp
-        tree/Segtree.cpp)
+        tree/Segtree.cpp math/Vector.cpp util/MemoryHelper.cpp)
 
 set(
         SOURCE_HEADERS
@@ -53,10 +53,12 @@ set(
         tree/SEGTREE.H
         graph/FrontStarGraph.h
         math/Trigonometric.h
+        math/Vector.h
         global/functions.h
         global/trie.h
         tree/Trie.h
         util/Statistics.h
+        util/MemoryHelper.h
         global/complex.h
         math/MathUtils.h
         tree/UnionSet.h
