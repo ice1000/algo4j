@@ -17,6 +17,7 @@ public class MatrixTest {
 	public void get() {
 		Matrix matrix = new Matrix(3, 2, 1, 2, 3, 4, 5, 6);
 		assertEquals(4, matrix.get(1, 1), 1e-6);
+		matrix.close(); // auto-closable
 	}
 
 	@Test

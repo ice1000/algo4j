@@ -10,7 +10,7 @@ import org.algo4j.util.MemoryHelper;
  * @author Phosphorus15
  */
 @SuppressWarnings("WeakerAccess")
-public class Vector implements Cloneable {
+public class Vector implements Cloneable, AutoCloseable {
 
 	private final long pointer;
 
@@ -84,7 +84,7 @@ public class Vector implements Cloneable {
 
 	@Override
 	@SuppressWarnings("all")
-	protected Vector clone() {
+	public Vector clone() {
 		return new Vector(this);
 	}
 
@@ -116,5 +116,10 @@ public class Vector implements Cloneable {
 		if (length > 0) base.delete(base.length() - 2, base.length());
 		base.append(')');
 		return base.toString();
+	}
+
+	@Override
+	public void close() {
+		free();
 	}
 }

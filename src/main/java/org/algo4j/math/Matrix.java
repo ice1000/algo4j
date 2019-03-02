@@ -10,7 +10,7 @@ import org.algo4j.error.MatrixException;
  * @author Phosphorus15
  */
 @SuppressWarnings("WeakerAccess")
-public class Matrix {
+public class Matrix implements AutoCloseable, Cloneable {
 
 	private long pointer;
 
@@ -108,12 +108,38 @@ public class Matrix {
 
 	private native long multiply(long dest, long source);
 
-	private native void getRowSize(long pointer);
-
-	private native void getColumnSize(long pointer);
-
 	private native double determinant(long pointer);
 
 	private native long free(long pointer);
 
+	@Override
+	public void close() {
+		free(this.pointer);
+	}
+
+	@Override
+	@SuppressWarnings("all")
+	public Matrix clone() {
+		return new Matrix(m, n, this.pointer);
+	}
+
+	@Override
+	public int hashCode() {
+		int init = m ^ n;
+		for (int i = 0; i < m; i++)
+			for (int j = 0; j < n; j++)
+				init ^= Double.hashCode(get(i, j));
+		return init;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Matrix) {
+			if (m != ((Matrix) obj).m || n != ((Matrix) obj).n) return false;
+			for (int i = 0; i < m; i++)
+				for (int j = 0; j < n; j++)
+					if (Math.abs(get(i, j) - ((Matrix) obj).get(i, j)) < 1e-6) return false;
+		} else return false;
+		return true;
+	}
 }
