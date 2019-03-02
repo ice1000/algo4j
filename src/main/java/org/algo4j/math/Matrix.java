@@ -18,16 +18,29 @@ public class Matrix {
 
 	private final int n;
 
-	public Matrix(int m, int n) {
+	/**
+	 * Initialize matrix with a double array, it would be folded in the form of rows
+	 * <p>
+	 * If not enough doubles was provided, no initialization would be done
+	 *
+	 * @param m    the column size (how many rows) of matrix
+	 * @param n    the row size (how many columns) of matrix
+	 * @param data initial data
+	 */
+	public Matrix(int m, int n, double... data) {
 		this.m = m;
 		this.n = n;
 		this.pointer = newMatrix(m, n);
+		if (data.length == m * n)
+			for (int i = 0; i < m; i++)
+				for (int j = 0; j < n; j++)
+					set(i, j, data[i * n + j]);
 	}
 
-	private Matrix(long pointer) {
+	private Matrix(int m, int n, long pointer) {
 		this.pointer = pointer;
-		m = getColumnSize();
-		n = getRowSize();
+		this.m = m;
+		this.n = n;
 	}
 
 	/**
@@ -53,19 +66,28 @@ public class Matrix {
 	}
 
 	public Matrix transpose() {
-		return new Matrix(transpose(this.pointer));
+		return new Matrix(n, m, transpose(this.pointer));
 	}
 
 	public Matrix multiply(Matrix o) {
-		return new Matrix(multiply(this.pointer, o.pointer));
-	}
-
-	public Matrix invert() {
-		if (m != n) throw new MatrixException("Provided matrix is non-invertible");
-		return new Matrix(invert(this.pointer));
+		return new Matrix(m, o.n, multiply(this.pointer, o.pointer));
 	}
 
 	/**
+	 * Not implemented, DO NOT INVOKE!
+	 *
+	 * @return the inverse of current matrix
+	 */
+	public Matrix invert() {
+		if (m != n) throw new MatrixException("Provided matrix is non-invertible");
+		throw new UnsupportedOperationException("This has not been implemented");
+	}
+
+	/**
+	 * Note that this implementation is very slow and takes up a lot memory.
+	 * <p>
+	 * TODO gonna fix it fatherly (with invert methods)
+	 *
 	 * @return determinant of this matrix
 	 */
 	public double determinant() {

@@ -91,16 +91,71 @@ auto algo4j_matrix::fib_matrix(jlong n, jlong mod) -> jlong {
     return ret;
 }
 
-auto algo4j_matrix::GeneralMatrix::get(algo4j_matrix::mat_size_t x,
-                                       algo4j_matrix::mat_size_t y) -> algo4j_matrix::mat_value_t {
-    return this->ptr[x * this->n + y];
-}
+namespace algo4j_matrix {
+    auto GeneralMatrix::get(mat_size_t x,
+                            mat_size_t y) -> mat_value_t {
+        return this->ptr[x * this->n + y];
+    }
 
-auto algo4j_matrix::GeneralMatrix::set(algo4j_matrix::mat_size_t x, algo4j_matrix::mat_size_t y,
-                                       algo4j_matrix::mat_value_t value) -> void {
-    this->ptr[x * this->n + y] = value;
-}
+    auto GeneralMatrix::set(mat_size_t x, mat_size_t y,
+                            mat_value_t value) -> void {
+        this->ptr[x * this->n + y] = value;
+    }
 
-algo4j_matrix::GeneralMatrix::~GeneralMatrix() {
-    delete this->ptr;
+    GeneralMatrix::~GeneralMatrix() {
+        delete this->ptr;
+    }
+
+    auto GeneralMatrix::multiply(GeneralMatrix *o) -> GeneralMatrix * {
+        if (o->m != n) return new GeneralMatrix(0, 0);
+        auto *result = new GeneralMatrix(m, o->n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < o->n; j++) {
+                for (int k = 0; k < n; k++) {
+                    (*result)[i][j] += (*this)[i][k] * (*o)[k][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    FILE *output;
+
+    mat_value_t brute_force_determinant(GeneralMatrix *m) {
+        int length = m->m;
+        mat_value_t result = 0;
+        int sgn = 1;
+        if (length == 0) return 0;
+        if (length == 1) return (*m)[0][0];
+        if (length == 2) return (*m)[0][0] * (*m)[1][1] - (*m)[0][1] * (*m)[1][0];
+        auto *next = new GeneralMatrix(length - 1, length - 1);
+        for (int i = 0; i < length; i++, sgn = -sgn) {
+            for (int j = 0; j < length; j++) {
+                if (j == i) continue;
+                int index = (j > i) ? j - 1 : j;
+                for (int k = 0; k < length - 1; k++) {
+                    (*next)[k][index] = (*m)[k + 1][j];
+                }
+            }
+            result += sgn * (*m)[0][i] * brute_force_determinant(next);
+        }
+        delete next;
+        return result;
+    }
+
+    auto GeneralMatrix::determinant() -> mat_value_t {
+        return brute_force_determinant(this);
+    }
+
+    auto GeneralMatrix::invert() -> GeneralMatrix * {
+
+    }
+
+    auto GeneralMatrix::transpose() -> GeneralMatrix * {
+        auto *result = new GeneralMatrix(n, m);
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                (*result)[j][i] = (*this)[i][j];
+        return result;
+    }
 }

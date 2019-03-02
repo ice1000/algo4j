@@ -2,8 +2,6 @@ package org.algo4j.math;
 
 import org.algo4j.util.MemoryHelper;
 
-import java.nio.DoubleBuffer;
-
 /**
  * This vector is a double container for mathematical use, all of its memory is directory allocated and should be freed after use
  * <p>

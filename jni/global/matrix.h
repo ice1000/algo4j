@@ -3,6 +3,7 @@
 #define __ALGO4J_MATRIX_H__
 
 #include "basics.hpp"
+#include "cstring"
 
 using algo4j_util::ptr_to;
 
@@ -49,28 +50,49 @@ namespace algo4j_matrix {
 
     auto magic_function(jlong) -> jlong;
 
-    using mat_size_t = jint;
-    using mat_value_t = jdouble;
+    using namespace std;
+    using mat_size_t = long;
+    using mat_value_t = double;
 
     class GeneralMatrix {
+
+    public:
+        mat_value_t *ptr;
+
         mat_size_t m, n;
 
-        mat_value_t *ptr;
-    public:
         GeneralMatrix(mat_size_t m, mat_size_t n) : m(m), n(n) {
             ptr = new mat_value_t[m * n * sizeof(mat_value_t)];
+        }
+
+        GeneralMatrix(mat_size_t m, mat_size_t n, const mat_value_t *_copy) : m(m), n(n) {
+            ptr = new mat_value_t[m * n * sizeof(mat_value_t)];
+            memcpy(ptr, _copy, m * n * sizeof(mat_value_t));
+        }
+
+        mat_value_t *operator[](int x) {
+            return &ptr[x * n];
         }
 
         auto get(mat_size_t x, mat_size_t y) -> mat_value_t;
 
         auto set(mat_size_t x, mat_size_t y, mat_value_t value) -> void;
 
-        auto multiply(GeneralMatrix o) -> GeneralMatrix;
+        auto multiply(GeneralMatrix *o) -> GeneralMatrix *;
 
-        auto transpose() -> GeneralMatrix;
+        GeneralMatrix operator*(GeneralMatrix o) {
+            return *multiply(&o);
+        }
+
+        auto transpose() -> GeneralMatrix *;
+
+        auto invert() -> GeneralMatrix *;
+
+        auto determinant() -> mat_value_t;
 
         ~GeneralMatrix();
     };
+
 }
 
 

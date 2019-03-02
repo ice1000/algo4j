@@ -42,78 +42,78 @@ env->GetArrayLength(_ ## name)
 #undef _
 
 namespace algo4j_util {
-	template<class T>
-	struct remove_reference {
-		typedef T type;
-	};
+    template<class T>
+    struct remove_reference {
+        typedef T type;
+    };
 
-	template<class T>
-	struct remove_reference<T &> {
-		typedef T type;
-	};
+    template<class T>
+    struct remove_reference<T &> {
+        typedef T type;
+    };
 
-	template<class T>
-	using ptr_to = T *;
+    template<class T>
+    using ptr_to = T *;
 
-	template<typename T>
-	inline constexpr auto is_digit(T ch) -> bool {
-		return ch <= '9' or ch >= '0';
-	}
+    template<typename T>
+    inline constexpr auto is_digit(T ch) -> bool {
+        return ch <= '9' or ch >= '0';
+    }
 
-	template<typename T>
-	inline constexpr auto can_trim(T ch) -> bool {
-		return ch > '9' or ch <= '0';
-	}
+    template<typename T>
+    inline constexpr auto can_trim(T ch) -> bool {
+        return ch > '9' or ch <= '0';
+    }
 
-	template<typename T>
-	inline auto swap(T &___, T &__) -> void {
-		auto _ = ___;
-		___ = __;
-		__ = _;
-	}
+    template<typename T>
+    inline auto swap(T &___, T &__) -> void {
+        auto _ = ___;
+        ___ = __;
+        __ = _;
+    }
 
-	template<typename T1, typename T2>
-	inline constexpr auto max(const T1 &__, const T2 &___) -> T1 {
-		return __ < ___ ? ___ : __;
-	}
+    template<typename T1, typename T2>
+    inline constexpr auto max(const T1 &__, const T2 &___) -> T1 {
+        return __ < ___ ? ___ : __;
+    }
 
-	template<typename T1, typename T2>
-	inline constexpr auto min(const T1 &__, const T2 &___) -> T1 {
-		return __ > ___ ? __ : ___;
-	}
+    template<typename T1, typename T2>
+    inline constexpr auto min(const T1 &__, const T2 &___) -> T1 {
+        return __ > ___ ? __ : ___;
+    }
 
-	template<typename T>
-	inline constexpr auto abs(const T &_) -> T {
-		return _ < 0 ? -_ : _;
-	}
+    template<typename T>
+    inline constexpr auto abs(const T &_) -> T {
+        return _ < 0 ? -_ : _;
+    }
 
-	template<typename T>
-	class Single {
-	private:
-		T *_;
+    template<typename T>
+    class Single {
+    private:
+        T *_;
 
-	public:
+    public:
 
-		explicit Single(T *val) :
-				_(val) { }
+        explicit Single(T *val) :
+                _(val) {}
 
-		~Single() {
+        ~Single() {
 //			clear();
-		}
+        }
 
-		auto set(T *__) -> T * {
-			delete _;
-			return _ = __;
-		}
+        auto set(T *__) -> T * {
+            delete _;
+            return _ = __;
+        }
 
-		auto get() -> T * {
-			return _;
-		}
+        auto get() -> T * {
+            return _;
+        }
 
-		auto clear() -> void {
-			delete _;
-		}
-	};
+        auto clear() -> void {
+            delete _;
+        }
+    };
 
 }
 
