@@ -50,7 +50,7 @@ set(
         tree/bit/BinaryIndexedTree.h
         tree/heap/MinHeap.h
         tree/heap/MaxHeap.h
-        tree/SEGTREE.H
+        tree/Segtree.h
         graph/FrontStarGraph.h
         math/Trigonometric.h
         math/Vector.h
